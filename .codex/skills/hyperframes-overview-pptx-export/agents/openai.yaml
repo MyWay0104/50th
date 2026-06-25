@@ -1,0 +1,4 @@
+interface:
+  display_name: "HyperFrames Overview PPTX Export"
+  short_description: "Export overview HTML to PPTX decks"
+  default_prompt: "Use $hyperframes-overview-pptx-export to export a HyperFrames overview.html file into a 16:9 PPTX deck with slide screenshots and speaker notes."
