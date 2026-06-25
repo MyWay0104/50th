@@ -1,0 +1,4 @@
+interface:
+  display_name: "HyperFrames Capture Overlap"
+  short_description: "Crop AI captures into readable slide cards"
+  default_prompt: "Use $hyperframes-capture-overlap to split an AI screenshot into question and answer crops and place them as readable overlapping HyperFrames slide cards."

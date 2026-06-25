@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperFrames v2 Template Overview</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css" />
+    <style>
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-9Black.woff2") format("woff2");
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #eef2f7;
+        color: #111827;
+        font-family: "Paperlogy", "Inter", "Helvetica Neue", Arial, sans-serif;
+      }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        padding: 0 28px;
+        border-bottom: 1px solid #d9e2ef;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(12px);
+      }
+      .brand { font-size: 16px; font-weight: 900; }
+      .actions { display: flex; align-items: center; gap: 10px; }
+      .edit-btn {
+        border: 1px solid #b7c3d6;
+        border-radius: 8px;
+        padding: 8px 12px;
+        background: #ffffff;
+        color: #111827;
+        font: inherit;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        min-height: calc(100vh - 64px);
+      }
+      .strip {
+        position: sticky;
+        top: 64px;
+        height: calc(100vh - 64px);
+        overflow: auto;
+        padding: 18px;
+        border-right: 1px solid #d9e2ef;
+        background: #f8fafc;
+      }
+      .thumb {
+        display: block;
+        margin-bottom: 14px;
+        padding: 12px;
+        border: 1px solid #d9e2ef;
+        border-radius: 8px;
+        background: #ffffff;
+        color: inherit;
+        text-decoration: none;
+      }
+      .thumb-title { margin: 0 0 6px; font-size: 14px; font-weight: 900; }
+      .thumb-meta { color: #64748b; font-size: 12px; font-weight: 800; }
+      .detail { display: grid; gap: 28px; padding: 34px; }
+      .slide-card {
+        border: 1px solid #d9e2ef;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: rgba(15, 23, 42, 0.08) 0 16px 34px -20px;
+      }
+      .slide-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border-bottom: 1px solid #d9e2ef;
+        color: #475569;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .aim-select {
+        border: 1px solid #b7c3d6;
+        border-radius: 8px;
+        padding: 7px 10px;
+        background: #ffffff;
+        font: inherit;
+      }
+      .stage {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        padding: 48px;
+      }
+      .stage h2 { margin: 0; font-size: 44px; line-height: 1.15; }
+      .stage p { margin: 18px 0 0; color: #475569; font-size: 22px; line-height: 1.45; }
+      .editing [data-editable="true"] { outline: 2px dashed #2563eb; outline-offset: 4px; }
+      .toast {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        display: none;
+        max-width: 440px;
+        padding: 14px 16px;
+        border-radius: 8px;
+        background: #111827;
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .toast.show { display: block; }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">SAMPLE | HyperFrames v2 Template | deck</div>
+      <div class="actions">
+        <span>Aim</span>
+        <button class="edit-btn" id="nav-edit" type="button">Edit</button>
+      </div>
+    </header>
+    <main>
+      <nav class="strip" aria-label="slide thumbnails">
+        <a class="thumb" href="#slide-01"><p class="thumb-title">01. 도입</p><div class="thumb-meta">Aim: message</div></a>
+        <a class="thumb" href="#slide-02"><p class="thumb-title">02. 핵심</p><div class="thumb-meta">Aim: layout</div></a>
+        <a class="thumb" href="#slide-03"><p class="thumb-title">03. 정리</p><div class="thumb-meta">Aim: tone</div></a>
+      </nav>
+      <section class="detail">
+        <article class="slide-card" data-slide="01" data-skill="title" data-aim="message">
+          <div class="slide-label"><span>01 / title</span><select class="aim-select" aria-label="Aim"><option>message</option><option>layout</option><option>tone</option><option>visual</option></select></div>
+          <div class="stage">
+            <h2 data-editable="true">HyperFrames v2 Template</h2>
+            <p data-editable="true">도입 메시지를 수정하세요.</p>
+          </div>
+        </article>
+        <article class="slide-card" data-slide="02" data-skill="title-bullets" data-aim="message">
+          <div class="slide-label"><span>02 / title-bullets</span><select class="aim-select" aria-label="Aim"><option>message</option><option>layout</option><option>tone</option><option>visual</option></select></div>
+          <div class="stage">
+            <h2 data-editable="true">핵심 메시지</h2>
+            <p data-editable="true">근거와 구조를 수정하세요.</p>
+          </div>
+        </article>
+        <article class="slide-card" data-slide="03" data-skill="quote" data-aim="message">
+          <div class="slide-label"><span>03 / quote</span><select class="aim-select" aria-label="Aim"><option>message</option><option>layout</option><option>tone</option><option>visual</option></select></div>
+          <div class="stage">
+            <h2 data-editable="true">정리</h2>
+            <p data-editable="true">결론과 행동 제안을 수정하세요.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+    <script>
+      const editButton = document.querySelector("#nav-edit");
+      const toast = document.querySelector("#toast");
+      const editables = [...document.querySelectorAll('[data-editable="true"]')];
+      let editing = false;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.setTimeout(() => toast.classList.remove("show"), 2800);
+      }
+
+      async function copyPatch() {
+        const lines = ["# Overview edits - HyperFrames v2 Template", ""];
+        document.querySelectorAll("[data-slide]").forEach((slide) => {
+          const aim = slide.querySelector(".aim-select")?.value || slide.dataset.aim || "message";
+          lines.push(`## Slide ${slide.dataset.slide} (${slide.dataset.skill})`);
+          lines.push(`- aim: ${aim}`);
+          slide.querySelectorAll('[data-editable="true"]').forEach((node, index) => {
+            lines.push(`- editable ${index + 1}: ${node.innerHTML}`);
+          });
+          lines.push("");
+        });
+        await navigator.clipboard.writeText(lines.join("\n"));
+      }
+
+      editButton.addEventListener("click", async () => {
+        editing = !editing;
+        document.body.classList.toggle("editing", editing);
+        editButton.textContent = editing ? "Done" : "Edit";
+        editables.forEach((node) => {
+          node.contentEditable = editing ? "true" : "false";
+        });
+        if (!editing) {
+          await copyPatch();
+          showToast("수정 patch가 클립보드에 복사되었습니다. 다음 요청에 붙여 넣으면 반영할 수 있습니다.");
+        }
+      });
+    </script>
+  </body>
+</html>

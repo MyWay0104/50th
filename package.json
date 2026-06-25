@@ -1,0 +1,23 @@
+{
+  "name": "slide-master-v2-hyperframes",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Reusable HyperFrames workspace for 16:9 decks and optional card-news outputs.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "docs": "npx hyperframes docs",
+    "lint": "npx hyperframes lint",
+    "lint:verbose": "npx hyperframes lint --verbose",
+    "preview": "npx hyperframes preview",
+    "preview:port": "npx hyperframes preview --port 3000",
+    "render": "npx hyperframes render",
+    "snapshot": "npx hyperframes snapshot",
+    "skills": "npx hyperframes skills",
+    "new-topic": "python scripts/create_topic.py",
+    "validate:harness": "python scripts/validate_codex_port.py",
+    "validate:topic": "python scripts/validate_topic.py"
+  }
+}

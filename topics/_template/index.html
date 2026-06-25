@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperFrames v2 Template</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css">
+    <style>
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-9Black.woff2") format("woff2");
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #111827;
+        font-family: "Paperlogy", "Inter", "Helvetica Neue", Arial, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f8fafc;
+        color: #111827;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 88px 112px;
+        overflow: hidden;
+      }
+      .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #172554 52%, #f8fafc 52%, #f8fafc 100%);
+        color: #ffffff;
+      }
+      .light { background: #f8fafc; color: #111827; }
+      .accent { color: #2563eb; }
+      .eyebrow {
+        margin: 0 0 26px;
+        color: inherit;
+        font-size: 24px;
+        font-weight: 800;
+        opacity: 0.78;
+      }
+      h1, h2 {
+        max-width: 1120px;
+        margin: 0;
+        font-size: 84px;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+      p {
+        max-width: 960px;
+        margin: 28px 0 0;
+        color: inherit;
+        font-size: 30px;
+        line-height: 1.45;
+        opacity: 0.78;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 48px;
+      }
+      .card {
+        min-height: 238px;
+        padding: 34px;
+        border: 1px solid #d9e2ef;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+      .card h3 {
+        margin: 0 0 14px;
+        font-size: 34px;
+        line-height: 1.22;
+      }
+      .card p {
+        margin: 0;
+        font-size: 23px;
+        color: #475569;
+      }
+      .brand, .slide-num {
+        position: absolute;
+        bottom: 52px;
+        font-size: 18px;
+        font-weight: 800;
+        opacity: 0.72;
+      }
+      .brand { left: 112px; }
+      .slide-num { right: 112px; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-8ukf" id="root" data-output-type="deck" data-composition-id="main" data-start="0" data-duration="15" data-width="1920" data-height="1080">
+      <section data-hf-id="hf-ddsc" id="s1" class="scene clip hero" data-skill="title" data-start="0" data-duration="5" data-track-index="0">
+        <div data-hf-id="hf-zuc4" class="eyebrow">SAMPLE | 16:9 HyperFrames Deck</div>
+        <h1 data-hf-id="hf-loj4">HyperFrames v2 Template</h1>
+        <p data-hf-id="hf-wfd4">DESIGN.md를 기반으로 발표 목적, 청중, 메시지를 반영해 완성할 첫 슬라이드입니다.</p>
+        <div data-hf-id="hf-6qwl" class="brand">SAMPLE</div>
+        <div data-hf-id="hf-896z" class="slide-num">01 / 03</div>
+      </section>
+      <section data-hf-id="hf-pby4" id="s2" class="scene clip light" data-skill="title-bullets" data-start="5" data-duration="5" data-track-index="0">
+        <div data-hf-id="hf-ak7c" class="eyebrow accent">핵심 메시지</div>
+        <h2 data-hf-id="hf-qlpg">주제의 맥락, 변화, 실행 포인트를 한 흐름으로 정리합니다.</h2>
+        <div data-hf-id="hf-kxq8" class="grid">
+          <article data-hf-id="hf-75x7" class="card"><h3 data-hf-id="hf-ogoa">맥락</h3><p data-hf-id="hf-2zlg">청중이 왜 지금 이 내용을 들어야 하는지 설명합니다.</p></article>
+          <article data-hf-id="hf-w323" class="card"><h3 data-hf-id="hf-9nvs">변화</h3><p data-hf-id="hf-til4">기술, 시장, 조직 관점의 핵심 변화를 요약합니다.</p></article>
+          <article data-hf-id="hf-vor2" class="card"><h3 data-hf-id="hf-phpn">실행</h3><p data-hf-id="hf-mwet">발표 이후 바로 논의할 결정을 제시합니다.</p></article>
+        </div>
+        <div data-hf-id="hf-j1ex" class="brand">SAMPLE</div>
+        <div data-hf-id="hf-5aks" class="slide-num">02 / 03</div>
+      </section>
+      <section data-hf-id="hf-31np" id="s3" class="scene clip hero" data-skill="quote" data-start="10" data-duration="5" data-track-index="0">
+        <div data-hf-id="hf-m66g" class="eyebrow">정리</div>
+        <h2 data-hf-id="hf-7y4o">좋은 발표는 정보보다 판단 기준을 남깁니다.</h2>
+        <p data-hf-id="hf-7gd8">사용자 피드백을 반영해 이 문장을 topic의 결론으로 교체하세요.</p>
+        <div data-hf-id="hf-k8c0" class="brand">SAMPLE</div>
+        <div data-hf-id="hf-r91h" class="slide-num">03 / 03</div>
+      </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power2.out" } });
+      document.querySelectorAll(".scene").forEach((scene) => {
+        const start = Number(scene.dataset.start || 0);
+        tl.fromTo(`#${scene.id} .eyebrow, #${scene.id} h1, #${scene.id} h2, #${scene.id} p, #${scene.id} .card`, { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.06 }, start + 0.25);
+      });
+      window.__timelines.main = tl;
+    </script>
+  </body>
+</html>
