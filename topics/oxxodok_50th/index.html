@@ -1,0 +1,1008 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>품격 있는 대화를 위한 지식 브리핑 · OXXODOK 50TH</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css" />
+    <style>
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-7Bold.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Paperlogy";
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-9Black.woff2") format("woff2");
+      }
+      :root {
+        --primary: #e60012;
+        --signal: #f68d1f;
+        --amber: #ecab37;
+        --nav-gold: #e48600;
+        --canvas: #7a8aba;
+        --canvas-soft: #9fbee7;
+        --ice: #c0d5e6;
+        --periwinkle: #8ba1d4;
+        --chrome-indigo: #3d4f97;
+        --muted-indigo: #60619c;
+        --platinum: #dedede;
+        --surface: #ffffff;
+        --carbon: #21242e;
+        --hairline: #5a5f8c;
+        --ink: #21242e;
+        --ink-soft: #3d4f97;
+        --systems-teal: #206479;
+        --text: #21242e;
+        --text-meta: #3d4f97;
+        --accent: #206479;
+        --bg: #7a8aba;
+      }
+
+      * { box-sizing: border-box; }
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--carbon);
+        color: var(--ink);
+        font-family: "Paperlogy", Arial, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--canvas);
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+          var(--canvas);
+        background-size: 48px 48px;
+        color: var(--ink);
+        font-family: "Paperlogy", Arial, sans-serif;
+        word-break: keep-all;
+      }
+      .scene::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 4px),
+          radial-gradient(circle at 78% 28%, rgba(192,213,230,.62), transparent 34%);
+        pointer-events: none;
+      }
+      .scene::after {
+        content: "";
+        position: absolute;
+        right: 104px;
+        top: 138px;
+        width: 350px;
+        height: 350px;
+        border: 2px solid rgba(32,100,121,.18);
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 42px rgba(32,100,121,.045),
+          0 0 0 84px rgba(32,100,121,.025);
+        pointer-events: none;
+      }
+      .scene > * { position: relative; z-index: 2; }
+
+      .console-nav {
+        position: absolute;
+        top: 30px;
+        left: 62px;
+        right: 62px;
+        height: 66px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 10px 20px;
+        background:
+          radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 8px 8px,
+          var(--carbon);
+        color: var(--surface);
+        clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+        box-shadow: inset 0 3px rgba(255,255,255,.12), inset 0 -4px rgba(0,0,0,.38);
+      }
+      .logo-pill {
+        min-width: 180px;
+        padding: 7px 18px 8px;
+        border: 4px solid var(--primary);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--primary);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+        letter-spacing: -1px;
+      }
+      .nav-link {
+        color: var(--nav-gold);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 1px;
+      }
+      .nav-spacer { flex: 1; }
+      .utility-chip {
+        padding: 8px 14px;
+        border: 1px solid rgba(255,255,255,.35);
+        background: var(--amber);
+        color: var(--carbon);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: .5px;
+        box-shadow: inset 0 2px rgba(255,255,255,.5), inset 0 -3px rgba(61,79,151,.45);
+      }
+      .subnav {
+        position: absolute;
+        top: 96px;
+        left: 82px;
+        right: 82px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        padding: 0 24px;
+        border-top: 2px solid rgba(255,255,255,.6);
+        border-bottom: 3px solid var(--chrome-indigo);
+        background: var(--canvas-soft);
+        color: var(--ink);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+      }
+      .subnav .active {
+        color: var(--carbon);
+        box-shadow: inset 0 -4px var(--systems-teal);
+      }
+      .left-rail {
+        position: absolute;
+        left: 28px;
+        top: 185px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .rail-tab {
+        width: 54px;
+        min-height: 146px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 3px solid var(--canvas-soft);
+        background: var(--carbon);
+        color: var(--canvas-soft);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 14px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+      .rail-tab.current {
+        background: var(--systems-teal);
+        color: var(--surface);
+      }
+      .scene-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 176px 112px 104px 124px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 16px;
+        border: 2px solid var(--chrome-indigo);
+        background: var(--canvas-soft);
+        color: var(--ink);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        box-shadow: inset 0 3px rgba(255,255,255,.48), inset 0 -3px rgba(61,79,151,.24);
+      }
+      .eyebrow::before {
+        content: "";
+        width: 13px;
+        height: 13px;
+        background: var(--signal);
+        transform: rotate(45deg);
+      }
+      .scene-title {
+        max-width: 1420px;
+        margin: 0;
+        color: var(--ink);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 82px;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: -3px;
+      }
+      .scene-subtitle {
+        max-width: 1180px;
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.42;
+      }
+      .plate {
+        border: 3px solid var(--chrome-indigo);
+        background: rgba(255,255,255,.78);
+        box-shadow:
+          inset 0 5px rgba(255,255,255,.72),
+          inset 0 -6px rgba(61,79,151,.2),
+          8px 8px 0 rgba(61,79,151,.26);
+      }
+      .plate-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 54px;
+        padding: 10px 18px;
+        border-bottom: 3px solid var(--chrome-indigo);
+        background: var(--periwinkle);
+        color: var(--ink);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .arrow-chip {
+        width: 29px;
+        height: 29px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--signal);
+        color: var(--carbon);
+        font-size: 20px;
+        font-weight: 900;
+        box-shadow: inset 0 2px rgba(255,255,255,.45);
+      }
+      .brand, .slide-num {
+        position: absolute;
+        bottom: 38px;
+        z-index: 10;
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+      }
+      .brand {
+        left: 124px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+      }
+      .brand-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--primary);
+      }
+      .slide-num {
+        right: 112px;
+        padding: 7px 13px;
+        background: var(--carbon);
+        color: var(--surface);
+      }
+
+      .hero-scene {
+        background:
+          linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
+          var(--systems-teal);
+        background-size: 46px 46px;
+        color: var(--surface);
+      }
+      .hero-scene::before {
+        background:
+          radial-gradient(circle at 72% 46%, rgba(192,213,230,.36), transparent 34%),
+          repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 5px);
+      }
+      .hero-scene .scene-content {
+        justify-content: center;
+        padding-right: 490px;
+      }
+      .hero-scene .brand { color: var(--surface); }
+      .hero-kicker {
+        color: var(--amber);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: 4px;
+      }
+      .hero-title {
+        max-width: 1220px;
+        margin: 0;
+        color: var(--surface);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 104px;
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -4px;
+        -webkit-text-stroke: 3px var(--carbon);
+        text-shadow: 7px 7px 0 var(--chrome-indigo);
+      }
+      .hero-sub {
+        color: var(--ice);
+        font-size: 31px;
+        font-weight: 800;
+        letter-spacing: .8px;
+      }
+      .hero-scene:not(.end-scene) .hero-sub {
+        margin: -12px 0 0;
+      }
+      .hero-presenter {
+        margin-top: -12px;
+        color: var(--ice);
+        font-size: 27px;
+        font-weight: 750;
+        letter-spacing: .6px;
+      }
+      .edition-badge {
+        position: absolute;
+        right: 150px;
+        top: 290px;
+        width: 280px;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 9px solid var(--surface);
+        border-radius: 50%;
+        background: var(--primary);
+        color: var(--surface);
+        box-shadow: 0 0 0 10px var(--carbon), 16px 16px 0 rgba(0,0,0,.25);
+        transform: rotate(7deg);
+      }
+      .edition-badge strong {
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 76px;
+        line-height: .9;
+      }
+      .edition-badge span {
+        margin-top: 14px;
+        font-size: 23px;
+        font-weight: 900;
+        letter-spacing: 3px;
+      }
+
+      .time-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 6px;
+      }
+      .time-card {
+        min-height: 210px;
+        display: grid;
+        grid-column: span 2;
+        grid-template-columns: 145px 1fr;
+      }
+      .time-card:nth-child(4),
+      .time-card:nth-child(5) {
+        grid-column: span 3;
+      }
+      .time-card .time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        border-right: 3px solid var(--chrome-indigo);
+        background: var(--carbon);
+        color: var(--amber);
+        font-family: "Arial Black", Arial, sans-serif;
+        font-size: 30px;
+        line-height: 1.05;
+        text-align: center;
+      }
+      .time-card .time-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding: 20px 22px;
+      }
+      .time-card .step-label {
+        color: var(--systems-teal);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 1.4px;
+      }
+      .time-card h3 {
+        margin: 0;
+        font-size: 25px;
+        line-height: 1.22;
+      }
+      .time-card p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      .time-card.featured-time {
+        border-color: var(--signal);
+        box-shadow:
+          inset 0 5px rgba(255,255,255,.72),
+          inset 0 -6px rgba(246,141,31,.18),
+          8px 8px 0 rgba(246,141,31,.32);
+      }
+      .time-card.featured-time .time {
+        border-right-color: var(--signal);
+        background: var(--signal);
+        color: var(--carbon);
+      }
+      .time-card.featured-time .step-label {
+        color: var(--primary);
+      }
+
+      .welcome-scene {
+        background:
+          linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px),
+          var(--canvas-soft);
+        background-size: 46px 46px;
+      }
+      .welcome-layout {
+        display: grid;
+        grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+        gap: 42px;
+        flex: 1;
+        min-height: 0;
+        align-items: center;
+      }
+      .welcome-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+      }
+      .welcome-name {
+        max-width: 720px;
+        margin: 0;
+        color: var(--surface);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 92px;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: -3px;
+        -webkit-text-stroke: 3px var(--carbon);
+        text-shadow: 7px 7px 0 var(--chrome-indigo);
+      }
+      .welcome-message {
+        max-width: 670px;
+        margin: 0;
+        color: var(--carbon);
+        font-size: 29px;
+        font-weight: 750;
+        line-height: 1.42;
+      }
+      .welcome-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        padding: 10px 16px;
+        border: 2px solid var(--chrome-indigo);
+        background: rgba(255,255,255,.62);
+        color: var(--systems-teal);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: 2px;
+      }
+      .welcome-tag::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: var(--signal);
+        transform: rotate(45deg);
+      }
+      .welcome-visual {
+        height: 600px;
+        overflow: hidden;
+        border: 3px solid var(--chrome-indigo);
+        background: var(--ice);
+        box-shadow:
+          inset 0 5px rgba(255,255,255,.72),
+          10px 10px 0 rgba(61,79,151,.3);
+      }
+      .welcome-visual img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .book-grid {
+        display: grid;
+        grid-template-columns: 590px minmax(0, 1fr);
+        gap: 30px;
+        flex: 1;
+        min-height: 0;
+      }
+      .book-slot {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .book-placeholder {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        margin: 28px;
+        border: 4px dashed var(--muted-indigo);
+        background:
+          linear-gradient(135deg, rgba(192,213,230,.9), rgba(159,190,231,.78));
+        color: var(--chrome-indigo);
+      }
+      .book-placeholder .book-icon {
+        width: 190px;
+        height: 250px;
+        border: 7px solid var(--chrome-indigo);
+        background: var(--surface);
+        box-shadow: 18px 16px 0 var(--systems-teal);
+      }
+      .book-placeholder strong {
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 23px;
+        letter-spacing: 2px;
+      }
+      .brief-list {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .brief-row {
+        display: grid;
+        grid-template-columns: 155px 1fr;
+        align-items: stretch;
+      }
+      .brief-key {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 3px solid var(--chrome-indigo);
+        background: var(--canvas-soft);
+        color: var(--ink);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+      }
+      .brief-value {
+        display: flex;
+        align-items: center;
+        padding: 24px 30px;
+        color: var(--ink-soft);
+        font-size: 25px;
+        font-weight: 750;
+        line-height: 1.4;
+      }
+
+      .discussion-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(420px, .8fr);
+        gap: 26px;
+        flex: 1;
+        min-height: 0;
+      }
+      .quote-panel, .question-panel {
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .quote-copy {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 34px 48px 38px;
+      }
+      .quote-mark {
+        color: var(--systems-teal);
+        font-family: Georgia, serif;
+        font-size: 112px;
+        font-weight: 900;
+        line-height: .55;
+      }
+      .quote-body {
+        margin: 10px 0 0;
+        color: var(--ink);
+        font-size: 43px;
+        font-weight: 850;
+        line-height: 1.35;
+      }
+      .quote-attrib {
+        margin-top: 24px;
+        color: var(--ink-soft);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+      }
+      .question-panel {
+        gap: 18px;
+      }
+      .question-card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .question-copy {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 30px 34px;
+        color: var(--ink);
+        font-size: 31px;
+        font-weight: 850;
+        line-height: 1.42;
+      }
+      .memo-card {
+        min-height: 175px;
+        padding: 23px 28px;
+        border: 3px solid var(--chrome-indigo);
+        background:
+          repeating-linear-gradient(0deg, transparent 0 32px, rgba(61,79,151,.2) 32px 34px),
+          rgba(255,255,255,.62);
+        color: var(--ink-soft);
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+      .topic-count {
+        margin-left: auto;
+        padding: 7px 13px;
+        background: var(--signal);
+        color: var(--carbon);
+        font-family: "Arial Black", Arial, sans-serif;
+        font-size: 18px;
+      }
+
+      .reflection-scene {
+        background:
+          radial-gradient(circle at 70% 30%, rgba(159,190,231,.22), transparent 38%),
+          var(--carbon);
+        color: var(--surface);
+      }
+      .reflection-scene::before {
+        background:
+          radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1.5px) 0 0 / 9px 9px;
+      }
+      .reflection-scene .scene-content {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-left: 210px;
+        padding-right: 210px;
+      }
+      .reflection-scene .eyebrow {
+        background: var(--amber);
+        color: var(--carbon);
+      }
+      .reflection-question {
+        max-width: 1420px;
+        margin: 20px 0 0;
+        color: var(--surface);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 78px;
+        font-weight: 900;
+        line-height: 1.28;
+        letter-spacing: -3px;
+      }
+      .reflection-hint {
+        color: var(--ice);
+        font-size: 26px;
+        font-weight: 750;
+      }
+      .reflection-scene .brand { color: var(--ice); }
+
+      .end-scene .scene-content {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-left: 118px;
+        padding-right: 118px;
+      }
+      .end-title {
+        margin: 0;
+        color: var(--surface);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 150px;
+        font-weight: 900;
+        line-height: 1;
+        -webkit-text-stroke: 4px var(--carbon);
+        text-shadow: 9px 9px 0 var(--chrome-indigo);
+      }
+      .end-sub {
+        color: #ecac39;
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-output-type="deck" data-composition-id="main" data-start="0" data-duration="54" data-width="1920" data-height="1080">
+      <section id="s-1" class="scene clip hero-scene" data-skill="title" data-start="0" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">BOOK</span><span class="nav-link">TALK</span><span class="nav-link">PEOPLE</span>
+          <span class="nav-spacer"></span><span class="utility-chip">JUL 2026</span>
+        </div>
+        <div class="subnav"><span class="active">50TH READING CLUB</span><span>KNOWLEDGE</span><span>CONVERSATION</span><span>MEMO</span></div>
+        <div class="scene-content">
+          <div class="hero-kicker js-reveal" data-editable="true">2026 JULY · OXXODOK 50TH</div>
+          <h1 class="hero-title js-reveal" data-editable="true">품격 있는 대화를 위한<br />지식 브리핑</h1>
+          <p class="hero-sub js-reveal" data-editable="true">제50회 옥쏘독</p>
+          <div class="hero-presenter js-reveal" data-editable="true">진행자 : 리월</div>
+        </div>
+        <div class="edition-badge js-reveal"><strong data-editable="true">50</strong><span data-editable="true">TH EDITION</span></div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK</span></div>
+        <div class="slide-num">01 / 09</div>
+      </section>
+
+      <section id="s-2" class="scene clip" data-skill="steps" data-start="6" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">BOOK</span><span class="nav-link">TIMELINE</span><span class="nav-link">TALK</span>
+          <span class="nav-spacer"></span><span class="utility-chip">120 MIN</span>
+        </div>
+        <div class="subnav"><span>INTRO</span><span class="active">TIME TABLE</span><span>DISCUSSION</span><span>WRAP-UP</span></div>
+        <div class="left-rail"><span class="rail-tab current">SCHEDULE</span><span class="rail-tab">MEMO</span></div>
+        <div class="scene-content">
+          <div class="eyebrow js-reveal" data-editable="true">SESSION MAP · 2 HOURS</div>
+          <h2 class="scene-title js-reveal" data-editable="true">오늘의 진행 순서</h2>
+          <div class="time-grid">
+            <article class="time-card plate js-reveal">
+              <div class="time" data-editable="true">20:00<br />20:20</div>
+              <div class="time-body"><div class="step-label" data-editable="true">STEP 01 · WELCOME</div><h3 data-editable="true">본인 소개 및 자유로운 이야기</h3><p data-editable="true">도착, 근황, 첫 인사를 나누는 시간</p></div>
+            </article>
+            <article class="time-card plate js-reveal">
+              <div class="time" data-editable="true">20:20<br />20:30</div>
+              <div class="time-body"><div class="step-label" data-editable="true">STEP 02 · BRIEFING</div><h3 data-editable="true">책과 저자의 배경지식</h3><p data-editable="true">토론을 위한 공통 맥락 맞추기</p></div>
+            </article>
+            <article class="time-card plate js-reveal">
+              <div class="time" data-editable="true">20:30<br />21:10</div>
+              <div class="time-body"><div class="step-label" data-editable="true">STEP 03 · DISCUSSION</div><h3 data-editable="true">세 가지 발제로 독서 토론</h3><p data-editable="true">질문마다 경험과 생각을 자유롭게 공유</p></div>
+            </article>
+            <article class="time-card plate featured-time js-reveal">
+              <div class="time" data-editable="true">21:10<br />21:40</div>
+              <div class="time-body"><div class="step-label" data-editable="true">STEP 04 · MEMBER TALK</div><h3 data-editable="true">‘운부장’님의 발표</h3><p data-editable="true">회원 발표와 함께 생각을 확장하는 30분</p></div>
+            </article>
+            <article class="time-card plate js-reveal">
+              <div class="time" data-editable="true">21:40<br />22:00</div>
+              <div class="time-body"><div class="step-label" data-editable="true">STEP 05 · WRAP-UP</div><h3 data-editable="true">소감 이야기하기</h3><p data-editable="true">오늘의 한 문장과 기억에 남은 점</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · 50TH</span></div>
+        <div class="slide-num">02 / 09</div>
+      </section>
+
+      <section id="s-3" class="scene clip welcome-scene" data-skill="title-image" data-start="12" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">WELCOME</span><span class="nav-link">PEOPLE</span><span class="nav-link">TOGETHER</span>
+          <span class="nav-spacer"></span><span class="utility-chip">NEW MEMBER</span>
+        </div>
+        <div class="subnav"><span class="active">HELLO</span><span>CONVERSATION</span><span>BOOK</span><span>JULY 2026</span></div>
+        <div class="scene-content">
+          <div class="welcome-layout">
+            <div class="welcome-copy">
+              <div class="welcome-tag js-reveal" data-editable="true">NEW MEMBER · JULY 2026</div>
+              <h2 class="welcome-name js-reveal" data-editable="true">이기연 님,<br />환영합니다</h2>
+              <p class="welcome-message js-reveal" data-editable="true">7월부터 옥쏘독의 새로운 이야기를 함께합니다.</p>
+            </div>
+            <div class="welcome-visual js-reveal">
+              <img src="assets/03-welcome-1th-50th-timeline.svg" alt="1th부터 49th까지 이어진 노드가 50th의 새로운 분기점으로 연결되는 인포그래픽" />
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · WELCOME</span></div>
+        <div class="slide-num">03 / 09</div>
+      </section>
+
+      <section id="s-4" class="scene clip" data-skill="split" data-start="18" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">BOOK</span><span class="nav-link">AUTHOR</span><span class="nav-link">CONTEXT</span>
+          <span class="nav-spacer"></span><span class="utility-chip">BRIEFING</span>
+        </div>
+        <div class="subnav"><span class="active">BOOK PROFILE</span><span>AUTHOR</span><span>KEY CONTEXT</span><span>READING LENS</span></div>
+        <div class="left-rail"><span class="rail-tab current">BOOK INFO</span><span class="rail-tab">NOTES</span></div>
+        <div class="scene-content">
+          <div class="eyebrow js-reveal" data-editable="true">BOOK &amp; AUTHOR BRIEFING</div>
+          <h2 class="scene-title js-reveal" data-editable="true">책을 이해하는 공통 배경</h2>
+          <div class="book-grid">
+            <article class="book-slot plate js-reveal">
+              <div class="plate-label"><span data-editable="true">BOOK COVER SLOT</span><span class="arrow-chip">→</span></div>
+              <div class="book-placeholder"><div class="book-icon" aria-hidden="true"></div><strong data-editable="true">[책 표지 이미지]</strong></div>
+            </article>
+            <div class="brief-list">
+              <article class="brief-row plate js-reveal"><div class="brief-key" data-editable="true">AUTHOR</div><div class="brief-value" data-editable="true">[저자명과 저자를 이해하는 핵심 배경]</div></article>
+              <article class="brief-row plate js-reveal"><div class="brief-key" data-editable="true">CONTEXT</div><div class="brief-value" data-editable="true">[책이 다루는 문제와 집필 배경 2~3문장]</div></article>
+              <article class="brief-row plate js-reveal"><div class="brief-key" data-editable="true">READING LENS</div><div class="brief-value" data-editable="true">[오늘의 토론에서 함께 살펴볼 핵심 관점]</div></article>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · BOOK BRIEFING</span></div>
+        <div class="slide-num">04 / 09</div>
+      </section>
+
+      <section id="s-5" class="scene clip" data-skill="quote" data-start="24" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">DISCUSSION</span><span class="nav-link">QUOTE</span><span class="nav-link">MEMO</span>
+          <span class="nav-spacer"></span><span class="utility-chip">TOPIC 01</span>
+        </div>
+        <div class="subnav"><span class="active">KEY PASSAGE</span><span>INTERPRETATION</span><span>QUESTION</span><span>SHARE</span></div>
+        <div class="left-rail"><span class="rail-tab current">TOPIC 01</span><span class="rail-tab">MEMO</span></div>
+        <div class="scene-content">
+          <div class="eyebrow js-reveal" data-editable="true">DISCUSSION TOPIC <span class="topic-count">01</span></div>
+          <h2 class="scene-title js-reveal" data-editable="true">첫 번째 발제</h2>
+          <div class="discussion-grid">
+            <article class="quote-panel plate js-reveal">
+              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">[PAGE]</span></div>
+              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">[첫 번째 발제를 여는 인상 깊은 구절 또는 핵심 문장]</p><p class="quote-attrib" data-editable="true">[출처 또는 장/페이지]</p></div>
+            </article>
+            <div class="question-panel">
+              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">QUESTION 01</span><span class="arrow-chip">→</span></div><div class="question-copy" data-editable="true">[이 문장에서 출발하는 첫 번째 토론 질문]</div></article>
+              <div class="memo-card js-reveal" data-editable="true">MEMO<br />[질문의 의도, 보조 질문 또는 진행자 메모]</div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · DISCUSSION</span></div>
+        <div class="slide-num">05 / 09</div>
+      </section>
+
+      <section id="s-6" class="scene clip" data-skill="quote" data-start="30" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">DISCUSSION</span><span class="nav-link">QUOTE</span><span class="nav-link">MEMO</span>
+          <span class="nav-spacer"></span><span class="utility-chip">TOPIC 02</span>
+        </div>
+        <div class="subnav"><span>KEY PASSAGE</span><span class="active">INTERPRETATION</span><span>QUESTION</span><span>SHARE</span></div>
+        <div class="left-rail"><span class="rail-tab current">TOPIC 02</span><span class="rail-tab">MEMO</span></div>
+        <div class="scene-content">
+          <div class="eyebrow js-reveal" data-editable="true">DISCUSSION TOPIC <span class="topic-count">02</span></div>
+          <h2 class="scene-title js-reveal" data-editable="true">두 번째 발제</h2>
+          <div class="discussion-grid">
+            <article class="quote-panel plate js-reveal">
+              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">[PAGE]</span></div>
+              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">[두 번째 발제를 여는 인상 깊은 구절 또는 핵심 문장]</p><p class="quote-attrib" data-editable="true">[출처 또는 장/페이지]</p></div>
+            </article>
+            <div class="question-panel">
+              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">QUESTION 02</span><span class="arrow-chip">→</span></div><div class="question-copy" data-editable="true">[경험과 생각을 연결하는 두 번째 토론 질문]</div></article>
+              <div class="memo-card js-reveal" data-editable="true">MEMO<br />[질문의 의도, 보조 질문 또는 진행자 메모]</div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · DISCUSSION</span></div>
+        <div class="slide-num">06 / 09</div>
+      </section>
+
+      <section id="s-7" class="scene clip" data-skill="quote" data-start="36" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">DISCUSSION</span><span class="nav-link">QUOTE</span><span class="nav-link">MEMO</span>
+          <span class="nav-spacer"></span><span class="utility-chip">TOPIC 03</span>
+        </div>
+        <div class="subnav"><span>KEY PASSAGE</span><span>INTERPRETATION</span><span class="active">QUESTION</span><span>SHARE</span></div>
+        <div class="left-rail"><span class="rail-tab current">TOPIC 03</span><span class="rail-tab">MEMO</span></div>
+        <div class="scene-content">
+          <div class="eyebrow js-reveal" data-editable="true">DISCUSSION TOPIC <span class="topic-count">03</span></div>
+          <h2 class="scene-title js-reveal" data-editable="true">세 번째 발제</h2>
+          <div class="discussion-grid">
+            <article class="quote-panel plate js-reveal">
+              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">[PAGE]</span></div>
+              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">[세 번째 발제를 여는 인상 깊은 구절 또는 핵심 문장]</p><p class="quote-attrib" data-editable="true">[출처 또는 장/페이지]</p></div>
+            </article>
+            <div class="question-panel">
+              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">QUESTION 03</span><span class="arrow-chip">→</span></div><div class="question-copy" data-editable="true">[책 전체를 확장해 바라보는 세 번째 토론 질문]</div></article>
+              <div class="memo-card js-reveal" data-editable="true">MEMO<br />[질문의 의도, 보조 질문 또는 진행자 메모]</div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · DISCUSSION</span></div>
+        <div class="slide-num">07 / 09</div>
+      </section>
+
+      <section id="s-8" class="scene clip reflection-scene" data-skill="quote" data-start="42" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">REFLECTION</span><span class="nav-link">SHARE</span><span class="nav-link">MEMORY</span>
+          <span class="nav-spacer"></span><span class="utility-chip">20 MIN</span>
+        </div>
+        <div class="subnav"><span>DISCUSSION</span><span class="active">WRAP-UP</span><span>ONE SENTENCE</span><span>NEXT</span></div>
+        <div class="scene-content">
+          <div class="eyebrow js-reveal" data-editable="true">WRAP-UP · ONE BY ONE</div>
+          <p class="reflection-question js-reveal" data-editable="true">“오늘 함께한 시간에서 기억에 남는 것 하나씩 이야기해봐요.”</p>
+          <p class="reflection-hint js-reveal" data-editable="true">[마지막 소감 공유를 위한 보조 안내 또는 진행자 멘트]</p>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · 50TH REFLECTION</span></div>
+        <div class="slide-num">08 / 09</div>
+      </section>
+
+      <section id="s-9" class="scene clip hero-scene end-scene" data-skill="title" data-start="48" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">BOOK</span><span class="nav-link">TALK</span><span class="nav-link">PEOPLE</span>
+          <span class="nav-spacer"></span><span class="utility-chip">SEE YOU NEXT</span>
+        </div>
+        <div class="subnav"><span>50TH</span><span>KNOWLEDGE</span><span>CONVERSATION</span><span class="active">THANK YOU</span></div>
+        <div class="scene-content">
+          <p class="end-sub js-reveal" data-editable="true">OXXODOK · 2026 JULY · 50TH</p>
+          <h2 class="end-title js-reveal" data-editable="true">감사합니다</h2>
+          <p class="hero-sub js-reveal" data-editable="true">[다음 모임 안내 또는 마무리 한 문장]</p>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK</span></div>
+        <div class="slide-num">09 / 09</div>
+      </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll(".scene").forEach((scene) => {
+        const start = Number(scene.dataset.start || 0);
+        const reveals = scene.querySelectorAll(".js-reveal");
+        tl.from(reveals, {
+          y: 28,
+          opacity: 0,
+          scale: 0.985,
+          duration: 0.62,
+          stagger: 0.08,
+          ease: "power3.out"
+        }, start + 0.22);
+      });
+      window.__timelines.main = tl;
+    </script>
+  </body>
+</html>

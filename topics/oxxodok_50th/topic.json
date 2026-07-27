@@ -1,0 +1,12 @@
+{
+  "name": "oxxodok_50th",
+  "title": "품격 있는 대화를 위한 지식 브리핑",
+  "company": "OXXODOK",
+  "outputType": "deck",
+  "designSource": "new_md/DESIGN-nintendo-2001.md",
+  "referenceStructure": "심플하게산다-독서토론.pdf",
+  "slideCount": 9,
+  "durationMinutes": 120,
+  "status": "outline-placeholder",
+  "createdAt": "2026-07-27"
+}

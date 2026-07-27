@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1000" viewBox="0 0 1560 1000" role="img" aria-labelledby="title desc">
+  <title id="title">옥쏘독 1회부터 50회까지의 흐름</title>
+  <desc id="desc">1th부터 49th까지 이어진 월간 모임 노드가 큰 50th 분기점으로 연결되는 인포그래픽</desc>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#3d4f97" stroke-opacity=".11" stroke-width="2"/>
+    </pattern>
+    <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#ffffff" fill-opacity=".09"/>
+    </pattern>
+    <g id="node">
+      <rect x="-38" y="-22" width="82" height="48" fill="#3d4f97" fill-opacity=".28"/>
+      <rect x="-43" y="-27" width="82" height="48" rx="4" fill="#dedede" stroke="#3d4f97" stroke-width="3"/>
+      <path d="M-40-24H36" stroke="#ffffff" stroke-opacity=".82" stroke-width="4"/>
+      <circle cx="-31" cy="-15" r="5" fill="#206479"/>
+    </g>
+    <g id="major-node">
+      <rect x="-38" y="-22" width="82" height="48" fill="#3d4f97" fill-opacity=".3"/>
+      <rect x="-43" y="-27" width="82" height="48" rx="4" fill="#c0d5e6" stroke="#3d4f97" stroke-width="3"/>
+      <path d="M-40-24H36" stroke="#ffffff" stroke-opacity=".9" stroke-width="4"/>
+      <circle cx="-31" cy="-15" r="6" fill="#ecab37" stroke="#21242e" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <rect width="1560" height="1000" fill="#9fbee7"/>
+  <rect width="1560" height="1000" fill="url(#grid)"/>
+  <circle cx="1290" cy="610" r="340" fill="#c0d5e6" fill-opacity=".52"/>
+  <circle cx="1290" cy="610" r="272" fill="none" stroke="#3d4f97" stroke-opacity=".16" stroke-width="3"/>
+
+  <path d="M54 82H1506L1534 110V154H26V110Z" fill="#21242e"/>
+  <path d="M54 82H1506L1534 110V154H26V110Z" fill="url(#dots)"/>
+  <rect x="62" y="103" width="150" height="30" rx="15" fill="#ffffff" stroke="#e60012" stroke-width="4"/>
+  <circle cx="86" cy="118" r="7" fill="#e60012"/>
+  <rect x="233" y="107" width="78" height="22" fill="#e48600"/>
+  <rect x="323" y="107" width="78" height="22" fill="#e48600"/>
+  <rect x="413" y="107" width="78" height="22" fill="#e48600"/>
+  <rect x="1391" y="101" width="104" height="34" fill="#ecab37" stroke="#ffffff" stroke-opacity=".55" stroke-width="2"/>
+
+  <path d="M80 238H890V390H80V542H890V694H80V846H800"
+        fill="none" stroke="#3d4f97" stroke-width="10" stroke-linejoin="bevel"/>
+  <path d="M80 238H890V390H80V542H890V694H80V846H800"
+        fill="none" stroke="#ffffff" stroke-opacity=".48" stroke-width="3" stroke-linejoin="bevel"/>
+
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="800" text-anchor="middle" dominant-baseline="middle" fill="#21242e">
+    <use href="#node" x="80" y="238"/><text x="78" y="235">1th</text>
+    <use href="#node" x="170" y="238"/><text x="168" y="235">2th</text>
+    <use href="#node" x="260" y="238"/><text x="258" y="235">3th</text>
+    <use href="#node" x="350" y="238"/><text x="348" y="235">4th</text>
+    <use href="#node" x="440" y="238"/><text x="438" y="235">5th</text>
+    <use href="#node" x="530" y="238"/><text x="528" y="235">6th</text>
+    <use href="#node" x="620" y="238"/><text x="618" y="235">7th</text>
+    <use href="#node" x="710" y="238"/><text x="708" y="235">8th</text>
+    <use href="#node" x="800" y="238"/><text x="798" y="235">9th</text>
+    <use href="#major-node" x="890" y="238"/><text x="888" y="235">10th</text>
+
+    <use href="#node" x="890" y="390"/><text x="888" y="387">11th</text>
+    <use href="#node" x="800" y="390"/><text x="798" y="387">12th</text>
+    <use href="#node" x="710" y="390"/><text x="708" y="387">13th</text>
+    <use href="#node" x="620" y="390"/><text x="618" y="387">14th</text>
+    <use href="#node" x="530" y="390"/><text x="528" y="387">15th</text>
+    <use href="#node" x="440" y="390"/><text x="438" y="387">16th</text>
+    <use href="#node" x="350" y="390"/><text x="348" y="387">17th</text>
+    <use href="#node" x="260" y="390"/><text x="258" y="387">18th</text>
+    <use href="#node" x="170" y="390"/><text x="168" y="387">19th</text>
+    <use href="#major-node" x="80" y="390"/><text x="78" y="387">20th</text>
+
+    <use href="#node" x="80" y="542"/><text x="78" y="539">21th</text>
+    <use href="#node" x="170" y="542"/><text x="168" y="539">22th</text>
+    <use href="#node" x="260" y="542"/><text x="258" y="539">23th</text>
+    <use href="#node" x="350" y="542"/><text x="348" y="539">24th</text>
+    <use href="#node" x="440" y="542"/><text x="438" y="539">25th</text>
+    <use href="#node" x="530" y="542"/><text x="528" y="539">26th</text>
+    <use href="#node" x="620" y="542"/><text x="618" y="539">27th</text>
+    <use href="#node" x="710" y="542"/><text x="708" y="539">28th</text>
+    <use href="#node" x="800" y="542"/><text x="798" y="539">29th</text>
+    <use href="#major-node" x="890" y="542"/><text x="888" y="539">30th</text>
+
+    <use href="#node" x="890" y="694"/><text x="888" y="691">31th</text>
+    <use href="#node" x="800" y="694"/><text x="798" y="691">32th</text>
+    <use href="#node" x="710" y="694"/><text x="708" y="691">33th</text>
+    <use href="#node" x="620" y="694"/><text x="618" y="691">34th</text>
+    <use href="#node" x="530" y="694"/><text x="528" y="691">35th</text>
+    <use href="#node" x="440" y="694"/><text x="438" y="691">36th</text>
+    <use href="#node" x="350" y="694"/><text x="348" y="691">37th</text>
+    <use href="#node" x="260" y="694"/><text x="258" y="691">38th</text>
+    <use href="#node" x="170" y="694"/><text x="168" y="691">39th</text>
+    <use href="#major-node" x="80" y="694"/><text x="78" y="691">40th</text>
+
+    <use href="#node" x="80" y="846"/><text x="78" y="843">41th</text>
+    <use href="#node" x="170" y="846"/><text x="168" y="843">42th</text>
+    <use href="#node" x="260" y="846"/><text x="258" y="843">43th</text>
+    <use href="#node" x="350" y="846"/><text x="348" y="843">44th</text>
+    <use href="#node" x="440" y="846"/><text x="438" y="843">45th</text>
+    <use href="#node" x="530" y="846"/><text x="528" y="843">46th</text>
+    <use href="#node" x="620" y="846"/><text x="618" y="843">47th</text>
+    <use href="#node" x="710" y="846"/><text x="708" y="843">48th</text>
+    <use href="#node" x="800" y="846"/><text x="798" y="843">49th</text>
+  </g>
+
+  <path d="M844 846C1015 846 1064 700 1146 650" fill="none" stroke="#f68d1f" stroke-width="14" stroke-linecap="square"/>
+  <path d="M1124 633L1160 642L1148 678Z" fill="#f68d1f" stroke="#21242e" stroke-width="4"/>
+
+  <g transform="translate(1310 620)">
+    <path d="M-150-120H112L150-82V120H-112L-150 82Z" fill="#3d4f97" fill-opacity=".32" transform="translate(12 12)"/>
+    <path d="M-150-120H112L150-82V120H-112L-150 82Z" fill="#206479" stroke="#3d4f97" stroke-width="8"/>
+    <path d="M-130-98H96L126-68V96H-96L-126 68Z" fill="#ffffff" stroke="#c0d5e6" stroke-width="6"/>
+    <circle cx="-104" cy="-76" r="9" fill="#f68d1f"/>
+    <circle cx="-78" cy="-76" r="9" fill="#ecab37"/>
+    <circle cx="-52" cy="-76" r="9" fill="#e60012"/>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="86" font-weight="900" fill="#e60012" stroke="#21242e" stroke-width="3" paint-order="stroke">50th</text>
+    <text x="0" y="67" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="900" letter-spacing="5" fill="#206479">NEW CHAPTER</text>
+  </g>
+
+  <path d="M42 930H1518" stroke="#3d4f97" stroke-width="3"/>
+  <rect x="42" y="948" width="14" height="14" fill="#e60012"/>
+  <rect x="66" y="948" width="92" height="14" fill="#21242e"/>
+</svg>

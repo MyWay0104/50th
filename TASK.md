@@ -22,7 +22,6 @@
 - [x] `scripts/validate_codex_port.py` 추가
 - [x] `scripts/validate_topic.py` 추가
 - [x] README/architecture/TASK 문서화
-- [x] harness reference clone 기록
 - [x] `user_guide.md`에 새 주제 프롬프트 예시 추가
 - [x] topic scaffold에 `exports/` 추가
 - [x] PDF/PPTX export gate 중심으로 workflow 문서 수정

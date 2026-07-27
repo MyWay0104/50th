@@ -12,3 +12,4 @@ __pycache__/
 *.pyc
 .env
 *.log
+_workspace/codex_harness_reference/

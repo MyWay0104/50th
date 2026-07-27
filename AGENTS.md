@@ -113,9 +113,8 @@ PDF/PPTX로 파일화하기 전까지 사용자가 `overview.html`에서 수작�
 
 ## Codex Harness
 
-이 저장소는 `MyWay0104/codex_harness.git`를 참고한 project-local harness를 사용한다.
+이 저장소의 Codex Harness는 프로젝트 내부 파일만으로 독립 실행한다.
 
-- 참조 clone: `_workspace/codex_harness_reference/`
 - 실행 harness: `.codex/agents/*.toml`, `.agents/skills/ppt-hyperframes-deck/SKILL.md`
 - 오케스트레이션 문서: `_workspace/orchestration-plan.md`
 - 검증 스크립트: `scripts/validate_codex_port.py`
