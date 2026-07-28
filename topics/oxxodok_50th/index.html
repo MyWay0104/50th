@@ -50,6 +50,7 @@
         --text-meta: #3d4f97;
         --accent: #206479;
         --bg: #7a8aba;
+        --games-red: #a7282b;
       }
 
       * { box-sizing: border-box; }
@@ -406,6 +407,149 @@
         letter-spacing: 3px;
       }
 
+      .chapter-scene {
+        background:
+          radial-gradient(circle at 76% 38%, rgba(246,141,31,.24), transparent 30%),
+          radial-gradient(circle at 20% 74%, rgba(192,213,230,.22), transparent 32%),
+          var(--games-red);
+        color: var(--surface);
+      }
+      .chapter-scene::before {
+        background:
+          radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 9px 9px,
+          repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 46px);
+      }
+      .chapter-scene::after {
+        right: 122px;
+        top: 214px;
+        width: 410px;
+        height: 410px;
+        border-color: rgba(255,255,255,.2);
+        box-shadow:
+          0 0 0 44px rgba(255,255,255,.05),
+          0 0 0 88px rgba(33,36,46,.12);
+      }
+      .chapter-scene .subnav .active {
+        box-shadow: inset 0 -4px var(--signal);
+      }
+      .chapter-scene .scene-content {
+        justify-content: center;
+        padding: 176px 128px 104px 142px;
+      }
+      .chapter-stage {
+        display: grid;
+        grid-template-columns: 430px minmax(0, 1fr);
+        gap: 44px;
+        align-items: stretch;
+        min-height: 610px;
+      }
+      .chapter-meter {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 38px 34px;
+        background:
+          radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 8px 8px,
+          var(--carbon);
+        clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 34px 100%, 0 calc(100% - 34px));
+        box-shadow: inset 0 5px rgba(255,255,255,.12), inset 0 -7px rgba(0,0,0,.38), 10px 10px 0 rgba(33,36,46,.32);
+      }
+      .chapter-label {
+        width: fit-content;
+        padding: 8px 14px;
+        background: var(--amber);
+        color: var(--carbon);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 2.4px;
+      }
+      .chapter-number {
+        color: var(--surface);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 178px;
+        font-weight: 900;
+        line-height: .86;
+        -webkit-text-stroke: 5px var(--primary);
+        text-shadow: 10px 10px 0 var(--chrome-indigo);
+      }
+      .chapter-progress {
+        display: flex;
+        gap: 10px;
+      }
+      .chapter-progress span {
+        width: 58px;
+        height: 16px;
+        border: 2px solid rgba(255,255,255,.5);
+        background: var(--muted-indigo);
+        box-shadow: inset 0 2px rgba(255,255,255,.22);
+      }
+      .chapter-progress span.active {
+        background: var(--signal);
+      }
+      .chapter-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+      }
+      .chapter-kicker {
+        width: fit-content;
+        padding: 10px 16px;
+        border: 3px solid var(--chrome-indigo);
+        background: var(--canvas-soft);
+        color: var(--carbon);
+        font-family: Arial, "Paperlogy", sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 2.5px;
+        box-shadow: inset 0 3px rgba(255,255,255,.54), inset 0 -3px rgba(61,79,151,.25);
+      }
+      .chapter-title {
+        margin: 0;
+        color: var(--surface);
+        font-family: "Arial Black", "Paperlogy", sans-serif;
+        font-size: 100px;
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -4px;
+        -webkit-text-stroke: 4px var(--carbon);
+        text-shadow: 8px 8px 0 var(--chrome-indigo);
+      }
+      .chapter-info {
+        display: grid;
+        grid-template-columns: 210px minmax(0, 1fr);
+        min-height: 150px;
+        border: 3px solid var(--chrome-indigo);
+        background: rgba(255,255,255,.88);
+        color: var(--ink);
+        box-shadow:
+          inset 0 5px rgba(255,255,255,.72),
+          inset 0 -6px rgba(61,79,151,.2),
+          8px 8px 0 rgba(33,36,46,.28);
+      }
+      .chapter-time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 3px solid var(--chrome-indigo);
+        background: var(--carbon);
+        color: var(--amber);
+        font-family: "Arial Black", Arial, sans-serif;
+        font-size: 34px;
+        line-height: 1.08;
+        text-align: center;
+      }
+      .chapter-desc {
+        display: flex;
+        align-items: center;
+        padding: 28px 34px;
+        color: var(--ink-soft);
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1.32;
+      }
+
       .time-grid {
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -606,6 +750,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        text-align: center;
         border-right: 3px solid var(--chrome-indigo);
         background: var(--canvas-soft);
         color: var(--ink);
@@ -622,6 +767,106 @@
         font-size: 25px;
         font-weight: 750;
         line-height: 1.4;
+      }
+      .book-briefing-scene .scene-content {
+        gap: 12px;
+        padding: 154px 96px 76px 116px;
+      }
+      .book-briefing-scene .scene-title {
+        font-size: 58px;
+        line-height: 1.3;
+        letter-spacing: -2px;
+        padding-bottom: 4px;
+      }
+      .book-briefing-scene .book-subtitle {
+        max-width: 1180px;
+        margin: -2px 0 0;
+        color: var(--ink-soft);
+        font-size: 23px;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+      .book-briefing-scene .book-grid {
+        grid-template-columns: 500px minmax(0, 1fr);
+        gap: 22px;
+      }
+      .book-briefing-scene .book-placeholder {
+        margin: 22px;
+        padding: 18px;
+        border: 3px solid var(--chrome-indigo);
+        background:
+          radial-gradient(circle at 20% 20%, rgba(246,141,31,.24), transparent 32%),
+          var(--carbon);
+        box-shadow:
+          inset 0 5px rgba(255,255,255,.12),
+          inset 0 -8px rgba(0,0,0,.28);
+      }
+      .book-cover-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+        object-position: center;
+        filter: drop-shadow(10px 12px 0 rgba(61,79,151,.34));
+      }
+      .book-briefing-scene .brief-list {
+        gap: 14px;
+        grid-template-rows: .96fr 1fr 1.16fr;
+      }
+      .book-briefing-scene .brief-row {
+        grid-template-columns: 146px minmax(0, 1fr);
+      }
+      .book-briefing-scene .brief-key {
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 10px;
+        font-size: 18px;
+        line-height: 1.12;
+      }
+      .book-briefing-scene .brief-key .key-sub {
+        color: var(--systems-teal);
+        font-size: 15px;
+        letter-spacing: 0;
+      }
+      .book-briefing-scene .brief-value {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 15px 18px 16px;
+        color: var(--ink);
+        font-size: 20px;
+        line-height: 1.32;
+        font-weight: 740;
+      }
+      .book-briefing-scene .brief-value p {
+        margin: 0;
+      }
+      .book-briefing-scene .brief-value p + p {
+        margin-top: 7px;
+      }
+      .book-briefing-scene .brief-name {
+        color: var(--primary);
+        font-size: 24px;
+        font-weight: 900;
+      }
+      .book-briefing-scene .brief-highlight {
+        display: inline;
+        padding: 0 .08em;
+        background:
+          linear-gradient(transparent 55%, rgba(246,141,31,.58) 55%);
+        color: inherit;
+        font-size: calc(1em + 1pt);
+        font-weight: 900;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+      .book-briefing-scene .lens-list {
+        margin: 6px 0 0;
+        padding-left: 21px;
+      }
+      .book-briefing-scene .lens-list li {
+        margin: 3px 0 0;
       }
 
       .discussion-grid {
@@ -704,6 +949,122 @@
         font-size: 18px;
       }
 
+      .discussion-highlight {
+        display: inline;
+        padding: 0 0.08em;
+        background:
+          linear-gradient(
+            transparent 55%,
+            rgba(246, 141, 31, 0.58) 55%
+          );
+        color: inherit;
+        font-weight: 900;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+      .discussion-scene .scene-content {
+        gap: 10px;
+        padding: 156px 104px 74px 116px;
+      }
+      .discussion-scene .eyebrow {
+        padding: 7px 14px;
+        font-size: 16px;
+        letter-spacing: 1.7px;
+      }
+      .discussion-scene .scene-title {
+        max-width: 1510px;
+        font-size: 50px;
+        line-height: 1.12;
+        letter-spacing: -1px;
+      }
+      .discussion-scene .discussion-grid {
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+        gap: 20px;
+      }
+      .discussion-scene .plate-label {
+        min-height: 44px;
+        padding: 7px 15px;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      .discussion-scene .quote-copy {
+        justify-content: center;
+        padding: 20px 26px 22px;
+      }
+      .discussion-scene .quote-mark {
+        font-size: 60px;
+        line-height: .46;
+      }
+      .discussion-scene .quote-body {
+        margin-top: 8px;
+        font-size: 32px;
+        line-height: 1.32;
+        font-weight: 800;
+      }
+      .discussion-scene .quote-attrib {
+        margin-top: 12px;
+        font-size: 17px;
+        line-height: 1.28;
+        letter-spacing: .8px;
+      }
+      .discussion-scene .question-panel {
+        gap: 12px;
+      }
+      .discussion-scene .question-card {
+        min-height: 0;
+      }
+      .discussion-scene .question-copy {
+        display: flex;
+        align-items: center;
+        padding: 22px 28px;
+        font-size: 34px;
+        line-height: 1.34;
+        font-weight: 800;
+      }
+      #s-8 .question-copy,
+      #s-9 .question-copy,
+      #s-10 .question-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        padding: 20px 26px;
+        font-size: 27px;
+        line-height: 1.34;
+      }
+      #s-8 .question-card .plate-label,
+      #s-9 .question-card .plate-label,
+      #s-10 .question-card .plate-label {
+        min-height: 68px;
+        padding: 9px 18px;
+      }
+      #s-8 .question-card .member-chip,
+      #s-9 .question-card .member-chip,
+      #s-10 .question-card .member-chip {
+        font-size: 32px;
+        line-height: 1.32;
+        letter-spacing: 0;
+      }
+      #s-9 .quote-body,
+      #s-10 .quote-body {
+        font-size: 32px;
+        line-height: 1.32;
+      }
+      .discussion-scene .member-chip {
+        color: var(--systems-teal);
+      }
+      .discussion-scene .memo-card {
+        min-height: 175px;
+        display: block;
+        padding: 16px 22px;
+        font-size: 17px;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+      .discussion-scene .memo-card div {
+        margin-top: 3px;
+      }
+
       .reflection-scene {
         background:
           radial-gradient(circle at 70% 30%, rgba(159,190,231,.22), transparent 38%),
@@ -734,6 +1095,9 @@
         font-weight: 900;
         line-height: 1.28;
         letter-spacing: -3px;
+      }
+      .reflection-question .line-break {
+        display: block;
       }
       .reflection-hint {
         color: var(--ice);
@@ -769,7 +1133,7 @@
     </style>
   </head>
   <body>
-    <div id="root" data-output-type="deck" data-composition-id="main" data-start="0" data-duration="54" data-width="1920" data-height="1080">
+    <div id="root" data-output-type="deck" data-composition-id="main" data-start="0" data-duration="84" data-width="1920" data-height="1080">
       <section id="s-1" class="scene clip hero-scene" data-skill="title" data-start="0" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
@@ -785,7 +1149,7 @@
         </div>
         <div class="edition-badge js-reveal"><strong data-editable="true">50</strong><span data-editable="true">TH EDITION</span></div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK</span></div>
-        <div class="slide-num">01 / 09</div>
+        <div class="slide-num">01 / 14</div>
       </section>
 
       <section id="s-2" class="scene clip" data-skill="steps" data-start="6" data-duration="6" data-track-index="0">
@@ -823,10 +1187,39 @@
           </div>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · 50TH</span></div>
-        <div class="slide-num">02 / 09</div>
+        <div class="slide-num">02 / 14</div>
       </section>
 
-      <section id="s-3" class="scene clip welcome-scene" data-skill="title-image" data-start="12" data-duration="6" data-track-index="0">
+      <section id="s-3" class="scene clip chapter-scene" data-skill="title" data-start="12" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">CHAPTER</span><span class="nav-link">WELCOME</span><span class="nav-link">START</span>
+          <span class="nav-spacer"></span><span class="utility-chip">20 MIN</span>
+        </div>
+        <div class="subnav"><span class="active">STEP 01</span><span>WELCOME</span><span>PEOPLE</span><span>20:00</span></div>
+        <div class="left-rail"><span class="rail-tab current">STEP 01</span><span class="rail-tab">OPEN</span></div>
+        <div class="scene-content">
+          <div class="chapter-stage">
+            <aside class="chapter-meter js-reveal">
+              <div class="chapter-label" data-editable="true">NEXT CHAPTER</div>
+              <div class="chapter-number" data-editable="true">01</div>
+              <div class="chapter-progress" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+            </aside>
+            <div class="chapter-copy">
+              <div class="chapter-kicker js-reveal" data-editable="true">STEP 01 · WELCOME</div>
+              <h2 class="chapter-title js-reveal" data-editable="true">본인 소개 및<br />자유로운 이야기</h2>
+              <div class="chapter-info js-reveal">
+                <div class="chapter-time" data-editable="true">20:00<br />20:20</div>
+                <div class="chapter-desc" data-editable="true">한 달 간의 근황 그리고, 첫 인사를 나누는 시간</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · CHAPTER 01</span></div>
+        <div class="slide-num">03 / 14</div>
+      </section>
+
+      <section id="s-4" class="scene clip welcome-scene" data-skill="title-image" data-start="18" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">WELCOME</span><span class="nav-link">PEOPLE</span><span class="nav-link">TOGETHER</span>
@@ -841,15 +1234,44 @@
               <p class="welcome-message js-reveal" data-editable="true">7월부터 옥쏘독의 새로운 이야기를 함께합니다.</p>
             </div>
             <div class="welcome-visual js-reveal">
-              <img src="assets/03-welcome-1th-50th-timeline.svg" alt="1th부터 49th까지 이어진 노드가 50th의 새로운 분기점으로 연결되는 인포그래픽" />
+              <img src="assets/03-welcome-1th-50th-timeline.svg" alt="1st부터 49th까지 이어진 노드가 50th의 새로운 분기점으로 연결되는 인포그래픽" />
             </div>
           </div>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · WELCOME</span></div>
-        <div class="slide-num">03 / 09</div>
+        <div class="slide-num">04 / 14</div>
       </section>
 
-      <section id="s-4" class="scene clip" data-skill="split" data-start="18" data-duration="6" data-track-index="0">
+      <section id="s-5" class="scene clip chapter-scene" data-skill="title" data-start="24" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">CHAPTER</span><span class="nav-link">BRIEFING</span><span class="nav-link">CONTEXT</span>
+          <span class="nav-spacer"></span><span class="utility-chip">10 MIN</span>
+        </div>
+        <div class="subnav"><span>WELCOME</span><span class="active">STEP 02</span><span>BOOK</span><span>20:20</span></div>
+        <div class="left-rail"><span class="rail-tab current">STEP 02</span><span class="rail-tab">BOOK</span></div>
+        <div class="scene-content">
+          <div class="chapter-stage">
+            <aside class="chapter-meter js-reveal">
+              <div class="chapter-label" data-editable="true">NEXT CHAPTER</div>
+              <div class="chapter-number" data-editable="true">02</div>
+              <div class="chapter-progress" aria-hidden="true"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+            </aside>
+            <div class="chapter-copy">
+              <div class="chapter-kicker js-reveal" data-editable="true">STEP 02 · BRIEFING</div>
+              <h2 class="chapter-title js-reveal" data-editable="true">책과 저자의<br />배경지식</h2>
+              <div class="chapter-info js-reveal">
+                <div class="chapter-time" data-editable="true">20:20<br />20:30</div>
+                <div class="chapter-desc" data-editable="true">토론을 위한 Warming-Up</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · CHAPTER 02</span></div>
+        <div class="slide-num">05 / 14</div>
+      </section>
+
+      <section id="s-6" class="scene clip book-briefing-scene" data-skill="split" data-start="30" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">BOOK</span><span class="nav-link">AUTHOR</span><span class="nav-link">CONTEXT</span>
@@ -860,23 +1282,79 @@
         <div class="scene-content">
           <div class="eyebrow js-reveal" data-editable="true">BOOK &amp; AUTHOR BRIEFING</div>
           <h2 class="scene-title js-reveal" data-editable="true">책을 이해하는 공통 배경</h2>
+          <p class="scene-subtitle book-subtitle js-reveal" data-editable="true">뉴스의 결론을 넘어, 세상을 움직이는 구조를 읽는 책</p>
           <div class="book-grid">
             <article class="book-slot plate js-reveal">
               <div class="plate-label"><span data-editable="true">BOOK COVER SLOT</span><span class="arrow-chip">→</span></div>
-              <div class="book-placeholder"><div class="book-icon" aria-hidden="true"></div><strong data-editable="true">[책 표지 이미지]</strong></div>
+              <div class="book-placeholder"><img class="book-cover-image" src="assets/06-book-knowledge-briefing-cover.png" alt="품격 있는 대화를 위한 지식 브리핑 책 표지" /></div>
             </article>
             <div class="brief-list">
-              <article class="brief-row plate js-reveal"><div class="brief-key" data-editable="true">AUTHOR</div><div class="brief-value" data-editable="true">[저자명과 저자를 이해하는 핵심 배경]</div></article>
-              <article class="brief-row plate js-reveal"><div class="brief-key" data-editable="true">CONTEXT</div><div class="brief-value" data-editable="true">[책이 다루는 문제와 집필 배경 2~3문장]</div></article>
-              <article class="brief-row plate js-reveal"><div class="brief-key" data-editable="true">READING LENS</div><div class="brief-value" data-editable="true">[오늘의 토론에서 함께 살펴볼 핵심 관점]</div></article>
+              <article class="brief-row plate js-reveal">
+                <div class="brief-key"><span data-editable="true">AUTHOR</span><span class="key-sub" data-editable="true">저자</span></div>
+                <div class="brief-value">
+                  <p class="brief-name" data-editable="true">김진</p>
+                  <p data-editable="true">채널A 시사 프로그램과 유튜브 채널을 통해 복잡한 정치·경제·사회 현안을 대중의 언어로 풀어온 앵커입니다. 방송 현장에서 축적한 질문과 사례를 바탕으로, 뉴스 이면에 숨겨진 구조와 작동 원리를 한 권에 정리했습니다.</p>
+                  <p data-editable="true"><mark class="brief-highlight">뉴스를 전달하는 데서 그치지 않고, 뉴스가 만들어진 이유를 설명합니다.</mark></p>
+                </div>
+              </article>
+              <article class="brief-row plate js-reveal">
+                <div class="brief-key"><span data-editable="true">CONTEXT</span><span class="key-sub" data-editable="true">책의 구성</span></div>
+                <div class="brief-value">
+                  <p data-editable="true">우리는 매일 수많은 뉴스를 접하지만 사건의 결론과 찬반만 소비하기 쉽습니다.</p>
+                  <p data-editable="true">이 책은 정치·경제·사회·문화·국제 분야의 주요 현상을 게임이론, 정보 폭포, 반지성주의, 세대 갈등, 알고리즘 등의 개념과 연결해 “왜 이런 일이 반복되는가”를 설명합니다.</p>
+                  <p data-editable="true"><mark class="brief-highlight">뉴스는 사건을 말하지만, 그 사건을 만든 구조까지 설명하지는 않습니다.</mark></p>
+                </div>
+              </article>
+              <article class="brief-row plate js-reveal">
+                <div class="brief-key"><span data-editable="true">READING LENS</span><span class="key-sub" data-editable="true">오늘의 관점</span></div>
+                <div class="brief-value">
+                  <p data-editable="true">이 책은 상식을 더 많이 암기하기 위한 책이라기보다, 뉴스와 타인의 주장에 휩쓸리지 않을 나만의 판단 기준을 세우기 위한 책에 가깝습니다.</p>
+                  <p data-editable="true">오늘은 다음 세 가지 질문을 중심으로 살펴봅니다.</p>
+                  <ul class="lens-list">
+                    <li data-editable="true">군중의 흐름 속에서 우리는 어떻게 판단해야 하는가?</li>
+                    <li data-editable="true">사실마저 의견이 된 사회에서 대화는 어떻게 가능한가?</li>
+                    <li data-editable="true">AI 시대에도 인간이 지켜야 할 생각하는 힘은 무엇인가?</li>
+                  </ul>
+                  <p data-editable="true"><mark class="brief-highlight">지식을 쌓는 것보다 중요한 것은, 그 지식으로 스스로 판단하는 힘입니다.</mark></p>
+                </div>
+              </article>
             </div>
           </div>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · BOOK BRIEFING</span></div>
-        <div class="slide-num">04 / 09</div>
+        <div class="slide-num">06 / 14</div>
       </section>
 
-      <section id="s-5" class="scene clip" data-skill="quote" data-start="24" data-duration="6" data-track-index="0">
+      <section id="s-7" class="scene clip chapter-scene" data-skill="title" data-start="36" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">CHAPTER</span><span class="nav-link">DISCUSSION</span><span class="nav-link">QUESTION</span>
+          <span class="nav-spacer"></span><span class="utility-chip">40 MIN</span>
+        </div>
+        <div class="subnav"><span>BRIEFING</span><span class="active">STEP 03</span><span>DISCUSSION</span><span>20:30</span></div>
+        <div class="left-rail"><span class="rail-tab current">STEP 03</span><span class="rail-tab">TALK</span></div>
+        <div class="scene-content">
+          <div class="chapter-stage">
+            <aside class="chapter-meter js-reveal">
+              <div class="chapter-label" data-editable="true">NEXT CHAPTER</div>
+              <div class="chapter-number" data-editable="true">03</div>
+              <div class="chapter-progress" aria-hidden="true"><span></span><span></span><span class="active"></span><span></span><span></span></div>
+            </aside>
+            <div class="chapter-copy">
+              <div class="chapter-kicker js-reveal" data-editable="true">STEP 03 · DISCUSSION</div>
+              <h2 class="chapter-title js-reveal" data-editable="true">세 가지 발제로<br />독서 토론</h2>
+              <div class="chapter-info js-reveal">
+                <div class="chapter-time" data-editable="true">20:30<br />21:10</div>
+                <div class="chapter-desc" data-editable="true">질문마다 경험과 생각을 자유롭게 공유</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · CHAPTER 03</span></div>
+        <div class="slide-num">07 / 14</div>
+      </section>
+
+      <section id="s-8" class="scene clip discussion-scene" data-skill="quote" data-start="42" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">DISCUSSION</span><span class="nav-link">QUOTE</span><span class="nav-link">MEMO</span>
@@ -886,23 +1364,24 @@
         <div class="left-rail"><span class="rail-tab current">TOPIC 01</span><span class="rail-tab">MEMO</span></div>
         <div class="scene-content">
           <div class="eyebrow js-reveal" data-editable="true">DISCUSSION TOPIC <span class="topic-count">01</span></div>
-          <h2 class="scene-title js-reveal" data-editable="true">첫 번째 발제</h2>
+          <h2 class="scene-title js-reveal" data-editable="true">군중의 흐름 속에서 우리는<br />어떤 스탠스를 취해야 할까?</h2>
           <div class="discussion-grid">
             <article class="quote-panel plate js-reveal">
-              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">[PAGE]</span></div>
-              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">[첫 번째 발제를 여는 인상 깊은 구절 또는 핵심 문장]</p><p class="quote-attrib" data-editable="true">[출처 또는 장/페이지]</p></div>
+              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">110~111쪽</span></div>
+              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">시장은 정보를 수집하는 공간이 아니라 따라하는 공간이 됩니다. 누가 얼마나 벌었다는 후기와 인증이 투자의 근거가 되는 현상입니다.&nbsp;<br /><br />..중략..<br /><br />
+ 우리가 자산 시장의 과열에 반복해서 동참하는 이유는 그저 돈을 좇아서가 아니라, 이야기의 전염성과 군중의 흐름에서 나만 소외되고 싶지 않다는 마음 때문입니다. 거품이 사라지고 난 뒤 사회에 남는 가장 큰 짐은 줄어든 계좌의 숫자보다, 땀 흘려 일하는 노동의 가치에 대한 깊은 허탈감일 것입니다.</p><p class="quote-attrib" data-editable="true">『품격 있는 대화를 위한 지식 브리핑』 · 110~111쪽</p></div>
             </article>
             <div class="question-panel">
-              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">QUESTION 01</span><span class="arrow-chip">→</span></div><div class="question-copy" data-editable="true">[이 문장에서 출발하는 첫 번째 토론 질문]</div></article>
-              <div class="memo-card js-reveal" data-editable="true">MEMO<br />[질문의 의도, 보조 질문 또는 진행자 메모]</div>
+              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">MEMBER QUESTION</span><span class="member-chip" data-editable="true">안녕피치님</span></div><div class="question-copy" data-editable="true">부동산, 주식, 환율과 같은 여러 자산들과 화폐 가치 사이에서 연일 뜨거운 뉴스가 나오는 요즘 같습니다. 사실 그렇지 않았던 적이 있었는가? 라는 질문에는 또 답이 어렵긴 하지만요. 다만 이런 시장에 적극적으로 참여하는 것은 큰 리스크를 안고 간다는 생각이고 그렇다고 시장을 방관할 수는 없는 것 같습니다.&nbsp;<div><mark class="discussion-highlight">횐님들 주변에서는 현재 시장에 대해 어떤 이야기들이 나오는지 이러한 시장에서는 어떤 스탠스를 취하는 것이 맞을지 이야기 나누어 보고 싶습니다</mark></div></div></article>
+              <div class="memo-card js-reveal" data-editable="true">MEMO<br />- 주변에서 가장 많이 들리는 투자 이야기는 무엇인가?<div>- ‘다른 사람도 산다’는 사실이 판단 근거가 된 경험</div><div>- 시장 참여와 방관 사이에서 정한 나만의 원칙</div><div>- 수익률보다 노동의 가치가 허탈하게 느껴진 순간</div></div>
             </div>
           </div>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · DISCUSSION</span></div>
-        <div class="slide-num">05 / 09</div>
+        <div class="slide-num">08 / 14</div>
       </section>
 
-      <section id="s-6" class="scene clip" data-skill="quote" data-start="30" data-duration="6" data-track-index="0">
+      <section id="s-9" class="scene clip discussion-scene" data-skill="quote" data-start="48" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">DISCUSSION</span><span class="nav-link">QUOTE</span><span class="nav-link">MEMO</span>
@@ -912,23 +1391,24 @@
         <div class="left-rail"><span class="rail-tab current">TOPIC 02</span><span class="rail-tab">MEMO</span></div>
         <div class="scene-content">
           <div class="eyebrow js-reveal" data-editable="true">DISCUSSION TOPIC <span class="topic-count">02</span></div>
-          <h2 class="scene-title js-reveal" data-editable="true">두 번째 발제</h2>
+          <h2 class="scene-title js-reveal" data-editable="true">사실마저 의견이 되어버린 사회</h2>
           <div class="discussion-grid">
             <article class="quote-panel plate js-reveal">
-              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">[PAGE]</span></div>
-              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">[두 번째 발제를 여는 인상 깊은 구절 또는 핵심 문장]</p><p class="quote-attrib" data-editable="true">[출처 또는 장/페이지]</p></div>
+              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">219쪽</span></div>
+              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><div class="quote-body" data-editable="true">반지성주의 사회에서는 사실조차 '여러 의견 중 하나'로 격하됩니다. 사실이 고정된 기준이 아니라 나를 불편하게 하는 '상대방의 주장'으로 전락하는 것입니다.&nbsp;<div><br /><div>(중략)</div><div>&nbsp; <br />통계는 조작일 수 있고, 전문가는 이해관계자일 뿐이며, 검증은 믿음의 문제로 치환되는 사회. '사유하지 않음'은 이제 개인의 특성이 아니라 집단적 현상이 되었습니다. </div></div></div><p class="quote-attrib" data-editable="true">『품격 있는 대화를 위한 지식 브리핑』 · 219쪽</p></div>
             </article>
             <div class="question-panel">
-              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">QUESTION 02</span><span class="arrow-chip">→</span></div><div class="question-copy" data-editable="true">[경험과 생각을 연결하는 두 번째 토론 질문]</div></article>
-              <div class="memo-card js-reveal" data-editable="true">MEMO<br />[질문의 의도, 보조 질문 또는 진행자 메모]</div>
+              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">MEMBER QUESTION</span><span class="member-chip" data-editable="true">아일린님</span></div><div class="question-copy" data-editable="true">요즘 사람들과 대화를 하면 단절되는 느낌을 종종 받습니다. 사실을 말해도 상대방은 그건 '네 생각'이라며 목청 높일 때가 많아 나조차도 이게 사실인데? 이게 당연한 통념이고 도덕이 아닌가? 혼란스러울 때가 많습니다.  <br />
+문해력 저하, 이해하지 못하는 사람이 부끄러워하거나 배우려 하지 않고 오히려 상대방을 공격하고 있는 현상이 만연하다고 느끼는데요. <div><mark class="discussion-highlight">횐님들도 이에 공감하시는지, 이런 상황에 어떻게 대처하시는지 궁금합니다.</mark></div></div></article>
+              <div class="memo-card js-reveal" data-editable="true">MEMO<br />- 사실을 제시했지만 대화가 오히려 단절된 경험<div>- 전문가·통계·언론을 어디까지 신뢰하는가?</div><div>- 사실과 의견을 구분하는 나만의 검증 방법</div><div>- 상대가 틀렸다고 느낄 때 대화를 계속하는 방법</div></div>
             </div>
           </div>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · DISCUSSION</span></div>
-        <div class="slide-num">06 / 09</div>
+        <div class="slide-num">09 / 14</div>
       </section>
 
-      <section id="s-7" class="scene clip" data-skill="quote" data-start="36" data-duration="6" data-track-index="0">
+      <section id="s-10" class="scene clip discussion-scene" data-skill="quote" data-start="54" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">DISCUSSION</span><span class="nav-link">QUOTE</span><span class="nav-link">MEMO</span>
@@ -938,23 +1418,81 @@
         <div class="left-rail"><span class="rail-tab current">TOPIC 03</span><span class="rail-tab">MEMO</span></div>
         <div class="scene-content">
           <div class="eyebrow js-reveal" data-editable="true">DISCUSSION TOPIC <span class="topic-count">03</span></div>
-          <h2 class="scene-title js-reveal" data-editable="true">세 번째 발제</h2>
+          <h2 class="scene-title js-reveal" data-editable="true">AI 시대에도 생각하는 힘이 필요한 이유</h2>
           <div class="discussion-grid">
             <article class="quote-panel plate js-reveal">
-              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">[PAGE]</span></div>
-              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><p class="quote-body" data-editable="true">[세 번째 발제를 여는 인상 깊은 구절 또는 핵심 문장]</p><p class="quote-attrib" data-editable="true">[출처 또는 장/페이지]</p></div>
+              <div class="plate-label"><span data-editable="true">BOOK PASSAGE</span><span data-editable="true">195쪽, 295쪽</span></div>
+              <div class="quote-copy"><div class="quote-mark" aria-hidden="true">“</div><div class="quote-body" data-editable="true">내가 하는 행동이 정말 옳은지, 끊임없이 묻고 스스로 책임지려는 약간의 불편함이야말로 타인의 지배를 막아내는 가장 단단한 방어선이라는 사실&nbsp;<div>/&nbsp;</div><div>알고리즘이 제공하는 편리함에서 한 걸음 벗어나, 내 취향 밖의 낯선 이야기들을 일부러 찾아 나서는 능동적인 수고로움이 그 어느 때보다 필요한 시점입니다.</div></div><p class="quote-attrib" data-editable="true">『품격 있는 대화를 위한 지식 브리핑』 · 195쪽, 295쪽</p></div>
             </article>
             <div class="question-panel">
-              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">QUESTION 03</span><span class="arrow-chip">→</span></div><div class="question-copy" data-editable="true">[책 전체를 확장해 바라보는 세 번째 토론 질문]</div></article>
-              <div class="memo-card js-reveal" data-editable="true">MEMO<br />[질문의 의도, 보조 질문 또는 진행자 메모]</div>
+              <article class="question-card plate js-reveal"><div class="plate-label"><span data-editable="true">MEMBER QUESTION</span><span class="member-chip" data-editable="true">이기연님</span></div><div class="question-copy" data-editable="true">AI와 알고리즘으로 생각하지 않아도 되는 세상이라는 생각이 들 때가 있습니다. <div><mark class="discussion-highlight">그럴 때일수록 생각하는 힘을 길러야 한다고 생각합니다.</mark></div> 일상에서 " 내가 하는 행동이 정말 옳은가? " 하는 생각을 해본 적 있다면, 같이 이야기해보고 싶습니다. </div></article>
+              <div class="memo-card js-reveal" data-editable="true">MEMO<br /><div>- AI 답변을 그대로 믿었다가 다시 검토한 경험</div><div>- 추천 알고리즘 때문에 생각이나 취향이 좁아진 순간</div><div>- 일부러 반대 의견이나 낯선 정보를 찾아보는가?</div><div>- AI를 활용한 결정의 최종 책임은 누구에게 있는가?</div></div>
             </div>
           </div>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · DISCUSSION</span></div>
-        <div class="slide-num">07 / 09</div>
+        <div class="slide-num">10 / 14</div>
       </section>
 
-      <section id="s-8" class="scene clip reflection-scene" data-skill="quote" data-start="42" data-duration="6" data-track-index="0">
+      <section id="s-11" class="scene clip chapter-scene" data-skill="title" data-start="60" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">CHAPTER</span><span class="nav-link">MEMBER</span><span class="nav-link">TALK</span>
+          <span class="nav-spacer"></span><span class="utility-chip">30 MIN</span>
+        </div>
+        <div class="subnav"><span>DISCUSSION</span><span class="active">STEP 04</span><span>MEMBER TALK</span><span>21:10</span></div>
+        <div class="left-rail"><span class="rail-tab current">STEP 04</span><span class="rail-tab">LIVE</span></div>
+        <div class="scene-content">
+          <div class="chapter-stage">
+            <aside class="chapter-meter js-reveal">
+              <div class="chapter-label" data-editable="true">NEXT CHAPTER</div>
+              <div class="chapter-number" data-editable="true">04</div>
+              <div class="chapter-progress" aria-hidden="true"><span></span><span></span><span></span><span class="active"></span><span></span></div>
+            </aside>
+            <div class="chapter-copy">
+              <div class="chapter-kicker js-reveal" data-editable="true">STEP 04 · MEMBER TALK</div>
+              <h2 class="chapter-title js-reveal" data-editable="true">‘운부장’님의 발표</h2>
+              <div class="chapter-info js-reveal">
+                <div class="chapter-time" data-editable="true">21:10<br />21:40</div>
+                <div class="chapter-desc" data-editable="true">발표와 함께 생각을 확장하는 30분</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · CHAPTER 04</span></div>
+        <div class="slide-num">11 / 14</div>
+      </section>
+
+      <section id="s-12" class="scene clip chapter-scene" data-skill="title" data-start="66" data-duration="6" data-track-index="0">
+        <div class="console-nav">
+          <div class="logo-pill">OXXODOK</div>
+          <span class="nav-link">CHAPTER</span><span class="nav-link">WRAP-UP</span><span class="nav-link">MEMORY</span>
+          <span class="nav-spacer"></span><span class="utility-chip">20 MIN</span>
+        </div>
+        <div class="subnav"><span>MEMBER TALK</span><span class="active">STEP 05</span><span>WRAP-UP</span><span>21:40</span></div>
+        <div class="left-rail"><span class="rail-tab current">STEP 05</span><span class="rail-tab">CLOSE</span></div>
+        <div class="scene-content">
+          <div class="chapter-stage">
+            <aside class="chapter-meter js-reveal">
+              <div class="chapter-label" data-editable="true">NEXT CHAPTER</div>
+              <div class="chapter-number" data-editable="true">05</div>
+              <div class="chapter-progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span class="active"></span></div>
+            </aside>
+            <div class="chapter-copy">
+              <div class="chapter-kicker js-reveal" data-editable="true">STEP 05 · WRAP-UP</div>
+              <h2 class="chapter-title js-reveal" data-editable="true">소감 이야기하기</h2>
+              <div class="chapter-info js-reveal">
+                <div class="chapter-time" data-editable="true">21:40<br />22:00</div>
+                <div class="chapter-desc" data-editable="true">오늘의 한 문장과 기억에 남은 점</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · CHAPTER 05</span></div>
+        <div class="slide-num">12 / 14</div>
+      </section>
+
+      <section id="s-13" class="scene clip reflection-scene" data-skill="quote" data-start="72" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">REFLECTION</span><span class="nav-link">SHARE</span><span class="nav-link">MEMORY</span>
@@ -963,14 +1501,14 @@
         <div class="subnav"><span>DISCUSSION</span><span class="active">WRAP-UP</span><span>ONE SENTENCE</span><span>NEXT</span></div>
         <div class="scene-content">
           <div class="eyebrow js-reveal" data-editable="true">WRAP-UP · ONE BY ONE</div>
-          <p class="reflection-question js-reveal" data-editable="true">“오늘 함께한 시간에서 기억에 남는 것 하나씩 이야기해봐요.”</p>
+          <p class="reflection-question js-reveal" data-editable="true">“오늘 함께한 시간에서&nbsp;<span class="line-break">기억에 남는 것 하나씩 이야기해봐요.”</span></p>
           <p class="reflection-hint js-reveal" data-editable="true">[마지막 소감 공유를 위한 보조 안내 또는 진행자 멘트]</p>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK · 50TH REFLECTION</span></div>
-        <div class="slide-num">08 / 09</div>
+        <div class="slide-num">13 / 14</div>
       </section>
 
-      <section id="s-9" class="scene clip hero-scene end-scene" data-skill="title" data-start="48" data-duration="6" data-track-index="0">
+      <section id="s-14" class="scene clip hero-scene end-scene" data-skill="title" data-start="78" data-duration="6" data-track-index="0">
         <div class="console-nav">
           <div class="logo-pill">OXXODOK</div>
           <span class="nav-link">BOOK</span><span class="nav-link">TALK</span><span class="nav-link">PEOPLE</span>
@@ -980,10 +1518,10 @@
         <div class="scene-content">
           <p class="end-sub js-reveal" data-editable="true">OXXODOK · 2026 JULY · 50TH</p>
           <h2 class="end-title js-reveal" data-editable="true">감사합니다</h2>
-          <p class="hero-sub js-reveal" data-editable="true">[다음 모임 안내 또는 마무리 한 문장]</p>
+          <p class="hero-sub js-reveal" data-editable="true">[8월 51th 옥쏘독 리더 : 율빨모님 / 발표 : MJ 님]</p>
         </div>
         <div class="brand"><span class="brand-dot"></span><span data-editable="true">OXXODOK</span></div>
-        <div class="slide-num">09 / 09</div>
+        <div class="slide-num">14 / 14</div>
       </section>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
