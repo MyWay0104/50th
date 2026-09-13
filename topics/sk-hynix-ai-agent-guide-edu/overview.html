@@ -1,0 +1,3317 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>sk-hynix-ai-agent-guide-edu · Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      /* ============================================================
+       * :root — topic 고유 색/타이포 변수 + overview UI 크롬 변수
+       *   {{SCENE_VARS}} 부분에 topic index.html의 :root { ... } 내용을 그대로 붙여넣는다.
+       *   UI 변수(--ui-*)는 어느 topic에서도 동일하게 유지.
+       * ============================================================ */
+      :root {
+        /* === {{SCENE_VARS}} — topic 팔레트 === */
+        --canvas: #f6f5f4;
+        --surface: #ffffff;
+        --hairline: #e6e6e6;
+        --line-strong: #c8c4bf;
+        --ink: rgba(0, 0, 0, 0.95);
+        --ink-2: #31302e;
+        --ink-3: #615d59;
+        --accent: #0075de;
+        --accent-soft: rgba(0, 117, 222, 0.08);
+        --on-accent: #ffffff;
+        --night: #213183;
+        --on-night: #ffffff;
+        --on-night-2: rgba(255, 255, 255, 0.78);
+        --on-night-line: rgba(255, 255, 255, 0.24);
+        --ok: #1aae39;
+        --warn: #dd5b00;
+        --bg: var(--canvas);
+        --font: "Paperlogy", "Pretendard", "Malgun Gothic", "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", "Paperlogy", "Malgun Gothic", monospace;
+        --fs-hero: 104px;
+        --fs-title: 72px;
+        --fs-item: 44px;
+        --fs-body: 34px;
+        --fs-small: 28px;
+        --fs-caption: 24px;
+        --radius: 12px;
+      
+        /* === UI chrome (공통) === */
+        --ui-bg: #e6e6e6;
+        --ui-strip: #ddd;
+        --ui-card: #ffffff;
+        --ui-text: #222222;
+        --ui-text-dim: #6a6a6a;
+        --ui-text-disabled: rgba(0, 0, 0, 0.24);
+        --ui-surface-light: #f2f2f2;
+        --ui-accent: #0075de;
+        --ui-accent-rgb: 0, 117, 222;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        background: var(--ui-bg);
+        color: var(--ui-text);
+        font-family: 'Inter', 'Noto Sans KR', -apple-system, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      body { display: flex; height: 100vh; overflow: hidden; }
+
+      /* ============ Left strip ============ */
+      .strip {
+        width: 340px; flex-shrink: 0;
+        height: 100vh; overflow-y: auto;
+        padding: 16px;
+        background: var(--ui-strip);
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      .strip-header {
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 2px; color: var(--ui-text-dim);
+        text-transform: uppercase;
+        padding: 4px 4px 12px;
+        display: flex; align-items: center; gap: 8px;
+      }
+      .strip-header::before {
+        content: ""; width: 8px; height: 8px;
+        background: var(--ui-accent); border-radius: 50%;
+      }
+      .strip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .thumb {
+        container-type: inline-size;
+        position: relative; width: 100%;
+        aspect-ratio: 16 / 9; overflow: hidden;
+        border-radius: 8px;
+        background: var(--bg, #000);
+        cursor: pointer;
+        border: 2px solid transparent;
+        box-shadow: rgba(0, 0, 0, 0.22) 0px 2px 8px;
+        transition: border-color 0.15s ease;
+      }
+      .thumb:hover { border-color: rgba(var(--ui-accent-rgb), 0.45); }
+      .thumb.active {
+        border-color: var(--ui-accent);
+        box-shadow: rgba(var(--ui-accent-rgb), 0.35) 0px 4px 14px;
+      }
+      .thumb .scene {
+        position: absolute; top: 0; left: 0;
+        transform-origin: top left;
+        transform: scale(calc(100cqw / 1920px));
+        display: flex;
+        pointer-events: none;
+      }
+      .thumb-label {
+        position: absolute; top: 4px; left: 6px;
+        background: rgba(0, 0, 0, 0.82); color: #fff;
+        padding: 2px 6px; border-radius: 4px;
+        font-size: 9px; font-weight: 600; letter-spacing: 0.5px;
+        z-index: 10; font-family: 'Inter', monospace;
+        display: inline-flex; align-items: center; gap: 4px;
+      }
+      .thumb-label code {
+        background: var(--ui-accent); color: #fff;
+        padding: 1px 4px; border-radius: 2px;
+        font-size: 8px; font-family: 'Inter', monospace;
+      }
+      .thumb-label {
+        opacity: 0;
+        transition: opacity 0.12s ease;
+      }
+      .thumb:hover .thumb-label { opacity: 0.92; }
+
+      /* ============ Right main (detail) ============ */
+      .main {
+        flex: 1; min-width: 0;
+        height: 100vh;
+        display: flex; flex-direction: column;
+        padding: 20px 24px 24px;
+      }
+      .main-header {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 16px; flex-shrink: 0;
+      }
+      .main-title {
+        font-size: 22px; font-weight: 700; letter-spacing: -0.3px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .main-title::before {
+        content: ""; width: 12px; height: 12px;
+        background: var(--ui-accent); border-radius: 50%;
+      }
+      .main-nav {
+        display: flex; align-items: center; gap: 12px;
+        font-family: 'Inter', monospace;
+      }
+      .nav-btn {
+        width: 36px; height: 36px; border-radius: 50%;
+        background: var(--ui-card);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        color: var(--ui-text);
+        cursor: pointer; font-size: 18px;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+      .nav-btn:hover { background: var(--ui-accent); color: #fff; border-color: var(--ui-accent); }
+      .nav-btn:disabled {
+        opacity: 0.35; cursor: default;
+        background: var(--ui-card); color: var(--ui-text);
+        border-color: rgba(0,0,0,0.08);
+      }
+      .nav-index {
+        font-size: 14px; font-weight: 700;
+        letter-spacing: 2px; color: var(--ui-text);
+        min-width: 90px; text-align: center;
+      }
+      .nav-index .current { color: var(--ui-accent); }
+      .nav-index .skill {
+        display: inline-block; margin-left: 12px;
+        padding: 3px 8px;
+        background: var(--ui-surface-light);
+        border-radius: 5px;
+        font-size: 11px; letter-spacing: 0.5px;
+        color: var(--ui-text);
+      }
+      .detail {
+        flex: 1; min-height: 0;
+        container-type: size;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .detail-frame {
+        width: min(100cqw, calc(100cqh * 16 / 9));
+        aspect-ratio: 16 / 9;
+        overflow: hidden; border-radius: 16px;
+        background: var(--bg, #000);
+        box-shadow:
+          rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+          rgba(0, 0, 0, 0.28) 0px 10px 36px;
+        position: relative;
+        container-type: inline-size;
+      }
+      .detail-frame .scene {
+        position: absolute; top: 0; left: 0;
+        transform-origin: top left;
+        transform: scale(calc(100cqw / 1920px));
+        display: none;
+      }
+      .detail-frame .scene.active { display: flex; }
+
+      /* ============ Aim inspector ============ */
+      .header-right { display: flex; align-items: center; gap: 14px; }
+      .aim-btn {
+        padding: 7px 14px; border-radius: 8px;
+        background: var(--ui-card);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        color: var(--ui-text);
+        cursor: pointer; font-size: 13px; font-weight: 600;
+        font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      }
+      .aim-btn::before {
+        content: ""; width: 12px; height: 12px;
+        border: 2px solid currentColor; border-radius: 50%;
+        position: relative;
+        box-shadow: inset 0 0 0 2px var(--ui-card);
+        background: currentColor;
+      }
+      .aim-btn:hover { border-color: var(--ui-accent); color: var(--ui-accent); }
+      .aim-btn.active {
+        background: var(--ui-accent); color: #fff;
+        border-color: var(--ui-accent);
+        box-shadow: rgba(var(--ui-accent-rgb), 0.35) 0px 4px 12px;
+      }
+      .aim-btn.active::before { box-shadow: inset 0 0 0 2px var(--ui-accent); }
+      body.aim-active { cursor: crosshair; }
+      body.aim-active *:not(.aim-overlay):not(.aim-tooltip):not(.aim-toast):not(.aim-toast *) { cursor: crosshair !important; }
+      .aim-overlay {
+        position: fixed;
+        border: 2px solid var(--ui-accent);
+        background: rgba(var(--ui-accent-rgb), 0.12);
+        pointer-events: none; z-index: 9998;
+        border-radius: 2px; display: none;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+      }
+      .aim-tooltip {
+        position: fixed;
+        background: #222; color: #fff;
+        padding: 6px 10px; border-radius: 6px;
+        font-family: 'Inter', monospace; font-size: 11px;
+        max-width: 500px; overflow: hidden;
+        text-overflow: ellipsis; white-space: nowrap;
+        pointer-events: none; z-index: 9999; display: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .aim-tooltip .tag-part { color: #8ab4ff; }
+      .aim-tooltip .cls-part { color: #ffd27a; }
+      .aim-tooltip .sep-part { color: rgba(255,255,255,0.4); }
+      .aim-toast {
+        position: fixed; bottom: 24px; right: 24px;
+        background: #222; color: #fff;
+        padding: 14px 20px; border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        z-index: 10000; opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        pointer-events: none; max-width: 420px;
+      }
+      .aim-toast.show { opacity: 1; transform: translateY(0); }
+      .aim-toast .toast-title {
+        font-size: 13px; font-weight: 700;
+        color: var(--ui-accent);
+        margin-bottom: 4px; letter-spacing: 0.3px;
+      }
+      .aim-toast .toast-sel {
+        font-family: 'Inter', monospace; font-size: 11px;
+        color: rgba(255, 255, 255, 0.75);
+        word-break: break-all; line-height: 1.4;
+      }
+
+      /* ============ Text edit mode ============ */
+      .edit-btn {
+        padding: 7px 14px; border-radius: 8px;
+        background: var(--ui-card);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        color: var(--ui-text);
+        cursor: pointer; font-size: 13px; font-weight: 600;
+        font-family: inherit;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      }
+      .edit-btn::before { content: "✎"; font-size: 15px; line-height: 1; }
+      .edit-btn:hover { border-color: #2196F3; color: #2196F3; }
+      .edit-btn.active {
+        background: #2196F3; color: #fff; border-color: #2196F3;
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.35);
+      }
+      body.edit-mode #detail-frame [contenteditable="true"] {
+        outline: 2px dashed rgba(33, 150, 243, 0.45);
+        outline-offset: 2px;
+        cursor: text;
+        transition: outline-color 0.12s, background 0.12s;
+      }
+      body.edit-mode #detail-frame [contenteditable="true"]:hover {
+        outline-color: rgba(33, 150, 243, 0.8);
+        background: rgba(33, 150, 243, 0.05);
+      }
+      body.edit-mode #detail-frame [contenteditable="true"]:focus {
+        outline: 2px solid #2196F3;
+        outline-offset: 3px;
+        background: rgba(33, 150, 243, 0.08);
+      }
+
+      @page {
+        size: 16in 9in;
+        margin: 0;
+      }
+      @media print {
+        html, body {
+          width: auto;
+          height: auto;
+          overflow: visible;
+          display: block;
+          background: #fff;
+        }
+        .strip,
+        .main-header,
+        .aim-overlay,
+        .aim-tooltip,
+        .aim-toast {
+          display: none !important;
+        }
+        .main {
+          display: block;
+          width: auto;
+          height: auto;
+          padding: 0;
+          overflow: visible;
+        }
+        .detail {
+          display: block;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          container-type: normal;
+        }
+        .detail-frame {
+          display: block;
+          width: auto;
+          height: auto;
+          aspect-ratio: auto;
+          overflow: visible;
+          border-radius: 0;
+          box-shadow: none;
+          background: transparent;
+          container-type: normal;
+        }
+        .detail-frame .scene,
+        .detail-frame .scene.active {
+          display: flex !important;
+          position: relative;
+          top: auto;
+          left: auto;
+          width: 1920px;
+          height: 1080px;
+          transform: none;
+          break-after: page;
+          page-break-after: always;
+        }
+        .detail-frame .scene:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+
+      /* ============================================================
+       * {{SCENE_STYLES}} — topic index.html의 씬 관련 CSS를 그대로 붙여넣는다.
+       *   .scene, .scene::before, .year-mark, .eyebrow, .scene-title,
+       *   .hero-title, .hero-sub, .bullets, .stats, .stat, .flow, .flow-col,
+       *   .flow-arrow, .scene.quote, .quote-body, .quote-attrib 등.
+       *   단, body/html에 1920x1080 크기를 고정하는 규칙은 빼야 한다
+       *   (overview는 body가 뷰포트 전체).
+       * ============================================================ */
+      /* ===== 폰트: Paperlogy (jsdelivr CDN) ===== */
+      @font-face { font-family: "Paperlogy"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 500; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-5Medium.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 600; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 700; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-7Bold.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 800; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2") format("woff2"); }
+
+      /* ===== 코드 글꼴: JetBrains Mono 고정. 브라우저와 HyperFrames 렌더러의 폭을 맞춘다 ===== */
+      @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.20/files/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+
+      /* ===== 토큰: DESIGN.md "교육 자료 최소 적용 규칙" ===== */
+      
+
+      /* ===== 장면 기본 ===== */
+      .scene, .scene * { box-sizing: border-box; }
+      .scene * { margin: 0; padding: 0; }
+      .scene {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        display: flex;
+        flex-direction: column;
+        padding: 80px 120px 128px;
+        overflow: hidden;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: var(--fs-body);
+        line-height: 1.4;
+        word-break: keep-all;
+        -webkit-font-smoothing: antialiased;
+      }
+      .scene ul, .scene ol { list-style: none; }
+      .speaker-note { display: none !important; }
+
+      /* 상단 구간 표시 */
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: var(--fs-caption);
+        font-weight: 600;
+        color: var(--ink-3);
+        letter-spacing: 0.5px;
+      }
+      .block-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 14px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .time-chip {
+        padding-left: 16px;
+        border-left: 1px solid var(--line-strong);
+        font-variant-numeric: tabular-nums;
+      }
+      .scene-title {
+        margin-top: 20px;
+        max-width: 1600px;
+        font-size: var(--fs-title);
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -1.5px;
+        color: var(--ink);
+      }
+      .scene-subtitle {
+        margin-top: 16px;
+        max-width: 1500px;
+        font-size: var(--fs-body);
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+
+      /* 하단 출처 · 풋터 */
+      .source {
+        margin-top: auto;
+        padding-top: 24px;
+        font-size: var(--fs-caption);
+        line-height: 1.4;
+        color: var(--ink-3);
+      }
+      .guide-ref {
+        margin-top: 20px;
+        font-size: var(--fs-caption);
+        font-weight: 600;
+        color: var(--ink-3);
+      }
+      .deck-footer, .page-num {
+        position: absolute;
+        bottom: 48px;
+        font-size: var(--fs-caption);
+        font-weight: 500;
+        color: var(--ink-3);
+        letter-spacing: 0.5px;
+      }
+      .deck-footer { left: 120px; }
+      .page-num { right: 120px; font-variant-numeric: tabular-nums; }
+
+      /* ===== title ===== */
+      .scene.title-scene { justify-content: center; }
+      .scene.title-scene .eyebrow { position: absolute; top: 80px; left: 120px; }
+      .scene.title-scene .hero-rule { margin: 0 0 36px; }
+      .hero-kicker {
+        font-size: var(--fs-small);
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: var(--ink-3);
+      }
+      .hero-title {
+        margin-top: 28px;
+        max-width: 1500px;
+        font-size: var(--fs-hero);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -3px;
+      }
+      .hero-sub {
+        margin-top: 28px;
+        max-width: 1400px;
+        font-size: 44px;
+        font-weight: 500;
+        line-height: 1.35;
+        color: var(--ink-2);
+      }
+      .hero-meta {
+        display: flex;
+        gap: 32px;
+        margin-top: 72px;
+        font-size: var(--fs-small);
+        font-weight: 500;
+        color: var(--ink-3);
+      }
+      .hero-rule {
+        width: 96px;
+        height: 4px;
+        margin-top: 48px;
+        background: var(--accent);
+      }
+
+      /* 남색 반전: S01 · G02 전용 */
+      .scene.night { background: var(--night); color: var(--on-night); }
+      .scene.night .scene-title,
+      .scene.night .hero-title { color: var(--on-night); }
+      .scene.night .hero-kicker,
+      .scene.night .hero-sub,
+      .scene.night .scene-subtitle { color: var(--on-night-2); }
+      .scene.night .hero-meta,
+      .scene.night .eyebrow,
+      .scene.night .source,
+      .scene.night .deck-footer,
+      .scene.night .page-num { color: var(--on-night-2); }
+      .scene.night .block-chip { background: var(--on-night-line); color: var(--on-night); }
+      .scene.night .hero-rule { background: var(--on-night); }
+      .scene.night .bullets li { color: var(--on-night); }
+      .scene.night .bullets li::before { background: var(--on-night); }
+      .scene.night .bullets li strong { color: var(--on-night); }
+      .scene.night .bullets li .sub { color: var(--on-night-2); }
+
+      /* ===== title-bullets ===== */
+      .bullets {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-top: 56px;
+        max-width: 1560px;
+      }
+      .bullets li {
+        position: relative;
+        padding-left: 52px;
+        font-size: var(--fs-item);
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+      .bullets li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.7em;
+        width: 28px;
+        height: 3px;
+        background: var(--accent);
+      }
+      .bullets li strong { color: var(--accent); font-weight: 700; }
+      .bullets li .sub {
+        display: block;
+        margin-top: 6px;
+        font-size: var(--fs-small);
+        font-weight: 400;
+        color: var(--ink-2);
+      }
+      .bullets.two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 72px;
+      }
+      .bullets.compact { gap: 20px; }
+      .bullets.compact li { font-size: 38px; }
+
+      /* ===== split ===== */
+      .split-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        margin-top: 56px;
+        min-height: 0;
+      }
+      /* 기본은 가장 긴 칸 높이에 맞춘다. 자리표시처럼 남은 높이를 채워야 할 때만 .fill */
+      .split-grid.fill, .compare-grid.fill { flex: 1; }
+      .split-grid.wide-left { grid-template-columns: 1.3fr 1fr; }
+      .split-grid.wide-right { grid-template-columns: 1fr 1.3fr; }
+      .split-grid > * { min-width: 0; min-height: 0; }
+      .split-grid .bullets { margin-top: 0; }
+      .split-grid .bullets li { font-size: 40px; }
+      .split-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 40px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .panel-title {
+        font-size: var(--fs-small);
+        font-weight: 700;
+        color: var(--ink-2);
+      }
+      .split-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .split-image img, .image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* ===== compare ===== */
+      .compare-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 56px;
+        min-height: 0;
+      }
+      .compare-grid.cols-3 { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+      .compare-grid.cols-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+      .compare-col {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        min-height: 0;
+        padding: 40px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .compare-grid.cols-4 .compare-col { padding: 32px 28px; }
+      .compare-col.is-accent { border: 2px solid var(--accent); }
+      .compare-kicker {
+        font-size: var(--fs-caption);
+        font-weight: 700;
+        color: var(--ink-3);
+        letter-spacing: 0.5px;
+      }
+      .compare-col.is-accent .compare-kicker { color: var(--accent); }
+      .compare-heading {
+        margin-top: 8px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--ink);
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+      .compare-col.is-accent .compare-heading { border-bottom-color: var(--accent); }
+      .compare-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 24px;
+      }
+      .compare-list li {
+        position: relative;
+        padding-left: 30px;
+        font-size: 32px;
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+      .compare-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.62em;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--line-strong);
+      }
+      .compare-col.is-accent .compare-list li::before { background: var(--accent); }
+      .compare-note {
+        margin-top: auto;
+        padding-top: 20px;
+        font-size: var(--fs-caption);
+        color: var(--ink-3);
+      }
+      .status-dot {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 12px;
+        border-radius: 50%;
+        vertical-align: 0.1em;
+      }
+      .status-dot.ok { background: var(--ok); }
+      .status-dot.warn { background: var(--warn); }
+
+      /* ===== steps ===== */
+      .steps {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-top: 56px;
+      }
+      .steps::before {
+        content: "";
+        position: absolute;
+        left: 35px;
+        top: 36px;
+        bottom: 36px;
+        width: 2px;
+        background: var(--hairline);
+      }
+      .step {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 36px;
+      }
+      .step-num {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--on-accent);
+        font-size: 32px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+      }
+      .step-body {
+        padding-top: 10px;
+        font-size: 42px;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .step-desc {
+        display: block;
+        margin-top: 6px;
+        font-size: var(--fs-small);
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+      /* 가로형 steps: 3~4단계 카드 */
+      .steps.row {
+        flex-direction: row;
+        gap: 64px;
+        align-items: stretch;
+      }
+      .steps.row::before { display: none; }
+      .steps.row .step {
+        flex: 1;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+        padding: 40px 36px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .steps.row .step + .step::before {
+        content: "→";
+        position: absolute;
+        left: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 40px;
+        color: var(--ink-3);
+      }
+      .steps.row .step-body { padding-top: 0; font-size: 38px; }
+      .steps.row .step.is-accent { border: 2px solid var(--accent); }
+      /* 시간표형 steps: 시각 라벨 + 짧은 줄 */
+      .steps.timeline { gap: 18px; }
+      /* 세로선은 시각 라벨(120px) + 간격(28px) 뒤 번호 원 중심(28px)을 지난다 */
+      .steps.timeline::before { left: 175px; top: 28px; bottom: 28px; }
+      .steps.timeline .step { align-items: center; gap: 28px; }
+      .steps.timeline .step-num { width: 56px; height: 56px; font-size: 24px; }
+      .steps.timeline .step-body { padding-top: 0; font-size: 36px; }
+      .step-time {
+        width: 120px;
+        flex-shrink: 0;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--ink-3);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ===== title-image ===== */
+      .scene.title-image { align-items: center; text-align: center; }
+      .scene.title-image .eyebrow { align-self: flex-start; }
+      .image-frame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 1400px;
+        flex: 1;
+        min-height: 0;
+        margin-top: 40px;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      /* ===== title-tags ===== */
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 48px;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 16px 32px;
+        border: 1px solid var(--hairline);
+        border-radius: 999px;
+        background: var(--surface);
+        font-size: 36px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .tag.accent { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+
+      /* ===== quote ===== */
+      .scene.quote { align-items: center; text-align: center; justify-content: center; }
+      .scene.quote .eyebrow { position: absolute; top: 80px; left: 120px; }
+      .quote-mark {
+        height: 96px;
+        font-size: 200px;
+        font-weight: 800;
+        line-height: 0.9;
+        color: var(--accent);
+        opacity: 0.35;
+      }
+      .quote-body {
+        max-width: 1500px;
+        margin-top: 24px;
+        font-size: 68px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: -1px;
+      }
+      .quote-body em { font-style: normal; color: var(--accent); }
+      .quote-attrib {
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 500;
+        color: var(--ink-3);
+      }
+      .quote-points {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-top: 56px;
+      }
+      .quote-points li {
+        padding: 20px 32px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+        font-size: 32px;
+        font-weight: 600;
+        color: var(--ink-2);
+      }
+
+      /* ===== stat ===== */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 56px;
+        margin-top: 64px;
+      }
+      .stats.cols-2 { grid-template-columns: repeat(2, 1fr); }
+      .stats.cols-4 { grid-template-columns: repeat(4, 1fr); gap: 40px; }
+      .stat {
+        display: flex;
+        flex-direction: column;
+        padding-top: 28px;
+        border-top: 3px solid var(--ink);
+      }
+      .stat.accent { border-top-color: var(--accent); }
+      .stat .num {
+        font-size: 120px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -3px;
+        font-variant-numeric: tabular-nums;
+      }
+      .stat.accent .num { color: var(--accent); }
+      .stat .label {
+        margin-top: 18px;
+        font-size: 32px;
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+
+      /* ===== evolution-flow ===== */
+      .flow {
+        display: grid;
+        grid-template-columns: 1fr 104px 1fr;
+        gap: 32px;
+        margin-top: 56px;
+        flex: 1;
+        min-height: 0;
+        max-height: 640px;
+      }
+      .flow-col {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        padding: 44px 40px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .flow-col.after { border: 2px solid var(--accent); }
+      .flow-label {
+        align-self: flex-start;
+        padding: 6px 18px;
+        border-radius: 999px;
+        background: var(--canvas);
+        font-size: var(--fs-caption);
+        font-weight: 700;
+        color: var(--ink-2);
+      }
+      .flow-col.after .flow-label { background: var(--accent); color: var(--on-accent); }
+      .flow-heading {
+        margin-top: 20px;
+        font-size: 44px;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+      .flow-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .flow-list li {
+        position: relative;
+        padding-left: 32px;
+        font-size: 32px;
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+      .flow-list li::before { content: "—"; position: absolute; left: 0; color: var(--ink-3); }
+      .flow-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 72px;
+        font-weight: 300;
+        color: var(--accent);
+      }
+
+      /* ===== 교육용 보조 컴포넌트 ===== */
+      /* 실제 화면 자리 */
+      .placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        height: 100%;
+        min-height: 240px;
+        padding: 40px;
+        border: 2px dashed var(--line-strong);
+        border-radius: var(--radius);
+        background: var(--surface);
+        text-align: center;
+      }
+      .placeholder-label {
+        font-size: var(--fs-caption);
+        font-weight: 700;
+        color: var(--ink-3);
+        letter-spacing: 1px;
+      }
+      .placeholder-desc {
+        max-width: 90%;
+        font-size: var(--fs-small);
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+      /* 성격 표시: 개념 예시 · 개인 기록 · 공개 Beta 설계 기반 */
+      .concept-badge {
+        display: inline-flex;
+        align-self: flex-start;
+        padding: 4px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: var(--surface);
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--ink-3);
+      }
+      /* 핵심 한 줄 강조 */
+      .callout {
+        padding: 28px 36px;
+        border-radius: var(--radius);
+        background: var(--accent-soft);
+        font-size: var(--fs-body);
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+      .callout strong { color: var(--accent); font-weight: 700; }
+      /* 작은 인라인 상자: 토큰 · 파일명 · 값 */
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 18px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+        font-size: var(--fs-small);
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .chip.accent { border-color: var(--accent); color: var(--accent); }
+      .chip-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+      /* 실습 안내판 */
+      .practice-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 56px;
+        margin-top: 48px;
+        flex: 1;
+        min-height: 0;
+      }
+      .practice-grid > * { min-width: 0; }
+      .practice-grid .bullets { margin-top: 0; }
+      .practice-grid .bullets li { font-size: 40px; }
+      .board-meta {
+        margin-top: 12px;
+        font-size: var(--fs-small);
+        font-weight: 600;
+        color: var(--ink-3);
+        font-variant-numeric: tabular-nums;
+      }
+      .time-blocks {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-content: start;
+      }
+      .time-blocks.row { grid-template-columns: repeat(4, 1fr); }
+      .time-blocks.cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .time-block {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 24px 28px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .time-block .min {
+        font-size: 72px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -2px;
+        font-variant-numeric: tabular-nums;
+      }
+      .time-block .min small { margin-left: 4px; font-size: 30px; font-weight: 600; letter-spacing: 0; }
+      .time-block .what { font-size: var(--fs-small); line-height: 1.35; color: var(--ink-2); }
+      .time-block.is-accent { border: 2px solid var(--accent); }
+      .time-block.is-accent .min { color: var(--accent); }
+      .done-box {
+        padding: 28px 36px;
+        border: 2px solid var(--accent);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .done-label {
+        font-size: var(--fs-caption);
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 1px;
+      }
+      .done-text {
+        margin-top: 10px;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .fallback {
+        margin-top: 20px;
+        padding: 18px 28px;
+        border: 1px dashed var(--line-strong);
+        border-radius: var(--radius);
+        font-size: var(--fs-small);
+        line-height: 1.4;
+        color: var(--ink-2);
+      }
+      .fallback strong { margin-right: 12px; color: var(--ink); font-weight: 700; }
+
+      /* 코드 카드 (5~7줄) */
+      .code-card {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+        overflow: hidden;
+      }
+      .code-title {
+        padding: 16px 28px;
+        border-bottom: 1px solid var(--hairline);
+        font-size: var(--fs-caption);
+        font-weight: 700;
+        color: var(--ink-3);
+      }
+      .code-body {
+        padding: 24px 28px;
+        font-family: var(--font-mono);
+        font-size: 28px;
+        line-height: 1.55;
+        white-space: pre;
+        color: var(--ink);
+        overflow: hidden;
+      }
+      .code-body .hl { border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+      .code-body .cm { color: var(--ink-3); }
+
+      /* 작은 데이터 표 */
+      .data-table {
+        width: 100%;
+        border: 1px solid var(--hairline);
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: var(--radius);
+        background: var(--surface);
+        overflow: hidden;
+        font-size: 30px;
+      }
+      .data-table th {
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--hairline);
+        background: var(--canvas);
+        text-align: left;
+        font-size: var(--fs-caption);
+        font-weight: 700;
+        color: var(--ink-3);
+      }
+      .data-table td {
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--hairline);
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+      }
+      .data-table tr:last-child td { border-bottom: 0; }
+      .data-table td.is-match { color: var(--accent); font-weight: 700; }
+      .data-table tr.is-dim td { color: var(--ink-3); }
+
+      /* 개념도 기본 도형 */
+      .dg {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+      }
+      .dg-row {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .dg-row.stretch { align-items: stretch; }
+      .dg-row.stretch > .dg-arrow { align-self: center; }
+      .dg-box {
+        flex: 1;
+        min-width: 0;
+        padding: 20px 24px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--surface);
+        text-align: center;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--ink);
+      }
+      .dg-box.accent { border: 2px solid var(--accent); color: var(--accent); }
+      .dg-box.muted { background: var(--canvas); color: var(--ink-2); }
+      .dg-sub {
+        display: block;
+        margin-top: 6px;
+        font-size: var(--fs-caption);
+        font-weight: 400;
+        color: var(--ink-3);
+      }
+      .dg-arrow {
+        flex-shrink: 0;
+        font-size: 40px;
+        line-height: 1;
+        color: var(--ink-3);
+        text-align: center;
+      }
+      .dg-zone {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 56px 24px 24px;
+        border: 2px dashed var(--line-strong);
+        border-radius: var(--radius);
+      }
+      .dg-zone.accent { border-color: var(--accent); }
+      .dg-zone-label {
+        position: absolute;
+        top: 14px;
+        left: 24px;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--ink-3);
+        letter-spacing: 1px;
+      }
+      .dg-zone.accent .dg-zone-label { color: var(--accent); }
+      .dg-caption {
+        font-size: var(--fs-caption);
+        color: var(--ink-3);
+        text-align: center;
+      }
+      .dg-caption.is-left { text-align: left; }
+
+      /* 세로 쌓기 래퍼: callout · done-box · code-card · chip-row 를 간격 두고 쌓는다 */
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+        min-height: 0;
+      }
+      .stack > * { margin-top: 0; }
+      /* 제목·부제 바로 뒤에 오는 스택은 다른 본문 컴포넌트와 같은 간격을 둔다 */
+      .scene > .stack { margin-top: 56px; }
+
+      /* 가운데 정렬 장면(title · quote)의 출처는 하단에 고정해 정렬을 깨지 않는다 */
+      .scene.title-scene .source,
+      .scene.quote .source {
+        position: absolute;
+        left: 120px;
+        bottom: 96px;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+      .scene.title-image .done-box { margin-top: 24px; }
+
+      /* 완료 조건 + 막히면 상자를 가로 한 줄로: title-image 실습 안내판(S20) */
+      .done-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: stretch;
+        width: 100%;
+        max-width: 1400px;
+        margin-top: 24px;
+        text-align: left;
+      }
+      .scene .done-row .done-box,
+      .scene .done-row .fallback { margin-top: 0; }
+    
+
+      /* ============ 오버뷰 공용 풋터 요소 ============ */
+      .brand {
+        position: absolute;
+        bottom: 48px; left: 140px;
+        display: inline-flex; align-items: center; gap: 10px;
+        z-index: 50;
+      }
+      .brand-dot {
+        width: 10px; height: 10px;
+        background: var(--accent, var(--ui-accent));
+        border-radius: 50%;
+      }
+      .brand-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px; font-weight: 500;
+        letter-spacing: 6px;
+        color: var(--text-meta, var(--ui-text-dim));
+        text-transform: uppercase;
+      }
+      .slide-num {
+        position: absolute;
+        bottom: 48px; right: 140px;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px; font-weight: 500;
+        letter-spacing: 4px;
+        color: var(--text-meta, var(--ui-text-dim));
+        z-index: 50;
+      }
+      .slide-num .skill {
+        display: inline-block;
+        padding: 4px 10px;
+        background: rgba(245, 245, 247, 0.08);
+        border-radius: 8px;
+        margin-right: 10px;
+        color: var(--text, var(--ui-text));
+        font-family: 'Inter', monospace;
+        letter-spacing: 1px;
+      }
+      .slide-num .sep { margin: 0 8px; color: var(--text-meta, var(--ui-text-dim)); }
+    </style>
+  </head>
+  <body>
+
+    <aside class="strip">
+      <div class="strip-header">sk-hynix-ai-agent-guide-edu · 52 slides</div>
+      <div class="strip-grid" id="strip-grid"></div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <div class="main-title">sk-hynix-ai-agent-guide-edu · Overview</div>
+        <div class="header-right">
+          <button class="edit-btn" id="nav-edit" aria-label="text edit">Edit</button>
+          <button class="aim-btn" id="nav-aim" aria-label="aim inspector">Aim</button>
+          <div class="main-nav">
+            <button class="nav-btn" id="nav-prev" aria-label="이전">←</button>
+            <div class="nav-index">
+              <span class="current" id="nav-current">01</span>
+              <span style="opacity: 0.4; margin: 0 6px;">/</span>
+              <span>52</span>
+              <span class="skill" id="nav-skill">title</span>
+            </div>
+            <button class="nav-btn" id="nav-next" aria-label="다음">→</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="detail">
+        <div class="detail-frame" id="detail-frame">
+
+          <!-- ============================================================
+           * {{SLIDES_HTML}} — 각 슬라이드 <div class="scene ..." data-slide="N" data-skill="..."> ... </div>
+           *   - id / clip / data-start / data-duration / data-track-index 제거
+           *   - 마지막 자식으로 .brand + .slide-num 추가
+           * ============================================================ -->
+<section class="scene title-scene night" data-skill="title" data-scene-id="S01" data-slide="1">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span><span class="time-chip" data-editable="true">09:00–09:40</span></div>
+              <div class="hero-rule" aria-hidden="true"></div>
+              <div class="hero-kicker" data-editable="true">SK hynix 사내 교육 · 하루 과정</div>
+              <h1 class="hero-title" data-editable="true">AI Agent Guide</h1>
+              <p class="hero-sub" data-editable="true">내 업무에 적용할 작은 AI 도구 만들기</p>
+              <div class="hero-meta"><span data-editable="true">[강사명]</span><span data-editable="true">[교육일]</span></div>
+              <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
+              <aside class="speaker-note">안녕하세요, 오늘 하루 AI Agent 과정을 진행할 [강사명]입니다. 하루 흐름은 다음 장에서 보고, 첫 40분은 LLM이 입력을 받아 답을 만드는 과정을 이해한 뒤 직접 호출해 temperature를 바꿔 비교합니다. 시작 전에 AI 코딩 도구를 써 본 분과 오늘 처음인 분을 손들어 확인하겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">1 / 52</div>
+            </section>
+
+<section class="scene" data-skill="steps" data-scene-id="G01" data-slide="2">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">하루 시간표</h2>
+              <div class="split-grid">
+                <div class="stack">
+                  <div class="panel-title" data-editable="true">오전</div>
+                  <ol class="steps timeline">
+                    <li class="step">
+                      <div class="step-time" data-editable="true">09:00</div>
+                      <div class="step-num" data-editable="true">B1</div>
+                      <div class="step-body" data-editable="true">LLM 원리와 첫 호출<span class="step-desc">산출물: 첫 호출 결과</span></div>
+                    </li>
+                    <li class="step">
+                      <div class="step-time" data-editable="true">10:00</div>
+                      <div class="step-num" data-editable="true">B2</div>
+                      <div class="step-body" data-editable="true">외부 근거와 기사 RAG<span class="step-desc">산출물: 근거 있는 답변</span></div>
+                    </li>
+                    <li class="step">
+                      <div class="step-time" data-editable="true">11:00</div>
+                      <div class="step-num" data-editable="true">B3</div>
+                      <div class="step-body" data-editable="true">SQL Tool과 Streamlit<span class="step-desc">산출물: 조회 결과 화면</span></div>
+                    </li>
+                  </ol>
+                  <div class="chip-row"><span class="chip" data-editable="true">점심 11:40–13:20</span></div>
+                  <div class="callout" data-editable="true">휴식 09:40 · 10:40 · 14:00 · 15:00 (각 20분)</div>
+                </div>
+                <div class="stack">
+                  <div class="panel-title" data-editable="true">오후</div>
+                  <ol class="steps timeline">
+                    <li class="step">
+                      <div class="step-time" data-editable="true">13:20</div>
+                      <div class="step-num" data-editable="true">B4</div>
+                      <div class="step-body" data-editable="true">Claude Code와 개발 계획<span class="step-desc">산출물: 작업 요청문</span></div>
+                    </li>
+                    <li class="step">
+                      <div class="step-time" data-editable="true">14:20</div>
+                      <div class="step-num" data-editable="true">B5</div>
+                      <div class="step-body" data-editable="true">Claude Code로 앱 개선<span class="step-desc">산출물: 개선된 앱</span></div>
+                    </li>
+                    <li class="step">
+                      <div class="step-time" data-editable="true">15:20</div>
+                      <div class="step-num" data-editable="true">B6</div>
+                      <div class="step-body" data-editable="true">지식 축적과 Skill<span class="step-desc">산출물: 근거 있는 노트</span></div>
+                    </li>
+                    <li class="step">
+                      <div class="step-time" data-editable="true">16:00</div>
+                      <div class="step-num" data-editable="true">B7</div>
+                      <div class="step-body" data-editable="true">자유 실습과 Q&amp;A<span class="step-desc">산출물: 나의 작은 도구 · 17:30 종료</span></div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <p class="source" data-editable="true">근거: 사용자 제공 시간표</p>
+              <aside class="speaker-note">오늘은 40분 단위 여섯 구간과 마지막 90분 자유 실습으로 진행합니다. 오전에는 모델을 호출하고, 자료와 도구를 연결해 작은 앱을 만듭니다. 오후에는 그 앱을 Claude Code로 읽고 고친 다음, 작업 경험을 근거 있는 노트로 정리합니다. 각 구간 아래에 적힌 산출물이 다음 구간의 재료가 됩니다. 휴식은 아래에 적힌 네 번, 각 20분이고 점심은 11시 40분부터입니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">2 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-tags" data-scene-id="S02" data-slide="3">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">공정 엔지니어의 개발 경험</h2>
+              <p class="scene-subtitle" data-editable="true">목표: 만들고, 설명하고, 조건 바꾸고, 검증하기</p>
+              <div class="tags"><span class="tag accent" data-editable="true">NAND Implant 공정 Engineer</span><span class="tag" data-editable="true">Part Finder</span><span class="tag" data-editable="true">Dokmo</span><span class="tag" data-editable="true">기술 블로그</span></div>
+              <p class="source" data-editable="true">근거: 사용자 제공 경력 · Part Number Finder Beta 공개 README · Dokmo README</p>
+              <aside class="speaker-note">저는 NAND Implant 공정 Engineer로 일하면서 Part Finder와 개인 웹앱 Dokmo를 만들고, 그 과정을 기술 블로그에 기록해 왔습니다. 만들면서 가장 크게 배운 것은 구조, 데이터 검증, 사용자 경험이 코드만큼 중요하다는 점입니다. 오늘은 그 과정에서 실제로 필요했던 개념과 작업 방법만 골라 다룹니다. 잠깐 각자 줄이고 싶은 반복 업무 하나를 떠올려 두세요. 오늘 마지막 자유 실습의 재료가 됩니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">3 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S03" data-slide="4">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">AI·머신러닝·LLM의 관계</h2>
+              <div class="split-grid">
+                <div class="split-panel">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <div class="dg">
+                    <div class="dg-zone">
+                      <div class="dg-zone-label" data-editable="true">AI · 넓은 분야 전체</div>
+                      <div class="dg-zone">
+                        <div class="dg-zone-label" data-editable="true">머신러닝 · 데이터로 패턴을 학습</div>
+                        <div class="dg-zone">
+                          <div class="dg-zone-label" data-editable="true">딥러닝 · 신경망으로 학습</div>
+                          <div class="dg-box accent" data-editable="true">LLM<span class="dg-sub">현대 LLM은 주로 여기</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">포함 관계를 나타낸 그림 · 연표가 아님</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true">AI 안에 머신러닝, 그 안에 딥러닝</li>
+                  <li data-editable="true">현대 LLM은 주로 딥러닝 기반</li>
+                  <li data-editable="true">2017년 Transformer 등장<span class="sub">문맥을 다루는 방식을 바꾼 구조</span></li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017)</p>
+              <aside class="speaker-note">세 용어는 앞의 기술이 뒤의 기술로 대체된 순서가 아니라 포함 관계로 보시면 됩니다. 머신러닝은 데이터로 패턴을 학습하고, 딥러닝은 그중 신경망을 쓰는 방법이며, 현대 LLM은 주로 딥러닝 기반입니다. 역사 전체를 외울 필요는 없고, 2017년 Transformer가 문맥을 다루는 방식을 바꿨다는 점만 기억하면 됩니다. 분류, 요약, 코드 생성 중 내 업무와 가까운 작업을 하나 마음속으로 골라 두세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">4 / 52</div>
+            </section>
+
+<section class="scene" data-skill="steps" data-scene-id="S04" data-slide="5">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">LLM의 응답 생성</h2>
+              <div class="stack">
+                <ol class="steps row">
+                  <li class="step">
+                    <div class="step-num" data-editable="true">1</div>
+                    <div class="step-body" data-editable="true">토큰으로 나누기<span class="step-desc">문장을 모델의 처리 단위로 분할</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">2</div>
+                    <div class="step-body" data-editable="true">다음 토큰 분포 계산<span class="step-desc">지금까지의 문맥으로 후보별 가능성 계산</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">3</div>
+                    <div class="step-body" data-editable="true">선택하고 반복<span class="step-desc">하나를 골라 붙이고 다시 계산</span></div>
+                  </li>
+                </ol>
+                <div class="chip-row">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <span class="chip" data-editable="true">회의</span>
+                  <span class="chip" data-editable="true">내용을</span>
+                  <span class="chip" data-editable="true">세</span>
+                  <span class="chip" data-editable="true">줄로</span>
+                  <span class="dg-arrow" aria-hidden="true">→</span>
+                  <span class="panel-title" data-editable="true">다음 후보</span>
+                  <span class="chip accent" data-editable="true">요약</span>
+                  <span class="chip" data-editable="true">정리</span>
+                  <span class="chip" data-editable="true">…</span>
+                </div>
+                <p class="dg-caption is-left" data-editable="true">실제 토큰 분할은 모델마다 다름 · 확률 수치는 표시하지 않음</p>
+                <div class="callout" data-editable="true">학습은 매개변수를 바꾸고, 보통의 호출은 학습된 모델로 계산만 한다</div>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022 (지시 수행 학습)</p>
+              <aside class="speaker-note">LLM은 입력을 토큰이라는 단위로 나누고, 지금까지의 문맥으로 다음 토큰 후보들의 가능성을 계산해 하나를 고르는 과정을 반복합니다. 토큰은 단어 하나와 항상 같지 않고, 나누는 방식은 모델마다 다릅니다. 학습 단계에서는 모델 매개변수를 바꾸지만, 오늘 우리가 하는 API 호출은 이미 학습된 모델로 결과를 계산할 뿐입니다. 그러면 질문을 한 번 더 보내면 모델이 바로 재학습될까요? 한 분만 짧게 답해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">5 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S05" data-slide="6">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">Attention과 문맥</h2>
+              <div class="split-grid">
+                <div class="split-panel">
+                  <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">같은 '배', 다른 문맥</div></div>
+                  <div class="dg">
+                    <div class="dg-row">
+                      <div class="dg-box" data-editable="true">디저트로 배를 먹었다</div>
+                      <span class="dg-arrow" aria-hidden="true">→</span>
+                      <div class="dg-box accent" data-editable="true">배 = 과일</div>
+                    </div>
+                    <div class="dg-row">
+                      <div class="dg-box" data-editable="true">항구에서 배를 탔다</div>
+                      <span class="dg-arrow" aria-hidden="true">→</span>
+                      <div class="dg-box accent" data-editable="true">배 = 선박</div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">주변 단어가 표현에 반영되는 개념도 · 측정값 아님</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true">같은 표현도 문맥에 따라 다름</li>
+                  <li data-editable="true">다른 위치의 정보를 반영하는 계산</li>
+                  <li data-editable="true">데이터·규모·학습 방법으로 활용 확장</li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022</p>
+              <aside class="speaker-note">같은 '배'라도 '먹었다'와 함께 오면 과일, '탔다'와 함께 오면 선박으로 읽힙니다. Attention은 각 위치의 표현을 만들 때 다른 위치의 정보를 얼마나 반영할지 계산하는 장치이고, 이 값은 입력마다 새로 계산되므로 학습된 모델 매개변수와는 다릅니다. 참고로 원 논문은 번역용 encoder–decoder 구조였고, 오늘날 많은 생성 모델은 decoder 중심 구조를 씁니다. 데이터·규모·학습 방법이 발전하며 쓰임이 넓어졌지만, 이를 어느 순간의 특이점으로 단정하지는 않겠습니다. Q·K·V 계산이 궁금하신 분은 부록 A01을 참고하세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">6 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S06" data-slide="7">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">모델·서버·API의 역할</h2>
+              <div class="split-grid">
+                <div class="split-panel">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <div class="dg">
+                    <div class="dg-row">
+                      <div class="dg-zone">
+                        <div class="dg-zone-label" data-editable="true">수강생 프로그램</div>
+                        <div class="dg-box" data-editable="true">실습 코드<span class="dg-sub">SDK로 요청 작성</span></div>
+                      </div>
+                      <div class="stack">
+                        <span class="dg-arrow" aria-hidden="true">⇄</span>
+                        <span class="dg-sub" data-editable="true">API 요청·응답</span>
+                      </div>
+                      <div class="dg-zone accent">
+                        <div class="dg-zone-label" data-editable="true">사내 추론 서버</div>
+                        <div class="dg-box" data-editable="true">vLLM</div>
+                        <span class="dg-arrow" aria-hidden="true">↓</span>
+                        <div class="dg-box accent" data-editable="true">모델</div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">주소·모델명·키 대신 역할 이름으로 표시</p>
+                </div>
+                <div class="stack">
+                  <div class="code-card">
+                    <div class="code-title" data-editable="true">요청 목적지를 정하는 곳 · 개념 예시</div>
+                    <pre class="code-body" data-editable="true">from langchain_openai import ChatOpenAI
+llm = ChatOpenAI(
+    <span class="hl">model=MODEL</span>,        <span class="cm"># 사용할 모델 이름</span>
+    <span class="hl">base_url=BASE_URL</span>,  <span class="cm"># 요청을 받을 서버 주소</span>
+)                       <span class="cm"># 키는 환경변수에서 읽음</span></pre>
+                  </div>
+                  <ul class="bullets">
+                    <li data-editable="true">모델: 응답을 계산하는 핵심</li>
+                    <li data-editable="true">vLLM: 모델을 실행하는 서버</li>
+                    <li data-editable="true">API·SDK: 요청 약속과 호출 도구</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · LangChain Models 문서</p>
+              <aside class="speaker-note">모델은 응답을 계산하는 핵심이고, vLLM은 요청을 받아 모델을 실행하는 서버 프로그램입니다. API는 프로그램끼리 요청과 응답을 주고받는 약속이고, SDK는 그 호출 코드를 편하게 쓰게 돕는 Python 도구입니다. 코드에 OpenAI라는 이름이 있어도 실제 요청이 가는 곳은 base_url에 적은 주소이고, 호환 API라고 해서 모든 옵션과 도구 호출이 똑같이 지원되는 것은 아닙니다. 코드는 내 PC에서 돌아도 모델 계산은 서버에서 일어난다는 점도 기억해 두세요. 코드 첫 줄의 langchain은 10시 구간에서 다루니, 지금은 model과 base_url 두 줄만 보세요. 이제 실습 코드에서 모델 이름과 요청 주소를 지정하는 위치를 같이 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">7 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S07" data-slide="8">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">Temperature와 출력 변화</h2>
+              <div class="compare-grid cols-3">
+                <div class="compare-col">
+                  <div class="compare-kicker" data-editable="true">temperature 낮게</div>
+                  <div class="compare-heading" data-editable="true">낮은 값</div>
+                  <ul class="compare-list">
+                    <li data-editable="true">선택의 다양성 감소</li>
+                    <li data-editable="true">결과가 비슷해지기 쉬움</li>
+                  </ul>
+                </div>
+                <div class="compare-col">
+                  <div class="compare-kicker" data-editable="true">temperature 높게</div>
+                  <div class="compare-heading" data-editable="true">높은 값</div>
+                  <ul class="compare-list">
+                    <li data-editable="true">선택의 다양성 증가</li>
+                    <li data-editable="true">표현이 자주 달라짐</li>
+                  </ul>
+                </div>
+                <div class="compare-col is-accent">
+                  <div class="compare-kicker" data-editable="true">두 값 공통</div>
+                  <div class="compare-heading" data-editable="true">별도 확인</div>
+                  <ul class="compare-list">
+                    <li data-editable="true">새 정보를 더하지 않음</li>
+                    <li data-editable="true">낮아도 틀릴 수 있음</li>
+                    <li data-editable="true">완전 동일도 보장 안 됨</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Reproducibility 문서 · LangChain Models 문서</p>
+              <aside class="speaker-note">temperature는 다음 토큰을 고를 때 선택의 다양성에 영향을 주는 값입니다. 낮추면 결과가 비슷해지기 쉽고, 높이면 표현이 호출마다 달라지기 쉽습니다. 하지만 어느 쪽이든 모델이 모르는 정보를 더하거나 사실을 검증해 주지는 않습니다. 낮은 값에서도 틀릴 수 있고, 서버 환경에 따라 모든 실행이 완전히 같다는 보장도 없습니다. 같은 질문을 여러 번 보내면 어떤 차이가 날지 먼저 예측해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">8 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S08" data-slide="9">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">실습 1 · 호출과 비교</h2>
+              <p class="board-meta" data-editable="true">09:24–09:40 · 16분 · 실습 가이드 해당 장</p>
+              <div class="practice-grid">
+                <div class="stack">
+                  <ul class="bullets">
+                    <li data-editable="true">준비된 호출로 첫 응답 확인</li>
+                    <li data-editable="true">temperature만 바꿔 같은 질문 반복</li>
+                    <li data-editable="true">최신 자료 질문으로 한계 관찰</li>
+                  </ul>
+                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">바꾼 값과 관찰한 차이를 한 문장으로 설명한다</div></div>
+                </div>
+                <div>
+                  <div class="time-blocks">
+                    <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">첫 호출</div></div>
+                    <div class="time-block is-accent"><div class="min" data-editable="true">6<small>분</small></div><div class="what" data-editable="true">반복 비교</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">최신 자료 질문</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">2<small>분</small></div><div class="what" data-editable="true">결과 확인</div></div>
+                  </div>
+                  <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 출력으로 같은 비교를 계속합니다</div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · vLLM Reproducibility 문서</p>
+              <aside class="speaker-note">처음 4분은 준비된 호출을 실행해 첫 응답이 오는지 확인합니다. 다음 6분은 질문은 그대로 두고 temperature만 바꿔 여러 번 호출합니다. 매번 눈에 띄는 차이가 나지 않을 수도 있으니, 차이가 없었다는 것도 관찰 결과로 적어 두세요. 이어서 4분은 학습 이후에 나왔을 수 있는 최신 자료를 물어보고 답변에 근거가 있는지 살펴봅니다. 마지막 2분에 바꾼 값과 관찰한 차이를 한 문장으로 발표하고, temperature가 앞에서 본 응답 생성 세 단계 중 어디에 영향을 주는지도 함께 말해 봅니다. 접속이 안 되는 분은 준비된 출력으로 같은 비교를 계속하고, 직접 실행한 결과와 구분해 둡니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">9 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S09" data-slide="10">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span><span class="time-chip" data-editable="true">10:00–10:40</span></div>
+        <h2 class="scene-title" data-editable="true">외부 자료가 필요한 질문</h2>
+        <p class="scene-subtitle" data-editable="true">같은 질문을 두 방식으로 답할 때</p>
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-kicker" data-editable="true">모델만 사용</div>
+            <div class="compare-heading"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">모델 응답</span></div>
+            <ul class="compare-list">
+              <li data-editable="true">학습 이후 정보는 알기 어려움</li>
+              <li data-editable="true">접근 못 한 사내 자료도 모름</li>
+              <li data-editable="true">그럴듯한 문장이 나올 수 있음</li>
+            </ul>
+            <p class="compare-note" data-editable="true">문장이 자연스러워도 근거는 따로 확인</p>
+          </div>
+          <div class="compare-col is-accent">
+            <div class="compare-kicker" data-editable="true">근거 전달</div>
+            <div class="compare-heading"><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">기사 근거</span></div>
+            <ul class="compare-list">
+              <li data-editable="true">찾은 본문을 질문과 함께 전달</li>
+              <li data-editable="true">답변 문장을 기사와 대조 가능</li>
+              <li data-editable="true">자료에 없으면 없다고 답하게 함</li>
+            </ul>
+            <p class="compare-note" data-editable="true">검색·자료 품질·검증은 여전히 필요</p>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: Lewis et al. 2020 (Retrieval-Augmented Generation) · LangChain Retrieval 가이드</p>
+        <aside class="speaker-note">실습 1 마지막에 최신 자료를 물었을 때 어떤 답이 나왔는지 한 분만 말씀해 주세요. 학습 이후에 나온 기사나 모델이 접근한 적 없는 사내 자료는 모델만으로 답하기 어렵습니다. 그래도 모델은 자연스러운 문장을 만들 수 있기 때문에, 문장이 그럴듯하다는 것과 근거가 있다는 것은 따로 확인해야 합니다. 필요한 근거를 찾아 질문과 함께 전달하면 모델은 그 자료를 사용해 답할 수 있습니다. 다만 근거를 붙여도 검색이 틀리거나 자료가 부실하면 답도 틀릴 수 있습니다. 이번 구간 내내 "이 문장이 기사에 실제로 있나?"를 확인하는 습관을 들이겠습니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">10 / 52</div>
+      </section>
+
+<section class="scene" data-skill="steps" data-scene-id="S10" data-slide="11">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
+        <h2 class="scene-title" data-editable="true">RAG의 기본 구조</h2>
+        <div class="stack">
+          <ol class="steps row">
+            <li class="step">
+              <div class="panel-title" data-editable="true">미리 준비</div>
+              <div class="step-num" data-editable="true">1</div>
+              <div class="step-body" data-editable="true">자료 준비와 분할<span class="step-desc">본문을 확인하고 찾기 좋은 단위로 나눔</span></div>
+            </li>
+            <li class="step">
+              <div class="panel-title" data-editable="true">질문할 때</div>
+              <div class="step-num" data-editable="true">2</div>
+              <div class="step-body" data-editable="true">질문에 맞는 근거 검색<span class="step-desc">질문과 관련된 조각을 골라냄</span></div>
+            </li>
+            <li class="step">
+              <div class="panel-title" data-editable="true">질문할 때</div>
+              <div class="step-num" data-editable="true">3</div>
+              <div class="step-body" data-editable="true">근거를 사용한 답변<span class="step-desc">찾은 근거를 질문과 함께 모델에 전달</span></div>
+            </li>
+          </ol>
+          <div class="callout" data-editable="true">임베딩·Vector DB는 검색 방법 중 하나 · 모델을 다시 학습시키지 않음</div>
+        </div>
+        <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
+        <aside class="speaker-note">RAG는 검색한 자료를 이번 답변을 만들 때 사용하는 방식입니다. 자료를 나누는 이유는 긴 문서 전체가 아니라 질문에 필요한 부분을 찾기 위해서입니다. 임베딩은 내용을 숫자 표현으로 바꾸는 과정이고, Vector DB는 그 표현과 원문을 보관하고 검색하는 저장소인데, 키워드 검색처럼 다른 방법도 있어 항상 필수는 아닙니다. 그리고 RAG는 모델 가중치를 바꾸는 학습이 아니므로, 다음 질문에서 그 자료를 모델이 기억하는 것도 아닙니다. 기사 한 편 전체를 요약하는 것과 질문에 맞는 근거를 찾아 답하는 것의 차이를 한 문장으로 말해 볼까요?</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">11 / 52</div>
+      </section>
+
+<section class="scene" data-skill="split" data-scene-id="S11" data-slide="12">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
+        <h2 class="scene-title" data-editable="true">수집한 본문과 출처</h2>
+        <div class="split-grid">
+          <div class="split-panel">
+            <div class="dg-row"><span class="concept-badge" data-editable="true">개인 기록</span><div class="panel-title" data-editable="true">파일은 생겼는데 본문이 없다면</div></div>
+            <table class="data-table">
+              <thead>
+                <tr><th data-editable="true">확인 항목</th><th data-editable="true">문서 A</th><th data-editable="true">문서 B</th></tr>
+              </thead>
+              <tbody>
+                <tr><td data-editable="true">제목</td><td data-editable="true">있음</td><td data-editable="true">있음</td></tr>
+                <tr><td data-editable="true">URL·날짜</td><td data-editable="true">있음</td><td data-editable="true">있음</td></tr>
+                <tr><td data-editable="true">본문</td><td class="is-match"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">비어 있음</span></td><td data-editable="true">있음</td></tr>
+              </tbody>
+            </table>
+            <p class="dg-caption" data-editable="true">개인 수집 경험을 단순화한 표</p>
+          </div>
+          <ul class="bullets">
+            <li data-editable="true">제목·본문을 실제로 확인</li>
+            <li data-editable="true">출처 URL과 날짜를 함께 보관</li>
+            <li data-editable="true">본문이 없으면 없다고 알리기</li>
+          </ul>
+        </div>
+        <p class="source" data-editable="true">출처: 강사 개인 기록 (지식 저장소 원문 수집 메모)</p>
+        <aside class="speaker-note">제 개인 지식 저장소에서 문서를 수집했을 때, 접힌 내용이 빠져 제목만 남은 적이 있습니다. 파일이 생겼으니 성공이라고 판단하면, 답할 근거가 없는 채로 요약과 검색 단계가 그대로 진행됩니다. 이것은 제가 쓰던 환경에서 겪은 일이고, 모든 수집 도구의 결함이라는 뜻은 아닙니다. 실습 기사에서도 제목, 본문 길이, 대표 문단을 눈으로 한 번 확인하고 다음 단계로 넘어가겠습니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">12 / 52</div>
+      </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S12" data-slide="13">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
+        <h2 class="scene-title" data-editable="true">LangChain의 역할</h2>
+        <p class="scene-subtitle" data-editable="true">같은 작업: 근거와 질문을 담은 prompt로 답변 받기</p>
+        <div class="compare-grid">
+          <div class="stack">
+            <div class="code-card">
+              <div class="code-title" data-editable="true">직접 호출 · SDK</div>
+      <pre class="code-body" data-editable="true">from openai import OpenAI
+client = OpenAI(base_url=BASE_URL)
+msgs = [{"role": "user", "content": prompt}]
+res = <span class="hl">client.chat.completions.create(</span>
+    model=MODEL, messages=msgs)
+print(res.choices[0].message.content)</pre>
+            </div>
+            <ul class="compare-list">
+              <li data-editable="true">요청·응답 형식을 직접 다룸</li>
+              <li data-editable="true">단순 호출이면 이것으로 충분</li>
+            </ul>
+          </div>
+          <div class="stack">
+            <div class="code-card">
+              <div class="code-title" data-editable="true">프레임워크 · LangChain · 이번 실습에서 사용</div>
+      <pre class="code-body" data-editable="true">from langchain_openai import ChatOpenAI
+llm = ChatOpenAI(model=MODEL,
+                 base_url=BASE_URL)
+res = <span class="hl">llm.invoke(prompt)</span>
+print(res.content)</pre>
+            </div>
+            <ul class="compare-list">
+              <li data-editable="true">검색기·도구도 같은 방식으로 연결</li>
+              <li data-editable="true">모델 성능을 높여 주지는 않음</li>
+            </ul>
+            <p class="compare-note" data-editable="true">코드 길이 차이는 성능 차이가 아님</p>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: LangChain Overview · LangChain Models 문서 · OpenAI Python SDK README</p>
+        <aside class="speaker-note">두 코드는 같은 일을 합니다. 근거와 질문을 담은 prompt를 모델에 보내고 답을 받습니다. 단순 호출 하나라면 왼쪽처럼 SDK로 충분하고, LangChain이 꼭 필요한 것은 아닙니다. LangChain의 장점은 모델, 메시지, 검색기, 도구를 같은 방식으로 연결하게 해 준다는 데 있고, 모델을 더 똑똑하게 만들어 주지는 않습니다. 이번 실습에서는 검색 결과와 모델 호출을 잇는 부분에 집중하고, LangGraph나 Deep Agents 같은 다음 단계는 필요할 때 고르면 되므로 부록 A03에만 두었습니다. 실습 코드에서 질문, 검색 결과, 모델 응답이 각각 어디 있는지 짚어 보세요.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">13 / 52</div>
+      </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S13" data-slide="14">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
+        <h2 class="scene-title" data-editable="true">실습 2 · 기사 근거로 답하기</h2>
+        <p class="board-meta" data-editable="true">10:14–10:36 · 22분 · 실습 가이드 해당 장</p>
+        <div class="practice-grid">
+          <div class="stack">
+            <ul class="bullets">
+              <li data-editable="true">수집한 기사 본문 확인</li>
+              <li data-editable="true">질문과 검색된 근거 확인</li>
+              <li data-editable="true">근거로 답하고 질문 바꾸기</li>
+            </ul>
+            <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">답변의 한 문장을 뒷받침하는 기사 문장을 찾는다</div></div>
+          </div>
+          <div>
+            <div class="time-blocks">
+              <div class="time-block"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">본문 확보</div></div>
+              <div class="time-block is-accent"><div class="min" data-editable="true">7<small>분</small></div><div class="what" data-editable="true">검색 결과 확인</div></div>
+              <div class="time-block"><div class="min" data-editable="true">7<small>분</small></div><div class="what" data-editable="true">답변·질문 변경</div></div>
+              <div class="time-block"><div class="min" data-editable="true">3<small>분</small></div><div class="what" data-editable="true">자료 없는 질문</div></div>
+            </div>
+            <div class="fallback" data-editable="true"><strong>막히면</strong>기사 접속이 안 되면 준비된 저장 본문으로 같은 단계를 진행합니다</div>
+          </div>
+        </div>
+        <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · LangChain Retrieval 가이드</p>
+        <aside class="speaker-note">처음 5분은 기사 본문을 확보하고, 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 확인합니다. 다음 7분은 질문을 넣고 어떤 문단이 검색됐는지 확인합니다. 이어서 7분 동안 그 근거를 붙여 답변을 만들고, 질문을 바꿔 검색 결과가 어떻게 달라지는지 봅니다. 마지막 3분은 기사에 없는 내용을 물어보고, 모델이 없다고 답하는지 확인합니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로 같은 단계를 진행하면 됩니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">14 / 52</div>
+      </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S14" data-slide="15">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
+        <h2 class="scene-title" data-editable="true">답변과 검색 근거 확인</h2>
+        <div class="stack">
+          <div class="compare-grid">
+            <div class="compare-col is-accent">
+              <div class="compare-kicker" data-editable="true">확인됨</div>
+              <div class="compare-heading"><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">근거에 있음</span></div>
+              <ul class="compare-list">
+                <li data-editable="true">검색 문단에 같은 내용이 있음</li>
+                <li data-editable="true">날짜·이름이 원문과 일치</li>
+                <li data-editable="true">출처를 함께 제시할 수 있음</li>
+              </ul>
+            </div>
+            <div class="compare-col">
+              <div class="compare-kicker" data-editable="true">다시 확인</div>
+              <div class="compare-heading"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">근거 밖</span></div>
+              <ul class="compare-list">
+                <li data-editable="true">검색 문단에 없는 내용</li>
+                <li data-editable="true">모델이 덧붙인 추측·설명</li>
+                <li data-editable="true">자료가 없는데 답한 경우</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" data-editable="true"><strong>고칠 곳 찾기</strong> 검색이 틀렸나, 가져온 자료를 잘못 설명했나</div>
+        </div>
+        <p class="source" data-editable="true">출처: LangChain Retrieval 가이드 · Lewis et al. 2020</p>
+        <aside class="speaker-note">답변이 좋아 보이는지보다, 근거가 그 문장을 실제로 뒷받침하는지를 봅니다. 한 분이 답변에서 문장 하나를 고르고, 그 문장이 들어 있는 기사 문단을 짚어 주세요. 근거 밖의 내용이 나왔다면 검색이 잘못된 것인지, 가져온 자료를 잘못 설명한 것인지를 나눠 보면 고칠 위치가 좁아집니다. 그런데 "이번 달 장비별 합계는?"이나 "지금 재고는?"처럼 정확한 조회가 필요한 질문은 기사 검색으로 풀기 어렵습니다. 휴식 후에는 이런 질문을 SQL 조회 도구로 연결합니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">15 / 52</div>
+      </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S15" data-slide="16">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span><span class="time-chip" data-editable="true">11:00–11:40</span></div>
+        <h2 class="scene-title" data-editable="true">정확한 조회와 계산</h2>
+        <p class="scene-subtitle" data-editable="true">질문 예: 최근 일주일 장비별 점검 건수는?</p>
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-kicker" data-editable="true">모델</div>
+            <div class="compare-heading" data-editable="true">질문 해석</div>
+            <ul class="compare-list">
+              <li data-editable="true">'최근'의 날짜 기준을 확인</li>
+              <li data-editable="true">표현을 조회 조건으로 바꿈</li>
+              <li data-editable="true">결과를 문장으로 설명</li>
+            </ul>
+          </div>
+          <div class="compare-col is-accent">
+            <div class="compare-kicker" data-editable="true">SQL·Python</div>
+            <div class="compare-heading" data-editable="true">조회·집계</div>
+            <ul class="compare-list">
+              <li data-editable="true">실제 데이터에서 건수 계산</li>
+              <li data-editable="true">날짜·단위 조건을 코드로 고정</li>
+              <li data-editable="true">없는 식별자는 만들지 않음</li>
+            </ul>
+            <p class="compare-note" data-editable="true">가상 데이터 · EQ-01 12건 · EQ-02 7건 (최근 7일)</p>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · Part Number Finder Beta 공개 README</p>
+        <aside class="speaker-note">장비별 건수나 특정 파트가 있는지는 기준을 정하고 실제 데이터로 확인해야 하는 질문입니다. 모델은 "최근"이 며칠인지 같은 표현을 해석하고 결과를 설명하는 데 쓰고, 세는 일은 SQL이나 Python에 맡길 수 있습니다. 같은 자료라도 날짜 기준, 단위, 중복 처리에 따라 답이 달라지므로 그 기준을 코드에 고정해 두는 것이 중요합니다. 오른쪽 숫자는 교육용 가상 데이터입니다. "최근"이라는 말에 어떤 날짜 기준이 필요한지 한 분만 답해 주세요.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">16 / 52</div>
+      </section>
+
+<section class="scene" data-skill="steps" data-scene-id="S16" data-slide="17">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
+        <h2 class="scene-title" data-editable="true">Tool 호출의 실행 순서</h2>
+        <div class="stack">
+          <ol class="steps row">
+            <li class="step">
+              <div class="panel-title" data-editable="true">프로그램</div>
+              <div class="step-num" data-editable="true">1</div>
+              <div class="step-body" data-editable="true">도구 알려주기<span class="step-desc">도구 이름·설명·입력 형식 전달</span></div>
+            </li>
+            <li class="step">
+              <div class="panel-title" data-editable="true">모델</div>
+              <div class="step-num" data-editable="true">2</div>
+              <div class="step-body" data-editable="true">호출 요청<span class="step-desc">도구 이름과 인자를 반환</span></div>
+            </li>
+            <li class="step is-accent">
+              <div class="panel-title" data-editable="true">프로그램</div>
+              <div class="step-num" data-editable="true">3</div>
+              <div class="step-body" data-editable="true">실행과 반환<span class="step-desc">실제 함수·SQL을 실행</span></div>
+            </li>
+            <li class="step">
+              <div class="panel-title" data-editable="true">모델</div>
+              <div class="step-num" data-editable="true">4</div>
+              <div class="step-body" data-editable="true">결과로 응답<span class="step-desc">답하거나 다음 도구를 요청</span></div>
+            </li>
+          </ol>
+          <div class="chip-row">
+            <span class="concept-badge" data-editable="true">개념 예시</span>
+            <span class="chip" data-editable="true">요청 count_by_equipment</span>
+            <span class="chip" data-editable="true">인자 days=7</span>
+            <span class="chip" data-editable="true">결과 가상 데이터 2행</span>
+          </div>
+          <div class="callout" data-editable="true">모델은 함수를 직접 실행하지 않는다 · @tool은 설명과 입력 형식을 만든다</div>
+        </div>
+        <p class="source" data-editable="true">출처: LangChain Tools 문서 · OpenAI Function calling 가이드</p>
+        <aside class="speaker-note">"모델이 도구를 쓴다"는 말은 모델이 Python 함수를 자기 안에서 실행한다는 뜻이 아닙니다. 프로그램이 먼저 도구의 이름, 설명, 입력 형식을 알려 주면, 모델은 어떤 도구를 어떤 인자로 부를지 요청만 합니다. 실제 함수나 SQL은 프로그램이 실행하고, 그 결과를 모델에게 돌려주면 모델이 답하거나 다음 도구를 요청합니다. @tool은 함수 정보로 도구 설명과 입력 형식을 만드는 데 쓰입니다. 화면의 도구 호출 기록은 요청과 결과일 뿐, 모델의 생각 전체를 보여 주는 것은 아닙니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">17 / 52</div>
+      </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S17" data-slide="18">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
+        <h2 class="scene-title" data-editable="true">스크립트·Workflow·Agent</h2>
+        <p class="scene-subtitle" data-editable="true">같은 업무: 자료를 읽고 결과 만들기</p>
+        <div class="stack">
+          <div class="compare-grid cols-3">
+            <div class="compare-col">
+              <div class="compare-kicker" data-editable="true">규칙이 명확</div>
+              <div class="compare-heading" data-editable="true">스크립트</div>
+              <ul class="compare-list">
+                <li data-editable="true">정해진 규칙대로 처리</li>
+                <li data-editable="true">단순하고 예측 쉬움</li>
+              </ul>
+              <p class="compare-note" data-editable="true">예: 파일 형식 변환</p>
+            </div>
+            <div class="compare-col">
+              <div class="compare-kicker" data-editable="true">순서가 고정</div>
+              <div class="compare-heading" data-editable="true">Workflow</div>
+              <ul class="compare-list">
+                <li data-editable="true">코드가 순서를 정함</li>
+                <li data-editable="true">단계에 모델 호출 포함</li>
+              </ul>
+              <p class="compare-note" data-editable="true">예: 수집 → 검색 → 답변</p>
+            </div>
+            <div class="compare-col">
+              <div class="compare-kicker" data-editable="true">상황에 따라</div>
+              <div class="compare-heading" data-editable="true">Agent</div>
+              <ul class="compare-list">
+                <li data-editable="true">모델이 다음 행동 선택</li>
+                <li data-editable="true">호출·시간·사용량 증가</li>
+              </ul>
+              <p class="compare-note" data-editable="true">예: 필요할 때 검색·SQL 선택</p>
+            </div>
+          </div>
+          <div class="callout" data-editable="true"><strong>필요한 만큼만</strong> 규칙으로 충분하면 스크립트부터</div>
+        </div>
+        <p class="source" data-editable="true">출처: Anthropic, Building effective agents</p>
+        <aside class="speaker-note">정해진 규칙으로 충분한 일은 스크립트가 가장 간단하고 결과도 예측하기 쉽습니다. 순서가 정해져 있다면 코드가 그 순서대로 모델과 도구를 부르는 작업 흐름, 즉 Workflow로 만들 수 있습니다. 모델이 상황을 보고 다음에 어떤 도구나 행동을 쓸지 골라야 할 때 Agent가 유용하지만, 호출이 늘어나 시간과 사용량도 늘 수 있습니다. 그래서 오른쪽으로 갈수록 좋은 것이 아니라, 문제에 맞는 수준을 고르는 것입니다. 방금 한 기사 실습은 순서가 고정돼 있었나요, 모델이 다음 행동을 골랐나요?</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">18 / 52</div>
+      </section>
+
+<section class="scene" data-skill="split" data-scene-id="S18" data-slide="19">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
+        <h2 class="scene-title" data-editable="true">Part Finder의 후보 검증</h2>
+        <div class="split-grid wide-left">
+          <div class="split-panel">
+            <div class="dg-row"><span class="concept-badge" data-editable="true">공개 Beta 설계 기반 개념 예시</span><div class="panel-title" data-editable="true">요청: 제조사 A의 로봇 블레이드</div></div>
+            <table class="data-table">
+              <thead>
+                <tr><th data-editable="true">Part Number</th><th data-editable="true">파트 종류</th><th data-editable="true">제조사</th><th data-editable="true">판정</th></tr>
+              </thead>
+              <tbody>
+                <tr class="is-dim"><td data-editable="true">PN-A-2001</td><td data-editable="true">O-ring</td><td data-editable="true">A</td><td data-editable="true">종류 불일치</td></tr>
+                <tr class="is-dim"><td data-editable="true">PN-B-1001</td><td data-editable="true">로봇 블레이드</td><td data-editable="true">B</td><td data-editable="true">제조사 불일치</td></tr>
+                <tr class="is-dim"><td data-editable="true">PN-A-3001</td><td data-editable="true">밸브</td><td data-editable="true">A</td><td data-editable="true">종류 불일치</td></tr>
+                <tr><td colspan="4" class="is-match" data-editable="true">결과: 조건에 맞는 후보 없음</td></tr>
+              </tbody>
+            </table>
+            <p class="dg-caption" data-editable="true">가상 데이터 · 공개 Beta 구조를 단순화</p>
+          </div>
+          <ul class="bullets">
+            <li data-editable="true">데이터에 있는 후보만 사용</li>
+            <li data-editable="true">파트 종류와 조건을 함께 확인</li>
+            <li data-editable="true">맞는 후보가 없으면 '결과 없음'</li>
+          </ul>
+        </div>
+        <p class="source" data-editable="true">출처: Part Number Finder Beta 공개 README (GitHub MyWay0104)</p>
+        <aside class="speaker-note">앞에서 조회 쪽은 없는 식별자를 만들지 않아야 한다고 했는데, 공개 Beta 설계에서 이것을 어떻게 지켰는지 보겠습니다. Part Finder 공개 Beta 설계에서는 실제 검색 후보에 있는 Part Number만 답에 쓰고, 파트 종류와 제조사·장비 조건이 맞는지 확인합니다. 화면처럼 제조사 A의 로봇 블레이드를 찾는데 해당 품목이 없다면, 같은 제조사의 다른 부품을 내놓는 대신 "조건에 맞는 후보 없음"이라고 답해야 합니다. 이 검증이 그럴듯한 답과 업무에 쓸 수 있는 답을 가르는 장치입니다. 참고로 이 공개 Beta는 외부 Vector DB 없이 단어 빈도 기반 검색을 쓰는데, 10시 구간에서 말한 'Vector DB가 항상 필수는 아니다'의 예이기도 합니다. 여기 표는 공개 설계를 단순화한 가상 데이터이고, 현재 사내 운영 버전과 같다는 뜻은 아닙니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">19 / 52</div>
+      </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S19" data-slide="20">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
+        <h2 class="scene-title" data-editable="true">실습 3 · SQL Tool 연결</h2>
+        <p class="board-meta" data-editable="true">11:14–11:30 · 16분 · 실습 가이드 해당 장</p>
+        <div class="practice-grid">
+          <div class="stack">
+            <ul class="bullets">
+              <li data-editable="true">테이블과 날짜·단위 확인</li>
+              <li data-editable="true">읽기 도구 연결 후 호출</li>
+              <li data-editable="true">정답 아는 질문·빈 결과 비교</li>
+            </ul>
+            <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">정답을 아는 질문과 결과 없는 질문의 차이를 설명한다</div></div>
+          </div>
+          <div>
+            <div class="time-blocks">
+              <div class="time-block"><div class="min" data-editable="true">3<small>분</small></div><div class="what" data-editable="true">스키마 확인</div></div>
+              <div class="time-block is-accent"><div class="min" data-editable="true">7<small>분</small></div><div class="what" data-editable="true">연결·조회</div></div>
+              <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">다른 입력</div></div>
+              <div class="time-block"><div class="min" data-editable="true">2<small>분</small></div><div class="what" data-editable="true">결과 설명</div></div>
+            </div>
+            <div class="fallback" data-editable="true"><strong>막히면</strong>DB 접속이 안 되면 같은 구조의 교육용 DB로 진행합니다</div>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · 근거: 사용자 제공 강의안·시간표</p>
+        <aside class="speaker-note">처음 3분은 테이블 구조와 날짜 기준, 단위를 확인합니다. 다음 7분은 준비된 읽기 전용 조회 도구를 연결해 호출하고, 도구에 넘어간 인자와 실제 조회 결과를 나눠서 봅니다. 이어서 4분은 정답을 알고 있는 질문과 결과가 없어야 하는 질문을 넣어 비교하고, 마지막 2분은 결과를 한 문장으로 설명합니다. 참고로 프롬프트에 "위험한 SQL은 실행하지 마"라고 적는 것만으로는 접근 제한이 되지 않고, 읽기 권한과 허용 테이블은 실행 환경에서 막아야 합니다. DB 접속이 안 되는 분은 같은 구조의 교육용 DB로 진행합니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">20 / 52</div>
+      </section>
+
+<section class="scene title-image" data-skill="title-image" data-scene-id="S20" data-slide="21">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
+        <h2 class="scene-title" data-editable="true">실습 4 · Streamlit 화면 실행</h2>
+        <p class="scene-subtitle" data-editable="true">11:30–11:38 · 8분 · 실행 3분 → 질문·결과 3분 → 코드 위치 2분 · 실습 가이드 해당 장</p>
+        <div class="image-frame">
+          <div class="placeholder"><div class="placeholder-label" data-editable="true">실제 화면 교체 예정</div><div class="placeholder-desc" data-editable="true">준비된 Streamlit 실습 앱 — 입력 칸 · 처리 중 표시 · 결과와 근거 영역</div></div>
+        </div>
+        <div class="done-row">
+          <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">입력 → 함수 → 화면 결과의 연결을 설명한다</div></div>
+          <div class="fallback" data-editable="true"><strong>막히면</strong>옆 사람 화면으로 함께 확인하고, 5분 넘게 막히면 강사 시연으로 봅니다</div>
+        </div>
+        <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · 근거: 사용자 제공 강의안·시간표</p>
+        <aside class="speaker-note">준비된 화면 코드에 방금 만든 조회 호출을 연결하고 실행합니다. 처음 3분은 앱을 띄우고, 다음 3분은 질문을 넣어 조회 결과와 근거가 화면 어디에 나오는지 확인합니다. 마지막 2분은 입력 칸의 값이 어떤 함수로 들어가고 그 결과가 어느 코드에서 화면에 그려지는지 짚습니다. 화면을 처음부터 설계하는 일은 오후 자유 실습에서 확장할 수 있습니다. 혼자 막힌 분은 옆 사람 화면으로 같은 단계를 함께 보세요. 실행이 5분 넘게 막히면 제가 완성 코드를 시연하는 것으로 바꾸고, 개별 실행은 자유 실습 선택지로 넘기겠습니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">21 / 52</div>
+      </section>
+
+<section class="scene" data-skill="split" data-scene-id="S21" data-slide="22">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
+        <h2 class="scene-title" data-editable="true">오전 실습의 전체 구조</h2>
+        <div class="split-grid wide-left">
+          <div class="split-panel">
+            <span class="concept-badge" data-editable="true">개념 예시</span>
+            <div class="dg">
+              <div class="dg-row stretch">
+                <div class="dg-box accent" data-editable="true">사용자 화면<span class="dg-sub">Streamlit · 입력과 결과 표시</span></div>
+                <div class="dg-arrow" aria-hidden="true">⇄</div>
+                <div class="dg-box" data-editable="true">모델과 도구<span class="dg-sub">LLM 호출 · 검색 · SQL Tool</span></div>
+                <div class="dg-arrow" aria-hidden="true">⇄</div>
+                <div class="dg-box" data-editable="true">근거 데이터<span class="dg-sub">기사 본문 · 교육용 DB</span></div>
+              </div>
+            </div>
+            <p class="dg-caption" data-editable="true">파랑 표시: 오후에 고쳐 볼 작은 기능 후보 위치</p>
+          </div>
+          <ul class="bullets">
+            <li data-editable="true">화면·모델·데이터를 나눠 연결</li>
+            <li data-editable="true">한 곳을 고치면 다른 곳도 확인</li>
+            <li data-editable="true">오후: 이 앱을 Claude Code로 개선</li>
+          </ul>
+        </div>
+        <p class="source" data-editable="true">근거: 사용자 제공 강의안 · Streamlit Architecture 문서</p>
+        <aside class="speaker-note">오전에는 화면, 모델과 도구, 근거 데이터를 하나씩 연결했고, 실제 개발에서는 이런 연결 때문에 작은 수정이 다른 부분에 영향을 주는 일이 자주 생깁니다. 그런데 이 그림에서 SQL을 실제로 실행하는 것은 모델인가요, 프로그램인가요? 한 분만 답해 주세요. 오후에는 Claude Code로 이 구조를 먼저 읽고, 바꿀 범위를 정해 결과 없음 안내나 근거 표시 같은 작은 기능 하나를 개선합니다. 오후에 Claude Code가 쓰는 모델 연결은 오전 실습 API와 별도로 준비된 경로입니다. 점심 전에 내가 고쳐 보고 싶은 곳을 한 군데 골라 두시고, 13시 20분에 다시 시작합니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">22 / 52</div>
+      </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S22" data-slide="23">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span><span class="time-chip" data-editable="true">13:20–14:00</span></div>
+              <h2 class="scene-title" data-editable="true">오전 앱과 Coding Agent</h2>
+              <p class="scene-subtitle" data-editable="true">오전 앱이 이번 시간 Claude Code의 작업 대상</p>
+              <div class="compare-grid">
+                <div class="compare-col">
+                  <div class="compare-kicker" data-editable="true">모델 + 우리가 연결한 도구</div>
+                  <div class="compare-heading" data-editable="true">오전 앱</div>
+                  <ul class="compare-list">
+                    <li data-editable="true">입력: 업무 질문</li>
+                    <li data-editable="true">도구: 기사 검색·SQL 조회</li>
+                    <li data-editable="true">결과: 근거를 붙인 답변 화면</li>
+                  </ul>
+                  <p class="compare-note" data-editable="true">쓸 수 있는 도구는 우리가 코드로 정해 줌</p>
+                </div>
+                <div class="compare-col is-accent">
+                  <div class="compare-kicker" data-editable="true">모델 + 파일·명령 도구 + 실행 환경</div>
+                  <div class="compare-heading" data-editable="true">Claude Code</div>
+                  <ul class="compare-list">
+                    <li data-editable="true">입력: 작업 요청과 프로젝트 폴더</li>
+                    <li data-editable="true">도구: 파일 읽기·수정·명령 실행</li>
+                    <li data-editable="true">결과: 바뀐 파일과 실행 결과</li>
+                  </ul>
+                  <p class="compare-note" data-editable="true">읽고 → 고치고 → 실행해 확인하기를 반복</p>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 공식 문서 How Claude Code works · Anthropic, Building effective agents</p>
+              <aside class="speaker-note">오전에 만든 기사·SQL 조회 앱이 이번 시간 Claude Code의 작업 대상입니다. 이번 40분의 목표는 Claude Code 실행 환경을 확인하고, 오전 앱에서 고칠 기능 하나의 목표·범위·완료 조건을 적는 것입니다. 두 쪽 모두 모델에 도구를 붙여 일을 시킨다는 점은 같지만, 오전 앱은 우리가 코드로 정해 준 검색·조회 도구로 업무 질문에 답하고, Claude Code는 파일을 읽고 고치고 명령을 실행하는 도구로 프로젝트 자체를 다룹니다. Claude Code는 모델 자체가 아니라, 모델에 이런 도구와 실행 환경을 붙여 필요한 파일을 읽고, 수정하고, 결과를 확인하는 과정을 반복하게 만든 프로그램입니다. 이 과정을 한 작업 흐름으로 이어갈 수 있어서 이번 실습에 쓰는 것이고, 다른 도구보다 항상 낫다는 뜻은 아닙니다. 오전 SQL 조회 도구와 지금 볼 파일 수정 도구의 공통점을 한 가지만 말해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">23 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S23" data-slide="24">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
+              <h2 class="scene-title" data-editable="true">로컬 실행과 접근 범위</h2>
+              <div class="split-grid wide-left">
+                <div class="split-panel">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <div class="dg">
+                    <div class="dg-row">
+                      <div class="dg-zone">
+                        <div class="dg-zone-label" data-editable="true">내 PC · 실행 환경</div>
+                        <div class="dg-box" data-editable="true">Claude Code<span class="dg-sub">파일·명령 도구</span></div>
+                      </div>
+                      <div class="stack">
+                        <span class="dg-arrow" aria-hidden="true">⇄</span>
+                        <span class="dg-sub" data-editable="true">요청과 필요한 맥락</span>
+                      </div>
+                      <div class="dg-box accent" data-editable="true">모델<span class="dg-sub">승인된 모델 경로</span></div>
+                    </div>
+                    <div class="dg-row">
+                      <div class="dg-box muted" data-editable="true">화면 조작 · 사내 시스템<span class="dg-sub">별도 도구·연결·권한 필요</span></div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">주소·공급사 대신 역할 이름으로 표시</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true">파일·명령은 내 PC에서 실행</li>
+                  <li data-editable="true">모델 처리는 설정된 경로에서<span class="sub">요청과 읽은 내용이 함께 전달됨</span></li>
+                  <li data-editable="true">할 수 있는 일은 도구·권한 범위</li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 공식 문서 How Claude Code works · Permissions · Data usage</p>
+              <aside class="speaker-note">Claude Code를 내 PC에서 실행하면 파일 읽기·수정과 명령 실행은 내 PC의 실행 환경에서 일어납니다. 하지만 응답을 만드는 모델은 설정된 모델 경로 너머에 있어서, 요청과 함께 작업에 필요한 파일 내용 같은 맥락이 네트워크로 전달됩니다. 그래서 로컬에서 실행한다는 것만으로 자료가 내 PC에만 머문다고 판단할 수 없고, 사내에서 허용한 모델 경로와 보낼 수 있는 자료 범위를 먼저 확인해야 하며, 오후 Claude Code의 모델 경로는 오전 실습의 사내 추론 서버와 따로 준비·확인된 것입니다. 또 로컬에 접근한다는 것이 컴퓨터로 하는 모든 일을 할 수 있다는 뜻은 아니어서, 허용된 파일·명령 도구와 권한 범위 안에서 일하고, 다른 앱 화면 조작이나 사내 시스템 접근에는 별도 도구·연결·권한이 필요할 수 있습니다. 파일 읽기, Python 실행, 다른 프로그램 화면 클릭 중 지금 환경에서 바로 될 것 같은 것을 예상해 보세요. 예상이 맞는지는 잠시 뒤 실습 5에서 직접 확인합니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">24 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S24" data-slide="25">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
+              <h2 class="scene-title" data-editable="true">변경하기 쉬운 프로그램 구조</h2>
+              <div class="split-grid wide-left">
+                <div class="split-panel">
+                  <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">바꿀 기능: 검색 결과 없음 안내</div></div>
+                  <table class="data-table">
+                    <thead>
+                      <tr><th data-editable="true">영역</th><th data-editable="true">맡는 일</th><th data-editable="true">이번 변경</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td data-editable="true">화면</td><td data-editable="true">입력·결과 표시</td><td class="is-match" data-editable="true">안내 문구 추가</td></tr>
+                      <tr><td data-editable="true">업무 규칙</td><td data-editable="true">조건 확인·판정</td><td class="is-match" data-editable="true">0건이면 안내로 분기</td></tr>
+                      <tr><td data-editable="true">데이터 접근</td><td data-editable="true">기사·DB 조회</td><td data-editable="true">빈 결과 형태만 확인</td></tr>
+                      <tr class="is-dim"><td data-editable="true">모델 연결</td><td data-editable="true">요청·응답 처리</td><td data-editable="true">변경 없음</td></tr>
+                    </tbody>
+                  </table>
+                  <p class="dg-caption" data-editable="true">오전 앱을 네 영역으로 나눈 예시 · 실제 파일 구성과 다를 수 있음</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true">영역마다 입력·출력을 정해 둠</li>
+                  <li data-editable="true">바꿀 곳과 확인할 곳이 좁아짐</li>
+                  <li data-editable="true">작은 앱은 함수 분리와 README로</li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">근거: 강사의 아키텍처 회고(사용자 제공) · Claude Code 공식 문서 Best practices</p>
+              <aside class="speaker-note">제가 앱을 만들 때 개발 후반으로 갈수록 작은 수정 하나가 여러 곳에 영향을 줘서 고치기 어려워진 경험이 있습니다. 그래서 처음부터 완벽한 구조를 목표로 하기보다, 바뀌기 쉬운 부분의 경계와 각 부분이 주고받는 값을 먼저 정해 두는 편이 낫다고 봅니다. 오전 앱을 화면, 업무 규칙, 모델 연결, 데이터 접근으로 나눠 보면, 검색 결과 없음 안내는 화면과 업무 규칙을 바꾸고 데이터 접근은 빈 결과가 어떤 형태로 오는지만 확인하면 됩니다. 이렇게 경계가 보이면 Claude Code에 요청할 때도 바꿀 곳과 건드리지 않을 곳을 말할 수 있고, 작은 앱이라면 파일을 많이 만들 필요 없이 역할별 함수 몇 개와 짧은 README로 충분합니다. 그러면 "근거 문단을 답변 옆에 함께 보여 주기"는 네 영역 중 어디를 바꿔야 할까요? 한 분만 답해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">25 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S25" data-slide="26">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
+              <h2 class="scene-title" data-editable="true">작업 요청과 완료 조건</h2>
+              <div class="compare-grid">
+                <div class="compare-col">
+                  <div class="compare-kicker" data-editable="true">막연한 요청</div>
+                  <div class="compare-heading"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">“앱 개선해줘”</span></div>
+                  <ul class="compare-list">
+                    <li data-editable="true">무엇을 바꿀지 불분명</li>
+                    <li data-editable="true">어디까지 바꿀지 모름</li>
+                    <li data-editable="true">끝났는지 판단 기준 없음</li>
+                  </ul>
+                  <p class="compare-note" data-editable="true">결과를 받아도 맞는지 확인하기 어려움</p>
+                </div>
+                <div class="compare-col is-accent">
+                  <div class="compare-kicker" data-editable="true">완료 조건이 있는 요청</div>
+                  <div class="compare-heading"><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">요청문 예시</span> <span class="concept-badge" data-editable="true">개념 예시</span></div>
+                  <ul class="compare-list">
+                    <li data-editable="true">목표: 결과 0건일 때 안내 표시</li>
+                    <li data-editable="true">범위: 결과 표시 부분만 수정</li>
+                    <li data-editable="true">제약: 새 패키지 설치 없이</li>
+                    <li data-editable="true">완료: 없는 키워드 → 안내 문구</li>
+                    <li data-editable="true">완료: 기존 질문 결과는 그대로</li>
+                  </ul>
+                  <p class="compare-note" data-editable="true">입력 예와 기대 결과가 곧 완료 조건</p>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · 근거: 사용자 제공 강의안</p>
+              <aside class="speaker-note">"앱 개선해줘"라고만 하면 Claude Code는 무엇을 어디까지 바꿀지 스스로 추측해야 하고, 우리도 결과를 받았을 때 끝난 것인지 판단할 기준이 없습니다. 오른쪽처럼 목표와 바꿀 범위, 지켜야 할 제약에 더해 어떤 입력에서 어떤 결과가 나오면 끝인지를 적으면 작업 방향과 확인 방법이 함께 정해집니다. 특히 마지막 줄처럼 기존 질문의 결과가 그대로여야 한다는 조건을 넣어 두면, 새 기능을 붙이다 원래 기능을 망가뜨렸는지 확인할 수 있습니다. 오류 없이 실행되는 것, 결과가 정확한 것, 사용자의 목적에 맞는 것은 각각 따로 확인할 대상입니다. 이제 점심 전에 골라 둔 곳을 떠올려, 오전 앱에 붙이고 싶은 작은 기능 하나의 완료 조건을 "어떤 입력에서 무엇이 나오면 끝"이라는 한 문장으로 적어 보세요. 두 분 정도 읽어 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">26 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S26" data-slide="27">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
+              <h2 class="scene-title" data-editable="true">실습 5 · Claude Code 실행</h2>
+              <p class="board-meta" data-editable="true">13:36–13:56 · 20분 · 실습 가이드 해당 장</p>
+              <div class="practice-grid">
+                <div class="stack">
+                  <ul class="bullets">
+                    <li data-editable="true">사내 가이드대로 실행·접속 확인</li>
+                    <li data-editable="true">실습 폴더를 열고 파일 읽기 확인</li>
+                    <li data-editable="true">파일 역할·실행 방법을 설명받고 대조</li>
+                  </ul>
+                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">프로젝트 구조 설명을 받고 실제 파일과 맞는지 확인한다</div></div>
+                </div>
+                <div>
+                  <div class="time-blocks cols-3">
+                    <div class="time-block"><div class="min" data-editable="true">10<small>분</small></div><div class="what" data-editable="true">실행·접속</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">파일 읽기</div></div>
+                    <div class="time-block is-accent"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">설명·대조</div></div>
+                  </div>
+                  <div class="fallback" data-editable="true"><strong>막히면</strong>다른 접속 방식으로 우회하지 말고 짝 실습이나 강사 시연으로 참여합니다</div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · Claude Code 공식 문서 How Claude Code works</p>
+              <aside class="speaker-note">처음 10분은 사내 가이드에 적힌 방법 그대로 Claude Code를 실행하고 접속되는지 확인하며, 미리 설치를 마친 분은 바로 다음 단계로 넘어갑니다. 다음 5분은 오전 실습 폴더를 열고 파일 목록과 내용을 읽을 수 있는지 확인합니다. 마지막 5분은 각 파일이 무슨 역할을 하는지와 앱을 어떻게 실행하는지 설명하게 한 뒤, 그 설명이 실제 파일 내용과 실습 가이드에 맞는지 직접 열어 대조합니다. 이번 실습은 읽기와 설명까지이고, 파일 수정은 다음 시간에 계획을 세운 뒤에 합니다. 설치나 접속이 막히면 인터넷에서 찾은 다른 접속 방식으로 우회하지 말고, 옆 사람과 짝을 이루거나 제 시연 화면으로 같은 단계를 따라오세요. 아까 예상한 것 중 파일 읽기와 Python 실행이 실제로 되는지도 이때 확인해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">27 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S27" data-slide="28">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
+              <h2 class="scene-title" data-editable="true">환경 확인과 다음 작업</h2>
+              <div class="stack">
+                <ul class="bullets">
+                  <li data-editable="true"><strong>파일 읽기</strong> 실습 폴더의 파일을 읽었다</li>
+                  <li data-editable="true"><strong>실행 방법</strong> 앱을 실행하는 방법을 찾았다</li>
+                  <li data-editable="true"><strong>개선 목표</strong> 고칠 기능과 완료 조건을 적었다</li>
+                </ul>
+                <div class="callout" data-editable="true"><strong>14:20</strong> 적어 둔 기능을 계획하고, 고치고, 확인합니다</div>
+              </div>
+              <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
+              <aside class="speaker-note">세 항목을 하나씩 읽을 테니, 된 항목에는 손을 들어 주시고 막힌 분은 어느 단계에서 막혔는지만 알려 주세요. 파일은 읽었지만 실행 방법을 못 찾은 분은 Claude Code에게 이 앱을 실행하는 방법을 찾아 설명해 달라고 요청하고, 그 설명을 실습 가이드와 대조해 보세요. 개선 목표는 앞에서 적은 완료 조건 한 문장을 그대로 쓰면 됩니다. 환경이 아직 준비되지 않은 분은 휴식 뒤에 준비된 분과 짝을 이뤄 같은 화면으로 진행합니다. 14시 20분에는 이 기능을 먼저 계획하고, 고친 뒤, 결과를 확인하는 순서로 진행합니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">28 / 52</div>
+            </section>
+
+<section class="scene" data-skill="steps" data-scene-id="S28" data-slide="29">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span><span class="time-chip" data-editable="true">14:20–15:00</span></div>
+              <h2 class="scene-title" data-editable="true">탐색·계획·구현·검증</h2>
+              <div class="stack">
+                <ol class="steps row">
+                  <li class="step">
+                    <div class="step-num" data-editable="true">1</div>
+                    <div class="step-body" data-editable="true">탐색<span class="step-desc">구조와 정상 동작 확인</span></div>
+                  </li>
+                  <li class="step is-accent">
+                    <div class="step-num" data-editable="true">2</div>
+                    <div class="step-body" data-editable="true">계획<span class="step-desc">바꿀 곳과 완료 조건</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">3</div>
+                    <div class="step-body" data-editable="true">구현<span class="step-desc">계획한 범위만 수정</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">4</div>
+                    <div class="step-body" data-editable="true">검증<span class="step-desc">새 기능·기존 기능 확인</span></div>
+                  </li>
+                </ol>
+                <div class="chip-row">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <span class="chip" data-editable="true">변경: 결과 표시 함수</span>
+                  <span class="chip" data-editable="true">확인: 없는 키워드</span>
+                  <span class="chip" data-editable="true">확인: 기존 질문</span>
+                </div>
+                <div class="callout" data-editable="true"><strong>계획 먼저</strong> 여러 파일을 바꾸거나 방법이 불확실할 때</div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices</p>
+              <aside class="speaker-note">이번 40분의 목표는 오전 앱의 기존 코드를 읽고 작은 기능 하나를 고친 뒤, 제대로 됐는지 확인하는 것입니다. 먼저 Claude Code에게 바로 고치게 하지 않고, 현재 구조를 읽고 지금의 정상 동작이 무엇인지부터 확인하게 합니다. 그다음 바꿀 곳과 완료 조건을 계획으로 정리하게 하고, 그 계획을 우리가 읽어 본 뒤 계획한 범위만 수정하게 합니다. 공식 모범사례도 여러 파일을 바꾸거나 방법이 불확실할 때 계획을 먼저 세우라고 권하며, 한두 줄짜리 작은 수정까지 긴 계획을 세울 필요는 없습니다. 고치기 전에 정상 동작을 먼저 확인해 두어야 하는 이유는 무엇일까요? 한 분만 짧게 답해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">29 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S29" data-slide="30">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
+              <h2 class="scene-title" data-editable="true">웹앱의 입력부터 데이터까지</h2>
+              <div class="split-grid wide-left">
+                <div class="stack">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <div class="code-card">
+                    <div class="code-title" data-editable="true">한 파일 안의 화면·처리·데이터</div>
+            <pre class="code-body" data-editable="true">q = st.text_input("질문")  <span class="cm"># 화면: 입력</span>
+if q:
+    rows = search(q)       <span class="cm"># 데이터: 조회</span>
+    ans = answer(q, rows)  <span class="cm"># 처리: 규칙·모델</span>
+    st.write(ans)          <span class="cm"># 화면: 결과</span></pre>
+                  </div>
+                  <p class="dg-caption is-left" data-editable="true">함수 이름은 가상 · 실제 실습 코드와 다를 수 있음</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true"><strong>화면:</strong> 입력을 받고 결과 표시</li>
+                  <li data-editable="true"><strong>처리:</strong> 업무 규칙·모델 연결</li>
+                  <li data-editable="true"><strong>데이터:</strong> 기사 본문·DB 조회</li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Streamlit API 문서(st.text_input, st.write) · 근거: 사용자 제공 강의안</p>
+              <aside class="speaker-note">화면에서 입력을 받고, 규칙과 모델 호출로 처리하고, 데이터를 조회해 다시 화면에 보여 주는 전체 흐름을 다루는 것을 흔히 풀스택이라고 부릅니다. Streamlit에서는 이 흐름을 Python 코드 몇 줄로 이을 수 있어서, 왼쪽 예시처럼 입력 칸, 조회, 모델 호출, 결과 표시가 한 파일 안에 차례로 나옵니다. Streamlit은 Python 서버가 코드를 실행하고 브라우저는 화면을 보여 주는 구조라서, 오전 앱은 화면과 처리 사이에 별도 백엔드 서버를 두지 않았고 모델만 오전에 본 추론 서버에 API로 요청합니다. React나 별도 백엔드를 처음부터 모두 배우기보다, 지금 바꿀 부분이 화면인지, 처리인지, 데이터인지 알아보는 것부터 시작하면 AI가 만든 코드도 더 잘 판단할 수 있습니다. 앞 시간에 적은 개선 기능은 화면, 처리, 데이터 중 어디를 바꾸는 일인가요? 손가락으로 1, 2, 3을 표시해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">30 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S30" data-slide="31">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
+              <h2 class="scene-title" data-editable="true">프로젝트 지침과 작업 기록</h2>
+              <div class="stack">
+                <div class="compare-grid">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">매번 필요한 안내</div>
+                    <div class="compare-heading" data-editable="true">CLAUDE.md</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">실행·테스트 방법</li>
+                      <li data-editable="true">주요 파일의 역할</li>
+                      <li data-editable="true">규칙 예: 숫자는 코드로 계산</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">모델이 읽는 지침 · 권한 설정은 아님</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">이번 작업의 상태</div>
+                    <div class="compare-heading" data-editable="true">작업 기록 파일</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">결정한 내용과 이유</li>
+                      <li data-editable="true">확인한 결과와 검증 방법</li>
+                      <li data-editable="true">남은 문제와 다음 행동</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">긴 대화는 요약되며 세부가 빠질 수 있음</p>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>파일로 남기기</strong> 다음 작업에 필요한 사실은 대화가 아닌 파일에</div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 공식 문서 Memory · Context window</p>
+              <aside class="speaker-note">새 대화를 시작할 때마다 프로젝트 구조와 실행 방법을 다시 설명하는 대신, CLAUDE.md에 반복해서 필요한 안내를 적어 두면 Claude Code가 작업을 시작할 때 읽습니다. 다만 CLAUDE.md는 모델이 읽는 지침일 뿐 권한을 막는 보안 장치가 아니므로, 접근을 제한해야 하는 일은 권한 설정과 실행 환경에서 막아야 합니다. 오른쪽 작업 기록에는 이번에 결정한 내용, 확인한 결과, 남은 문제를 적어 둡니다. 대화에는 주고받은 말뿐 아니라 읽은 파일과 도구 출력도 쌓이고, 길어지면 요약되면서 세부가 빠질 수 있어서 긴 대화가 곧 영구 기억은 아니기 때문입니다. 개인 전역 설정을 통째로 복사하기보다 이 프로젝트에 필요한 몇 줄만 적는 것이 좋습니다. 지금 작업을 내일 이어서 한다면 꼭 남겨야 할 내용 두 가지는 무엇일까요?</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">31 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S31" data-slide="32">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
+              <h2 class="scene-title" data-editable="true">변경 내용과 실제 사용 확인</h2>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">Git diff</div>
+                    <div class="compare-heading" data-editable="true">무엇이 바뀌었나</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">바뀐 파일과 줄 확인</li>
+                      <li data-editable="true">범위 밖 변경은 없나</li>
+                    </ul>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">실행 결과</div>
+                    <div class="compare-heading" data-editable="true">조건을 만족하나</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">완료 조건 입력 실행</li>
+                      <li data-editable="true">기존 질문도 다시 실행</li>
+                    </ul>
+                  </div>
+                  <div class="compare-col is-accent">
+                    <div class="compare-kicker" data-editable="true">사용 화면</div>
+                    <div class="compare-heading" data-editable="true">목적에 맞게 쓰나</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">직접 입력해 보기</li>
+                      <li data-editable="true">안내 문구가 이해되나</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="callout"><span class="concept-badge" data-editable="true">개인 기록</span> <span data-editable="true"><strong>Dokmo</strong> 한글 입력·안내 부족은 직접 써 본 점검에서 드러남</span></div>
+              </div>
+              <p class="source" data-editable="true">근거: 강사 개인 기록(Dokmo 수동 점검 기록) · Claude Code 공식 문서 Best practices</p>
+              <aside class="speaker-note">제가 만든 개인 웹앱 Dokmo에서는 앱이 동작하는 상태에서도, 직접 써 보는 수동 점검에서 한글 이름 입력 문제와 다음에 무엇을 해야 할지 알려 주는 안내가 부족한 문제가 드러났습니다. 그래서 변경 확인은 세 가지를 따로 봅니다: 무엇이 바뀌었는지는 바뀐 줄을 보여 주는 Git diff로, 조건을 만족하는지는 실행 결과로, 목적에 맞게 쓸 수 있는지는 실제 화면에 직접 입력해 봅니다. Claude Code에게 확인 방법을 알려 주고 실행 결과를 받을 수는 있지만, 그 결과가 맞는지와 사용자에게 편한지는 사람이 마지막으로 봐야 합니다. 여러분이 고른 기능은 화면에서 무엇을 입력하고 무엇이 보이면 확인이 끝날까요?</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">32 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S32" data-slide="33">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
+              <h2 class="scene-title" data-editable="true">실습 6 · 오전 앱의 작은 개선</h2>
+              <p class="board-meta" data-editable="true">14:36–14:57 · 21분 · 실습 가이드 해당 장</p>
+              <div class="practice-grid">
+                <div class="stack">
+                  <div class="panel-title" data-editable="true">기본 과제: 검색 결과 없음 안내 · 이미 있으면 근거 표시</div>
+                  <ul class="bullets">
+                    <li data-editable="true">구조를 읽고 계획·완료 조건 정리</li>
+                    <li data-editable="true">계획한 범위만 구현</li>
+                    <li data-editable="true">새 입력·기존 입력 둘 다 실행</li>
+                  </ul>
+                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">기존 질문 결과가 그대로이고 새 기능이 동작한다</div></div>
+                </div>
+                <div>
+                  <div class="time-blocks row">
+                    <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">탐색</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">계획</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">8<small>분</small></div><div class="what" data-editable="true">구현</div></div>
+                    <div class="time-block is-accent"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">검증</div></div>
+                  </div>
+                  <div class="fallback" data-editable="true"><strong>막히면</strong>Claude Code가 안 되면 짝과 한 화면으로, 앱의 모델 호출이 막히면 준비된 결과로 확인합니다</div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · 근거: 사용자 제공 강의안·시간표</p>
+              <aside class="speaker-note">처음 4분은 Claude Code에게 오전 앱의 구조와 수정할 위치를 설명하게 하고, 다음 4분은 바꿀 곳과 완료 조건을 담은 계획을 받아 우리가 읽고 확인합니다. 이어서 8분 동안 계획한 범위만 구현하게 하는데, 전체 앱을 다시 짜거나 기능을 여러 개 붙이는 것은 이번 범위에 넣지 않습니다. 마지막 5분은 없는 키워드 같은 새 기능용 입력과 오전에 정상 동작하던 질문을 둘 다 실행하고, 바뀐 내용도 확인합니다. 기본 과제인 검색 결과 없음 안내가 이미 되어 있다면 근거 표시(또는 결과 다운로드)로 바꿔 진행하세요. Claude Code가 파일 수정이나 명령 실행 승인을 요청하면 무엇을 하려는지 읽고 나서 승인하세요. 앱의 모델 호출이 막히면 준비된 결과로 화면과 규칙 부분만 확인하고, Claude Code 환경이 준비되지 않은 분은 앞 시간에 정한 짝과 같은 화면으로 진행합니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">33 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S33" data-slide="34">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
+              <h2 class="scene-title" data-editable="true">다른 입력으로 재확인</h2>
+              <p class="scene-subtitle" data-editable="true">실행 전에 예상 결과를 먼저 말하기</p>
+              <div class="stack">
+                <ul class="bullets">
+                  <li data-editable="true"><strong>기존 정상 입력</strong> 이전과 같은 결과인가</li>
+                  <li data-editable="true"><strong>새 기능 입력</strong> 예상한 안내가 나오나</li>
+                  <li data-editable="true"><strong>설명</strong> 바꾼 코드가 하는 일을 한 문장으로</li>
+                </ul>
+                <div class="callout" data-editable="true">확인하지 못한 입력은 <strong>미확인</strong>으로 적어 둔다</div>
+              </div>
+              <p class="source" data-editable="true">근거: 강사 Python 교육 진행 규칙(예측·실행·설명·입력 변형)</p>
+              <aside class="speaker-note">실습에서 한 번 성공한 입력 말고, 옆 사람이 골라 준 다른 입력을 하나 받아서 실행 전에 결과를 먼저 예상해 말해 보겠습니다. 기존 정상 질문이 이전과 같은 결과를 내는지, 새 기능에 해당하는 입력에서 예상한 안내나 표시가 나오는지 차례로 확인합니다. 결과가 예상과 다르면 실패라기보다, 바꾼 코드가 어떤 조건에서 동작하는지 알려 주는 단서입니다. 두 분 정도 바꾼 코드가 무엇을 하는지 한 문장으로 설명해 주세요. 시간 안에 확인하지 못한 입력은 미확인으로 적어 두면 자유 실습에서 이어 갈 수 있고, 15시 20분에는 이런 작업 경험과 자료를 다시 쓸 수 있게 정리하는 방법으로 넘어갑니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">34 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S34" data-slide="35">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span><span class="time-chip" data-editable="true">15:20–16:00</span></div>
+              <h2 class="scene-title" data-editable="true">개인 지식의 원문과 판단</h2>
+              <p class="scene-subtitle" data-editable="true">목표: 과거 결정과 근거를 다시 찾아 판단 돕기</p>
+              <div class="split-grid wide-left">
+                <div class="split-panel">
+                  <span class="concept-badge" data-editable="true">개인 기록</span>
+                  <div class="dg">
+                    <div class="dg-row stretch">
+                      <div class="dg-box" data-editable="true">Raw<span class="dg-sub">원문 · URL · 날짜</span></div>
+                      <div class="dg-box" data-editable="true">내 생각<span class="dg-sub">왜 가져왔나 · 어디에 쓸까</span></div>
+                    </div>
+                    <div class="dg-arrow" aria-hidden="true">↓</div>
+                    <div class="dg-row">
+                      <div class="dg-box accent" data-editable="true">Wiki<span class="dg-sub">요약마다 원문 연결 · 검토 전 표시</span></div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">개인 저장소 구조를 단순화 · 폴더 이름은 예시</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true">Raw: 원문과 출처</li>
+                  <li data-editable="true">내 생각: 목적과 판단 이유</li>
+                  <li data-editable="true">Wiki: 근거를 연결한 정리</li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">출처: 강사 개인 기록 · Claude Study 공개 README (GitHub MyWay0104)</p>
+              <aside class="speaker-note">지난 시간에는 작업 기록을 파일로 남기는 이야기를 했는데, 이번 40분은 자료와 내 판단을 근거 있는 노트로 쌓는 절차를 한 번 체험하고 자유 실습 요청문까지 준비합니다. 제 개인 지식 저장소에서는 원문(Raw), 제가 직접 쓴 의견, 재사용할 정리(Wiki)를 나눠 둡니다. 원문을 가져올 때 왜 가져왔는지와 어디에 쓸지를 제 손으로 적어 두면, 나중에 제가 어떤 기준으로 판단했는지 다시 찾을 수 있습니다. 이런 기록으로 개인 Agent를 만든다면 저와 똑같이 판단하는 분신이 아니라, 과거의 결정과 근거를 찾아 판단을 돕는 보조자에 가깝습니다. 오늘 오전에 한 일 중 나중에 다시 찾고 싶은 결정 하나와 그 이유를 한 문장으로 적어 두세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">35 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S35" data-slide="36">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
+              <h2 class="scene-title" data-editable="true">지식 정리의 근거 확인</h2>
+              <div class="stack">
+                <div class="compare-grid">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">AI가 만든 정리</div>
+                    <div class="compare-heading"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">검토 전</span></div>
+                    <ul class="compare-list">
+                      <li data-editable="true">원문 본문이 있는지 미확인</li>
+                      <li data-editable="true">요약과 내 의견이 섞일 수 있음</li>
+                      <li data-editable="true">근거 없는 문장이 남을 수 있음</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">개인 기록: 본문 없이 제목만 남은 적 있음</p>
+                  </div>
+                  <div class="compare-col is-accent">
+                    <div class="compare-kicker" data-editable="true">사람이 확인한 정리</div>
+                    <div class="compare-heading"><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">검토 후</span></div>
+                    <ul class="compare-list">
+                      <li data-editable="true">원문 본문이 실제로 있음</li>
+                      <li data-editable="true">요약·의견·미확인을 구분</li>
+                      <li data-editable="true">요약마다 원문 위치 연결</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>확인 3가지</strong> 원문이 들어왔나 · 의견과 구분되나 · 검토했나</div>
+              </div>
+              <p class="source" data-editable="true">출처: 강사 개인 기록 (Claude Study README · 원문 수집 메모)</p>
+              <aside class="speaker-note">10시 구간에서 말씀드린 수집 누락은 지식 정리에서도 문제가 되는데, 제목만 남은 문서 위에 그럴듯한 정리가 만들어진 적이 있기 때문입니다. 그래서 정리를 믿기 전에 원문 본문이 실제로 들어왔는지, 요약과 제 의견이 섞이지 않았는지, 사람이 검토했는지를 봅니다. 제 방식에서는 AI가 만든 정리를 일단 검토 전으로 표시해 두는데, 나중에 어느 문장을 얼마나 믿을지 구분하기 위해서입니다. 이것은 제 환경의 기록이고 모든 도구가 그렇다는 뜻은 아닙니다. 검토 전 정리를 그대로 다음 질문의 근거로 쓰면 어떤 일이 생길까요? 한 분만 답해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">36 / 52</div>
+            </section>
+
+<section class="scene" data-skill="split" data-scene-id="S36" data-slide="37">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
+              <h2 class="scene-title" data-editable="true">Skill과 도구 연결의 역할</h2>
+              <div class="split-grid wide-left">
+                <div class="split-panel">
+                  <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">Skill 예: 근거 있는 노트 정리</div></div>
+                  <div class="dg">
+                    <div class="dg-row stretch">
+                      <div class="dg-box" data-editable="true">입력<span class="dg-sub">원문 + 내 의견</span></div>
+                      <div class="dg-arrow" aria-hidden="true">→</div>
+                      <div class="dg-box accent" data-editable="true">절차<span class="dg-sub">요약 → 출처 → 미확인</span></div>
+                      <div class="dg-arrow" aria-hidden="true">→</div>
+                      <div class="dg-box" data-editable="true">출력<span class="dg-sub">검토 전 노트</span></div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">적어 둔 절차를 필요할 때 불러 씀 · 모델 학습 아님</p>
+                </div>
+                <div class="stack">
+                  <p class="panel-title" data-editable="true">서로 다른 역할 · 위아래 단계가 아님</p>
+                  <ul class="bullets">
+                    <li data-editable="true">Skill: 반복 절차 재사용<span class="sub">오늘 체험</span></li>
+                    <li data-editable="true">MCP: 외부 도구 연결 규약</li>
+                    <li data-editable="true">Subagent: 하위 작업 분담</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code Skills 문서 · Claude Code Features overview 문서</p>
+              <aside class="speaker-note">Skill은 반복하는 절차와 참고자료를 파일로 적어 두고 필요할 때 불러 쓰는 방법이며, 모델을 다시 학습시키는 기능은 아닙니다. 오전에는 SQL 조회 함수를 우리 코드에서 직접 도구로 붙였는데, MCP는 사내 문서나 DB 같은 외부 시스템의 도구를 정해진 규약으로 Claude Code에 연결하는 방식이고, Subagent는 예외 입력만 따로 점검하게 하는 것처럼 떼어 낼 수 있는 하위 작업을 별도 맥락에서 맡기는 역할입니다. 셋은 위아래 단계가 아니라 서로 다른 역할이라 필요한 것만 골라 조합하며, 특정 시점에 자동으로 동작을 거는 Hook까지 포함한 상세 예시는 부록 A04에 두었습니다. 앞 시간의 CLAUDE.md가 모델이 읽는 지침일 뿐 권한을 강제하지 않았던 것처럼, 오늘 쓰는 절차 파일도 작업 방법을 알려 줄 뿐 실행 권한은 실행 환경의 설정이 정합니다. 같은 자료를 매번 같은 규칙으로 정리하고 싶다면 셋 중 무엇이 맞을까요?</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">37 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S37" data-slide="38">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
+              <h2 class="scene-title" data-editable="true">실습 7 · 근거 있는 지식 정리</h2>
+              <p class="board-meta" data-editable="true">15:32–15:46 · 14분 · 실습 가이드 해당 장</p>
+              <div class="practice-grid">
+                <div class="stack">
+                  <ul class="bullets">
+                    <li data-editable="true">원문 읽고 내 의견 적기</li>
+                    <li data-editable="true">준비된 정리 절차 확인·실행</li>
+                    <li data-editable="true">출처·의견·미확인 구분 확인</li>
+                  </ul>
+                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">노트에서 출처·내 의견·미확인 내용이 구분된다</div></div>
+                </div>
+                <div>
+                  <div class="time-blocks">
+                    <div class="time-block"><div class="min" data-editable="true">3<small>분</small></div><div class="what" data-editable="true">원문·의견</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">3<small>분</small></div><div class="what" data-editable="true">절차 확인</div></div>
+                    <div class="time-block is-accent"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">정리 실행</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">3<small>분</small></div><div class="what" data-editable="true">결과 확인</div></div>
+                  </div>
+                  <div class="fallback" data-editable="true"><strong>막히면</strong>Skill이 안 되면 절차를 요청문으로 붙여 넣고, Claude Code가 안 되면 짝 화면으로 합니다</div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code Skills 문서 · 강사 개인 기록(Claude Study README) · 근거: 사용자 제공 강의안·시간표</p>
+              <aside class="speaker-note">처음 3분은 준비된 짧은 원문을 읽고, 왜 이 자료를 골랐는지와 어디에 쓸지를 내 의견으로 적습니다. 다음 3분은 준비된 Skill의 절차 파일을 열어 무엇을 입력받고 어떤 노트를 만드는지 읽고, 이어서 5분 동안 실행합니다. 마지막 3분은 결과 노트에서 출처 연결, 내 의견, 미확인으로 표시된 내용이 서로 구분되는지 확인합니다. Obsidian이 없어도 텍스트 파일로 똑같이 진행할 수 있습니다. Skill 실행이 안 되는 분은 실습 가이드에 있는 같은 절차를 요청문으로 붙여 넣어 실행하고, Skill로 했을 때와 무엇이 달랐는지 적어 두세요. Claude Code 환경이 아직 안 되는 분은 짝과 같은 화면으로 진행합니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">38 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S38" data-slide="39">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
+              <h2 class="scene-title" data-editable="true">근거가 있는 질문과 없는 질문</h2>
+              <p class="scene-subtitle" data-editable="true">15:46–15:52 · 질문 2분 → 근거 점검 2분 → 공유 2분</p>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">예: 원문의 결론은?</div>
+                    <div class="compare-heading" data-editable="true">자료에 있음</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">근거 문장과 함께 답</li>
+                      <li data-editable="true">원문 위치를 표시</li>
+                    </ul>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">예: 원문에 없는 수치는?</div>
+                    <div class="compare-heading" data-editable="true">자료에 없음</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">없다고 알림</li>
+                      <li data-editable="true">추측으로 채우지 않음</li>
+                    </ul>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">예: 왜 이 자료를 골랐나?</div>
+                    <div class="compare-heading" data-editable="true">내 판단 이유</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">사실과 의견을 구분</li>
+                      <li data-editable="true">내가 쓴 이유를 인용</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>고칠 것 하나</strong> 사실과 의견이 섞인 문장을 찾아 나눈다</div>
+              </div>
+              <p class="source" data-editable="true">출처: 강사 개인 기록(Claude Study README) · 근거: 강사 개인 교육 규칙</p>
+              <aside class="speaker-note">정리가 끝났으면 같은 노트에 세 종류의 질문을 던져 봅니다. 자료에 있는 내용은 근거 문장과 함께 답해야 하고, 자료에 없는 내용은 없다고 알려야 하며, 내가 왜 이 자료를 골랐는지 묻는 질문에는 원문의 사실과 내가 쓴 의견을 나눠 답해야 합니다. 오전 기사 실습에서 답변 문장의 근거를 찾던 것과 같은 확인입니다. 2분 동안 세 질문을 실행하고, 2분 동안 근거를 점검하면서 사실과 의견이 섞인 문장을 하나 찾아 고칩니다. 마지막 2분에는 두 분이 자료에 없는 질문에 어떤 답이 나왔는지 말씀해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">39 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="S39" data-slide="40">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
+              <h2 class="scene-title" data-editable="true">자유 실습 선택 주제</h2>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">업무 데이터</div>
+                    <div class="compare-heading" data-editable="true">CSV 집계</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">결과: 장비별 건수표</li>
+                      <li data-editable="true">확인: 정답 입력 일치</li>
+                      <li data-editable="true">예외: 빈 파일 안내</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">처음이면 추천</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">개인 지식</div>
+                    <div class="compare-heading" data-editable="true">지식 정리</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">결과: 출처 연결 노트</li>
+                      <li data-editable="true">확인: 사실·의견 구분</li>
+                      <li data-editable="true">예외: 자료 없음 표시</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">텍스트 파일로도 가능</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">오전 연계</div>
+                    <div class="compare-heading" data-editable="true">앱 개선</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">결과: 기능 하나 추가</li>
+                      <li data-editable="true">확인: 기존 입력 유지</li>
+                      <li data-editable="true">예외: 빈 결과 안내</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">처음이면 추천</p>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>셋 중 하나 또는 본인 업무</strong> 결과 하나와 완료 조건 두 가지를 먼저</div>
+              </div>
+              <p class="source" data-editable="true">근거: 사용자 제공 강의안 · 교육 설계 제안</p>
+              <aside class="speaker-note">16시부터 90분 동안의 자유 실습은 가상 CSV 집계, 출처 있는 지식 정리, 오전 앱 개선 중에서 고릅니다. 세 주제 모두 만들 결과 하나, 정상 입력에서의 확인, 예외 입력의 처리를 완료 기준으로 둡니다. 오전 앱 개선은 실습 6에서 고친 것 말고 근거 표시나 결과 다운로드처럼 기능 하나를 더하는 과제입니다. 아침에 떠올린 반복 업무를 본인 주제로 골라도 되지만, 오늘 안에 확인할 수 있는 결과 하나로 범위를 줄이고 자료는 가상이거나 공개 가능한 것으로 준비해 주세요. Python이나 Claude Code가 아직 낯선 분께는 준비된 CSV 과제나 오전 앱 개선을 추천합니다. 지금 한 주제를 골라 손으로 표시해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">40 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S40" data-slide="41">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
+              <h2 class="scene-title" data-editable="true">자유 실습의 작업 요청</h2>
+              <p class="board-meta" data-editable="true">15:56–16:00 · 4분 · 요청 초안 작성</p>
+              <ul class="bullets two-col">
+                <li data-editable="true"><strong>목표·결과</strong> 만들 결과 하나<span class="sub">예: 장비별 작업 건수표</span></li>
+                <li data-editable="true"><strong>입력·제약</strong> 사용할 자료와 범위<span class="sub">예: 가상 CSV 1개 · Python · 새 파일 1개</span></li>
+                <li data-editable="true"><strong>완료 조건</strong> 정상 입력의 기대 결과<span class="sub">예: 예제 파일 건수가 정답표와 일치</span></li>
+                <li data-editable="true"><strong>예외</strong> 빈·잘못된 입력 처리<span class="sub">예: 빈 파일이면 '자료 없음' 안내</span></li>
+              </ul>
+              <div class="done-row">
+                <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">네 칸을 채운 요청 초안 한 개</div></div>
+                <div class="fallback" data-editable="true"><strong>막히면</strong>주제가 정해지지 않았으면 화면의 CSV 예시로 시작합니다</div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안</p>
+              <aside class="speaker-note">이제 4분 동안 방금 고른 주제의 작업 요청문을 적습니다. 13시 반에 연습한 작업 요청처럼 목표와 결과, 사용할 입력과 제약, 끝났다고 판단할 기대 결과를 적습니다. 기능을 여러 개 적기보다 가장 먼저 쓸 수 있는 결과 하나를 정하고, 정상 입력뿐 아니라 파일이 비었거나 잘못된 입력에서 무엇을 보여줄지도 적어 주세요. 화면의 예시는 CSV 과제 기준이니 다른 주제는 같은 칸에 자기 내용을 넣으면 됩니다. 이 초안은 16시 자유 실습 첫 15분에 범위를 한 번 더 점검합니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">41 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S41" data-slide="42">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span><span class="time-chip" data-editable="true">16:00–17:30</span></div>
+        <h2 class="scene-title" data-editable="true">자유 실습 · 목표와 계획</h2>
+        <p class="board-meta" data-editable="true">16:00–16:15 · 15분 · 16:15 구현 시작 · 실습 가이드 자유 실습 장</p>
+        <div class="practice-grid">
+          <div class="stack">
+            <ul class="bullets">
+              <li data-editable="true">요청문의 입력·결과물 확정</li>
+              <li data-editable="true">이번에 만들 범위로 줄이기</li>
+              <li data-editable="true">탐색 후 작업 순서 계획</li>
+            </ul>
+            <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">결과물 하나와 완료 조건 두 가지 이상이 적힌 계획</div></div>
+          </div>
+          <div>
+            <div class="time-blocks">
+              <div class="time-block"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">목표·범위 ~16:05</div></div>
+              <div class="time-block"><div class="min" data-editable="true">10<small>분</small></div><div class="what" data-editable="true">탐색·계획 ~16:15</div></div>
+              <div class="time-block is-accent"><div class="min" data-editable="true">16:15</div><div class="what" data-editable="true">구현 시작</div></div>
+            </div>
+            <div class="fallback" data-editable="true"><strong>막히면</strong>실행 환경 문제는 짝 실습으로, 주제가 크면 준비된 CSV 과제로 바꿉니다</div>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안·시간표</p>
+        <aside class="speaker-note">지금부터 17시 30분까지 자유 실습이고, 첫 15분은 목표와 계획만 정합니다. 처음 5분은 앞에서 쓴 요청문을 다시 읽고 입력과 결과물을 확정하며, 계획에 큰 기능이 들어 있으면 이번에 만들 부분만 남깁니다. 다음 10분은 Claude Code로 관련 파일이나 자료를 먼저 살펴보게 하고, 작업 순서와 완료 조건 두 가지 이상을 계획으로 받습니다. 사내 DB에 쓰거나 외부로 보내는 작업처럼 되돌리기 어려운 일은 오늘 범위에 넣지 않습니다. 16시 15분에 구현을 시작하니, 그 전에 한 분만 계획을 소리 내어 읽어 주시면 범위를 같이 점검하겠습니다. 순회할 때는 설치·접속 문제와 과제 범위 문제를 나눠서 돕겠습니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">42 / 52</div>
+      </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S42" data-slide="43">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
+        <h2 class="scene-title" data-editable="true">자유 실습 · 구현</h2>
+        <p class="board-meta" data-editable="true">16:15–17:05 · 50분 · 17:05 검증 시작 · 실습 가이드 자유 실습 장</p>
+        <div class="practice-grid">
+          <div class="stack">
+            <ul class="bullets">
+              <li data-editable="true">가장 작은 결과부터 실행</li>
+              <li data-editable="true">실행할 때마다 결과 확인</li>
+              <li data-editable="true">막힌 단계와 오류 기록</li>
+            </ul>
+            <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">17:05에 실행되는 결과 하나가 있다</div></div>
+          </div>
+          <div>
+            <div class="time-blocks">
+              <div class="time-block"><div class="min" data-editable="true">20<small>분</small></div><div class="what" data-editable="true">첫 실행 ~16:35</div></div>
+              <div class="time-block"><div class="min" data-editable="true">20<small>분</small></div><div class="what" data-editable="true">보완·다른 입력 ~16:55</div></div>
+              <div class="time-block"><div class="min" data-editable="true">10<small>분</small></div><div class="what" data-editable="true">기능 멈춤·정리 ~17:05</div></div>
+              <div class="time-block is-accent"><div class="min" data-editable="true">17:05</div><div class="what" data-editable="true">검증 시작</div></div>
+            </div>
+            <div class="fallback" data-editable="true"><strong>막히면</strong>요청문·오류 메시지·확인한 내용을 함께 보여 주며 질문합니다</div>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안·시간표 · 강사 개인 교육 규칙</p>
+        <aside class="speaker-note">50분 구현은 가장 작은 결과를 먼저 실행해 보고, 실행할 때마다 결과를 확인하면서 한 걸음씩 늘립니다. 16시 35분에 첫 실행이 된 분은 손을 들어 주시고, 그때까지 실행이 안 된 분은 저와 함께 기능을 더 줄이겠습니다. 막히면 요청한 내용, 실제 오류 메시지, 지금까지 확인한 것을 함께 보여 주시면 빨리 도울 수 있습니다. 진행이 빠른 분은 새 기능을 붙이기보다 다른 입력에서 어떻게 동작하는지 먼저 확인하세요. 16시 55분에는 기능 추가를 멈추고 결과를 정리하며, 17시 5분부터 검증합니다. 이 시간에는 전체 강의를 추가하지 않고 개별 질문을 돕겠습니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">43 / 52</div>
+      </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="S43" data-slide="44">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
+        <h2 class="scene-title" data-editable="true">자유 실습 · 검증과 기록</h2>
+        <p class="board-meta" data-editable="true">17:05–17:20 · 15분 · 17:20 공유 시작 · 실습 가이드 자유 실습 장</p>
+        <div class="practice-grid">
+          <div class="stack">
+            <ul class="bullets">
+              <li data-editable="true">정상 입력과 예외 입력 실행</li>
+              <li data-editable="true">변경 내용과 실제 결과 비교</li>
+              <li data-editable="true">실행법·한계·다음 작업 기록</li>
+            </ul>
+            <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">확인한 입력 두 가지와 실행 방법·남은 한계를 적는다</div></div>
+          </div>
+          <div>
+            <div class="time-blocks">
+              <div class="time-block"><div class="min" data-editable="true">10<small>분</small></div><div class="what" data-editable="true">검증 ~17:15</div></div>
+              <div class="time-block"><div class="min" data-editable="true">5<small>분</small></div><div class="what" data-editable="true">기록·공유 준비 ~17:20</div></div>
+              <div class="time-block is-accent"><div class="min" data-editable="true">17:20</div><div class="what" data-editable="true">공유 시작</div></div>
+            </div>
+            <div class="fallback" data-editable="true"><strong>막히면</strong>결과가 안 나오면 멈춘 단계와 오류를 적는 것으로 완료합니다</div>
+          </div>
+        </div>
+        <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 강사 개인 교육 규칙</p>
+        <aside class="speaker-note">17시 5분부터 10분은 검증이며, 정상 입력에서 기대한 결과가 나오는지와 빈 자료나 잘못된 입력에서 안내가 나오는지를 직접 실행해 확인합니다. Claude Code가 완료했다고 말해도 그 말이 아니라 변경 내용과 실제 실행 결과를 보고 판단하세요. 확인하지 못한 부분은 미확인으로 적고, 결과가 끝내 나오지 않았다면 멈춘 단계와 오류를 기록한 것으로 완료입니다. 마지막 5분은 다른 사람이 다시 실행할 수 있도록 실행 방법, 확인한 입력, 남은 한계, 다음 작업을 적고, 공유할 화면이나 파일 하나를 정합니다. 17시 20분 공유에서 사례를 보여 주실 분은 지금 손을 들어 주세요.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">44 / 52</div>
+      </section>
+
+<section class="scene quote" data-skill="quote" data-scene-id="S44" data-slide="45">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <p class="quote-body" data-editable="true">완성 여부보다 <em>확인한 것과 남은 것</em>을 말합니다</p>
+        <p class="quote-attrib" data-editable="true">17:20–17:30 · 사례 공유 6분 · Q&amp;A 3분 · 17:30 종료</p>
+        <ol class="quote-points">
+          <li data-editable="true">해결하려던 문제는 무엇이었나</li>
+          <li data-editable="true">확인한 결과와 남은 한계는</li>
+          <li data-editable="true">다음에 적용할 업무는</li>
+        </ol>
+        <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
+        <aside class="speaker-note">두세 분의 사례를 한 분당 2분 안팎으로 보고, 화면의 세 질문에 맞춰 짧게 말씀해 주시면 됩니다. 결과가 완성되지 않았어도 괜찮고, 어디까지 확인했고 무엇이 남았는지 말하는 것이 오늘 발표의 기준입니다. 사례 공유 6분 뒤 공통 질문을 3분 받고, 마지막 1분에 오늘을 정리하겠습니다. 발표하지 않은 분은 같은 세 질문의 답을 실행 방법 옆에 적어 두세요. 오늘 만든 도구를 실제 업무에 쓰기 전에 확인할 권한·데이터 정의·실패 처리·운영 항목은 부록 A06에 정리해 두었으니, 질문이 나오면 함께 보겠습니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">45 / 52</div>
+      </section>
+
+<section class="scene night" data-skill="title-bullets" data-scene-id="G02" data-slide="46">
+        <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
+        <h2 class="scene-title" data-editable="true">오늘 남길 4가지 성과</h2>
+        <p class="scene-subtitle" data-editable="true">오늘 만든 결과물보다 오래 남길 네 가지 습관</p>
+        <ul class="bullets">
+          <li data-editable="true"><strong>설명한다</strong> 각 요소가 하는 일<span class="sub">모델 · API · RAG · Tool · Agent</span></li>
+          <li data-editable="true"><strong>고른다</strong> 필요한 만큼의 수준<span class="sub">스크립트 · Workflow · Agent</span></li>
+          <li data-editable="true"><strong>전달한다</strong> 목표와 완료 조건<span class="sub">입력 · 출력 · 제약 · 완료 조건</span></li>
+          <li data-editable="true"><strong>검증한다</strong> 결과를 근거로<span class="sub">근거 데이터 · 다른 입력 · 실패 상황</span></li>
+        </ul>
+        <p class="source" data-editable="true">근거: 교육 설계 제안 (강의 준비 조사 자료 1절 학습 성과)</p>
+        <aside class="speaker-note">오늘 만든 결과물보다 오래 남길 것은 이 네 가지 습관입니다. 오늘을 한 문장으로 줄이면, LLM에게 맡길 일과 코드·데이터·사람이 책임질 일을 구분하면 작은 업무 도구부터 직접 만들고 고칠 수 있다는 것입니다. 오전에는 역할을 나누고 필요한 수준을 고르는 기준을 봤고, 오후에는 완료 조건을 담아 요청하고 다른 입력과 실패 상황으로 결과를 확인했습니다. 다음 업무에서 AI에게 일을 맡길 때 완료 조건과 검증 방법을 먼저 한 줄 적어 보세요. 오늘 함께해 주셔서 감사합니다.</aside>
+        <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+        <div class="page-num">46 / 52</div>
+      </section>
+
+<section class="scene" data-skill="split" data-scene-id="A01" data-slide="47">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
+              <h2 class="scene-title" data-editable="true">Transformer와 Q·K·V</h2>
+              <div class="split-grid wide-left">
+                <div class="split-panel">
+                  <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">한 위치의 표현이 만들어지는 과정</div></div>
+                  <div class="dg">
+                    <div class="dg-row stretch">
+                      <div class="dg-box" data-editable="true">토큰 표현</div>
+                      <div class="dg-arrow" aria-hidden="true">→</div>
+                      <div class="dg-box" data-editable="true">Q<span class="dg-sub">찾는 기준</span></div>
+                      <div class="dg-box" data-editable="true">K<span class="dg-sub">비교될 이름표</span></div>
+                      <div class="dg-box" data-editable="true">V<span class="dg-sub">전달할 내용</span></div>
+                    </div>
+                    <div class="dg-row stretch">
+                      <div class="dg-box" data-editable="true">Q·K 비교<span class="dg-sub">반영 비율 계산</span></div>
+                      <div class="dg-arrow" aria-hidden="true">→</div>
+                      <div class="dg-box" data-editable="true">V 합산<span class="dg-sub">비율대로 섞기</span></div>
+                      <div class="dg-arrow" aria-hidden="true">→</div>
+                      <div class="dg-box accent" data-editable="true">문맥 반영 표현</div>
+                    </div>
+                  </div>
+                  <div class="dg-row"><span class="chip" data-editable="true">softmax(QK^T / √d) · V</span><span class="dg-caption" data-editable="true">원 논문 식 · 전개 생략</span></div>
+                  <p class="dg-caption" data-editable="true">비유를 쓴 개념도 · 가중치 수치·열지도 아님</p>
+                </div>
+                <ul class="bullets">
+                  <li data-editable="true">Q·K 비교로 반영 비율 계산</li>
+                  <li data-editable="true">비율대로 V를 모아 새 표현</li>
+                  <li data-editable="true">원 논문은 encoder–decoder<span class="sub">많은 생성 모델은 decoder 중심</span></li>
+                </ul>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017)</p>
+              <aside class="speaker-note">S05에서 Attention을 문맥을 반영하는 계산이라고 했는데, 그 계산의 재료가 Q·K·V입니다. 각 토큰 표현은 학습된 가중치로 세 벡터로 바뀌는데, 비유하면 Q는 찾는 기준, K는 비교될 이름표, V는 실제로 전달할 내용입니다. 한 위치의 Q를 모든 위치의 K와 비교해 반영 비율을 정하고, 그 비율대로 V를 모아 문맥이 반영된 새 표현을 만듭니다. 이 비율은 입력마다 새로 계산되는 값이라 학습된 매개변수와 다르고, 실제 모델은 이 계산을 여러 헤드와 여러 층에서 반복합니다. 원 논문은 번역을 위해 입력을 읽는 encoder와 출력을 만드는 decoder를 함께 썼고, 오늘날 많은 생성 모델은 앞쪽 토큰만 참고하도록 가린 decoder 중심 구조를 씁니다. 화면 그림은 개념도이며 실제 가중치를 측정한 결과가 아닙니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">47 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="A02" data-slide="48">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
+              <h2 class="scene-title" data-editable="true">RAG 검색 방식과 메타데이터</h2>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">미리 준비</div>
+                    <div class="compare-heading" data-editable="true">청킹·임베딩</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">찾기 좋은 단위로 분할</li>
+                      <li data-editable="true">조각을 벡터로 변환</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">임베딩 지원 여부는 환경별 확인</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">질문할 때</div>
+                    <div class="compare-heading" data-editable="true">벡터·키워드 검색</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">벡터: 뜻이 가까운 조각</li>
+                      <li data-editable="true">키워드: 같은 단어 포함</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">Vector DB는 선택 사항</p>
+                  </div>
+                  <div class="compare-col is-accent">
+                    <div class="compare-kicker" data-editable="true">먼저 설계</div>
+                    <div class="compare-heading" data-editable="true">메타데이터</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">출처·발행일·문서 버전</li>
+                      <li data-editable="true">장비·제조사·적용 기간</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">답변에서 구분할 조건부터</p>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>실패 나누기</strong> 검색이 틀렸나, 찾은 근거로 잘못 답했나</div>
+              </div>
+              <p class="source" data-editable="true">출처: Lewis et al. 2020 (Retrieval-Augmented Generation) · LangChain Retrieval 가이드 · Part Number Finder Beta 공개 README</p>
+              <aside class="speaker-note">B2 실습의 RAG 구조를 한 단계 더 나누면, 미리 해 두는 청킹·임베딩과 질문할 때 하는 검색으로 볼 수 있고, 어느 단계도 모델을 다시 학습시키지 않습니다. 청킹은 긴 문서를 찾기 좋은 단위로 나누는 일이고, 임베딩은 조각을 뜻이 가까운 것끼리 찾을 수 있는 벡터로 바꾸는 일이며, 키워드 검색은 같은 단어가 들어 있는 조각을 찾습니다. 어느 방식이 나은지는 내 자료와 질문으로 직접 비교해 봐야 하고, Part Finder 공개 Beta처럼 Vector DB 없이 단어 빈도로 검색하는 구성도 있습니다. 메타데이터는 장식이 아니라, 출처·발행일·장비처럼 답변에서 구분해야 하는 조건부터 거꾸로 설계합니다. 다만 "승인 필요" 같은 값을 적어 두는 것만으로 승인이 강제되지는 않고, 그 처리는 프로그램이 해야 합니다. 답이 틀렸을 때는 검색이 틀린 것인지, 찾은 근거로 잘못 답한 것인지부터 나눠 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">48 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="A03" data-slide="49">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
+              <h2 class="scene-title" data-editable="true">프레임워크 선택 기준</h2>
+              <p class="scene-subtitle" data-editable="true">배우는 순서가 아니라 필요한 제어 수준으로</p>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">구성 요소 연결</div>
+                    <div class="compare-heading" data-editable="true">LangChain</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">모델·도구를 공통 방식으로</li>
+                      <li data-editable="true">Agent를 짧게 구성</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">오전 실습의 모델·검색 연결</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">흐름 직접 설계</div>
+                    <div class="compare-heading" data-editable="true">LangGraph</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">단계·분기를 직접 정의</li>
+                      <li data-editable="true">상태 저장·중단 후 재개</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">LangChain Agent의 기반</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">기능 묶음</div>
+                    <div class="compare-heading" data-editable="true">Deep Agents</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">계획·파일·하위 작업 내장</li>
+                      <li data-editable="true">여러 단계의 긴 작업용</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">LangGraph 기반 하네스</p>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>고르는 기준</strong> 코드 길이·성능 순위가 아니라 문제에 필요한 제어</div>
+              </div>
+              <p class="source" data-editable="true">출처: LangChain Overview · LangGraph Overview · LangChain Concepts(Agent harnesses: Deep Agents)</p>
+              <aside class="speaker-note">LangChain, LangGraph, Deep Agents는 차례로 모두 배워야 하는 과정이 아니라, 필요한 제어 수준에 따라 고르는 선택지입니다. 오전 실습처럼 모델과 검색기, 도구를 연결하는 정도라면 LangChain으로 충분하고, 단순 호출 하나라면 SDK만으로도 됩니다. 단계와 분기를 직접 정하고, 상태를 저장했다가 중단한 곳에서 이어가거나 사람 확인 단계를 넣어야 한다면 LangGraph를 봅니다. Deep Agents는 LangGraph 위에 계획, 파일 공간, 하위 작업 위임을 미리 묶어 둔 하네스로, 여러 단계로 이어지는 긴 작업에 맞춰져 있습니다. 예제 코드 길이가 다르다고 성능이 다른 것은 아니며, 같은 과제로 비교한 결과가 아니면 성능 비교로 읽지 않습니다. 내 업무에 흐름 제어가 정말 필요한지부터 확인해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">49 / 52</div>
+            </section>
+
+<section class="scene" data-skill="compare" data-scene-id="A04" data-slide="50">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
+              <h2 class="scene-title" data-editable="true">MCP·Subagent·Hook 역할</h2>
+              <p class="scene-subtitle" data-editable="true">상하위 단계가 아닌 서로 다른 역할 · 함께 쓸 수 있음</p>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">외부 연결</div>
+                    <div class="compare-heading" data-editable="true">MCP</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">외부 시스템 도구를 연결</li>
+                      <li data-editable="true">도구를 전하는 표준 규약</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">예: 승인된 문서·DB 읽기</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">작업 분담</div>
+                    <div class="compare-heading" data-editable="true">Subagent</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">별도 맥락에서 하위 작업</li>
+                      <li data-editable="true">결과를 주 대화로 반환</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">예: 예외 입력만 점검</p>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">이벤트 처리</div>
+                    <div class="compare-heading" data-editable="true">Hook</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">정해진 시점에 자동 실행</li>
+                      <li data-editable="true">기억이 아닌 설정으로 동작</li>
+                    </ul>
+                    <p class="compare-note" data-editable="true">예: 파일 수정 후 포맷</p>
+                  </div>
+                </div>
+                <div class="callout" data-editable="true"><strong>설치·권한</strong> 사내 가이드의 승인된 설정만 사용</div>
+              </div>
+              <p class="source" data-editable="true">출처: Claude Code 문서 — Features overview · MCP · Subagents · Hooks</p>
+              <aside class="speaker-note">S36에서 Skill 옆에 짧게 보여 드린 세 기능을 조금 더 풀어 보겠습니다. MCP는 외부 시스템의 도구와 자료를 Claude Code에 전달하는 연결 규약이고, 기존 파일·명령 도구로 충분하면 추가하지 않아도 됩니다. Subagent는 예외 입력 점검이나 설정 위치 조사처럼 독립적인 하위 작업을 별도 맥락에서 맡기고 결과만 돌려받는 방식인데, 여러 개를 쓰면 비용과 조정 작업도 늘어납니다. Hook은 파일 수정 후 포맷처럼 정해진 시점에 설정된 동작을 실행하며, 명령을 실행하는 유형과 모델 판단을 쓰는 유형이 따로 있습니다. 세 기능은 상하위 단계가 아니라 서로 다른 역할이고 필요하면 함께 조합합니다. 실제 설치와 권한 설정은 사내 가이드의 승인된 방법을 따르고, CLAUDE.md에 적은 지침은 권한을 강제하지 않는다는 점도 기억해 두세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">50 / 52</div>
+            </section>
+
+<section class="scene" data-skill="steps" data-scene-id="A05" data-slide="51">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
+              <h2 class="scene-title" data-editable="true">사내 실행 환경 문제 해결</h2>
+              <div class="stack">
+                <ol class="steps row">
+                  <li class="step">
+                    <div class="step-num" data-editable="true">1</div>
+                    <div class="step-body" data-editable="true">접속<span class="step-desc">서버 응답·인증 오류인지 먼저 구분</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">2</div>
+                    <div class="step-body" data-editable="true">패키지<span class="step-desc">설치 판본을 실습 가이드와 비교</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">3</div>
+                    <div class="step-body" data-editable="true">모델 기능<span class="step-desc">도구 호출·임베딩 지원 여부 확인</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">4</div>
+                    <div class="step-body" data-editable="true">파일 경로<span class="step-desc">코드가 실행되는 위치 기준으로 확인</span></div>
+                  </li>
+                </ol>
+                <div class="callout" data-editable="true"><strong>한 번에 하나</strong> 오류 원문을 남기고 한 가지만 바꿔 다시 실행</div>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · Claude Code 작동 원리 문서 · 근거: 사용자 제공 강의안</p>
+              <aside class="speaker-note">실습 중 막히면 오류가 어느 층에서 났는지부터 좁히는 것이 빠릅니다. 먼저 서버에 접속되는지와 인증 오류인지를 확인하고, 접속이 되면 설치된 패키지 판본이 실습 가이드와 같은지 봅니다. 그다음 사용 중인 모델이 도구 호출이나 임베딩 같은 기능을 지원하는지 확인하는데, 호환 API라고 모든 옵션이 똑같이 동작하지는 않습니다. 마지막으로 코드가 실행되는 위치를 기준으로 파일 경로가 맞는지 확인합니다. 오류 원문을 그대로 남기고 한 번에 한 가지만 바꿔 다시 실행해야 무엇이 원인이었는지 알 수 있습니다. 주소, 계정, 키, 설치 명령은 이 슬라이드가 아니라 사내 실행 가이드에서 확인하고, 오후 Claude Code 연결은 오전 API와 별도 경로로 점검합니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">51 / 52</div>
+            </section>
+
+<section class="scene" data-skill="title-bullets" data-scene-id="A06" data-slide="52">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
+              <h2 class="scene-title" data-editable="true">현업 적용 전 확인 항목</h2>
+              <ul class="bullets">
+                <li data-editable="true"><strong>권한</strong> 실행 환경에서 읽기 범위 제한<span class="sub">프롬프트 문장은 접근 제한이 아님</span></li>
+                <li data-editable="true"><strong>데이터 정의</strong> 날짜 기준·단위·결측값 의미<span class="sub">정의를 누가 관리하는지도 기록</span></li>
+                <li data-editable="true"><strong>결과 확인</strong> 정답 아는 입력·자료 없음·실패<span class="sub">없는 답을 만들지 않고 실패를 알림</span></li>
+                <li data-editable="true"><strong>운영</strong> 응답 시간·호출량·변경 기록·피드백<span class="sub">화면이 뜨는 것과 운영 준비는 다름</span></li>
+              </ul>
+              <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · Anthropic, Building effective agents</p>
+              <aside class="speaker-note">오늘 만든 작은 도구를 실제 업무에 쓰기 전에는 네 가지를 먼저 확인합니다. 권한은 프롬프트 문장이 아니라 실행 환경에서 읽기 범위와 허용 테이블로 제한해야 합니다. 날짜 기준, 단위, 결측값 의미 같은 데이터 정의가 사람마다 다르면 코드가 맞아도 답이 달라집니다. 정답을 아는 입력, 자료가 없는 질문, 도구가 실패하는 상황에서 각각 어떻게 동작하는지 확인하고, 응답 시간과 호출량, 누가 무엇을 바꿨는지, 사용자 피드백을 남길 방법도 정합니다. 화면이 뜨는 것과 업무에 쓸 준비가 된 것은 다르다는 점을 기억해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">52 / 52</div>
+            </section>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+      (function() {
+        const frame = document.getElementById('detail-frame');
+        const scenes = Array.from(frame.querySelectorAll('.scene'));
+        const stripGrid = document.getElementById('strip-grid');
+        const prevBtn = document.getElementById('nav-prev');
+        const nextBtn = document.getElementById('nav-next');
+        const currentEl = document.getElementById('nav-current');
+        const skillEl = document.getElementById('nav-skill');
+
+        function cleanThumbClone(clone) {
+          clone.classList.add('active');
+          clone.removeAttribute('contenteditable');
+          clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+          return clone;
+        }
+
+        function syncThumbFromScene(n) {
+          const scene = scenes[n - 1];
+          const thumb = thumbs[n - 1];
+          if (!scene || !thumb) return;
+          const oldClone = thumb.querySelector('.scene');
+          const clone = cleanThumbClone(scene.cloneNode(true));
+          if (oldClone) oldClone.replaceWith(clone);
+          else thumb.insertBefore(clone, thumb.firstChild);
+        }
+
+        scenes.forEach((scene, i) => {
+          const n = i + 1;
+          const skill = scene.dataset.skill;
+          const thumb = document.createElement('div');
+          thumb.className = 'thumb';
+          thumb.dataset.slide = n;
+
+          const clone = cleanThumbClone(scene.cloneNode(true));
+          thumb.appendChild(clone);
+
+          const label = document.createElement('div');
+          label.className = 'thumb-label';
+          label.innerHTML = `<span>${String(n).padStart(2, '0')}</span><code>${skill}</code>`;
+          thumb.appendChild(label);
+
+          thumb.addEventListener('click', () => setActive(n));
+          stripGrid.appendChild(thumb);
+        });
+
+        const thumbs = Array.from(stripGrid.querySelectorAll('.thumb'));
+        let active = 1;
+
+        function setActive(n) {
+          n = Math.max(1, Math.min(scenes.length, n));
+          active = n;
+          scenes.forEach((scene, i) => scene.classList.toggle('active', i + 1 === n));
+          thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i + 1 === n));
+          currentEl.textContent = String(n).padStart(2, '0');
+          skillEl.textContent = scenes[n - 1].dataset.skill;
+          prevBtn.disabled = (n === 1);
+          nextBtn.disabled = (n === scenes.length);
+          const t = thumbs[n - 1];
+          if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+
+        prevBtn.addEventListener('click', () => setActive(active - 1));
+        nextBtn.addEventListener('click', () => setActive(active + 1));
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { setActive(active - 1); e.preventDefault(); }
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { setActive(active + 1); e.preventDefault(); }
+          if (/^[1-9]$/.test(e.key)) setActive(parseInt(e.key, 10));
+          if (e.key === '0') setActive(10);
+        });
+
+        setActive(1);
+
+        /* ============ Aim inspector ============ */
+        const aimBtn = document.getElementById('nav-aim');
+        const overlay = document.createElement('div');
+        overlay.className = 'aim-overlay';
+        document.body.appendChild(overlay);
+        const tooltip = document.createElement('div');
+        tooltip.className = 'aim-tooltip';
+        document.body.appendChild(tooltip);
+        const toast = document.createElement('div');
+        toast.className = 'aim-toast';
+        document.body.appendChild(toast);
+        let aimMode = false;
+        let toastTimer = null;
+
+        function activeSceneEl() {
+          return document.querySelector('#detail-frame .scene.active');
+        }
+
+        function buildSelector(el) {
+          if (!el || el.nodeType !== 1) return '';
+          const parts = [];
+          let cur = el;
+          while (cur && cur.nodeType === 1) {
+            if (cur.classList.contains('scene') && cur.dataset.slide) {
+              parts.unshift(`[data-slide="${cur.dataset.slide}"]`);
+              break;
+            }
+            if (cur.id) { parts.unshift('#' + cur.id); break; }
+
+            let part = cur.tagName.toLowerCase();
+            if (cur.className && typeof cur.className === 'string') {
+              const classes = cur.className.trim().split(/\s+/)
+                .filter(c => c && c !== 'active' && !c.startsWith('aim-'));
+              if (classes.length) part += '.' + classes.join('.');
+            }
+            const parent = cur.parentElement;
+            if (parent) {
+              const twins = Array.from(parent.children).filter(s =>
+                s.tagName === cur.tagName && s.className === cur.className
+              );
+              if (twins.length > 1) {
+                const idx = twins.indexOf(cur) + 1;
+                part += `:nth-of-type(${idx})`;
+              }
+            }
+            parts.unshift(part);
+            cur = parent;
+          }
+          return parts.join(' > ');
+        }
+
+        function colorize(sel) {
+          return sel
+            .replace(/\[data-slide="\d+"\]/g, m => `<span class="tag-part">${m}</span>`)
+            .replace(/\.[a-zA-Z_-][a-zA-Z0-9_-]*/g, m => `<span class="cls-part">${m}</span>`)
+            .replace(/ > /g, '<span class="sep-part"> › </span>');
+        }
+
+        function setOverlayTo(el) {
+          const rect = el.getBoundingClientRect();
+          overlay.style.display = 'block';
+          overlay.style.top = rect.top + 'px';
+          overlay.style.left = rect.left + 'px';
+          overlay.style.width = rect.width + 'px';
+          overlay.style.height = rect.height + 'px';
+          const sel = buildSelector(el);
+          tooltip.innerHTML = colorize(sel);
+          tooltip.style.display = 'block';
+          let tipTop = rect.bottom + 6;
+          let tipLeft = rect.left;
+          const tipRect = tooltip.getBoundingClientRect();
+          if (tipTop + tipRect.height > window.innerHeight - 8) tipTop = rect.top - tipRect.height - 6;
+          if (tipLeft + tipRect.width > window.innerWidth - 8) tipLeft = window.innerWidth - tipRect.width - 8;
+          if (tipLeft < 8) tipLeft = 8;
+          tooltip.style.top = tipTop + 'px';
+          tooltip.style.left = tipLeft + 'px';
+        }
+
+        function hideAim() { overlay.style.display = 'none'; tooltip.style.display = 'none'; }
+        function exitAimMode() {
+          aimMode = false;
+          document.body.classList.remove('aim-active');
+          aimBtn.classList.remove('active');
+          hideAim();
+        }
+        function enterAimMode() {
+          aimMode = true;
+          document.body.classList.add('aim-active');
+          aimBtn.classList.add('active');
+        }
+        function showToast(sel) {
+          toast.innerHTML =
+            '<div class="toast-title">✓ 복사되었습니다</div>' +
+            '<div class="toast-sel">' + sel.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</div>';
+          toast.classList.add('show');
+          if (toastTimer) clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+        function copyToClipboard(text) {
+          if (navigator.clipboard && window.isSecureContext !== false) {
+            return navigator.clipboard.writeText(text).catch(() => legacyCopy(text));
+          }
+          return legacyCopy(text);
+        }
+        function legacyCopy(text) {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta);
+          return Promise.resolve();
+        }
+
+        aimBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (aimMode) exitAimMode(); else enterAimMode();
+        });
+        document.addEventListener('mousemove', (e) => {
+          if (!aimMode) return;
+          const el = document.elementFromPoint(e.clientX, e.clientY);
+          const scene = activeSceneEl();
+          if (!el || !scene || !scene.contains(el)) { hideAim(); return; }
+          setOverlayTo(el);
+        });
+        document.addEventListener('click', (e) => {
+          if (!aimMode) return;
+          const el = document.elementFromPoint(e.clientX, e.clientY);
+          const scene = activeSceneEl();
+          if (!el || !scene || !scene.contains(el)) return;
+          e.preventDefault();
+          e.stopPropagation();
+          const sel = buildSelector(el);
+          copyToClipboard(sel).then(() => showToast(sel));
+          exitAimMode();
+        }, true);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && aimMode) { exitAimMode(); e.preventDefault(); }
+        });
+
+        /* ============ Text Edit mode (16:9 slide variant — data-slide) ============ */
+        const editBtn = document.getElementById('nav-edit');
+        const INLINE_TAGS = new Set(['SPAN','EM','STRONG','B','I','U','A','BR','CODE','MARK','SMALL']);
+
+        function isTextOnlyLeaf(el) {
+          if (!el.children.length) return true;
+          return Array.from(el.children).every(c => INLINE_TAGS.has(c.tagName) && isTextOnlyLeaf(c));
+        }
+
+        function findEditableElements(scope) {
+          const out = [];
+          const walk = (el) => {
+            if (el.hasAttribute('aria-hidden')) return;
+            if (el.tagName === 'IMG' || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+            if (isTextOnlyLeaf(el) && el.textContent.trim()) {
+              out.push(el);
+            } else {
+              Array.from(el.children).forEach(walk);
+            }
+          };
+          Array.from(scope.children).forEach(walk);
+          return out;
+        }
+
+        const origTexts = new Map();
+        let editMode = false;
+
+        function simpleSelectorFromSlide(el) {
+          if (!el.className || typeof el.className !== 'string') return el.tagName.toLowerCase();
+          const parts = el.className.trim().split(/\s+/).filter(c => c && c !== 'active' && !c.startsWith('aim-') && !c.startsWith('edit-'));
+          return parts.length ? '.' + parts.join('.') : el.tagName.toLowerCase();
+        }
+
+        function enterEditMode() {
+          editMode = true;
+          document.body.classList.add('edit-mode');
+          editBtn.classList.add('active');
+          editBtn.textContent = 'Done';
+          document.querySelectorAll('#detail-frame [data-slide]').forEach(slide => {
+            findEditableElements(slide).forEach(el => {
+              origTexts.set(el, el.innerHTML);
+              el.contentEditable = 'true';
+              el.spellcheck = false;
+            });
+          });
+        }
+
+        function exitEditMode() {
+          editMode = false;
+          document.body.classList.remove('edit-mode');
+          editBtn.classList.remove('active');
+          editBtn.textContent = 'Edit';
+          const bySlide = new Map();
+          origTexts.forEach((origHTML, el) => {
+            el.removeAttribute('contenteditable');
+            const curHTML = el.innerHTML;
+            if (origHTML.trim() !== curHTML.trim()) {
+              const slide = el.closest('[data-slide]');
+              const num = slide ? slide.dataset.slide : '?';
+              const skill = slide ? (slide.dataset.skill || '') : '';
+              const sel = simpleSelectorFromSlide(el);
+              if (!bySlide.has(num)) bySlide.set(num, { skill, changes: [] });
+              bySlide.get(num).changes.push({ sel, old: origHTML.trim(), new: curHTML.trim() });
+            }
+          });
+          origTexts.clear();
+          const totalChanges = Array.from(bySlide.values()).reduce((a, v) => a + v.changes.length, 0);
+          if (totalChanges > 0) {
+            Array.from(bySlide.keys()).forEach(num => syncThumbFromScene(parseInt(num, 10)));
+            const topic = document.title.replace(/ · Card Overview.*$/, '').replace(/ · Overview.*$/, '');
+            let patch = `# Overview edits — ${topic} (${totalChanges} change${totalChanges === 1 ? '' : 's'})\n\n`;
+            Array.from(bySlide.keys()).sort((a, b) => parseInt(a) - parseInt(b)).forEach(num => {
+              const { skill, changes } = bySlide.get(num);
+              patch += `## Slide ${num}${skill ? ' (' + skill + ')' : ''}\n`;
+              changes.forEach(c => {
+                patch += `- ${c.sel}\n  OLD: ${c.old}\n  NEW: ${c.new}\n`;
+              });
+              patch += '\n';
+            });
+            // Try POST /save (live server); fall back to clipboard (static server)
+            fetch('/save', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ patch: patch }),
+            }).then(r => {
+              if (!r.ok) throw new Error('save failed: ' + r.status);
+              return r.json();
+            }).then(result => {
+              toast.innerHTML =
+                '<div class="toast-title">✓ ' + result.applied + '건 반영됨 (파일 직접 수정)</div>' +
+                '<div class="toast-sel">오른쪽 화면과 왼쪽 썸네일이 함께 갱신됨</div>';
+              toast.classList.add('show');
+              if (toastTimer) clearTimeout(toastTimer);
+              toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
+            }).catch(() => {
+              copyToClipboard(patch).then(() => {
+                toast.innerHTML =
+                  '<div class="toast-title">✎ ' + totalChanges + '개 변경 클립보드 복사됨</div>' +
+                  '<div class="toast-sel">정적 서버 — 대화창에 붙여넣어 agent 반영 요청</div>';
+                toast.classList.add('show');
+                if (toastTimer) clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+              });
+            });
+          }
+        }
+
+        editBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (editMode) exitEditMode(); else enterEditMode();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (editMode && document.activeElement && document.activeElement.isContentEditable) {
+            e.stopPropagation();
+          }
+        }, true);
+      })();
+    </script>
+  </body>
+</html>
