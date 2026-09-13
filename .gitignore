@@ -13,3 +13,4 @@ __pycache__/
 .env
 *.log
 _workspace/codex_harness_reference/
+.playwright-mcp/

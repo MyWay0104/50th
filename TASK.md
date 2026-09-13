@@ -25,6 +25,9 @@
 - [x] `user_guide.md`에 새 주제 프롬프트 예시 추가
 - [x] topic scaffold에 `exports/` 추가
 - [x] PDF/PPTX export gate 중심으로 workflow 문서 수정
+- [x] 슬라이드 단위 서브에이전트 3종 추가 (`slide_content_writer`, `slide_ui_designer`, `lecture_expert`)
+- [x] `scripts/sync_overview.py` 추가: scene-styles 규약 topic의 overview 재생성, 순번 정리, 최신 여부 검사
+- [x] `sk-hynix-ai-agent-guide-edu` topic 52장 빌드 (Phase 0–4, 2026-09-14). 사용자 overview 검토·export 대기. QA: `_workspace/ppt_qa_report.md`
 
 ## 코드
 

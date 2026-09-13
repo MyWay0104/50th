@@ -1,0 +1,86 @@
+# AI Agent Guide — 제작 요구사항 (v0.2)
+
+버전: v0.2 · 2026-09-13 · topic: `topics/sk-hynix-ai-agent-guide-edu/`
+
+## v0.2 확정 결정 (v0.1 본문보다 우선)
+
+| 항목 | 결정 |
+|---|---|
+| topic 경로 | 기존 자료 폴더 `topics/sk-hynix-ai-agent-guide-edu/`를 그대로 topic으로 승격. 조사 자료는 `docs/`, v0.1 스토리보드는 `docs/storyboard_v0.1/` |
+| 디자인 | `new_md/DESIGN-Notion.md`를 최소 적용. topic `DESIGN.md` 상단 규칙이 기준 |
+| 장수 | 본문 46장(S01, G01, S02–S44, G02) + 부록 6장(A01–A06) = 52장 |
+| 구간 표지 | 만들지 않음. G01 시간표와 장면 상단 구간 표시로 대체 |
+| 애니메이션 | 쓰지 않음. HyperFrames 필수 속성과 빈 paused 타임라인만 유지 |
+| 제작 방식 | 슬라이드 단위 루프: slide_content_writer → slide_ui_designer → lecture_expert(pre) → 빌드 → lecture_expert(post) |
+| 동기화 | `index.html`이 원본. `overview.html`은 `scripts/sync_overview.py`로 재생성 |
+| export | 사용자 overview 최종 확인 전 금지 |
+
+v0.1 본문의 "구현 저장소 미확정", "topic 이름 제안 `ai_agent_guide`", "디자인 미선정"은 위 결정으로 대체한다.
+
+---
+
+# AI Agent Guide — 제작 요구사항
+
+버전: v0.1 · 2026-09-13
+
+## 요청과 현재 단계
+
+- 요청: 사용자가 제시한 시간표에 맞춰 우선순위를 정한 이론 스토리보드와 콘티 초안.
+- 최종 매체: HyperFrames HTML을 원본으로 하고 발표용 PDF 출력.
+- 수강생 매체: 기존 실습 HTML과 Python 소스 ZIP.
+- 이번 결과: 시간표, 장면별 화면 문구·발표 요지·참여 질문·실습 전환·출처, 제작 인계 자료.
+- 현재 단계: content plan / visual plan. HTML 장면 구현·실제 화면 검수·PDF 출력은 후속 제작 단계다.
+
+## 수강생과 수업 운영 가정
+
+AI 교육 경험자와 처음 듣는 참가자가 함께 수강한다. Python·웹개발 숙련도를 전제하지 않는다. 준비된 코드를 읽고 핵심 부분을 수정하면서 결과를 확인하는 방식이다. 사내 계정·접속 권한·실습 데이터·패키지는 사전에 준비한다.
+
+40분 차수에는 이론·안내 실습·결과 확인을 모두 포함한다. 첫 설치가 막히더라도 학습을 이어갈 준비된 출력·짝 실습·대체 데이터가 필요하다. 휴식시간을 필수 수업으로 사용하지 않는다.
+
+## 시간표 결정
+
+- 명시된 일정: 09:00–17:30, 총 510분.
+- 점심: 11:40–13:20, 100분. 11:40의 휴식 표기는 점심과 겹친 것으로 처리.
+- 별도 휴식: 20분 × 4회 = 80분.
+- 16:00부터 자유 실습 시작. 16:00의 휴식 표기와 중복 계산하지 않음.
+- 40분 × 6차수 = 240분. 이론 100분, 안내 실습 119분, 확인 21분.
+- 자유 실습 80분과 공유·Q&A 10분 = 90분.
+- 교육 활동 총 330분. 행정상의 ‘8시간 과정’ 인정 기준은 이번 기획으로 판단하지 않음.
+- 16:00–16:20 휴식을 유지하는 선택을 할 경우 자유 실습은 70분으로 재편성해야 함.
+
+## 로컬 제작 환경에서 확인한 것
+
+- [2_slide_master README](C:/LSW_Coding/2_slide_master/README.md): HyperFrames topic 단위 제작, index/overview, Edit 검토.
+- [3_slide_master_v2 AGENTS](C:/LSW_Coding/3_slide_master_v2/AGENTS.md): 1920×1080 덱, 허용 data-skill, Edit/Aim, 최종 PDF/PPTX 지향.
+- [ppt-hyperframes-deck Skill](C:/LSW_Coding/3_slide_master_v2/.agents/skills/ppt-hyperframes-deck/SKILL.md): 요구사항·콘텐츠 계획·시각 계획·구현·QA의 제작 규약.
+- [HyperFrames Slide Skill](C:/LSW_Coding/3_slide_master_v2/.codex/skills/hyperframes-slide/SKILL.md): 레이아웃 유형, 장면 구성, 애니메이션 시간과 overview 동기화.
+- 등록된 다른 ‘PPT제작’ 폴더의 package.json은 pptxgenjs 기반이었다. 이번 인계안의 HyperFrames 규격은 위 slide_master 환경을 기준으로 삼았다.
+- ‘ppt-maker’라는 호칭의 정확한 로컬 폴더와 최종 적용 대상은 확정하지 않았다. 이름만으로 서로 다른 프로젝트를 동일시하지 않는다.
+
+이번에는 기존 제작 저장소와 동기화 sources를 수정하지 않았다. 현재 교육 프로젝트의 outputs 아래에 기획 파일을 저장했다. 후속 구현에서 사용할 topic 이름 제안은 `ai_agent_guide`이며, 실제 topic은 아직 생성하지 않았다.
+
+## 디자인 입력
+
+회사 맥락은 SK하이닉스 사내 교육이다. 확인한 v2 new_md에는 SAMPLE과 Nintendo 디자인 파일이 있었으며 이 교육용 브랜드 디자인으로 선택하지 않았다.
+
+초안은 내용과 구도만 확정한다. 제작 단계에서는 실제 사용할 DESIGN 문서 또는 사내 디자인 기준을 선택한다. 브랜드가 확정되지 않은 상태에서도 본문 내용과 콘티 검토는 가능하다.
+
+## 판본과 사실 확인 경계
+
+- 강사의 경력과 Part Finder 운영 시작 시점은 사용자 제공 정보.
+- Part Finder 기술 설명은 공개 Beta 설계를 근거로 하며 현재 사내 운영 구조와 동일하다고 단정하지 않음.
+- Dokmo·Obsidian·Claude 메모리 사례는 개인 기록. 이번에 재현한 테스트 결과가 아님.
+- Naver·Streamlit 최종 실습판은 미확인. 기존에 찾은 문서 RAG·FastAPI 가이드와 구분.
+- 사내 모델명·주소·권한·설치 명령은 검증된 환경에서 확정.
+- 없는 성능 수치와 가상의 성공 사례를 실제 결과처럼 넣지 않음.
+
+## 완료 기준
+
+1. 7개 운영 구간의 시각과 분량이 맞는다.
+2. 모든 장면에 화면 문구·구도·발표 요지·질문/진행·다음 연결·출처가 있다.
+3. 40분 차수 안에 실습과 확인 시간이 확보된다.
+4. 본문·실습 안내·부록을 구분한다.
+5. HyperFrames 레이아웃은 확인한 허용 값만 사용한다.
+6. 수업 시간과 HTML 애니메이션 시간을 분리한다.
+7. HTML·PDF 제작 완료나 사내 코드 실행 검증 완료로 오인할 표현을 쓰지 않는다.
+

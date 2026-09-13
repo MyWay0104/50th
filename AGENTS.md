@@ -127,6 +127,14 @@ PDF/PPTX로 파일화하기 전까지 사용자가 `overview.html`에서 수작�
 - `hyperframes_ppt_builder`: topic 폴더의 HyperFrames HTML을 구현한다.
 - `ppt_overview_qa`: overview, edit/aim, lint, export gate를 검증한다.
 
+슬라이드 단위 보조 역할 (강의·교육 자료처럼 장면별 정밀도가 필요할 때 선택적으로 사용):
+
+- `slide_content_writer`: 장면별 화면 문구·발표자 노트·출처를 최종 문장으로 확정한다. 산출물 `_workspace/slide_copy/<차수>.md`.
+- `slide_ui_designer`: 장면별 배치·글자 크기·색 역할을 DESIGN.md 기준으로 지시한다. 애니메이션은 다루지 않는다. 산출물 `_workspace/slide_ui/<차수>.md`.
+- `lecture_expert`: 강사·교수설계 관점에서 차수 단위로 검토하고 수정 요청을 낸다. 빌드 전·후 2회. 산출물 `_workspace/lecture_review/<차수>-pre|post.md`.
+
+정의는 `.codex/agents/*.toml`(규약·검증용)과 `.claude/agents/*.md`(Claude Code 실행용) 양쪽에 둔다.
+
 ## 문서화
 
 기능 또는 workflow를 바꾸면 필요한 문서를 갱신한다.

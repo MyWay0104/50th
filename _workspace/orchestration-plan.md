@@ -48,6 +48,24 @@
 
 - `_workspace/ppt_visual_plan.md`
 
+### 3-1. Slide-level Refinement (선택)
+
+강의 자료처럼 장면별 정밀도가 필요할 때 차수(block) 단위로 반복한다.
+
+```text
+slide_content_writer ─┐
+                      ├─> lecture_expert (pre) ─> 수정 반영 ─> hyperframes_ppt_builder
+slide_ui_designer ────┘                                              │
+                                                                     v
+                                lecture_expert (post) + ppt_overview_qa ─> 사용자 검토
+```
+
+출력:
+
+- `_workspace/slide_copy/<차수>.md`
+- `_workspace/slide_ui/<차수>.md`
+- `_workspace/lecture_review/<차수>-pre.md`, `<차수>-post.md`
+
 ### 4. HyperFrames Build
 
 담당: `hyperframes_ppt_builder`
@@ -60,6 +78,12 @@
 - `topics/<topic-name>/meta.json`
 - `topics/<topic-name>/hyperframes.json`
 - `topics/<topic-name>/exports/`
+
+`index.html`에 `<style id="scene-styles">`를 둔 topic은 장면을 index에만 작성하고 다음 명령으로 overview를 재생성한다. 장면 id는 순번 `s-N`, 기획 ID는 `data-scene-id`.
+
+```powershell
+python scripts\sync_overview.py topics\<topic-name> --renumber
+```
 
 ### 5. Overview QA
 
