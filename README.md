@@ -17,12 +17,20 @@
   -> topic_intake_router
   -> ppt_content_planner
   -> ppt_visual_designer
+  -> (선택) slide_content_writer / slide_ui_designer -> lecture_expert 검토
   -> hyperframes_ppt_builder
   -> ppt_overview_qa
   -> 사용자 overview 검토
   -> 사용자 Edit/Aim 수작업 수정
   -> 최종 확인
   -> PDF/PPTX export
+```
+
+`index.html`에 `<style id="scene-styles">`를 두는 topic은 `overview.html`을 손으로 복제하지 않고 `scripts/sync_overview.py`로 재생성한다. 장면 id는 순번 `s-N`, 기획 장면 ID는 `data-scene-id`, 발표자 노트는 `.speaker-note`에 둔다.
+
+```powershell
+python scripts\sync_overview.py topics\<topic-name> --renumber
+python scripts\sync_overview.py topics\<topic-name> --check
 ```
 
 핵심 디렉터리:

@@ -24,10 +24,13 @@ topics/<topic-name>/
 구성 요소:
 
 - `AGENTS.md`: 저장소 전체 작업 규칙과 허용 HyperFrames 타입
-- `.codex/agents/*.toml`: 역할별 subagent 계약
+- `shrimp-rules.md`: shrimp-task-manager가 AI Agent에 주입하는 작업 규칙. 디렉터리 맵, 파일 동기화 표, 판단 기준, 금지 행동을 명령형으로 정리. `AGENTS.md`와 충돌하면 `AGENTS.md`가 우선
+- `.codex/agents/*.toml`: 역할별 subagent 계약. 덱 단위 5개 + 슬라이드 단위 3개(`slide_content_writer`, `slide_ui_designer`, `lecture_expert`)
+- `.claude/agents/*.md`: 위 슬라이드 단위 3개의 Claude Code 실행용 정의
 - `.agents/skills/ppt-hyperframes-deck/SKILL.md`: 반복 제작 절차
 - `.codex/skills/hyperframes*`: 기존 `2_slide_master` 방식의 HyperFrames 스킬
 - `scripts/create_topic.py`: topic scaffold 생성
+- `scripts/sync_overview.py`: `<style id="scene-styles">` 규약 topic의 `index.html`에서 `overview.html`을 재생성. `--renumber`로 장면 id(`s-N`)·타이밍·쪽번호를 순번으로 정리, `--check`로 최신 여부 검사. 템플릿은 `.codex/skills/hyperframes-overview/template.html`을 읽기만 한다
 - `scripts/validate_codex_port.py`: harness 구조 검증
 - `scripts/validate_topic.py`: topic 산출물 검증
 
