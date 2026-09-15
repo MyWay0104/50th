@@ -221,7 +221,7 @@
 | `.act-tag` (+`strong`) | ① 막 태그. 구간 첫 장면 7곳만, eyebrow 바로 아래 |
 | `.thesis` | ③ 한 줄 요지. 40자 이내 1줄, 글자 폭만큼 파랑 밑줄 |
 | `.explain` (+`strong`) | ④ 설명 문단 2–4문장 120자 이내. 실습 안내판은 `<strong>관찰할 것</strong>` + 2문장 |
-| `.act-group` > `.steps.timeline` + `.act-bracket` + `.act-name` | G01 전용 네 막 괄호선 (막 이름 칸 200px) |
+| `.act-group` > `.steps.timeline` + `.act-bracket` + `.act-name` | G01 전용 네 막 괄호선 (막 이름 칸 104px, 막 글자와 이름을 두 줄로 쌓음, 시각 칸 96px) |
 | `.placeholder.is-spec` > `.placeholder-id` + `.placeholder-desc`×3 | 플레이스홀더 v2 |
 | `.split-image.h-sm` / `.h-md` / `.h-lg` | 이미지 높이 280 / 360 / 440px (인라인 style 대신) |
 | `.dist` > `.dist-bar.lv-1`~`.lv-5` (+`.is-accent`) | 개념 예시 막대 분포(높이 180px, 막대 높이 8·20·40·65·90%). 수치·축 눈금 없이 모양만. 아래에 `.dg-caption` "모양만 · 개념 예시" |
@@ -232,6 +232,9 @@
 | `.done-box > .chip-row`, `.fallback > .chip-row` | 상자 안 칩 줄 위 16px |
 | `.quote-points li` 번호 | CSS 카운터로 흐림색 번호 1·2·3 (S44) |
 | `.scene.night .compare-*` | 남색 반전 장면 비교 카드: 투명 카드·흰 헤어라인·흰 글자 (G02) |
+| `.scene.night .panel-title`, `.scene.night .dg-arrow` | 남색 표지 보조 글자 대비 (S01) |
+| `.scene.title-scene .chip-row` | 표지 하루 흐름 칩 줄, 위 40px (S01) |
+| `.compare-col .dist` | 비교 카드 안 막대 분포 높이 120px (S07) |
 
 ## 6. 금지 예시
 

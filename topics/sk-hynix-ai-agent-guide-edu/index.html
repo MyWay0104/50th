@@ -970,7 +970,7 @@
         color: var(--ink-3);
       }
       .act-tag strong { margin-right: 12px; color: var(--ink-2); font-weight: 700; }
-      .scene.title-scene .act-tag { position: absolute; top: 124px; left: 120px; margin: 0; }
+      .scene.title-scene .act-tag { position: absolute; top: 132px; left: 120px; margin: 0; }
       /* ③ 한 줄 요지: 글자 폭만큼 파랑 밑줄 */
       .thesis {
         align-self: flex-start;
@@ -1013,7 +1013,7 @@
       }
       .act-name {
         flex-shrink: 0;
-        width: 200px;
+        width: 104px;
         align-self: center;
         font-size: var(--fs-small);
         font-weight: 700;
@@ -1079,6 +1079,15 @@
       .scene.night .compare-list li { color: var(--on-night); }
       .scene.night .compare-note { margin-top: 0; color: var(--on-night-2); }
       .compare-note + .chip-row { margin-top: 16px; }
+      /* G01 네 막 묶음 안 시간표: 시각 칸을 줄이고 세로선을 번호 원 중심에 맞춘다 (96 + 28 + 28 − 1) */
+      .act-group .step-time { width: 96px; }
+      .act-group > .steps.timeline::before { left: 151px; }
+      /* 남색 표지(S01)의 보조 글자 대비 */
+      .scene.night .panel-title, .scene.night .dg-arrow { color: var(--on-night-2); }
+      /* 표지의 하루 흐름 칩 줄 (S01) */
+      .scene.title-scene .chip-row { margin-top: 40px; align-items: center; }
+      /* 비교 카드 안의 막대 분포는 낮게 (S07) */
+      .compare-col .dist { height: 120px; margin-top: 24px; }
     </style>
   </head>
   <body>
