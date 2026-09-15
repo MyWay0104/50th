@@ -1051,6 +1051,18 @@
       .dist-bar.lv-3 { height: 40%; }
       .dist-bar.lv-4 { height: 65%; }
       .dist-bar.lv-5 { height: 90%; }
+      /* 점선 영역 두세 개를 한 줄에 같은 폭으로 (S23 등) */
+      .dg-row.even > .dg-zone { flex: 1; min-width: 0; }
+      /* 빈 체크 칸: 특수 글자(☐) 대신 CSS 정사각형 (S27) */
+      .dg-check {
+        display: inline-block;
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border: 2px solid var(--ink-3);
+        border-radius: 4px;
+        vertical-align: -0.15em;
+      }
     </style>
   </head>
   <body>

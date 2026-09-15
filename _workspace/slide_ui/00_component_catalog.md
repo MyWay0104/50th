@@ -225,6 +225,8 @@
 | `.placeholder.is-spec` > `.placeholder-id` + `.placeholder-desc`×3 | 플레이스홀더 v2 |
 | `.split-image.h-sm` / `.h-md` / `.h-lg` | 이미지 높이 280 / 360 / 440px (인라인 style 대신) |
 | `.dist` > `.dist-bar.lv-1`~`.lv-5` (+`.is-accent`) | 개념 예시 막대 분포(높이 180px, 막대 높이 8·20·40·65·90%). 수치·축 눈금 없이 모양만. 아래에 `.dg-caption` "모양만 · 개념 예시" |
+| `.dg-row.even` > `.dg-zone` | 점선 영역 여러 개를 한 줄에 같은 폭으로 나눔 (S23) |
+| `.dg-check` (aria-hidden) | 빈 체크 칸 28px 정사각형. 특수 글자 ☐ 대신 사용 (S27) |
 
 ## 6. 금지 예시
 
