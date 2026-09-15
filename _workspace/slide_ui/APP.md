@@ -271,7 +271,7 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
     <ul class="bullets">
       <li data-editable="true"><strong>Q·K·V</strong> 찾는 기준·이름표·내용<span class="sub">비유 · 한 토큰 표현에서 나온 세 벡터</span></li>
       <li data-editable="true">그림 왼쪽: 헤드 하나의 계산<span class="sub">softmax(QK^T / √d) · V</span></li>
-      <li data-editable="true">그림 오른쪽: 여러 헤드를 나란히<span class="sub">헤드마다 다른 Q·K·V 변환</span></li>
+      <li data-editable="true">그림 오른쪽: 여러 헤드를 나란히<span class="sub">헤드 = Q·K·V 계산 한 벌 · 헤드마다 다른 변환</span></li>
     </ul>
     <div class="split-panel">
       <div class="split-image h-sm pair">
@@ -320,8 +320,8 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
 <section id="s-48" class="scene clip" data-skill="compare" data-scene-id="A02" data-start="235" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">RAG 검색 방식과 메타데이터</h2>
-  <p class="thesis" data-editable="true">메타데이터는 답변에서 구분할 조건부터 설계한다</p>
-  <p class="explain" data-editable="true">어느 단계도 모델을 다시 학습시키지 않는다. 답이 틀리면 검색이 틀렸는지, 찾은 근거로 잘못 답했는지부터 나눈다. 검색 쪽은 Reranking, 생성 쪽은 프롬프트 제약을 살핀다.</p>
+  <p class="thesis" data-editable="true">RAG 품질은 재학습이 아니라 분할·검색·메타데이터로 다듬는다</p>
+  <p class="explain" data-editable="true">RAG 품질은 재학습이 아니라 분할·검색·메타데이터로 다듬는다. 답이 틀리면 검색이 틀렸는지, 찾은 근거로 잘못 답했는지부터 나눈다. 검색 쪽은 재정렬(Reranking), 생성 쪽은 프롬프트 제약을 본다.</p>
   <div class="stack">
     <div class="dg-row is-compact">
       <div class="dg-box" data-editable="true">분할</div>
@@ -401,7 +401,7 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">프레임워크 선택 기준</h2>
   <p class="thesis" data-editable="true">배우는 순서가 아니라 문제에 필요한 추상화 수준을 고른다</p>
-  <p class="explain" data-editable="true">단순 호출 하나면 SDK로 충분하다. 코드 길이·예제 차이는 성능 순위가 아니다. LangChain Agent와 Deep Agents는 LangGraph 위에서 동작한다.</p>
+  <p class="explain" data-editable="true">추상화 수준은 기능이 미리 묶인 정도다. 단순 호출 하나면 SDK로 충분하다. LangChain Agent와 Deep Agents는 LangGraph 위에서 동작한다.</p>
   <div class="stack">
     <div class="compare-grid cols-3">
       <div class="compare-col">
@@ -478,7 +478,7 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
       <div class="compare-kicker" data-editable="true">외부 연결</div>
       <div class="compare-heading" data-editable="true">MCP</div>
       <ul class="compare-list">
-        <li data-editable="true">외부 시스템 도구를 연결</li>
+        <li data-editable="true">앱 N개·도구 M개를 한 규약으로</li>
       </ul>
       <div class="dg-row">
         <span class="chip" data-editable="true">N×M</span>
@@ -524,7 +524,7 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
 | 출처 1줄 | 58 | 약 1,150px |
 | **합계 / 여유** | **819 / 53** | 통과 |
 
-- 가로: 열 안쪽 457px. 칩 줄 = 칩 "N×M" 약 77 + 20 + 화살표 40 + 20 + 칩 "N+M" 약 77 + 20 + 캡션 약 166 = 420px → 1줄(여유 37px). 목록 최장 "외부 시스템 도구를 연결"·"정해진 시점에 자동 실행" ≈ 350px < 427 → 1줄. note 최장 "개념 예시 · 교안 내용 재구성" ≈ 307px → 1줄.
+- 가로: 열 안쪽 457px. 칩 줄 = 칩 "N×M" 약 77 + 20 + 화살표 40 + 20 + 칩 "N+M" 약 77 + 20 + 캡션 약 166 = 420px → 1줄(여유 37px). 목록 최장 "앱 N개·도구 M개를 한 규약으로"·"정해진 시점에 자동 실행" ≈ 350px < 427 → 1줄. note 최장 "개념 예시 · 교안 내용 재구성" ≈ 307px → 1줄.
 - 글자 크기: 72 / 40 / 32 / 28(칩) → 4종.
 - 강조: 칩 `N+M` `.accent` 한 곳. `.is-accent` 열 없음. 세 열 같은 크기·같은 높이(note가 `margin-top:auto`로 바닥 정렬), 위아래 배치·열 번호 없음.
 - 주의
@@ -547,7 +547,7 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
   <ol class="steps row">
     <li class="step">
       <div class="step-num" data-editable="true">1</div>
-      <div class="step-body" data-editable="true">접속<span class="step-desc">서버 응답·인증 오류인지 먼저 구분</span><span class="dg-sub">예: 콘솔 인코딩 오류로 기동 실패</span></div>
+      <div class="step-body" data-editable="true">접속<span class="step-desc">서버 응답·인증 오류인지 먼저 구분</span><span class="dg-sub">예: 콘솔 인코딩 오류로 서버가 안 뜸</span></div>
     </li>
     <li class="step">
       <div class="step-num" data-editable="true">2</div>
@@ -555,14 +555,14 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
     </li>
     <li class="step">
       <div class="step-num" data-editable="true">3</div>
-      <div class="step-body" data-editable="true">모델 기능<span class="step-desc">도구 호출·임베딩 지원 여부 확인</span><span class="dg-sub">예: 임베딩 모델 바꾸면 재인덱싱</span></div>
+      <div class="step-body" data-editable="true">모델 기능<span class="step-desc">도구 호출·임베딩 지원 여부 확인</span><span class="dg-sub">예: 임베딩 모델 바꾸면 벡터 새로 생성</span></div>
     </li>
     <li class="step">
       <div class="step-num" data-editable="true">4</div>
       <div class="step-body" data-editable="true">파일 경로<span class="step-desc">코드가 실행되는 위치 기준으로 확인</span><span class="dg-sub">예: 실행 위치가 달라 파일 못 찾음</span></div>
     </li>
   </ol>
-  <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · Claude Code 작동 원리 문서 · 현업 활용 가이드 문제 해결 사례(일반화) · 근거: 사용자 제공 강의안</p>
+  <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · Claude Code 작동 원리 문서 · 현업 활용 가이드 문제 해결 사례(일반화) · 근거: 강사 강의안</p>
   <aside class="speaker-note">…문구 파일 A05 노트 전문…</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">51 / 56</div>
@@ -653,7 +653,7 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">LangGraph로 흐름 꺼내기</h2>
   <p class="thesis" data-editable="true">분기·중단·재개가 필요할 때 흐름을 그래프로 직접 그린다</p>
-  <p class="explain" data-editable="true">LangGraph는 State·Node·Edge로 흐름을 정의한다. create_agent의 도구 호출 루프도 내부는 이런 그래프다. 순서가 고정된 작업이면 직접 그리지 않아도 된다.</p>
+  <p class="explain" data-editable="true">LangGraph는 상태(State)·단계(Node)·연결(Edge)로 흐름을 정의한다. create_agent의 도구 호출 루프도 내부는 그래프다. 순서가 고정된 작업이면 직접 그리지 않아도 된다.</p>
   <div class="split-grid">
     <div class="dg">
       <div class="dg-zone">
@@ -673,11 +673,11 @@ v0.3 절(위)은 기록으로 남긴다. 빌드는 이 절을 따른다.
           <div class="dg-box" data-editable="true">바로 답변</div>
         </div>
       </div>
-      <p class="dg-caption" data-editable="true">세 노드 모두 END로 · 개념 예시 · 교안 내용 재구성</p>
+      <p class="dg-caption" data-editable="true">모두 END로 · 개념 예시, 오전 앱 구조 아님 · 교안 내용 재구성</p>
     </div>
     <div class="stack">
       <div class="code-card">
-        <div class="code-title" data-editable="true">StateGraph 빌드 · 교육용 축약(import·노드 함수 생략)</div>
+        <div class="code-title" data-editable="true">StateGraph 빌드 · 교육용 축약(일부 줄 생략)</div>
         <pre class="code-body" data-editable="true">g = StateGraph(State)
 g.add_node("classify", classify)
 g.add_edge(START, "classify")
@@ -730,7 +730,7 @@ app.invoke({"messages": [...]}, config)</pre>
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">Agentic RAG와 재검색</h2>
   <p class="thesis" data-editable="true">검색 결과를 평가해 부족하면 질문을 고쳐 다시 찾는다</p>
-  <p class="explain" data-editable="true">본문 B2의 '검색 실패 vs 생성 실패' 구분을 그래프 안에 넣은 구조다. 모델이 문서마다 관련성을 yes/no로 매기고, 그 결과로 경로가 갈린다. 판정마다 호출이 늘어 재시도 횟수를 제한한다.</p>
+  <p class="explain" data-editable="true">본문 B2의 '검색이 틀렸나' 확인을 그래프 안에 넣은 구조다. 모델이 문서마다 관련성을 yes/no로 매기고, 그 결과로 경로가 갈린다. 판정마다 호출이 늘어 재시도 횟수를 제한한다.</p>
   <div class="stack">
     <div class="split-grid wide-left">
       <div class="dg">
@@ -760,12 +760,6 @@ grader = model.with_structured_output(
 grade = grader.invoke(prompt).score</pre>
         </div>
       </div>
-    </div>
-    <div class="dg-row">
-      <span class="dg-caption" data-editable="true">같은 계열</span>
-      <span class="chip" data-editable="true">Corrective: 웹 검색 보완</span>
-      <span class="chip" data-editable="true">Self-RAG: 답변도 평가</span>
-      <span class="chip" data-editable="true">Adaptive: 검색 여부·횟수 선택</span>
     </div>
   </div>
   <p class="source" data-editable="true">출처: 4일·5일 과정 교안 RAG 장(Agentic·Self·Corrective·Adaptive RAG 재구성) · Lewis et al. 2020</p>
@@ -812,7 +806,7 @@ grade = grader.invoke(prompt).score</pre>
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">하네스와 Deep Agents</h2>
   <p class="thesis" data-editable="true">하네스는 모델에 도구·기억·맥락을 묶는 실행 틀이다</p>
-  <p class="explain" data-editable="true">Deep Agents는 LangGraph 위에 계획·파일·오프로딩·위임을 미리 묶은 하네스다. Claude Code도 같은 종류의 실행 틀이다. 짧은 도구 호출이면 create_agent로 충분하다.</p>
+  <p class="explain" data-editable="true">Deep Agents는 LangGraph 위에 계획·파일·위임 등을 미리 묶은 하네스다. Claude Code도 구현은 다르지만 같은 역할의 실행 틀이다. 짧은 도구 호출이면 create_agent로 충분하다.</p>
   <div class="split-grid wide-left">
     <div class="dg">
       <div class="dg-zone">
@@ -820,7 +814,7 @@ grade = grader.invoke(prompt).score</pre>
         <div class="dg-row stretch is-compact">
           <div class="dg-box accent" data-editable="true">모델</div>
           <div class="dg-box" data-editable="true">Tools<span class="dg-sub">외부 기능</span></div>
-          <div class="dg-box" data-editable="true">Memory<span class="dg-sub">단기·장기</span></div>
+          <div class="dg-box" data-editable="true">Memory<span class="dg-sub">상태·저장소</span></div>
           <div class="dg-box" data-editable="true">Context<span class="dg-sub">지침·규칙</span></div>
         </div>
       </div>
@@ -829,7 +823,7 @@ grade = grader.invoke(prompt).score</pre>
         <div class="chip-row">
           <span class="chip" data-editable="true">작업 계획</span>
           <span class="chip" data-editable="true">파일 도구</span>
-          <span class="chip" data-editable="true">오프로딩</span>
+          <span class="chip" data-editable="true">긴 출력 보관</span>
           <span class="chip" data-editable="true">하위 작업</span>
         </div>
       </div>
@@ -842,7 +836,7 @@ grade = grader.invoke(prompt).score</pre>
     model=..., tools=[...],
     subagents=[...], skills=[...],
     backend=...,
-    <span class="hl">interrupt_on={...},</span>
+    interrupt_on={...},
 )</pre>
       </div>
     </div>
@@ -864,13 +858,13 @@ grade = grader.invoke(prompt).score</pre>
 | 출처 1줄 | 58 | 약 1,330px |
 | **합계 / 여유** | **841 / 31** | 통과(C3 전제) |
 
-- 가로: 영역 안쪽 913 − 4 − 48 = 861px. 상자 폭 (861 − 3×20)/4 ≈ 200px, 안쪽 150px(강조 148). 최장 "Context" ≈ 123px, 보조 최장 "외부 기능"·"단기·장기" ≈ 103px → 모두 1줄. 칩 4개 ≈ 624 + 3×12 = 660px → 1줄. 영역 라벨(22px) ≈ 300–330px → 1줄.
+- 가로: 영역 안쪽 913 − 4 − 48 = 861px. 상자 폭 (861 − 3×20)/4 ≈ 200px, 안쪽 150px(강조 148). 최장 "Context" ≈ 123px, 보조 최장 "외부 기능"·"상태·저장소" ≈ 103px → 모두 1줄. 칩 4개 ≈ 624 + 3×12 = 660px → 1줄. 영역 라벨(22px) ≈ 300–330px → 1줄.
 - 코드: 줄 길이 26 / 27 / 34 / 16 / 23 / 1자 → 최장 34자 524–571px < 카드 안쪽 645px. 코드 제목 ≈ 480px → 1줄.
 - 글자 크기: 72 / 40 / 32 / 28(코드·칩) → 4종.
 - 강조: 모델 `.dg-box.accent` 한 곳 + 코드 5줄째 `.hl`(A10 설명과 이어지는 `interrupt_on`). 두 영역·칩은 기본색.
 - 주의
   - `.stretch` 때문에 "모델" 상자는 보조 줄이 없어도 옆 상자와 같은 높이(109px)가 되고 글자는 위쪽에 놓인다. A01 v0.3의 Q·K·V와 같은 상태이며 넘침 문제는 아니다.
-  - C3이 반영되지 않으면 여유 15px → 상자 보조 줄 3개("외부 기능"·"단기·장기"·"지침·규칙")를 노트로 옮기는 문구 축소를 요청한다(상자 86px, 여유 54px). 조건부 요청 R4.
+  - C3이 반영되지 않으면 여유 15px → 상자 보조 줄 3개("외부 기능"·"상태·저장소"·"지침·규칙")를 노트로 옮기는 문구 축소를 요청한다(상자 86px, 여유 54px). 조건부 요청 R4.
   - 상자 보조 줄이 2줄로 늘어나면 +34px로 넘친다. 보조 5자 이하를 유지한다.
 
 ## A10 · HITL: 사람 승인을 흐름에 (v0.4 배치, 신규)
@@ -906,11 +900,11 @@ grade = grader.invoke(prompt).score</pre>
         <div class="dg-box" data-editable="true"><span class="status-dot ok" aria-hidden="true"></span>승인<span class="dg-sub">도구 실행</span></div>
         <div class="dg-box" data-editable="true"><span class="status-dot warn" aria-hidden="true"></span>거부<span class="dg-sub">사유를 모델에</span></div>
       </div>
-      <p class="dg-caption" data-editable="true">결과는 다시 모델로 · 개념 예시 · 교안 내용 재구성</p>
+      <p class="dg-caption" data-editable="true">지정한 도구만 멈춤 · 결과는 다시 모델로 · 개념 예시 · 교안 내용 재구성</p>
     </div>
     <div class="stack">
       <div class="split-image h-sm"><img src="assets/img/appendix/cowork-hitl-approval-card.png" alt="사내 배포 패키지 예시 화면의 승인 카드 부분: 셸 명령 실행 승인 요청, 도구 이름과 명령, 승인·거부 버튼"></div>
-      <p class="dg-caption" data-editable="true">사내 배포 패키지 예시 화면 · 승인 카드 부분 · 수강생 실습 화면 아님</p>
+      <p class="dg-caption" data-editable="true">사내 배포 패키지 예시 화면의 승인 카드 · 실행할 명령과 승인·거부 버튼 · 수강생 실습 화면 아님</p>
     </div>
   </div>
   <p class="source" data-editable="true">출처: LangGraph Human-in-the-loop 문서 · 4일·5일 과정 교안 HITL(재구성) · 현업 활용 가이드 예시 화면</p>
@@ -977,9 +971,13 @@ grade = grader.invoke(prompt).score</pre>
 | ID | 장면 · 요소 | 현재 | 목표 | 이유 |
 |---|---|---|---|---|
 | R1 | A01 · 그림 캡션(`.dg-caption`) | "Vaswani et al., Attention Is All You Need (2017), Figure 2 · arXiv:1706.03762" 77자(약 903px, 패널 안쪽 621px에서 2줄) | "Vaswani et al. (2017), Figure 2 · arXiv:1706.03762" 약 50자(약 575px, 1줄) | 2줄이면 여유 −7px. 문구 파일 보류 V2의 안 그대로이며 논문 제목은 출처 줄에 남아 12-1 3번(저자·연도·arXiv ID)을 지킨다. 받아들이지 않으면 C2 적용 |
-| R2 | A10 · 그림 캡션·alt(문구 조정, 넘침 무관) | 캡션 "사내 배포 패키지 예시 화면 · 모델명 가림 · 수강생 실습 화면 아님" / alt "…셸 명령 실행 승인 요청과 승인·거부 버튼" | 캡션 "사내 배포 패키지 예시 화면 · 승인 카드 부분 · 수강생 실습 화면 아님"(39자, 1줄) / alt "사내 배포 패키지 예시 화면의 승인 카드 부분: 셸 명령 실행 승인 요청, 도구 이름과 명령, 승인·거부 버튼" | 자른 그림(`-card.png`)에는 모델명 영역이 없다. "승인 카드 부분"임을 알리라는 오케스트레이터 지시 반영. 문구 담당이 원래 표현을 유지해도 배치는 넘치지 않는다 |
+| R2 | A10 · 그림 캡션·alt(문구 조정, 넘침 무관) | 캡션 "사내 배포 패키지 예시 화면 · 모델명 가림 · 수강생 실습 화면 아님" / alt "…셸 명령 실행 승인 요청과 승인·거부 버튼" | 캡션 "사내 배포 패키지 예시 화면의 승인 카드 · 실행할 명령과 승인·거부 버튼 · 수강생 실습 화면 아님"(39자, 1줄) / alt "사내 배포 패키지 예시 화면의 승인 카드 부분: 셸 명령 실행 승인 요청, 도구 이름과 명령, 승인·거부 버튼" | 자른 그림(`-card.png`)에는 모델명 영역이 없다. "승인 카드 부분"임을 알리라는 오케스트레이터 지시 반영. 문구 담당이 원래 표현을 유지해도 배치는 넘치지 않는다 |
 | R3 | (조건부) A08 · 칩 줄 전체 | 캡션 + 칩 3개 | 삭제(노트에만) | 설명이 화면 3줄로 접힐 때만. 보류 V14와 같은 순서 |
-| R4 | (조건부) A09 · 영역 1 상자 보조 줄 3개 | "외부 기능"·"단기·장기"·"지침·규칙" | 삭제(노트에 이미 있음) | C3이 반영되지 않을 때만(여유 15 → 54px) |
+| R4 | (조건부) A09 · 영역 1 상자 보조 줄 3개 | "외부 기능"·"상태·저장소"·"지침·규칙" | 삭제(노트에 이미 있음) | C3이 반영되지 않을 때만(여유 15 → 54px) |
 | R5 | (조건부) A07 · 분류 상자 보조 줄 | "classify 노드" 11자 | 삭제(코드 2줄째에 `"classify"`가 있음) | 스냅샷에서 여유가 24px 미만일 때만(−39px) |
 
 위 요청 외 화면 문구는 모두 확정본 그대로 폭·높이 안에 들어간다. 글자 크기를 줄이는 방식은 어느 장면에서도 쓰지 않았다.
+
+## 강사 사전 검토 반영 (2026-09-16)
+
+- #14 A08 아래 칩 줄 블록을 삭제했다(새 용어 수·사내망 웹 검색 문제, 여유 약 106px로 증가). #19 A09 코드 5줄째 `.hl` 강조를 뺐다. 그 밖의 문구 요청은 slide_copy/APP.md에 반영했고 이 문서 골격 속 같은 문구도 맞췄다(문구 문서가 기준). #1(eyebrow 본문 구간)·#7(사내 실행 가이드 통일)은 사용자 확인 보류.
