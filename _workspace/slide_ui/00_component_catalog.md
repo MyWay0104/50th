@@ -238,6 +238,7 @@
 | `.dg-zone.is-grow` | 한 줄 안에서 남은 폭을 채우는 점선 영역 (S10) |
 | `.steps.row.is-compact` (+`.step.is-muted`) | 가로 단계 카드 압축(패딩 24·36, 본문 40px), 모델 쪽 카드는 오프화이트 톤 (S16) |
 | `.chip-row > .concept-badge` 등 | 칩·상자 줄 안 배지·캡션 세로 가운데 |
+| `.dg.is-form` | 요청문 6칸 예시(`.dg-sub`)를 28px로 (S25 전용, S40은 기본 24px) |
 
 ## 6. 금지 예시
 
