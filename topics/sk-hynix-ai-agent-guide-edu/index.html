@@ -1118,6 +1118,25 @@
       .stack > .dg.is-sep { margin-top: 24px; }
       .scene.quote .explain { text-wrap: balance; }
       .scene > .explain.is-closing { margin-top: 64px; font-weight: 600; }
+      /* v0.4 강사 사후 검토 반영 (B1, 2026-09-16) */
+      [data-scene-id="S05"] .dg-box strong { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+      .dg-sub + .dg-sub { margin-top: 0; }
+      .split-grid > .stack.is-vcenter { align-self: center; }
+      .dg-row > .dg-box.is-wide { flex: 1.7; }
+      .dg-row.stretch > .dg-box.is-center { display: flex; align-items: center; justify-content: center; }
+      [data-scene-id="S05"] .split-image.h-lg { height: 420px; }
+      /* v0.4 강사 사후 검토 반영 (부록, 2026-09-16) */
+      .dg-row.is-band { position: relative; }
+      .dg-row.is-band > .dg-caption { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); margin: 0; }
+      .dg-row.is-centered { justify-content: center; }
+      .dg-arrow.has-label { position: relative; }
+      .dg-arrow.has-label > .dg-sub { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); margin: 0; }
+      .dg > .dg-arrow.is-end { align-self: flex-end; margin-right: 96px; }
+      .nowrap { white-space: nowrap; }
+      [data-scene-id="A05"] .step-desc, [data-scene-id="A05"] .step-body > .dg-sub { text-wrap: balance; }
+      [data-scene-id="A06"] > .stack { flex: 1; justify-content: center; }
+      [data-scene-id="A06"] .dg-row.stretch > .dg-box { padding: 32px 20px; }
+      [data-scene-id="A06"] .dg-sub { font-size: var(--fs-small); text-wrap: balance; }
     </style>
   </head>
   <body>
@@ -1232,7 +1251,7 @@
               <div class="split-grid">
                 <div class="stack">
                   <div class="split-image h-sm"><img src="assets/img/common/yt-thumb-kf1dypnh.jpg" alt="참고 영상 썸네일 · AgentOS 채널"></div>
-                  <p class="dg-caption" data-editable="true">참고 영상 제목 "6년 걸릴 공부를 3일로 끝내는 법 — OpenAI 연구원이 인터뷰에서 직접 밝혔습니다" · 제목의 기간 표현은 영상의 것이며 이 교육의 근거가 아님</p>
+                  <p class="dg-caption" data-editable="true">참고 영상 제목 "6년 걸릴 공부를 3일로 끝내는 법 — OpenAI 연구원이 인터뷰에서 직접 밝혔습니다" · 제목·썸네일 문구는 영상의 것이며 이 교육의 근거가 아님</p>
                 </div>
                 <div class="stack">
                   <ol class="steps">
@@ -1258,9 +1277,9 @@
                   <div class="tags"><span class="tag accent" data-editable="true">NAND Implant 공정 Engineer</span><span class="tag" data-editable="true">기술 블로그</span></div>
                   <span class="concept-badge" data-editable="true">개인 기록</span>
                   <div class="dg-row stretch">
-                    <div class="dg-box"><span class="dg-sub" data-editable="true">B3에서 다룸</span><span data-editable="true">Part Finder</span><span class="dg-sub" data-editable="true">부품 번호 후보 검증 · 공개 Beta</span></div>
-                    <div class="dg-box"><span class="dg-sub" data-editable="true">B5에서 다룸</span><span data-editable="true">Dokmo</span><span class="dg-sub" data-editable="true">개인 웹앱 · 사용 흐름 점검</span></div>
-                    <div class="dg-box"><span class="dg-sub" data-editable="true">B6에서 다룸</span><span data-editable="true">Vault</span><span class="dg-sub" data-editable="true">Obsidian · 원문과 판단 구분</span></div>
+                    <div class="dg-box"><span class="dg-sub" data-editable="true">B3에서 다룸</span><span data-editable="true">Part Finder</span><span class="dg-sub" data-editable="true">공개 Beta</span><span class="dg-sub" data-editable="true">부품 번호 후보 검증</span></div>
+                    <div class="dg-box"><span class="dg-sub" data-editable="true">B5에서 다룸</span><span data-editable="true">Dokmo</span><span class="dg-sub" data-editable="true">개인 웹앱</span><span class="dg-sub" data-editable="true">사용 흐름 점검</span></div>
+                    <div class="dg-box"><span class="dg-sub" data-editable="true">B6에서 다룸</span><span data-editable="true">Vault</span><span class="dg-sub" data-editable="true">Obsidian</span><span class="dg-sub" data-editable="true">원문과 판단 구분</span></div>
                   </div>
                 </div>
                 <div class="placeholder is-spec">
@@ -1296,19 +1315,19 @@
                   </div>
                   <p class="dg-caption" data-editable="true">개념 예시 · 포함 관계를 나타낸 그림 · 연표가 아님</p>
                 </div>
-                <div class="stack">
+                <div class="stack is-vcenter">
                   <div class="dg-row stretch">
-                    <div class="dg-box muted"><span data-editable="true">앞 몇 단어만</span><span class="dg-sub" data-editable="true">N-gram 등 · 가까운 단어로 예측</span></div>
+                    <div class="dg-box muted"><span data-editable="true">앞 몇 단어만</span><span class="dg-sub" data-editable="true">N-gram 등</span><span class="dg-sub" data-editable="true">가까운 단어로 예측</span></div>
                     <span class="dg-arrow" aria-hidden="true">→</span>
-                    <div class="dg-box muted"><span data-editable="true">순서대로 읽기</span><span class="dg-sub" data-editable="true">RNN·LSTM 등 · 먼 정보가 흐려짐</span></div>
+                    <div class="dg-box muted"><span data-editable="true">순서대로 읽기</span><span class="dg-sub" data-editable="true">RNN·LSTM 등</span><span class="dg-sub" data-editable="true">먼 정보가 흐려짐</span></div>
                     <span class="dg-arrow" aria-hidden="true">→</span>
-                    <div class="dg-box"><span data-editable="true">2017 Transformer</span><span class="dg-sub" data-editable="true">멀리 있는 단어도 직접 참고</span></div>
+                    <div class="dg-box"><span data-editable="true">2017 Transformer</span><span class="dg-sub" data-editable="true">멀리 있는 단어도</span><span class="dg-sub" data-editable="true">직접 참고</span></div>
                   </div>
                   <p class="dg-caption" data-editable="true">언어 모델이 문맥을 다루는 방식의 변화 · 교안 내용 재구성</p>
                 </div>
               </div>
               <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017) · LLM 활용과 고급화 과정 교안 1장 재구성</p>
-              <aside class="speaker-note">세 용어는 앞의 기술이 뒤의 기술로 대체된 순서가 아니라 포함 관계로 보시면 됩니다. 화면 왼쪽 그림처럼 머신러닝은 데이터로 패턴을 학습하고, 딥러닝은 그중 신경망을 쓰는 방법이며, 현대 LLM은 주로 딥러닝 기반입니다. 오른쪽은 언어 모델이 문맥을 다뤄 온 방식의 변화로, 바로 앞 몇 단어만 보던 방식에서 순서대로 읽는 방식을 거쳐 2017년 Transformer가 멀리 떨어진 단어도 직접 참고하게 만들었습니다. 이 흐름은 LLM 활용과 고급화 과정 교안 1장에서 더 자세히 다루니, 오늘은 문맥을 다루는 방식이 바뀌었다는 점만 기억하면 됩니다. 분류, 요약, 코드 생성 중 내 업무와 가까운 작업을 하나 마음속으로 골라 두세요.</aside>
+              <aside class="speaker-note">화면의 네 용어는 앞의 기술이 뒤의 기술로 대체된 순서가 아니라 포함 관계로 보시면 됩니다. 화면 왼쪽 그림처럼 머신러닝은 데이터로 패턴을 학습하고, 딥러닝은 그중 신경망을 쓰는 방법이며, 현대 LLM은 주로 딥러닝 기반입니다. 오른쪽은 언어 모델이 문맥을 다뤄 온 방식의 변화로, 바로 앞 몇 단어만 보던 방식에서 순서대로 읽는 방식을 거쳐 2017년 Transformer가 멀리 떨어진 단어도 직접 참고하게 만들었습니다. 이 흐름은 LLM 활용과 고급화 과정 교안 1장에서 더 자세히 다루니, 오늘은 문맥을 다루는 방식이 바뀌었다는 점만 기억하면 됩니다. 분류, 요약, 코드 생성 중 내 업무와 가까운 작업을 하나 마음속으로 골라 두세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
               <div class="page-num">5 / 57</div>
             </section>
@@ -1350,21 +1369,21 @@
                   <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">같은 '배', 다른 문맥</div></div>
                   <div class="dg">
                     <div class="dg-row">
-                      <div class="dg-box" data-editable="true">디저트로 배를 <strong>먹었다</strong></div>
+                      <div class="dg-box is-wide" data-editable="true">디저트로 배를 <strong>먹었다</strong></div>
                       <span class="dg-arrow" aria-hidden="true">→</span>
                       <div class="dg-box accent" data-editable="true">배 = 과일</div>
                     </div>
                     <div class="dg-row">
-                      <div class="dg-box" data-editable="true">항구에서 배를 <strong>탔다</strong></div>
+                      <div class="dg-box is-wide" data-editable="true">항구에서 배를 <strong>탔다</strong></div>
                       <span class="dg-arrow" aria-hidden="true">→</span>
                       <div class="dg-box accent" data-editable="true">배 = 선박</div>
                     </div>
                   </div>
-                  <p class="dg-caption" data-editable="true">굵은 글씨: 참고하는 주변 단어 · 개념 예시 · 측정값 아님</p>
+                  <p class="dg-caption" data-editable="true">밑줄 친 말: 참고하는 주변 단어 · 개념 예시 · 측정값 아님</p>
                 </div>
                 <div class="stack">
                   <div class="split-grid wide-right">
-                    <div class="split-image h-md"><img src="assets/img/b1/transformer-fig1.png" alt="Transformer 전체 구조 그림(원 논문 Figure 1)"></div>
+                    <div class="split-image h-lg"><img src="assets/img/b1/transformer-fig1.png" alt="Transformer 전체 구조 그림(원 논문 Figure 1)"></div>
                     <div class="stack">
                       <div class="dg-box"><span data-editable="true">왼쪽 묶음 · encoder</span><span class="dg-sub" data-editable="true">입력을 읽는 쪽</span></div>
                       <div class="dg-box"><span data-editable="true">오른쪽 묶음 · decoder</span><span class="dg-sub" data-editable="true">출력을 만드는 쪽</span></div>
@@ -1374,7 +1393,7 @@
                 </div>
               </div>
               <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022</p>
-              <aside class="speaker-note">같은 '배'라도 '먹었다'와 함께 오면 과일, '탔다'와 함께 오면 선박으로 읽힙니다. Attention은 각 위치의 표현을 만들 때 다른 위치의 정보를 얼마나 반영할지 계산하는 장치이고, 이 값은 입력마다 새로 계산되므로 학습된 모델 매개변수와는 다릅니다. 화면 오른쪽은 원 논문의 전체 구조 그림으로, 왼쪽 묶음이 입력을 읽는 encoder, 오른쪽 묶음이 출력을 만드는 decoder이고, 주황색 Multi-Head Attention 칸이 방금 말한 계산을 문장 안 모든 위치에 대해 한꺼번에 합니다. 원 논문은 번역용 encoder–decoder 구조였고, 오늘날 많은 생성 모델은 decoder 중심 구조를 씁니다. 데이터·규모·학습 방법이 발전하며 쓰임이 넓어졌지만, 이를 어느 순간의 특이점으로 단정하지는 않겠습니다. Multi-Head 구조와 Q·K·V 계산은 부록의 Transformer 장과 LLM 활용과 고급화 과정 교안에서 더 자세히 다루니, 궁금한 분은 쉬는 시간에 보셔도 됩니다.</aside>
+              <aside class="speaker-note">같은 '배'라도 '먹었다'와 함께 오면 과일, '탔다'와 함께 오면 선박으로 읽힙니다. Attention은 각 위치의 표현을 만들 때 다른 위치의 정보를 얼마나 반영할지 계산하는 장치이고, 이 값은 입력마다 새로 계산되므로 학습된 모델 매개변수와는 다릅니다. 화면 오른쪽은 원 논문의 전체 구조 그림으로, 왼쪽 묶음이 입력을 읽는 encoder, 오른쪽 묶음이 출력을 만드는 decoder이고, 주황색 Multi-Head Attention 칸이 방금 말한 계산을 하는 곳입니다. 원 논문은 번역용 encoder–decoder 구조였고, 오늘날 많은 생성 모델은 decoder 중심 구조를 씁니다. 데이터·규모·학습 방법이 발전하며 쓰임이 넓어졌지만, 이를 어느 순간의 특이점으로 단정하지는 않겠습니다. Multi-Head 구조와 Q·K·V 계산은 부록의 Transformer 장과 LLM 활용과 고급화 과정 교안에서 더 자세히 다루니, 궁금한 분은 쉬는 시간에 보셔도 됩니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
               <div class="page-num">7 / 57</div>
             </section>
@@ -1401,7 +1420,7 @@
                         <div class="dg-row stretch">
                           <div class="dg-box"><span data-editable="true">추론 서버</span><span class="dg-sub" data-editable="true">vLLM</span></div>
                           <span class="dg-arrow" aria-hidden="true">→</span>
-                          <div class="dg-box accent" data-editable="true">모델</div>
+                          <div class="dg-box accent is-center" data-editable="true">모델</div>
                         </div>
                       </div>
                     </div>
@@ -2720,24 +2739,24 @@ if q:
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">RAG 검색 방식과 메타데이터</h2>
   <p class="thesis" data-editable="true">RAG 품질은 재학습이 아니라 분할·검색·메타데이터로 다듬는다</p>
-  <p class="explain" data-editable="true">메타데이터는 답변에서 구분할 조건부터 설계한다. 답이 틀리면 검색이 틀렸는지, 찾은 근거로 잘못 답했는지부터 나눈다. 검색 쪽은 재정렬(Reranking), 생성 쪽은 프롬프트 제약을 본다.</p>
+  <p class="explain" data-editable="true">메타데이터는 답변에서 구분할 조건부터 설계한다. 답이 틀리면 검색이 틀렸는지, 찾은 근거로 잘못 답했는지부터 나눈다. 검색 쪽은 재정렬(Reranking), 답변 쪽은 프롬프트 제약을 본다.</p>
   <div class="stack">
     <div class="dg-row is-compact">
       <div class="dg-box" data-editable="true">분할</div>
       <span class="dg-arrow" aria-hidden="true">→</span>
       <div class="dg-box" data-editable="true">임베딩</div>
       <span class="dg-arrow" aria-hidden="true">→</span>
-      <div class="dg-box" data-editable="true">저장</div>
+      <div class="dg-box" data-editable="true">벡터 저장소</div>
       <span class="dg-arrow" aria-hidden="true">→</span>
       <div class="dg-box" data-editable="true">검색</div>
       <span class="dg-arrow" aria-hidden="true">→</span>
-      <div class="dg-box" data-editable="true">생성</div>
+      <div class="dg-box" data-editable="true">답변</div>
       <span class="dg-caption" data-editable="true">개념 예시 · 교안 내용 재구성</span>
     </div>
     <div class="compare-grid cols-3">
       <div class="compare-col">
         <div class="compare-kicker" data-editable="true">미리 준비</div>
-        <div class="compare-heading" data-editable="true">청킹·임베딩</div>
+        <div class="compare-heading" data-editable="true">분할·임베딩</div>
         <ul class="compare-list">
           <li data-editable="true">찾기 좋은 단위로 분할</li>
           <li data-editable="true">크기·겹침은 실험해 결정</li>
@@ -2762,7 +2781,7 @@ if q:
     </div>
   </div>
   <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드 · 4일·5일 과정 교안 RAG 장(용어 재구성)</p>
-  <aside class="speaker-note">화면 위쪽 띠는 본문 B2에서 본 RAG 흐름을 줄인 것으로, 분할·임베딩·저장은 미리 해 두고 검색·생성은 질문할 때 하며, 어느 단계도 모델을 다시 학습시키지 않습니다. 청킹은 긴 문서를 찾기 좋은 단위로 나누는 일인데, 조각 크기와 겹치는 폭에는 정답이 없으니 내 문서와 질문으로 실험해 정합니다. 임베딩은 조각을 뜻이 가까운 것끼리 찾을 수 있는 벡터로 바꾸는 일이고, 키워드 검색은 같은 단어가 들어 있는 조각을 찾으며, 두 방식의 결과를 합치는 하이브리드 검색도 있습니다. 어느 방식이 나은지는 직접 비교해 봐야 하고, Part Finder 공개 Beta처럼 Vector DB 없이 단어 빈도로 검색하는 구성도 있으며, 임베딩을 쓸 수 있는지는 실행 환경마다 확인합니다. 메타데이터는 출처·발행일·장비처럼 답변에서 구분해야 하는 조건부터 거꾸로 설계하고, 질문에서 이런 조건을 뽑아 필터로 쓰는 방식도 있지만, "승인 필요" 같은 값을 적어 두는 것만으로 승인이 강제되지는 않습니다. 답이 틀렸을 때는 검색이 틀린 것인지 찾은 근거로 잘못 답한 것인지부터 나누고, 검색 쪽이면 가져온 문서를 다시 순위 매기는 Reranking을, 생성 쪽이면 프롬프트 제약을 살핍니다. 여기 나온 용어는 4일·5일 과정 교안의 RAG 장에서 더 자세히 다루며, 오늘 실습 범위 밖입니다.</aside>
+  <aside class="speaker-note">화면 위쪽 띠는 본문 B2에서 본 RAG 흐름을 줄인 것으로, 분할·임베딩·저장은 미리 해 두고 검색·답변은 질문할 때 하며, 어느 단계도 모델을 다시 학습시키지 않습니다. 분할은 흔히 청킹이라고도 부르는데, 긴 문서를 찾기 좋은 단위로 나누는 일이고, 조각 크기와 겹치는 폭에는 정답이 없으니 내 문서와 질문으로 실험해 정합니다. 임베딩은 조각을 뜻이 가까운 것끼리 찾을 수 있는 벡터로 바꾸는 일이고, 키워드 검색은 같은 단어가 들어 있는 조각을 찾으며, 두 방식의 결과를 합치는 하이브리드 검색도 있습니다. 어느 방식이 나은지는 직접 비교해 봐야 하고, Part Finder 공개 Beta처럼 Vector DB 없이 단어 빈도로 검색하는 구성도 있으며, 임베딩을 쓸 수 있는지는 실행 환경마다 확인합니다. 메타데이터는 출처·발행일·장비처럼 답변에서 구분해야 하는 조건부터 거꾸로 설계하고, 질문에서 이런 조건을 뽑아 필터로 쓰는 방식도 있지만, "승인 필요" 같은 값을 적어 두는 것만으로 승인이 강제되지는 않습니다. 답이 틀렸을 때는 검색이 틀린 것인지 찾은 근거로 잘못 답한 것인지부터 나누고, 검색 쪽이면 가져온 문서를 다시 순위 매기는 Reranking을, 답변 쪽이면 프롬프트 제약을 살핍니다. 여기 나온 용어는 4일·5일 과정 교안의 RAG 장에서 더 자세히 다루며, 오늘 실습 범위 밖입니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">49 / 57</div>
 </section>
@@ -2798,7 +2817,7 @@ if q:
         </ul>
       </div>
     </div>
-    <div class="dg-row is-compact">
+    <div class="dg-row is-compact is-band">
       <div class="dg-box muted" data-editable="true">공통 실행 기반 · LangGraph 런타임</div>
       <span class="dg-caption" data-editable="true">개념 예시 · 기반 관계, 배우는 순서 아님</span>
     </div>
@@ -2876,7 +2895,7 @@ if q:
     </li>
   </ol>
   <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · Claude Code 작동 원리 문서 · 현업 활용 가이드 문제 해결 사례(일반화) · 근거: 강사 강의안</p>
-  <aside class="speaker-note">실습 중 막히면 오류가 어느 층에서 났는지부터 좁히는 것이 빠릅니다. 먼저 서버가 떠 있고 응답하는지, 인증 오류인지를 구분하는데, 한글 Windows에서는 로그를 파일로 넘길 때 콘솔 인코딩 오류로 서버가 아예 뜨지 않는 경우도 있습니다. 접속이 되면 설치된 패키지 판본이 실습 가이드와 같은지 보고, OpenAI 호환 서버에 임베딩을 요청할 때 라이브러리의 토큰 길이 검사 옵션을 꺼야 하는 경우처럼 호환 API라고 모든 옵션이 똑같이 동작하지는 않는다는 점을 기억하세요. 그다음 사용 중인 모델이 도구 호출이나 임베딩을 지원하는지 확인하고, 임베딩 모델을 바꿨다면 기존 벡터와 차원이 맞지 않을 수 있으니 문서를 다시 인덱싱합니다. 마지막으로 코드가 실행되는 위치를 기준으로 파일 경로가 맞는지 확인합니다. 오류 원문을 그대로 남기고 한 번에 한 가지만 바꿔 다시 실행해야 무엇이 원인이었는지 알 수 있습니다. 카드 아래 예시는 현업 활용 가이드의 문제 해결 사례를 일반화한 것이고, 주소·계정·키·설치 명령은 사내 실행 가이드에서 확인하며, 오후 Claude Code 연결은 오전 API와 별도 경로로 점검합니다.</aside>
+  <aside class="speaker-note">실습 중 막히면 오류가 어느 층에서 났는지부터 좁히는 것이 빠릅니다. 먼저 서버가 떠 있고 응답하는지, 인증 오류인지를 구분하는데, 한글 Windows에서는 로그를 파일로 넘길 때 콘솔 인코딩 오류로 서버가 아예 뜨지 않는 경우도 있습니다. 접속이 되면 설치된 패키지 판본이 실습 가이드와 같은지 보고, OpenAI 호환 서버에 임베딩을 요청할 때 라이브러리의 토큰 길이 검사 옵션을 꺼야 하는 경우처럼 호환 API라고 모든 옵션이 똑같이 동작하지는 않는다는 점을 기억하세요. 그다음 사용 중인 모델이 도구 호출이나 임베딩을 지원하는지 확인하고, 임베딩 모델을 바꿨다면 기존 벡터와 차원이 맞지 않을 수 있으니 문서 벡터를 새로 만들어야 합니다. 마지막으로 코드가 실행되는 위치를 기준으로 파일 경로가 맞는지 확인합니다. 오류 원문을 그대로 남기고 한 번에 한 가지만 바꿔 다시 실행해야 무엇이 원인이었는지 알 수 있습니다. 카드 아래 예시는 현업 활용 가이드의 문제 해결 사례를 일반화한 것이고, 주소·계정·키·설치 명령은 사내 실행 가이드에서 확인하며, 오후 Claude Code 연결은 오전 API와 별도 경로로 점검합니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">52 / 57</div>
 </section>
@@ -2908,7 +2927,7 @@ if q:
   <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
   <h2 class="scene-title" data-editable="true">LangGraph로 흐름 꺼내기</h2>
   <p class="thesis" data-editable="true">분기·중단·재개가 필요할 때 흐름을 그래프로 직접 그린다</p>
-  <p class="explain" data-editable="true">LangGraph는 상태(State)·단계(Node)·연결(Edge)로 흐름을 정의한다. create_agent의 도구 호출 루프도 내부는 그래프다. 순서가 고정된 작업이면 직접 그리지 않아도 된다.</p>
+  <p class="explain" data-editable="true">LangGraph는 상태(State)·노드(Node, 처리 단계)·연결(Edge)로 흐름을 정의한다. create_agent의 도구 호출 루프도 내부는 그래프다. 순서가 고정된 작업이면 직접 그리지 않아도 된다.</p>
   <div class="split-grid">
     <div class="dg">
       <div class="dg-zone">
@@ -2918,9 +2937,9 @@ if q:
           <span class="dg-arrow" aria-hidden="true">→</span>
           <div class="dg-box" data-editable="true">분류<span class="dg-sub">classify 노드</span></div>
         </div>
-        <div class="dg-row">
-          <span class="dg-caption" data-editable="true">조건부 Edge: 질문 종류로 다음 노드 선택</span>
+        <div class="dg-row is-centered">
           <span class="dg-arrow" aria-hidden="true">↓</span>
+          <span class="dg-caption" data-editable="true">조건부 Edge: 질문 종류로 다음 노드 선택</span>
         </div>
         <div class="dg-row stretch">
           <div class="dg-box" data-editable="true">기사 검색</div>
@@ -2959,10 +2978,7 @@ app.invoke({"messages": [...]}, config)</pre>
           <div class="dg-box" data-editable="true">검색<span class="dg-sub">retrieve</span></div>
           <span class="dg-arrow" aria-hidden="true">→</span>
           <div class="dg-box accent" data-editable="true">관련성 평가<span class="dg-sub">문서별 yes/no</span></div>
-          <div class="stack">
-            <span class="dg-arrow" aria-hidden="true">→</span>
-            <span class="dg-sub" data-editable="true">yes</span>
-          </div>
+          <span class="dg-arrow has-label"><span aria-hidden="true">→</span><span class="dg-sub" data-editable="true">yes</span></span>
           <div class="dg-box" data-editable="true">답변 생성<span class="dg-sub">generate</span></div>
         </div>
         <div class="dg-arrow"><span aria-hidden="true">↓</span> <span class="dg-caption" data-editable="true">no</span></div>
@@ -2973,7 +2989,7 @@ app.invoke({"messages": [...]}, config)</pre>
       </div>
       <div class="stack">
         <div class="code-card">
-          <div class="code-title" data-editable="true">관련성 판정 스키마 · 교육용 축약(import 생략)</div>
+          <div class="code-title" data-editable="true">관련성 판정 스키마 · 교육용 축약(일부 줄 생략)</div>
           <pre class="code-body" data-editable="true">class GradeDocuments(BaseModel):
     <span class="hl">score: Literal["yes", "no"]</span>
 grader = model.with_structured_output(
@@ -2998,7 +3014,7 @@ grade = grader.invoke(prompt).score</pre>
       <div class="dg-zone">
         <div class="dg-zone-label" data-editable="true">하네스 · 모델을 둘러싼 실행 틀</div>
         <div class="dg-row stretch is-compact">
-          <div class="dg-box accent" data-editable="true">모델</div>
+          <div class="dg-box accent is-center" data-editable="true">모델</div>
           <div class="dg-box" data-editable="true">Tools<span class="dg-sub">외부 기능</span></div>
           <div class="dg-box" data-editable="true">Memory<span class="dg-sub">상태·저장소</span></div>
           <div class="dg-box" data-editable="true">Context<span class="dg-sub">지침·규칙</span></div>
@@ -3046,7 +3062,7 @@ grade = grader.invoke(prompt).score</pre>
         <span class="dg-arrow" aria-hidden="true">→</span>
         <div class="dg-box" data-editable="true">사람 결정<span class="dg-sub">resume로 재개</span></div>
       </div>
-      <div class="dg-arrow" aria-hidden="true">↓</div>
+      <div class="dg-arrow is-end" aria-hidden="true">↓</div>
       <div class="dg-row stretch">
         <div class="dg-box" data-editable="true"><span class="status-dot ok" aria-hidden="true"></span>승인<span class="dg-sub">도구 실행</span></div>
         <div class="dg-box" data-editable="true"><span class="status-dot warn" aria-hidden="true"></span>거부<span class="dg-sub">사유를 모델에</span></div>
@@ -3055,11 +3071,11 @@ grade = grader.invoke(prompt).score</pre>
     </div>
     <div class="stack">
       <div class="split-image h-sm"><img src="assets/img/appendix/cowork-hitl-approval-card.png" alt="사내 배포 패키지 예시 화면의 승인 카드 부분: 셸 명령 실행 승인 요청과 승인·거부 버튼"></div>
-      <p class="dg-caption" data-editable="true">사내 배포 패키지 예시 화면의 승인 카드 · 실행할 명령과 승인·거부 버튼 · 수강생 실습 화면 아님</p>
+      <p class="dg-caption" data-editable="true">사내 배포 패키지 예시 화면의 승인 카드 · 실행할 명령과 승인·거부 버튼 · <span class="nowrap">수강생 실습 화면 아님</span></p>
     </div>
   </div>
   <p class="source" data-editable="true">출처: LangGraph Human-in-the-loop 문서 · 4일·5일 과정 교안 HITL(재구성) · 현업 활용 가이드 예시 화면</p>
-  <aside class="speaker-note">삭제, 셸 실행, 외부 시스템 변경처럼 되돌리기 어려운 행동은 모델이 요청하더라도 사람이 한 번 보고 결정하게 하는 것이 안전합니다. 화면 왼쪽 그림처럼 모델이 도구 호출을 요청하면 interrupt()로 그래프를 멈추고, 사람이 승인하면 도구를 실행하고, 거부하면 그 사유를 모델에게 돌려줍니다. 사람의 결정은 Command(resume)로 전달해 멈춘 곳부터 이어가는데, 멈춘 상태를 저장해 둘 체크포인터가 있어야 하고, 저장된 상태는 나중에 조회해 어느 시점에서 멈췄는지 확인할 수도 있습니다. 앞 장 코드의 interrupt_on처럼 Deep Agents에서는 어떤 도구 앞에서 멈출지 설정으로 선언만 해도 같은 효과를 냅니다. 오른쪽 화면은 현업 활용 가이드의 사내 배포 패키지 예시로, 셸 명령을 실행하기 전에 도구 이름과 명령을 보여 주고 승인과 거부를 받는 장면이며, 수강생 실습 화면은 아니며, 승인 카드 부분만 잘라 보여 드립니다. 오후에 Claude Code가 파일 수정이나 명령 실행 전에 승인을 요청했다면 그것도 같은 발상의 장치이고, CLAUDE.md나 프롬프트에 "하지 마"라고 적는 문장은 이런 멈춤 장치를 대신하지 못합니다. 4일 과정 교안의 HITL 장과 5일 과정 교안의 Agent 장을 재구성한 내용입니다.</aside>
+  <aside class="speaker-note">삭제, 셸 실행, 외부 시스템 변경처럼 되돌리기 어려운 행동은 모델이 요청하더라도 사람이 한 번 보고 결정하게 하는 것이 안전합니다. 화면 왼쪽 그림처럼 모델이 도구 호출을 요청하면 interrupt()로 그래프를 멈추고, 사람이 승인하면 도구를 실행하고, 거부하면 그 사유를 모델에게 돌려줍니다. 사람의 결정은 Command(resume)로 전달해 멈춘 곳부터 이어가는데, 멈춘 상태를 저장해 둘 체크포인터가 있어야 하고, 저장된 상태는 나중에 조회해 어느 시점에서 멈췄는지 확인할 수도 있습니다. 앞 장 코드의 interrupt_on처럼 Deep Agents에서는 어떤 도구 앞에서 멈출지 설정으로 선언만 해도 같은 효과를 냅니다. 오른쪽 화면은 현업 활용 가이드의 사내 배포 패키지 예시로, 셸 명령을 실행하기 전에 도구 이름과 명령을 보여 주고 승인과 거부를 받는 장면입니다. 수강생 실습 화면은 아니고, 승인 카드 부분만 잘라 보여 드립니다. 오후에 Claude Code가 파일 수정이나 명령 실행 전에 승인을 요청했다면 그것도 같은 발상의 장치이고, CLAUDE.md나 프롬프트에 "하지 마"라고 적는 문장은 이런 멈춤 장치를 대신하지 못합니다. 4일 과정 교안의 HITL 장과 5일 과정 교안의 Agent 장을 재구성한 내용입니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">57 / 57</div>
 </section>
