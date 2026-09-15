@@ -282,7 +282,7 @@
 ```
 
 - 경로는 `assets/img/<b1~b7|appendix|common>/` 상대 경로만. 외부 URL `<img src>` 금지.
-- 확보된 이미지: `b1/transformer-fig1.png`(S05), `b1/attention-fig2.png`(A01), `common/yt-thumb-kf1dypnh.jpg`(G00), `appendix/cowork-hitl-approval.png`(A10, 모델명 가림본).
+- 확보된 이미지: `b1/transformer-fig1.png`(S05), `b1/attention-fig2a.png`(A01, Scaled Dot-Product)·`b1/attention-fig2b.png`(A01, Multi-Head), `common/yt-thumb-kf1dypnh.jpg`(G00), `appendix/cowork-hitl-approval.png`(A10, 모델명 가림본).
 
 ### 7-5. 플레이스홀더 v2 (강사 제공 캡처 자리)
 
