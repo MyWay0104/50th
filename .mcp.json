@@ -28,7 +28,7 @@
         "C:/Users/swl01/mcp-servers/mcp-shrimp-task-manager/dist/index.js"
       ],
       "env": {
-        "DATA_DIR": "C:/LSW_Coding/3_slide_master_v2/shrimp_data",
+        "DATA_DIR": "C:\\Users\\swl01\\workspace\\50th\\shrimp_data",
         "TEMPLATES_USE": "en",
         "ENABLE_GUI": "true"
       }
