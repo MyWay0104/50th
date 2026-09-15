@@ -5,10 +5,10 @@
       "name": "F1 구조 제거와 SK hynix 주황 색 교체",
       "description": "스크립트로 반복 구조를 지운다: 모든 장면 .eyebrow(B1–B7 칩·구간 이름·시각 칩) 57곳, .page-num 57곳, .act-tag 7곳, G01의 .act-bracket·.act-name 4쌍(기·승·전·결), G01 번호 원 B1–B7을 1–7로, S01의 하루 흐름 chip-row·출처 줄·[교육일] 삭제와 강사 줄 '강사 · NAND Implant기술 이상우 TL', S02 카드의 'B○에서 다룸' 보조 줄, G02 카드의 구간 chip-row. 부록은 제목만으로 구분되도록 둔다. CSS 토큰을 --accent #dd5b00, --night #793400, --warn #793400(강조색과 겹치지 않게), 강조 틴트도 주황 기준으로 바꾸고, 빈 구조를 위한 CSS(.act-group 괄호 칸 제거)를 scene-styles 끝 final-touch 블록에 둔다. topic DESIGN.md에 주황 치환 결정을 기록한다.",
       "notes": "sync_overview.py renumber는 page-num이 없으면 건너뛰므로 안전(코드 확인). ACCENT_RE가 --accent 6자리 hex를 요구하므로 유지.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T17:53:49.009Z",
+      "updatedAt": "2026-09-15T17:58:36.492Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
@@ -28,17 +28,19 @@
       ],
       "implementationGuide": "scratchpad에 apply_ft_structure.py: 정규식으로 각 section에서 대상 요소 제거(중첩 div는 균형 맞춰 제거), 치환 수를 출력. :root 토큰 치환. sync_overview.py(renumber 필요 없음) → validate·lint·--check → Playwright 넘침 검사. 커밋.",
       "verificationCriteria": "화면 마크업에 class=\"eyebrow\"·\"page-num\"·\"act-tag\"·\"act-bracket\"·\"time-chip\" 0개, G01 step-num에 B 표기 0, S01에 하루 흐름·출처·[교육일] 없음과 강사 줄 존재, --accent #dd5b00, validate·lint 통과, --check 최신, 넘침 0건.",
-      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push."
+      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push.",
+      "summary": "스크립트(apply_ft_structure.py)로 eyebrow 57·쪽번호 57·막 태그 7·G01 괄호선/막 이름 4쌍을 지우고 G01 번호 원을 1–7로, S01 표지를 제목·부제('SK hynix 사내 교육')·강사 줄('강사 · NAND Implant기술 이상우 TL')만 남기게 정리, S02 'B○에서 다룸' 3줄·G02 구간 칩 4줄 삭제, G00 출처에 유튜브 URL을 넣었다. 토큰은 --accent #dd5b00, --night·--warn #793400, 파랑 rgba 틴트를 주황으로 바꾸고 DESIGN.md에 주황 치환 결정을 기록했다. 남은 대상 0개, validate 통과·lint 오류 0·--check 최신·Playwright 넘침 57장 0건. 커밋 db1eb7b.",
+      "completedAt": "2026-09-15T17:58:36.489Z"
     },
     {
       "id": "9454c925-22bc-4064-852f-ba8ac733a37f",
       "name": "F2 로고·아이콘 자산 확보",
       "description": "웹에서 로고와 아이콘을 받아 로컬 자산으로 둔다. Simple Icons(CC0, jsdelivr simple-icons@13): openai, anthropic, claude, langchain, streamlit, python, git, github, obsidian, youtube, sqlite, jupyter → assets/img/logos/<slug>.svg(단색 경로에 브랜드 색 fill 주입). vLLM 공식 저장소 vllm-logo-only-light.png → assets/img/logos/vllm.png. Lucide(ISC, lucide-static@0.460.0) 개념 아이콘 약 24종(monitor, server, database, file-text, search, message-square, user, shield-check, lock, list-checks, git-compare, bot, brain, folder, book-open, clipboard-check, triangle-alert, terminal, code, workflow, layers, key, play 등) → assets/img/icons/<name>.svg(stroke 색을 짙은 글자색으로). assets/img/LICENSES.md에 출처·라이선스 표.",
       "notes": "로고는 제품 이름을 가리키는 곳에만 쓰고 변형하지 않는다. SK hynix 로고는 요청에 없어 넣지 않는다.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T17:53:49.430Z",
+      "updatedAt": "2026-09-15T18:00:09.671Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/assets/img/logos",
@@ -58,21 +60,23 @@
       ],
       "implementationGuide": "curl -fsSL로 받기 → python으로 SVG에 fill/stroke 속성 주입 → Read로 몇 개 열어 렌더 확인 → LICENSES.md 작성. LangGraph·MCP 로고는 공개 SVG가 없어 아이콘으로 대신한다고 기록.",
       "verificationCriteria": "로고 12종+vLLM, 아이콘 20종 이상 파일 존재·열림 확인, LICENSES.md에 모든 파일의 출처·라이선스 기재.",
-      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push."
+      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push.",
+      "summary": "fetch_ft_assets.py로 Simple Icons 13(CC0) 로고 12종(openai·anthropic·claude·langchain·streamlit·python·git·github·obsidian·youtube·sqlite·jupyter)에 공식 브랜드 색(simple-icons.json의 hex)을 채워 assets/img/logos/에, vLLM 공식 저장소 로고 PNG를 logos/vllm.png로, Lucide 0.460.0(ISC) 아이콘 44종(선 색 #31302e 고정)을 assets/img/icons/에 받았다(check-circle 1종은 CDN에 없어 제외). Playwright에서 57개 파일 모두 이미지로 로드되는 것을 확인했다(실패 0). assets/img/LICENSES.md에 모든 자산의 출처·라이선스·사용 조건(상표는 해당 제품을 가리킬 때만)과 v0.4 기존 자산 출처를 적었다. LangGraph·MCP 로고는 공개 SVG가 없어 아이콘으로 대신한다고 기록. 커밋 db1eb7b.",
+      "completedAt": "2026-09-15T18:00:09.668Z"
     },
     {
       "id": "357de672-140f-4421-b231-1edd4a5df971",
       "name": "F3 문구 표 작성(존댓말·제목·시간·출처·기승전결)",
       "description": "slide_content_writer 3개를 병렬로 돌려(B1–B3 S01–S21·G00·G01 / B4–B7 S22–S44·G02 / 부록 A01–A10) 장면별 치환 표를 JSON으로 만든다. 항목: 새 제목(간결한 명사구, S02는 '강사 소개'), 화면 문장의 평서형(~다)을 존댓말(~습니다/~입니다)로, 첫 시간표 G01을 뺀 화면 시간 정보 삭제(실습 안내판 board-meta의 시각·분, 시간 블록은 분 대신 순서 단계 문구, S41–S43 시간 띠는 시각 없는 단계, S27·S40·S42·S44 문구), 노트의 시각·분·'N시 구간'을 순서 표현으로, 기승전결·'네 막' 표현 삭제, 출처 줄 새 값(공식 문서·논문만, 없으면 삭제). 결과: _workspace/final_touch/copy_<묶음>.json과 요약 md.",
       "notes": "명사형 라벨·칩·표 칸은 존댓말 대상이 아니다. 시간 블록 구조 변경은 F4 배치 명세와 짝을 맞춘다(문구는 F3, 구조는 F4).",
-      "status": "pending",
+      "status": "in_progress",
       "dependencies": [
         {
           "taskId": "912f4c00-ab5f-4264-ac33-1b1d9a9279a8"
         }
       ],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T17:52:49.142Z",
+      "updatedAt": "2026-09-15T18:00:10.397Z",
       "relatedFiles": [
         {
           "path": "_workspace/final_touch",
@@ -94,7 +98,7 @@
       "name": "F4 시각 배치 명세(로고·아이콘·이미지 확대)",
       "description": "slide_ui_designer 1개가 장면별 시각 배치 명세를 쓴다: 제품·회사 이름이 나오는 장면에 로고 배치(S06 OpenAI·vLLM·Python, S12 OpenAI·LangChain, S20 Streamlit, S22·S26 Claude, S31 Git, S34 Obsidian, S36 Claude, A03 LangChain 등), 개념 도식 상자 머리에 아이콘, 이미지 확대 값(G00 썸네일, S05·A01 논문 그림, A10 승인 카드), eyebrow·막 태그 삭제로 생긴 세로 여유 사용, 실습 안내판 시간 블록 대체 구조(순서 단계 블록). 새 CSS 클래스 제안(.logo, .logo-row, .dg-icon 등, 토큰만 참조). 장면마다 이미지 또는 인포그래픽 1개 이상 확인표. 결과: _workspace/final_touch/visual_spec.md(장면별 HTML 조각 수준).",
       "notes": "로고는 문맥상 그 제품을 가리킬 때만. 자리표시 10곳은 유지.",
-      "status": "pending",
+      "status": "in_progress",
       "dependencies": [
         {
           "taskId": "912f4c00-ab5f-4264-ac33-1b1d9a9279a8"
@@ -104,7 +108,7 @@
         }
       ],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T17:52:49.142Z",
+      "updatedAt": "2026-09-15T18:01:16.429Z",
       "relatedFiles": [
         {
           "path": "_workspace/final_touch/visual_spec.md",
