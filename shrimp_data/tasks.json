@@ -194,14 +194,14 @@
       "name": "F7 사후 검토와 마지막 Playwright 검토",
       "description": "Playwright MCP로 57장을 촬영하고, 시각 검토 2개(general-purpose, 1–29·30–57: 정렬·치우침·오탈자·글자 깨짐·로고 배치)와 내용 검토 1개(lecture_expert: 존댓말·제목·흐름·사실 경계)를 병렬로 돌린 뒤 수정 반영과 재검증.",
       "notes": "동시 실행 3개.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "d19bfdb4-19e2-45c6-993e-2ec8afbd52fe"
         }
       ],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T18:28:49.605Z",
+      "updatedAt": "2026-09-15T18:43:29.930Z",
       "relatedFiles": [
         {
           "path": "_workspace/lecture_review",
@@ -211,21 +211,23 @@
       ],
       "implementationGuide": "지난 마지막 검토 지침(visual_brief.md·content_brief.md)을 이번 변경에 맞게 갱신해 재사용. 결과 _workspace/lecture_review/final-touch-visual-*.md, final-touch-post.md.",
       "verificationCriteria": "높음·중간 수정 필요 잔여 0(보류는 이유 기록), 재검증 넘침 0, overview 콘솔 오류 0.",
-      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push."
+      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push.",
+      "summary": "Playwright MCP로 57장을 촬영(shots4)해 시각 검토 2개(general-purpose: 1–29쪽 중간 7·낮음 12, 30–57쪽 중간 4·낮음 12)와 내용 검토 1개(lecture_expert: 중간 3·낮음 7)를 병렬로 돌렸다. 요청 위반(반말·시간·근거·B 표기·기승전결)은 세 검토 모두 0건. 반영(apply_ft_final.py·apply_ft_final2.py): S41–S43 번호 충돌(세부 단계 번호·진행 띠 숫자 원 숨김), G02 세로 가운데, G00·S20 떠 있던 로고를 캡션·안내 줄 앞으로, S31 Git 로고 삭제, G01 시간표 연결선 이음, S05 그림 확대(386px, 출처 줄 여유 24px 이상), S24 상자 글자, S16·S36 줄바꿈, 완료 조건 줄 균형, S30 '근거:'→'이유:', S22 요지에 관찰·판단·행동 반복, S42 멈춤 계기, 노트 다듬기, A05 출처 이름. 보류 2건(실습 안내판 배치 통일은 사내 실습 HTML 반영 때, A10 승인 카드 글자는 원 화면 한계)은 사용자 확인 목록에 기록. 재검증: validate 통과, lint 오류 0, --check 최신, 넘침 57장 0, 깨진 이미지 0, overview 콘솔 오류 0. 커밋 c2d1c27·b4ab10d.",
+      "completedAt": "2026-09-15T18:43:29.925Z"
     },
     {
       "id": "6e09892d-6db0-48e3-80d4-1cea99729905",
       "name": "F8 문서 동기화와 커밋·main 병합·push",
       "description": "_workspace/final_touch.md(치환 표 요약·결정·자산 출처), v0.4_progress·ppt_qa_report에 final-touch 절, BRIEF·DESIGN.md·TASK·shrimp-rules 상태, 매핑표 제목 갱신. final-touch 커밋 → main 병합 → main·final-touch 원격 push.",
       "notes": "push는 사용자 요청 범위. export는 하지 않는다.",
-      "status": "pending",
+      "status": "in_progress",
       "dependencies": [
         {
           "taskId": "1bc7ea9e-201f-4807-8854-ae1fc0672fc5"
         }
       ],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T17:52:49.142Z",
+      "updatedAt": "2026-09-15T18:43:48.942Z",
       "relatedFiles": [
         {
           "path": "_workspace/final_touch.md",
