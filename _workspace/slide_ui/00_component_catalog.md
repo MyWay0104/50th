@@ -239,6 +239,10 @@
 | `.steps.row.is-compact` (+`.step.is-muted`) | 가로 단계 카드 압축(패딩 24·36, 본문 40px), 모델 쪽 카드는 오프화이트 톤 (S16) |
 | `.chip-row > .concept-badge` 등 | 칩·상자 줄 안 배지·캡션 세로 가운데 |
 | `.dg.is-form` | 요청문 6칸 예시(`.dg-sub`)를 28px로 (S25 전용, S40은 기본 24px) |
+| `.split-image.pair` | 그림 두 장을 한 틀에 나란히, 사이 24px (A01) |
+| `.dg-row.is-compact` | 띠 상자 패딩 12·24px로 높이 압축, 글자 32px 유지 (A02·A03·A09) |
+| `.compare-list + .dg-row` | 비교 목록 아래 줄 간격 18px (A04) |
+| `.dg-row.is-roles` | 역할 카드 줄의 `.dg-sub`를 28px로 (S36) |
 
 ## 6. 금지 예시
 
@@ -298,7 +302,7 @@
 ```
 
 - 경로는 `assets/img/<b1~b7|appendix|common>/` 상대 경로만. 외부 URL `<img src>` 금지.
-- 확보된 이미지: `b1/transformer-fig1.png`(S05), `b1/attention-fig2a.png`(A01, Scaled Dot-Product)·`b1/attention-fig2b.png`(A01, Multi-Head), `common/yt-thumb-kf1dypnh.jpg`(G00), `appendix/cowork-hitl-approval.png`(A10, 모델명 가림본).
+- 확보된 이미지: `b1/transformer-fig1.png`(S05), `b1/attention-fig2a.png`(A01, Scaled Dot-Product)·`b1/attention-fig2b.png`(A01, Multi-Head), `common/yt-thumb-kf1dypnh.jpg`(G00), `appendix/cowork-hitl-approval-card.png`(A10, 승인 카드 부분만 자른 이미지 1543×421, 원본 캡처의 모델명 가림본에서 잘라 냄).
 
 ### 7-5. 플레이스홀더 v2 (강사 제공 캡처 자리)
 
