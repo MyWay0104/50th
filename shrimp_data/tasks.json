@@ -356,14 +356,14 @@
       "name": "T8 전체 QA: 사실 경계 16항목·스냅샷 12장·플레이스홀더 목록·QA 보고서",
       "description": "57장 전체를 대상으로 v0.4 QA를 수행하고 _workspace/ppt_qa_report.md에 '## v0.4 (2026-09-xx)' 절을 추가한다. 항목: (1) 구조·문법 — 계획서 11-1 체크리스트(57장, 285초, s-N↔## Slide N 일치, data-scene-id에 G00·A07–A10, data-skill 허용값, validate·lint·--check 결과, 모든 씬 .speaker-note, 외부 URL img 없음, 인라인 style·hex·<br> 없음). (2) 내용·사실 경계 — 11-2 표 16항목을 확인 장면별로 대조해 통과/수정 표를 작성하고, 걸린 문구는 즉시 수정(index.html → --renumber → 재검증). 현업가이드 파일명·CLAUDE.md 발췌·13절 영상 요점이 마크업에 없는지 grep으로 확인. (3) 시각·가독성 — npm run snapshot -- topics/sk-hynix-ai-agent-guide-edu -- --at 4,9,14,29,54,79,109,134,159,209,254,279 12장을 Read로 열어 잘림·겹침·글자 크기 판독, 플레이스홀더 폭 50% 이하, 인포그래픽 상자 7개 이하. (4) 서사 — 11-4(막 태그 7곳, G01 괄호선, S22 역할 반전, 구간 마지막 노트 연결 6곳, G02 번호 태그). (5) 남은 플레이스홀더 ID 목록(P-G00 제외, P-S02·P-S08·P-S11·P-S13·P-S20·P-S26·P-S29·P-S31·P-S31b·P-S34·P-S37 등 실제 존재하는 것)과 미확정 3건(영상 요점, 실습 장 이름·앵커, 캡처 13종 일정)을 '사용자 확인 목록 (v0.4)' 표로 기록. lecture_expert에게 전체 흐름 사후 검토 1회(전체-v0.4-post.md)를 맡기고 '수정 필요' 항목을 반영한다.",
       "notes": "Export는 하지 않는다(사용자 최종 확인 전). 수정이 생기면 해당 slide_copy/slide_ui 기록도 '수정 기록(v0.4 QA)'으로 갱신.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "98bd5929-c33c-4211-a9df-60569cf58b1e"
         }
       ],
       "createdAt": "2026-09-15T10:05:49.405Z",
-      "updatedAt": "2026-09-15T17:01:44.072Z",
+      "updatedAt": "2026-09-15T17:19:02.039Z",
       "relatedFiles": [
         {
           "path": "_workspace/ppt_qa_report.md",
@@ -387,21 +387,23 @@
         }
       ],
       "implementationGuide": "grep 기반 자동 점검(scene 수, data-scene-id 목록, data-skill 집합, img src 패턴, 금지 문자열) → 스냅샷 생성·판독 → lecture_expert 전체 검토 → 수정 반영 → 재검증 → QA 보고서 절 작성(문제 분석/설계/구현/코드/테스트 방법/향후 개선사항 구조 유지).",
-      "verificationCriteria": "ppt_qa_report.md v0.4 절에 11-1~11-4 결과·16항목 표·플레이스홀더 목록·미확인 3건이 있고, 최종 validate·lint·--check 통과, 스냅샷 12장 판독 결과 기록, 전체-v0.4-post.md '수정 필요' 잔여 0, exports/에 새 파일 없음."
+      "verificationCriteria": "ppt_qa_report.md v0.4 절에 11-1~11-4 결과·16항목 표·플레이스홀더 목록·미확인 3건이 있고, 최종 validate·lint·--check 통과, 스냅샷 12장 판독 결과 기록, 전체-v0.4-post.md '수정 필요' 잔여 0, exports/에 새 파일 없음.",
+      "summary": "57장 전체 QA를 마쳤다. 11-1 구조(57장·285초·순번·data-skill·노트·금지 마크업·외부 이미지 0)를 스크립트로, 11-2 사실 경계 16항목을 위험 표현 검색으로 대조해 모두 통과, 11-3 스냅샷 12장 판독(잘림·겹침 없음)과 자리표시 10곳 목록, 11-4 막 태그 7곳·구간 연결 6곳을 확인해 ppt_qa_report.md v0.4 절에 기록했다. 전체 흐름 검토는 마지막 검토로 겸해 lecture_expert(전체-v0.4-post.md, 높음 1·중간 8·낮음 10)와 시각 검토 2건(Playwright MCP 57장 촬영)을 돌렸고, 선택 1건을 뺀 내용 18건과 시각 중간 15건을 257ac99에서 반영했다. 재검증: validate 통과, lint 오류 0, --check 최신, 넘침 57장 0건, overview 콘솔 오류 0. exports/는 비어 있음. 사용자 확인 목록 V1–V13 기록.",
+      "completedAt": "2026-09-15T17:19:02.037Z"
     },
     {
       "id": "8ed7e004-94bf-4421-ad6a-3d24da079101",
       "name": "T9 문서 동기화: 매핑표 57행·시각 계획·장수 표기·진행 상태",
       "description": "v0.4 결과를 저장소 문서에 반영한다. (1) _workspace/ppt_content_plan.md '장면 ID ↔ HTML 순번 매핑' 표를 57행으로 재작성(제목은 index.html의 scene-title 실제 값, 블록 표기 유지, 제목을 'v0.4'로 갱신). (2) _workspace/ppt_visual_plan.md에 'v0.4 자산 표' 절 추가 — 계획서 6절의 논리 이름별로 실제 구현 방식(인라인 CSS .dg / 이미지 파일 경로 / 플레이스홀더 ID)을 기록하고 새 클래스 5종을 디자인 시스템 절에 추가. (3) topics/…/BRIEF.md 시간표 표에 G00·A07–A10 반영, '총 57장 (본문 47 + 부록 10)', 테스트 방법 '57장'. (4) TASK.md 구현 항목에 'v0.4 57장 개정' 체크, README.md·architecture.md는 workflow 변경이 없으므로 확인만(변경 있으면 갱신). (5) docs/slide-plan-2026-09-13.md 7절에 'v0.4 진행 상태(날짜)' 추가, docs/slide-plan-v0.4-visual-narrative.md 상단에 '빌드 완료·사용자 검토 대기' 상태와 12-1절 열린 항목 갱신. (6) shrimp-rules.md 8-3 표의 sk-hynix 행을 'v0.4 57장 빌드 완료·사용자 overview 검토 대기'로 갱신. (7) _workspace/orchestration-plan.md는 단계 정의가 바뀌지 않았으면 손대지 않는다.",
       "notes": "커밋·PR은 사용자 지시가 있을 때만. 사용자에게 overview.html 검토 방법(Edit/Aim → patch)을 안내하고 export gate를 다시 알린다.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "bebaa349-60d1-4e9d-a40e-d53b2b836054"
         }
       ],
       "createdAt": "2026-09-15T10:05:49.405Z",
-      "updatedAt": "2026-09-15T10:05:49.405Z",
+      "updatedAt": "2026-09-15T17:20:26.694Z",
       "relatedFiles": [
         {
           "path": "_workspace/ppt_content_plan.md",
@@ -440,7 +442,9 @@
         }
       ],
       "implementationGuide": "grep으로 index.html에서 data-scene-id·data-skill·scene-title을 순서대로 뽑아 매핑표 생성(수기 오류 방지). 각 문서의 '문제 분석/설계/구현/코드/테스트 방법/향후 개선사항' 구조 유지. 표 칸 수 검사 스크립트(scratchpad)로 마크다운 표 깨짐 확인.",
-      "verificationCriteria": "매핑표 57행이 index.html 순서·ID·skill과 일치(스크립트 대조), 장수 표기 '52'가 BRIEF/TASK에 남지 않음(grep), 문서 표 칸 수 불일치 0, 계획서·shrimp-rules 상태가 '사용자 검토 대기'로 일치."
+      "verificationCriteria": "매핑표 57행이 index.html 순서·ID·skill과 일치(스크립트 대조), 장수 표기 '52'가 BRIEF/TASK에 남지 않음(grep), 문서 표 칸 수 불일치 0, 계획서·shrimp-rules 상태가 '사용자 검토 대기'로 일치.",
+      "summary": "v0.4 결과를 저장소 문서에 반영했다. ppt_content_plan.md 매핑표를 index.html에서 스크립트로 뽑아 57행으로 교체(순서·ID·data-skill 불일치 0, S16 제목 갱신 포함), ppt_visual_plan.md에 v0.4 자산 표와 새 클래스 목록 추가, BRIEF 시간표·57장(본문 47+부록 10)·테스트 방법 갱신, TASK에 v0.4 개정 체크(52장 표기 없음), slide-plan-2026-09-13 7-1절 진행 상태, v0.4 계획서 상단 상태와 12-1 열린 항목(V1–V13 안내), shrimp-rules 8-3 표를 \"57장 빌드 완료·사용자 overview 검토 대기\"로 맞췄다. 문서 표 칸 수 검사에서 계획서의 기존 1줄(pre|post 파이프)을 이스케이프해 불일치 0. README·architecture·orchestration-plan은 workflow 변경이 없어 손대지 않았다.",
+      "completedAt": "2026-09-15T17:20:26.692Z"
     }
   ]
 }

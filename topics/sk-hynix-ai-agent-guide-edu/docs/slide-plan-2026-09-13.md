@@ -163,7 +163,7 @@ visual plan 5절의 자산 표에서 실제 캡처가 필요한 것은 강사만
 | `ppt_visual_designer` (기존) | 덱 | 디자인 시스템(`:root` 변수, 폰트, 여백 규칙) | `_workspace/ppt_visual_plan.md` |
 | **`slide_content_writer`** (신설) | 슬라이드 | 화면 문구·발표자 노트·출처 최종 문장. 사실 경계 체크리스트 대조 | `_workspace/slide_copy/<차수>.md` |
 | **`slide_ui_designer`** (신설) | 슬라이드 | 장면별 배치·글자 크기·색 역할·플레이스홀더 규격. 애니메이션 없음 | `_workspace/slide_ui/<차수>.md` |
-| **`lecture_expert`** (신설) | 차수 | 강사·교수설계 검토 9항목. 빌드 전·후 2회 | `_workspace/lecture_review/<차수>-pre|post.md` |
+| **`lecture_expert`** (신설) | 차수 | 강사·교수설계 검토 9항목. 빌드 전·후 2회 | `_workspace/lecture_review/<차수>-pre\|post.md` |
 | `hyperframes_ppt_builder` (기존) | 덱 | index.html·overview.html 구현 | topic 파일 |
 | `ppt_overview_qa` (기존) | 덱 | 구조·lint·export gate | `_workspace/ppt_qa_report.md` |
 
