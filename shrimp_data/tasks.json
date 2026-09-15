@@ -139,14 +139,14 @@
       "name": "T4 B2+B3 묶음 v0.4: S09–S21 문구→UI→검토→빌드",
       "description": "BLOCK:B2·B3 13장(S09–S21)을 T3와 같은 루프로 보강한다. 막 태그: S09 '승 · 연결하다 — 모르는 것을 어떻게 근거와 도구로 채우나?', S15 '승 · 연결하다 (2) — 정확한 조회는 누가 책임지나?'. 실습 안내판 S13·S19·S20은 '관찰할 것' 2문장. 시각 자료(모두 .dg 인라인): S09 LLM 3대 제약 아이콘 3개(dg-box 3열) + 2열 비교, S10 인덱싱/질문 2단 파이프라인(dg-zone 2개, 상자 7개 이하) + chunk overlap 띠, S11 P-S11 플레이스홀더 45% + 표 상태 점, S12 코드 2블록 사이 화살표 + SDK<LangChain<LangGraph 띠(캡션 '제어 수준 축·우열 아님'), S13 P-S13 플레이스홀더, S14 2×2 진단 매트릭스(검색 ○/× × 생성 ○/×), S15 질문→모델 해석→SQL 집계→모델 설명 미니 흐름, S16 프로그램 영역/모델 영역 dg-zone 2개 + 화살표 4개 메시지 라벨 + @tool 코드 3줄(교육용 함수명), S17 세 열 도식(규칙 상자 1 / 직렬 상자 3 / LLM⇄도구 루프) + 5패턴 이름 띠, S18 표 + 4칸 미니 흐름 + 주황 점, S19 교육용 스키마 미니 표 + 안전 통제 4개 층 띠, S20 P-S20 플레이스홀더 ①–④ 번호 + 우측 4줄, S21 3층 도식 + 파랑 테두리 후보 위치 + '오전→오후' 라벨. 코드 위치 라벨은 역할 이름('자료 준비(수집·분할) 부분 · 검색 부분 — 실습 가이드 해당 장' 등). speaker-note에 그림 가리키는 문장·교안 연계 문장 추가. S21 노트에 오후 연결 문장 유지.",
       "notes": "S12 3층 띠는 교안-4일 '3계층'을 재구성한 것이므로 '교안 내용 재구성' 표기. S16 코드는 현업가이드 파일명이 아닌 교육용 이름(예: count_by_equipment)만. JAEN 도판 복제 금지.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "fc8c4a64-69a7-4bb6-9cd4-f591b978a40d"
         }
       ],
       "createdAt": "2026-09-15T10:04:27.727Z",
-      "updatedAt": "2026-09-15T16:49:12.650Z",
+      "updatedAt": "2026-09-15T17:00:06.172Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
@@ -186,21 +186,23 @@
       ],
       "implementationGuide": "T3와 동일 루프: slide_content_writer(B2.md, B3.md v0.4 절) → slide_ui_designer(B2.md, B3.md v0.4 절) → lecture_expert pre(B2-B3-v0.4-pre.md) → 반영 → index.html BLOCK:B2·B3 수정 → --renumber → validate·lint·--check → snapshot --at 49,54,64,79,94,104 → lecture_expert post(B2-B3-v0.4-post.md). 장면 수는 53 유지(추가 없음).",
       "verificationCriteria": "53장 유지, validate·lint 통과, --check 최신, 스냅샷 6장 잘림·겹침 없음, 13장 모두 요지·설명(또는 관찰할 것)과 시각 요소 1개 이상, S09·S15에 .act-tag, 플레이스홀더 ID P-S11·P-S13·P-S20 규격 준수, 현업가이드 파일명(config.py·ingest.py·tools.py·agent.py·setup_db.py·main.py)이 B2·B3 마크업에 없음, post 검토 '수정 필요' 잔여 0.",
-      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어."
+      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어.",
+      "summary": "B2·B3 13장(S09–S21)을 v0.4로 보강해 조립했다(0566d4d). 강사 사전 검토 21건(필수 5)을 문구·배치 문서에 반영(0f6ae1b)한 뒤 Sonnet 빌더가 조각을 만들고 check_fragment 통과 후 splice·validate·lint·--check·Playwright 넘침 0건을 확인했다. 사후 검토 권장 13건(용어 통일, S17 보조 줄, S18 ㄷ자 흐름, 핵심 구절 줄바꿈 금지, S14 맞음/틀림 등)을 199eb27에서 반영해 수정 필요 잔여 0. 계획 이탈(S16 작은 줄, S17 패턴 띠 노트 이동, S19 2×2 타일)은 진행 기록에 남겼다. 전체 장수는 G00·부록 추가로 57장이다.",
+      "completedAt": "2026-09-15T17:00:06.170Z"
     },
     {
       "id": "72bd46a9-cf00-4aa8-b2b3-8d04a2e84d26",
       "name": "T5 B4+B5 묶음 v0.4: S22–S33 문구→UI→검토→빌드",
       "description": "BLOCK:B4·B5 12장(S22–S33)을 같은 루프로 보강한다. 막 태그: S22 '전 · 뒤집다 — 오전엔 내가 도구를 붙였고, 오후엔 도구에게 일을 맡긴다', S28 '전 · 뒤집다 (2) — 계획하고, 고치고, 확인한다'. 실습 안내판 S26·S32는 '관찰할 것' 2문장. 시각 자료(.dg 인라인): S22 관찰→판단→행동 루프(가운데) + 모델·도구 상자 + 2열 도구 아이콘 텍스트, S23 내 PC/승인된 모델 경로 dg-zone 2개 + 회색 점선 '별도 도구·권한' 영역(주소·로고 없음), S24 3층 도식 재사용 + 파랑 테두리 변경 영역 2곳 + 역할별 나누기 띠('연결 설정 · 조립 · 도구 · 진입점'), S25 요청문 6칸 카드(목표·입력·출력·범위·제약·완료 기준) + 왼쪽 회색 말풍선, S26 P-S26 플레이스홀더 45% + '읽기·설명까지' 띠, S27 체크박스 카드 3개 + 막힌 단계 5칸 띠, S28 4단계 가로 루프 + 산출물 4개 + 검증→탐색 점선, S29 코드 4줄 톤 라벨 + P-S29(또는 P-S20 재사용) 플레이스홀더, S30 CLAUDE.md 발췌 대신 '프로젝트 지침 예시' 6줄(저장소 성격·명령어·주의점 소제목, 현업가이드 발췌 아님) + 작업 기록 템플릿 4줄 + 컨텍스트 띠, S31 3열 + P-S31·P-S31b 플레이스홀더 각 30%, S32 승인 프롬프트 개념 카드(일반화 표현) + 변경 파일 라벨(역할 이름), S33 예측→실행→설명 3칸 + '미확인' 태그. speaker-note 갱신, S27 노트 다음 구간 연결 유지.",
       "notes": "S30 지침 예시는 사내 저장소 발췌가 아니라 일반화한 소제목만(현업가이드 CLAUDE.md 인용 금지, 12-1절 7·9번). S23은 공급사 로고·주소 없음. 사실 경계 4·5·7번 문장 확인.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "5c309ee7-b07f-453d-84c6-37834022e3e6"
         }
       ],
       "createdAt": "2026-09-15T10:04:27.727Z",
-      "updatedAt": "2026-09-15T10:04:27.727Z",
+      "updatedAt": "2026-09-15T17:01:01.522Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
@@ -240,21 +242,23 @@
       ],
       "implementationGuide": "T3와 동일 루프. 산출물: slide_copy/B4.md·B5.md, slide_ui/B4.md·B5.md의 v0.4 절, lecture_review/B4-B5-v0.4-pre|post.md. index.html BLOCK:B4·B5 수정 → --renumber → validate·lint·--check → snapshot --at 114,129,144,159,164 → post 검토.",
       "verificationCriteria": "53장 유지, validate·lint 통과, --check 최신, 스냅샷 5장 잘림·겹침 없음, 12장 모두 요지·설명(또는 관찰할 것)과 시각 요소, S22·S28에 .act-tag, S22에 역할 반전 문구, 플레이스홀더 P-S26·P-S29·P-S31·P-S31b 규격 준수, 현업가이드 파일명·CLAUDE.md 발췌 없음, post 검토 '수정 필요' 잔여 0.",
-      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어."
+      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어.",
+      "summary": "B4·B5 12장(S22–S33)을 v0.4로 보강해 조립했다(d09de37). 강사 사전 검토 21건 반영 후 빌드, 사후 검토 수정(S24 상자 높이, S29 주석 정렬, S32 승인 카드 범위)을 3fb6cb2에서 반영했고 R-04(S26 31px)는 기존 크기 유지로 결정해 기록했다. S22·S28 막 태그(S22는 \"오전엔 내가 모델에 도구를 붙였고, 오후엔 Coding Agent에게 앱 수정을 맡긴다\" 역할 반전 문구), 플레이스홀더 P-S26·P-S29·P-S31·P-S31b 규격, S30은 일반화한 지침 소제목만 사용해 현업가이드 CLAUDE.md 발췌 없음을 QA 스크립트로 확인했다. 장수 기준은 G00·부록 추가로 57장이며 validate·lint·--check·Playwright 넘침 0건.",
+      "completedAt": "2026-09-15T17:01:01.516Z"
     },
     {
       "id": "1c712015-02e4-4456-929e-a08789815728",
       "name": "T6 B6+B7 묶음 v0.4: S34–S44·G02 문구→UI→검토→빌드",
       "description": "BLOCK:B6·B7 12장(S34–S44, G02)을 같은 루프로 보강한다. 막 태그: S34 '결 · 남기다 — 이 경험을 어떻게 내 것으로 쌓나?', S41 '결 · 남기다 (2) — 내 업무에 적용한다'. 실습 안내판 S37·S40·S41·S42·S43은 '관찰할 것' 문장. 시각 자료(.dg 인라인): S34 Raw→내 생각→Wiki 폴더 트리 + P-S34 플레이스홀더 40%, S35 노트 미리보기 카드 2개(상태 태그 '검토 전'/'검토됨'), S36 SKILL.md 구조 카드(name/description → 절차) + Progressive Disclosure 3단 + 수평 카드 4개(Skill·MCP·Subagent·Hook, Skill만 파랑 테두리), S37 파일 카드 3개(원문→SKILL.md→노트) + P-S37 소형, S38 3열 카드 상단 질문 말풍선, S39 3트랙 카드 + '처음이면 추천' 태그 + 학습 포인트 한 줄, S40 요청문 6칸 빈칸 버전(S25와 같은 틀), S41–S43 진행 타임라인 띠(16:00→17:30, 현재 구간만 파랑) + S42 '질문할 때 보여 줄 세 가지' 카드 + S43 기록 템플릿 4칸, S44 세 질문 번호 카드 + 하단 '부록 A06' 안내, G02 네 카드에 장면 번호 태그(.chip, night 규칙) + 중심 메시지 큰 글자 + '부록 A01–A10' 안내. speaker-note 갱신, G02 노트에 'G00에서 말한 순서를 오늘 일곱 번 반복' 문장 추가(G00 요점이 아니라 학습 4단계만 언급). 사실 경계 6·7·8번 확인.",
       "notes": "G02는 night 반전 유지. S36 Progressive Disclosure는 교안-4일 재구성 표기. S41–S43 시각은 휴식 없음(12-1절 8번) 그대로.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "72bd46a9-cf00-4aa8-b2b3-8d04a2e84d26"
         }
       ],
       "createdAt": "2026-09-15T10:05:49.405Z",
-      "updatedAt": "2026-09-15T10:05:49.405Z",
+      "updatedAt": "2026-09-15T17:01:21.651Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
@@ -293,21 +297,23 @@
         }
       ],
       "implementationGuide": "T3와 동일 루프. 산출물: slide_copy/B6.md·B7.md, slide_ui/B6.md·B7.md의 v0.4 절, lecture_review/B6-B7-v0.4-pre|post.md. index.html BLOCK:B6·B7 수정 → --renumber → validate·lint·--check → snapshot --at 174,184,194,209,224,234 → post 검토.",
-      "verificationCriteria": "53장 유지, validate·lint 통과, --check 최신, 스냅샷 6장 잘림·겹침 없음, 12장 모두 요지·설명(또는 관찰할 것)과 시각 요소, S34·S41에 .act-tag, G02 네 카드에 장면 번호 chip이 night 배경에서 읽힘, 플레이스홀더 P-S34·P-S37 규격 준수, post 검토 '수정 필요' 잔여 0."
+      "verificationCriteria": "53장 유지, validate·lint 통과, --check 최신, 스냅샷 6장 잘림·겹침 없음, 12장 모두 요지·설명(또는 관찰할 것)과 시각 요소, S34·S41에 .act-tag, G02 네 카드에 장면 번호 chip이 night 배경에서 읽힘, 플레이스홀더 P-S34·P-S37 규격 준수, post 검토 '수정 필요' 잔여 0.",
+      "summary": "B6·B7 12장(S34–S44·G02)을 v0.4로 보강해 조립했다(03755c4). 사전 검토 18건 반영, 사후 검토 12건 중 11건을 e4c1f33에서 반영(S40 라벨·막히면 전폭, S42 끝 시각·파랑 화살표, S41–S43 진행 띠 전폭, S43 라벨 28px, S36 행 간격, S44 기록 파일, G02 중심 메시지 간격·굵기)하고 P12(S44 출처 위치)는 quote 배치 하단 고정이라 유지했다. S34·S41 막 태그, G02 네 카드의 구간 chip이 남색 배경에서 읽히는 것을 스냅샷으로 확인했다. S37은 자리표시 대신 원문→SKILL.md→노트 파일 카드 도식으로 확정해 P-S37은 쓰지 않았고, P-S34는 규격 준수. 장수 기준은 57장, validate·lint·--check·넘침 0건.",
+      "completedAt": "2026-09-15T17:01:21.648Z"
     },
     {
       "id": "98bd5929-c33c-4211-a9df-60569cf58b1e",
       "name": "T7 부록 묶음 v0.4: A01–A06 보강 + A07–A10 신규 (→57장)",
       "description": "BLOCK:APP를 보강하고 A06 뒤에 A07–A10을 새로 만든다(→ 57장, #root 285초). 신규: A07 'LangGraph — 흐름을 그래프로 꺼내기'(steps, START→classify→조건 분기 3개→END 그래프 + State 상자 + 빌드 5단계 코드 6줄), A08 'Agentic RAG'(steps, retrieve→grade→분기→generate/rewrite 루프 + GradeDocuments 스키마 코드 4줄), A09 'Agent 하네스와 Deep Agents'(split, LLM 가운데 + Tools/Memory/Context 링 + 바깥 4칸 + create_deep_agent 인자명 코드 6줄), A10 'HITL'(steps, agent→승인 노드→approve/reject 그래프 + 오른쪽 .split-image에 assets/img/appendix/cowork-hitl-approval.png 40% + 캡션 '사내 배포 패키지 예시 화면 · 모델명 가림'). 보강: A01 오른쪽 attention-fig2.png + 캡션 'Vaswani et al. (2017), Figure 2 · arXiv:1706.03762' + 원 논문→현재 표준 미니 표 3행(이름만), A02 파이프라인 축소 재사용 + 4열 한 줄 추가, A03 멀티에이전트 3패턴 소형 도식 + 선택 질문 2개, A04 MCP N×M→N+M 미니 도식, A05 문제 해결 단계별 일반화 한 줄(주소·계정·명령 없음), A06 5단계 체크리스트 띠. 모든 신규 장면에 eyebrow '부록', speaker-note, 출처, '교안 내용 재구성' 표기. 사실 경계 10·15·16번 확인. lecture_expert 검토는 생략 가능(계획서 10절)하되 오케스트레이터가 11-2 체크리스트를 직접 대조한다.",
       "notes": "A09·A10 코드는 인자명만, 값·주소·키 없음. A10 캡처는 T2 결과(모델명 가림본)만 사용. 하네스가 '항상 필요'하다는 표현 금지(16번).",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "1c712015-02e4-4456-929e-a08789815728"
         }
       ],
       "createdAt": "2026-09-15T10:05:49.405Z",
-      "updatedAt": "2026-09-15T10:05:49.405Z",
+      "updatedAt": "2026-09-15T17:01:38.212Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
@@ -341,21 +347,23 @@
         }
       ],
       "implementationGuide": "slide_content_writer(APP.md v0.4 절: 기존 6장 보강 + 신규 4장 전체 문구) → slide_ui_designer(APP.md v0.4 절) → index.html BLOCK:APP 수정(A07–A10 section을 A06 뒤 <!-- BLOCK:APP END --> 앞에 삽입, data-scene-id·data-skill 수기) → --renumber(57장) → validate·lint·--check → snapshot --at 254,264,269,274,279,284. 코드 블록은 42자/줄 이하, 5–7줄.",
-      "verificationCriteria": "장면 57개, #root data-duration=285, 마지막 순서 A06→A07→A08→A09→A10, 신규 4장에 data-scene-id·speaker-note·출처 있음, data-skill 허용값만, validate·lint 통과, --check 최신, 스냅샷 6장 잘림·겹침 없음, A01·A10 이미지가 상대 경로로 표시, 외부 URL img 없음."
+      "verificationCriteria": "장면 57개, #root data-duration=285, 마지막 순서 A06→A07→A08→A09→A10, 신규 4장에 data-scene-id·speaker-note·출처 있음, data-skill 허용값만, validate·lint 통과, --check 최신, 스냅샷 6장 잘림·겹침 없음, A01·A10 이미지가 상대 경로로 표시, 외부 URL img 없음.",
+      "summary": "부록 A01–A06을 보강하고 A07(LangGraph)·A08(Agentic RAG)·A09(하네스·Deep Agents)·A10(HITL)을 새로 만들어 57장·#root 285초가 됐다(6056cb0). API 이름은 Context7 공식 문서로 확인했고 코드는 인자 이름만 둔다. A01은 attention-fig2a/2b 원 논문 그림+출처, A10은 승인 카드만 자른 cowork-hitl-approval-card.png(모델명 영역 없음)를 상대 경로로 쓴다. 사전 검토 21건(#1·#7 보류)과 사후 검토 15건(필수: A02 분할·답변·벡터 저장소 용어, A03 공통 기반 띠 전폭)을 1140de1까지 반영했다. 순서 A06→A10, 신규 4장 노트·출처, 허용 data-skill, 외부 URL 이미지 0, validate·lint·--check·넘침 0건. 사실 경계 10·15·16번 통과.",
+      "completedAt": "2026-09-15T17:01:38.210Z"
     },
     {
       "id": "bebaa349-60d1-4e9d-a40e-d53b2b836054",
       "name": "T8 전체 QA: 사실 경계 16항목·스냅샷 12장·플레이스홀더 목록·QA 보고서",
       "description": "57장 전체를 대상으로 v0.4 QA를 수행하고 _workspace/ppt_qa_report.md에 '## v0.4 (2026-09-xx)' 절을 추가한다. 항목: (1) 구조·문법 — 계획서 11-1 체크리스트(57장, 285초, s-N↔## Slide N 일치, data-scene-id에 G00·A07–A10, data-skill 허용값, validate·lint·--check 결과, 모든 씬 .speaker-note, 외부 URL img 없음, 인라인 style·hex·<br> 없음). (2) 내용·사실 경계 — 11-2 표 16항목을 확인 장면별로 대조해 통과/수정 표를 작성하고, 걸린 문구는 즉시 수정(index.html → --renumber → 재검증). 현업가이드 파일명·CLAUDE.md 발췌·13절 영상 요점이 마크업에 없는지 grep으로 확인. (3) 시각·가독성 — npm run snapshot -- topics/sk-hynix-ai-agent-guide-edu -- --at 4,9,14,29,54,79,109,134,159,209,254,279 12장을 Read로 열어 잘림·겹침·글자 크기 판독, 플레이스홀더 폭 50% 이하, 인포그래픽 상자 7개 이하. (4) 서사 — 11-4(막 태그 7곳, G01 괄호선, S22 역할 반전, 구간 마지막 노트 연결 6곳, G02 번호 태그). (5) 남은 플레이스홀더 ID 목록(P-G00 제외, P-S02·P-S08·P-S11·P-S13·P-S20·P-S26·P-S29·P-S31·P-S31b·P-S34·P-S37 등 실제 존재하는 것)과 미확정 3건(영상 요점, 실습 장 이름·앵커, 캡처 13종 일정)을 '사용자 확인 목록 (v0.4)' 표로 기록. lecture_expert에게 전체 흐름 사후 검토 1회(전체-v0.4-post.md)를 맡기고 '수정 필요' 항목을 반영한다.",
       "notes": "Export는 하지 않는다(사용자 최종 확인 전). 수정이 생기면 해당 slide_copy/slide_ui 기록도 '수정 기록(v0.4 QA)'으로 갱신.",
-      "status": "pending",
+      "status": "in_progress",
       "dependencies": [
         {
           "taskId": "98bd5929-c33c-4211-a9df-60569cf58b1e"
         }
       ],
       "createdAt": "2026-09-15T10:05:49.405Z",
-      "updatedAt": "2026-09-15T10:05:49.405Z",
+      "updatedAt": "2026-09-15T17:01:44.072Z",
       "relatedFiles": [
         {
           "path": "_workspace/ppt_qa_report.md",
