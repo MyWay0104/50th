@@ -1013,7 +1013,7 @@
       }
       .act-name {
         flex-shrink: 0;
-        width: 260px;
+        width: 200px;
         align-self: center;
         font-size: var(--fs-small);
         font-weight: 700;
@@ -1035,6 +1035,22 @@
       .split-image.h-sm { height: 280px; }
       .split-image.h-md { height: 360px; }
       .split-image.h-lg { height: 440px; }
+      /* 개념 예시 막대 분포: 수치 없이 모양만 (S07 온도 비교 등) */
+      .dist {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        height: 180px;
+        padding: 0 8px;
+        border-bottom: 2px solid var(--ink-2);
+      }
+      .dist-bar { flex: 1; min-width: 0; border-radius: 6px 6px 0 0; background: var(--line-strong); }
+      .dist-bar.is-accent { background: var(--accent); }
+      .dist-bar.lv-1 { height: 8%; }
+      .dist-bar.lv-2 { height: 20%; }
+      .dist-bar.lv-3 { height: 40%; }
+      .dist-bar.lv-4 { height: 65%; }
+      .dist-bar.lv-5 { height: 90%; }
     </style>
   </head>
   <body>
