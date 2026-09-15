@@ -1137,6 +1137,13 @@
       [data-scene-id="A06"] > .stack { flex: 1; justify-content: center; }
       [data-scene-id="A06"] .dg-row.stretch > .dg-box { padding: 32px 20px; }
       [data-scene-id="A06"] .dg-sub { font-size: var(--fs-small); text-wrap: balance; }
+      /* v0.4 강사 사후 검토 반영 (B2·B3, 2026-09-16) */
+      .dg-row.stretch > .dg-arrow.is-zone-gap { padding-top: 28px; }
+      .data-table td.is-warn { font-weight: 700; color: var(--ink); }
+      .dg > .dg-arrow.is-end.is-half { margin-right: calc(25% - 32px); }
+      .compare-list.is-numbered li { padding-left: 0; }
+      .compare-list.is-numbered li::before { content: none; }
+      [data-scene-id="S17"] .stack > .compare-note { padding-top: 0; }
     </style>
   </head>
   <body>
@@ -1562,7 +1569,7 @@ llm = ChatOpenAI(
           <div class="dg-box" data-editable="true">저장</div>
         </div>
       </div>
-      <span class="dg-arrow" aria-hidden="true">→</span>
+      <span class="dg-arrow is-zone-gap" aria-hidden="true">→</span>
       <div class="dg-zone is-grow">
         <div class="dg-zone-label" data-editable="true">질문할 때</div>
         <div class="dg-row stretch">
@@ -1604,7 +1611,7 @@ llm = ChatOpenAI(
         </thead>
         <tbody>
           <tr><td data-editable="true">제목·URL·날짜</td><td data-editable="true">있음</td><td data-editable="true">있음</td></tr>
-          <tr><td data-editable="true">본문</td><td class="is-match"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">비어 있음</span></td><td><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">있음</span></td></tr>
+          <tr><td data-editable="true">본문</td><td class="is-warn"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">비어 있음</span></td><td><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">있음</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1624,7 +1631,7 @@ llm = ChatOpenAI(
   <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
   <h2 class="scene-title" data-editable="true">LangChain의 역할</h2>
   <p class="thesis" data-editable="true">LangChain은 연결을 표준화할 뿐, 모델을 똑똑하게 만들지 않는다.</p>
-  <p class="explain" data-editable="true">두 코드는 같은 요청을 같은 서버로 보낸다. 이번 실습은 검색 결과를 모델 호출에 잇는 부분에 LangChain을 쓰며, 단순 호출이면 SDK로 충분하다.</p>
+  <p class="explain" data-editable="true">두 코드는 같은 요청을 같은 서버로 보낸다. 이번 실습은 검색 결과를 모델 호출에 잇는 부분에 LangChain을 쓰며, <span class="nowrap">단순 호출이면</span> SDK로 충분하다.</p>
   <div class="stack">
     <div class="compare-grid">
       <div class="code-card">
@@ -1683,7 +1690,7 @@ print(res.content)</pre>
     </div>
   </div>
   <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · LangChain Retrieval 가이드</p>
-  <aside class="speaker-note">처음 5분은 기사 본문을 확보하고, 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 확인합니다. 다음 7분은 질문을 넣고 어떤 문단이 검색됐는지 확인합니다. 이어서 7분 동안 그 근거를 붙여 답변을 만들고, 질문을 바꿔 검색 결과가 어떻게 달라지는지 봅니다. 마지막 3분은 기사에 없는 내용을 물어보고, 모델이 없다고 답하는지 확인합니다. 오른쪽 자리에는 질문, 검색 결과, 답변 세 영역이 한 화면에 보이는 실습 화면이 들어갈 예정이고, 코드에서는 검색 함수와 그 결과를 모델 호출에 잇는 부분 두 곳을 먼저 찾으면 됩니다. 교안의 RAG 파이프라인으로 보면 오늘은 질문할 때의 검색과 생성 구간을 직접 눈으로 확인하는 셈입니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로, 실행이 막히는 분은 옆 사람 화면으로 같은 단계를 진행하면 됩니다.</aside>
+  <aside class="speaker-note">처음 5분은 기사 본문을 확보하고, 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 확인합니다. 다음 7분은 질문을 넣고 어떤 문단이 검색됐는지 확인합니다. 이어서 7분 동안 그 근거를 붙여 답변을 만들고, 질문을 바꿔 검색 결과가 어떻게 달라지는지 봅니다. 마지막 3분은 기사에 없는 내용을 물어보고, 모델이 없다고 답하는지 확인합니다. 오른쪽 자리에는 질문, 검색 결과, 답변 세 영역이 한 화면에 보이는 실습 화면이 들어갈 예정이고, 코드에서는 검색 함수와 그 결과를 모델 호출에 잇는 부분 두 곳을 먼저 찾으면 됩니다. 교안의 RAG 파이프라인으로 보면 오늘은 질문할 때의 검색과 답변 구간을 직접 눈으로 확인하는 셈입니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로, 실행이 막히는 분은 옆 사람 화면으로 같은 단계를 진행하면 됩니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">15 / 57</div>
 </section>
@@ -1706,11 +1713,11 @@ print(res.content)</pre>
         <div class="compare-kicker" data-editable="true">고칠 곳 찾기</div>
         <table class="data-table">
           <thead>
-            <tr><th data-editable="true">구분</th><th data-editable="true">답변 ○</th><th data-editable="true">답변 ×</th></tr>
+            <tr><th data-editable="true">구분</th><th data-editable="true">답변 맞음</th><th data-editable="true">답변 틀림</th></tr>
           </thead>
           <tbody>
-            <tr><td data-editable="true">검색 ○</td><td><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">통과</span></td><td data-editable="true">프롬프트 제약</td></tr>
-            <tr><td data-editable="true">검색 ×</td><td data-editable="true">분할·검색</td><td data-editable="true">둘 다 점검</td></tr>
+            <tr><td data-editable="true">검색 맞음</td><td><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">통과</span></td><td data-editable="true">프롬프트 제약</td></tr>
+            <tr><td data-editable="true">검색 틀림</td><td data-editable="true">분할·검색</td><td data-editable="true">둘 다 점검</td></tr>
           </tbody>
         </table>
       </div>
@@ -1755,7 +1762,7 @@ print(res.content)</pre>
     </div>
   </div>
   <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · Part Number Finder Beta 공개 README · 조사정리 4-B(개인 기록) · 흐름도는 개념 예시</p>
-  <aside class="speaker-note">장비별 건수나 특정 파트가 있는지는 기준을 정하고 실제 데이터로 확인해야 하는 질문입니다. 화면 위쪽 네 상자에서 파란 상자인 집계만 SQL이나 Python이 맡고, 앞뒤의 조건 해석과 설명은 모델이 맡습니다. 예를 들어 교육용 가상 데이터에서 EQ-01 12건, EQ-02 7건이라는 값은 코드가 세고, 모델은 그 값을 옮겨 설명만 합니다. 같은 자료라도 날짜 기준, 단위, 중복 처리에 따라 답이 달라지므로 그 기준을 코드에 고정해 두는 것이 중요합니다. 제 개인 기록에도 분석 로직을 따로 떼어 입력 레코드로 먼저 집계하고, 모델은 그 결과를 설명하게 바꾼 과정이 있습니다. 앞 구간에서 교안 내용으로 본 LLM의 한계처럼, 정확한 계산과 식별자 확인도 모델 바깥에 두는 편이 안전합니다. "최근"이라는 말에 어떤 날짜 기준이 필요한지 한 분만 답해 주세요.</aside>
+  <aside class="speaker-note">장비별 건수나 특정 파트가 있는지는 기준을 정하고 실제 데이터로 확인해야 하는 질문입니다. 화면 위쪽 네 상자에서 파란 상자인 집계만 SQL이나 Python이 맡고, 앞뒤의 조건 해석과 설명은 모델이 맡습니다. 예를 들어 교육용 가상 데이터에서 EQ-01 12건, EQ-02 7건이라는 값은 코드가 세고, 모델은 그 값을 옮겨 설명만 합니다. 같은 자료라도 날짜 기준, 단위, 중복 처리에 따라 답이 달라지므로 그 기준을 코드에 고정해 두는 것이 중요합니다. 제 개인 기록에도 분석 로직을 따로 떼어 입력 레코드로 먼저 집계하고, 모델은 그 결과를 설명하게 바꾼 과정이 있습니다. 앞 구간에서 교안 내용으로 본 LLM의 한계처럼, 정확한 계산과 ID 확인도 모델 바깥에 두는 편이 안전합니다. "최근"이라는 말에 어떤 날짜 기준이 필요한지 한 분만 답해 주세요.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">17 / 57</div>
 </section>
@@ -1798,7 +1805,7 @@ def count_by_equipment(days: int) -> list:
   <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
   <h2 class="scene-title" data-editable="true">스크립트·Workflow·Agent</h2>
   <p class="thesis" data-editable="true">문제에 필요한 만큼의 자율성만 준다.</p>
-  <p class="explain" data-editable="true">Workflow는 코드가 순서를 정해 모델·도구를 부르고, Agent는 모델이 다음 행동을 고른다. Agent는 호출이 늘어 시간·사용량이 커지고 결과 예측이 어려워진다.</p>
+  <p class="explain" data-editable="true">Workflow는 코드가 순서를 정해 모델·도구를 부르고, Agent는 모델이 다음 행동을 고른다. Agent는 호출이 늘어 <span class="nowrap">시간·사용량이</span> 커지고 결과 예측이 어려워진다.</p>
   <div class="stack">
     <div class="compare-grid cols-3">
       <div class="compare-col">
@@ -1806,6 +1813,7 @@ def count_by_equipment(days: int) -> list:
         <div class="stack">
           <div class="compare-heading" data-editable="true">스크립트</div>
           <div class="dg-box" data-editable="true">규칙 → 결과</div>
+          <p class="compare-note" data-editable="true">모델 없이 코드가 끝까지</p>
         </div>
       </div>
       <div class="compare-col">
@@ -1813,6 +1821,7 @@ def count_by_equipment(days: int) -> list:
         <div class="stack">
           <div class="compare-heading" data-editable="true">Workflow</div>
           <div class="dg-box" data-editable="true">검색 → LLM → 답변</div>
+          <p class="compare-note" data-editable="true">순서는 코드가 정함</p>
         </div>
       </div>
       <div class="compare-col">
@@ -1820,6 +1829,7 @@ def count_by_equipment(days: int) -> list:
         <div class="stack">
           <div class="compare-heading" data-editable="true">Agent</div>
           <div class="dg-box" data-editable="true">LLM ⇄ 도구 반복</div>
+          <p class="compare-note" data-editable="true">다음 행동은 모델이 정함</p>
         </div>
       </div>
     </div>
@@ -1834,7 +1844,7 @@ def count_by_equipment(days: int) -> list:
   <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
   <h2 class="scene-title" data-editable="true">Part Finder의 후보 검증</h2>
   <p class="thesis" data-editable="true">데이터에 있는 후보만, 조건이 다 맞을 때만 답한다.</p>
-  <p class="explain" data-editable="true">강사가 만든 부품 번호 검색 도구 Part Finder의 공개 Beta 설계는 검색 후보에 있는 Part Number만 쓰고, 파트 종류·제조사·장비 조건을 코드로 검증한다. 맞는 후보가 없으면 '없음'이라고 답한다.</p>
+  <p class="explain" data-editable="true">강사가 만든 부품 번호 검색 도구 Part Finder의 공개 Beta 설계는 검색 후보에 있는 Part Number만 쓰고, <span class="nowrap">파트 종류·제조사·장비 조건을</span> 코드로 검증한다. 맞는 후보가 없으면 '없음'이라고 답한다.</p>
   <div class="split-grid wide-left">
     <div class="stack">
       <div class="dg-row"><span class="concept-badge" data-editable="true">공개 Beta 설계 기반 개념 예시</span><div class="panel-title" data-editable="true">요청: 제조사 A의 로봇 블레이드</div></div>
@@ -1855,11 +1865,11 @@ def count_by_equipment(days: int) -> list:
         <span class="dg-arrow" aria-hidden="true">→</span>
         <div class="dg-box" data-editable="true">후보 검색<span class="dg-sub">데이터</span></div>
       </div>
-      <span class="dg-arrow" aria-hidden="true">↓</span>
+      <span class="dg-arrow is-end is-half" aria-hidden="true">↓</span>
       <div class="dg-row stretch">
-        <div class="dg-box accent" data-editable="true">조건 검증<span class="dg-sub">코드</span></div>
-        <span class="dg-arrow" aria-hidden="true">→</span>
         <div class="dg-box muted" data-editable="true">답변·없음<span class="dg-sub">모델이 설명</span></div>
+        <span class="dg-arrow" aria-hidden="true">←</span>
+        <div class="dg-box accent" data-editable="true">조건 검증<span class="dg-sub">코드</span></div>
       </div>
     </div>
   </div>
@@ -1889,7 +1899,7 @@ def count_by_equipment(days: int) -> list:
         <div class="dg-row stretch"><div class="dg-box" data-editable="true">읽기 전용</div><div class="dg-box" data-editable="true">허용 테이블</div></div>
         <div class="dg-row stretch"><div class="dg-box" data-editable="true">쿼리 검사</div><div class="dg-box" data-editable="true">사람 승인</div></div>
       </div>
-      <div class="fallback" data-editable="true"><strong>막히면</strong>DB 접속이 안 되면 같은 구조의 교육용 DB로, 도구 호출이 안 되면 옆 사람 화면으로 진행합니다</div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>DB 접속이 안 되면 같은 구조의 교육용 DB로, <span class="nowrap">도구 호출이</span> 안 되면 옆 사람 화면으로 진행합니다</div>
     </div>
   </div>
   <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · 조사정리 6-4 · 근거: 사용자 제공 강의안·시간표</p>
@@ -1904,7 +1914,7 @@ def count_by_equipment(days: int) -> list:
   <p class="explain" data-editable="true"><strong>관찰할 것</strong>입력 칸의 값이 어떤 함수로 들어가고, 결과가 어느 코드에서 화면에 그려지는지 짚는다. 처리 중 표시가 뜨는 동안 어느 단계가 실행되는지도 본다.</p>
   <div class="practice-grid">
     <div class="stack">
-      <ul class="compare-list">
+      <ul class="compare-list is-numbered">
         <li data-editable="true">① 입력 칸 — 질문이 함수로 들어가는 곳</li>
         <li data-editable="true">② 처리 중 표시 — 모델·도구 호출 대기</li>
         <li data-editable="true">③ 결과 — 코드가 화면에 그리는 답</li>
@@ -1933,7 +1943,7 @@ def count_by_equipment(days: int) -> list:
   <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
   <h2 class="scene-title" data-editable="true">오전 실습의 전체 구조</h2>
   <p class="thesis" data-editable="true">오전에 연결한 세 층 중 한 곳을 오후에 AI에게 고치게 한다.</p>
-  <p class="explain" data-editable="true">한 층의 작은 수정이 다른 층에 영향을 주므로, 오후에는 구조를 먼저 읽고 바꿀 범위를 정한다. 오후 Claude Code의 모델 연결은 오전 실습 API와 별개라 따로 확인한다.</p>
+  <p class="explain" data-editable="true">한 층의 작은 수정이 다른 층에 영향을 주므로, 오후에는 구조를 먼저 읽고 바꿀 범위를 정한다. 오후 Claude Code의 <span class="nowrap">모델 연결은</span> 오전 실습 API와 별개라 따로 확인한다.</p>
   <div class="split-grid wide-left">
     <div class="split-panel">
       <span class="concept-badge" data-editable="true">개념 예시</span>
