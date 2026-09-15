@@ -2,6 +2,8 @@
 
 AI Agent 전용 작업 규칙이다. 일반 개발 지식은 적지 않는다. 이 저장소에서만 통하는 규칙만 적는다.
 
+최종 갱신: 2026-09-15 (MCP 설정, `sync_overview.py`, v0.4 개정안 대기 상태 반영)
+
 ## 1. 프로젝트 개요
 
 - HyperFrames(HTML + GSAP composition)로 **16:9 발표 슬라이드덱(`deck`)** 또는 **카드뉴스(`card-news`)** 를 topic 단위로 제작하는 작업 공간이다.
@@ -16,20 +18,24 @@ AI Agent 전용 작업 규칙이다. 일반 개발 지식은 적지 않는다. �
 |---|---|---|
 | `AGENTS.md` | 저장소 전체 규칙 원본 | 규칙 변경 시에만 수정. 수정하면 7절 동기화 표 적용 |
 | `CLAUDE.md` | Claude Code용 요약 안내 | `AGENTS.md`와 내용이 어긋나지 않게 유지 |
+| `user_guide.md` | 새 제작 요청 프롬프트 예시·사용자 흐름 | workflow·명령이 바뀌면 함께 갱신 |
 | `new_md/DESIGN-*.md` | 사용자가 넣은 디자인 원본 | **읽기 전용**. 편집하지 말고 topic의 `DESIGN.md`에 복사해 사용 |
 | `topics/<slug>/` | 독립 HyperFrames 프로젝트 1개 | 작업 대상 |
 | `topics/_template/`, `topics/_card_news_template/` | scaffold 참고본 | **수정 금지** |
 | `topics/oxxodok_50th/` | 완성 사례(참고용) | **수정 금지**. 구조를 참고만 |
-| `_workspace/` | 파이프라인 단계 산출물 | `orchestration-plan.md` 삭제 금지(검증기가 요구) |
+| `_workspace/` | 파이프라인 단계 산출물. 슬라이드 단위 루프 산출물은 `slide_copy/`, `slide_ui/`, `lecture_review/` 하위(6-2절). `01_domain_analysis.md`는 저장소 초기 도메인 분석 | `orchestration-plan.md` 삭제 금지(검증기가 요구) |
 | `.codex/agents/*.toml` | 역할별 subagent 계약 (8개) | 7절 동기화 표 적용 |
 | `.claude/agents/*.md` | Claude Code 실행용 subagent 정의 (슬라이드 단위 3개) | `.codex/agents`의 같은 이름 toml과 역할을 일치시킴 |
 | `.agents/skills/ppt-hyperframes-deck/` | 반복 제작 절차 + `references/ppt-checklist.md` | QA 기준 변경 시 수정 |
 | `.codex/skills/` | HyperFrames 문법·레이아웃·overview·export 스킬 | **읽기 전용**. 문법의 근거로만 사용 |
 | `.codex/skills/skills/` | 위 스킬의 중첩 복사본 | **참조 금지**. 최상위 `.codex/skills/`만 기준으로 사용 |
-| `scripts/` | `create_topic.py`, `validate_topic.py`, `validate_codex_port.py` | 수정 시 7절 동기화 표 적용 |
-| `shrimp_data/` | shrimp-task-manager `DATA_DIR` | **수동 편집 금지**. shrimp 도구로만 변경 |
-| `renders/`, `snapshots/` | 렌더·스냅샷 출력 | gitignore 대상. 커밋하지 않음 |
-| `tmp/` | 임시 폴더 | 산출물을 두지 않음. 임시 파일은 세션 scratchpad 사용 |
+| `scripts/` | `create_topic.py`, `validate_topic.py`, `validate_codex_port.py`, `sync_overview.py` | 수정 시 7절 동기화 표 적용 |
+| `shrimp_data/` | shrimp-task-manager `DATA_DIR` (`tasks.json`, `WebGUI.md`) | **수동 편집 금지**. shrimp 도구로만 변경. git 추적 대상(2026-09-15 사용자 결정) |
+| `topics/<slug>/docs/storyboard_v0.1/` | v0.1 스토리보드 보관본(`storyboard.json`, 기획 3종) | **수정 금지**. 현재 기획 원본은 루트 `_workspace/` |
+| `.mcp.json` | 프로젝트 MCP 서버 6개: `supabase`, `playwright`, `context7`, `sequential-thinking`, `shadcn`, `shrimp-task-manager` | 서버 추가·경로 변경 시에만 수정. 7절 동기화 표 적용 |
+| `.claude/settings.local.json` | 로컬 전용 설정(`enableAllProjectMcpServers: true`) | 전역 gitignore 대상. 커밋하지 않음 |
+| `.vscode/settings.json` | VS Code Live Server 포트 5501 | HyperFrames preview(3000)와 별개. 사용자 요청 없이 수정하지 않음 |
+| `renders/`, `snapshots/`, `.playwright-mcp/` | 렌더·스냅샷·Playwright MCP 출력 | gitignore 대상. 커밋하지 않음 |
 
 ## 3. topic 폴더 규약
 
@@ -91,14 +97,15 @@ python scripts\sync_overview.py topics\<slug> --check      # 최신 여부만 �
 
 - `npm run new-topic -- --name <slug> --title "<제목>" --company "<회사>" --type deck|card-news`를 사용한다.
 - 디자인 파일을 직접 지정할 때는 `--design new_md/DESIGN-x.md`를 추가한다.
-- `--company` 이름이 들어간 `new_md/DESIGN-*.md`가 없으면 첫 파일이 선택된다. **생성 후 `DESIGN.md`가 의도한 파일인지 반드시 확인**한다.
+- `--company` 매칭은 파일명(확장자 제외)을 소문자·공백 제거한 뒤 부분 문자열로 비교한다. 매칭이 없으면 `sorted()`의 첫 파일이 **경고 없이** 선택된다. Windows에서는 정렬이 대소문자를 구분하지 않으므로, 현재 파일(`DESIGN-nintendo-2001.md`, `DESIGN-Notion.md`, `DESIGN-SAMPLE.md`) 기준으로 매칭 실패 시 `DESIGN-nintendo-2001.md`가 복사된다(예: `--company "SK hynix"`). 의도한 파일이 따로 있으면 `--design`으로 직접 지정한다.
+- **생성 후 `DESIGN.md`가 의도한 파일인지 반드시 확인**한다.
 - 기존 자료 폴더를 topic으로 승격할 때는 3-1 필수 구성을 직접 추가하고, `hyperframes.json`은 루트 파일을 복사한다.
 
 ### 4-2. 장면 추가·수정
 
 - 기획 문서의 장면 ID(예: `S10`, `G01`, `A03`)를 `data-scene-id`로 유지한다. HTML `id`는 순번 `s-N`, overview `data-slide`도 같은 순번이다. 매핑표는 `_workspace/ppt_content_plan.md` 상단에 있다.
 - 장면을 추가해도 **기획 ID를 재번호하지 않는다**. 새 장면은 새 접두어·번호를 부여한다. 순번 `s-N`은 `sync_overview.py --renumber`가 다시 매긴다.
-- `data-start`·`data-duration`·`.page-num`·`#root` 전체 길이는 `--renumber`로 맞춘다. 손으로 계산하지 않는다.
+- `data-start`·`data-duration`·`.page-num`·`#root` 전체 길이는 `--renumber`로 맞춘다. 손으로 계산하지 않는다. 장면당 초는 `--seconds`(기본 5)로만 바꾼다.
 
 ### 4-3. 디자인 적용
 
@@ -125,10 +132,13 @@ python scripts\sync_overview.py topics\<slug> --check      # 최신 여부만 �
 |---|---|
 | HyperFrames CLI | `npx hyperframes ...` 또는 `package.json` 스크립트로만 실행. 전역 설치 가정 금지 |
 | HyperFrames 문법 | `.codex/skills/hyperframes/SKILL.md`, `house-style.md`를 따른다. 새 속성·문법을 창작하지 않는다 |
-| GSAP | 타임라인은 `paused: true`, 동기 생성, `repeat: -1` 금지. `data-layer`·`data-end` 대신 `data-track-index`·`data-duration` |
-| Paperlogy 폰트 | jsdelivr CDN `@font-face`를 사용. 오프라인 렌더를 대비해 폴백 스택 유지 |
+| GSAP | cdnjs `gsap/3.12.5` 스크립트 사용. 타임라인은 `paused: true`, 동기 생성, `repeat: -1` 금지. `data-layer`·`data-end` 대신 `data-track-index`·`data-duration` |
+| 웹폰트 | Paperlogy(본문)·JetBrains Mono(코드, `@fontsource/jetbrains-mono@5.0.20` 고정 — 브라우저·렌더러 폭 차이 방지)를 jsdelivr CDN `@font-face`로 사용. 오프라인 렌더를 대비해 폴백 스택 유지 |
 | Python 스크립트 | `logging` 모듈 사용(`print` 금지), 타입 힌트, 기존 4칸 들여쓰기 유지 |
 | 라이브러리 문서 | 라이브러리·CLI 사용법은 Context7 MCP로 최신 문서를 확인 |
+| shrimp-task-manager MCP | 여러 단계 작업의 계획·분할·검증에 사용. `DATA_DIR`은 `shrimp_data/` 절대경로. 서버 코드는 저장소 밖 로컬 빌드본(`C:/Users/swl01/mcp-servers/mcp-shrimp-task-manager/dist/index.js`) |
+| Playwright MCP | overview·렌더 화면 확인용. 장면 최종 상태 기록은 `npm run snapshot`을 쓴다 |
+| supabase·shadcn MCP | 이 저장소 작업과 무관. 사용자 요청 없이 호출하지 않음 |
 
 ## 6. 워크플로
 
@@ -177,6 +187,7 @@ HTML을 수정할 때마다 다음을 실행한다. lint를 못 돌리면 이유
 ```powershell
 python scripts\validate_topic.py topics\<slug>
 npx hyperframes lint topics\<slug>
+python scripts\sync_overview.py topics\<slug> --check   # scene-styles topic만
 ```
 
 에이전트·스킬 정의를 수정하면 다음을 실행한다.
@@ -200,7 +211,9 @@ npm run snapshot -- topics/<slug> -- --at 2.5,8.1
 |---|---|
 | 슬라이드 문구·스타일·장면 추가/삭제 | `topics/<slug>/index.html` **와** `topics/<slug>/overview.html`. scene-styles topic은 index 수정 후 `sync_overview.py --renumber`로 overview 재생성 |
 | 사용자 overview patch 반영 | `index.html`, `overview.html` 양쪽(scene-styles topic은 index 반영 후 재생성) → validate + lint → overview 검토 상태로 복귀 |
-| 장면 목록·순서 변경 | 위 두 HTML + `_workspace/ppt_content_plan.md` + `_workspace/ppt_visual_plan.md`(ID 매핑표) + topic의 `storyboard.json`이 있으면 동기화 |
+| 장면 목록·순서 변경 | 위 두 HTML + `_workspace/ppt_content_plan.md`의 "장면 ID ↔ HTML 순번 매핑" 표 + (레이아웃이 바뀌면) `_workspace/ppt_visual_plan.md`·`_workspace/slide_ui/<차수>.md` + 장수 표기(topic `BRIEF.md`, `TASK.md`, 계획서 진행 상태 절). `docs/storyboard_v0.1/`은 보관본이므로 고치지 않는다 |
+| 사용자 확인 목록(P·Q·N) 답변 반영 | 해당 장면(두 HTML) + `_workspace/ppt_qa_report.md`의 해당 행 상태 |
+| MCP 서버 추가·경로 변경 | `.mcp.json` + 이 문서 2절·5절 |
 | 에이전트 추가·역할 변경 | `.codex/agents/<name>.toml` + (슬라이드 단위면) `.claude/agents/<name>.md` + `AGENTS.md` 에이전트 역할 + `README.md` 파이프라인 + `architecture.md` + `_workspace/orchestration-plan.md` → `validate_codex_port.py` |
 | 허용 `data-skill` 변경 | `AGENTS.md` + `scripts/validate_topic.py`(`DECK_SKILLS`/`CARD_NEWS_SKILLS`) + `.agents/skills/ppt-hyperframes-deck/SKILL.md` + `CLAUDE.md` + 이 문서 3-3 |
 | topic 필수 파일 변경 | `scripts/validate_topic.py`(`REQUIRED_TOPIC_FILES`/`DIRS`) + `scripts/create_topic.py` + `references/ppt-checklist.md` + `SKILL.md` QA Gates + 이 문서 3-1 |
@@ -233,12 +246,18 @@ AGENTS.md  >  shrimp-rules.md  >  CLAUDE.md  >  .agents/skills/*  >  .codex/skil
 1. `topics/<slug>/docs/` 아래 계획서(예: `slide-plan-YYYY-MM-DD.md`)의 "확정된 결정" 표를 먼저 읽는다.
 2. `_workspace/` 단계 산출물의 최신 상태를 확인한다.
 3. 결정 표에 없는 사항만 판단한다.
+4. 계획서가 여러 판이면 진행 상태 절이 있는 확정본을 기준으로 삼는다. 미반영 개정안은 사용자 승인 전까지 참고만 한다.
 
 현재 진행 중 topic 요약 (상세는 계획서가 원본):
 
 | topic | 계획서 | 핵심 결정 |
 |---|---|---|
-| `sk-hynix-ai-agent-guide-edu` | `docs/slide-plan-2026-09-13.md` | deck, DESIGN-Notion **최소 적용**(오프화이트·근검정·파랑 액센트 1개·헤어라인·그림자 없음·스티커 팔레트 미사용·남색 반전은 S01·G02만), **애니메이션 없음**(빈 paused 타임라인만), 구간 표지 생략, 본문 46장 + 부록 6장 = 52장, 슬라이드 단위 루프 사용 |
+| `sk-hynix-ai-agent-guide-edu` | `docs/slide-plan-2026-09-13.md` | deck, DESIGN-Notion **최소 적용**(오프화이트·근검정·파랑 액센트 1개·헤어라인·그림자 없음·스티커 팔레트 미사용·남색 반전은 S01·G02만), **애니메이션 없음**(빈 paused 타임라인만), 구간 표지 생략, 본문 46장 + 부록 6장 = 52장, 슬라이드 단위 루프 사용. **상태(v0.3)**: 52장 빌드 완료, 사용자 overview 검토·export 대기. 사용자 확인 목록은 `_workspace/ppt_qa_report.md`의 P1–P5·Q1–Q7·N1–N2 |
+| `sk-hynix-ai-agent-guide-edu` (다음 개정안) | `docs/slide-plan-v0.4-visual-narrative.md` (git 미추적, 빌드 전) | 57장(G00·A07–A10 추가, `#root` 285초), G00은 G01 다음, 모든 장면에 시각 요소 1개 이상, 텍스트 6층(한 줄 요지·설명 문단 추가), 기-승-전-결 막 태그. 12절 답변 완료(2026-09-15), 기록은 12-1절 |
+
+- ⚠️ v0.4 결정의 원본은 계획서 12-1절이다. 미확정 항목은 추정해 채우지 않는다. 영상 요점(6번)은 강사가 확정하기 전까지 G00에 영상 제목·학습 4단계만 두고, 실습 단계 이름(7번)은 현재 이름을 유지하고 실제 장 이름·앵커는 강사가 채운다.
+- ⚠️ 실습 자료는 사내 전용 HTML(반출 불가)이며, 처음 요청한 실습 내용(기사 RAG·SQL Tool·Streamlit·Claude Code·Skill)대로 진행한다. `C:\Users\swl01\workspace\skh_llm_guide\`(현업가이드)는 실습 자료가 아니라 참고 자료다. 실습 코드의 파일명·함수명·장 이름을 현업가이드에서 가져오지 않는다.
+- v0.4를 적용할 때 추가되는 규칙: 이미지는 `assets/img/<b1~b7|appendix|common>/`에 소문자·하이픈 파일명으로 둔다. 외부 URL `<img src>` 금지. 플레이스홀더는 `[IMG-PLACEHOLDER · P-<장면ID>]` 규격(화면 50% 이하). JAEN 교안 도판은 복제하지 않고 CSS/SVG로 재구성해 "교안 내용 재구성"으로 표기. arXiv 논문 그림은 출처 캡션 필수.
 
 ### 8-4. 모호한 상황
 
@@ -250,7 +269,8 @@ AGENTS.md  >  shrimp-rules.md  >  CLAUDE.md  >  .agents/skills/*  >  .codex/skil
 | 사내 환경값·실습 판본 불명 | 추정하지 말고 "미확인"으로 표시해 사용자 확인 목록에 추가 |
 | 사용자가 "바로 작업"을 요청 | 요구사항 분석 → 아키텍처 → 구현 계획 → 코드 → QA 순서를 내부 산출물에 반영한 채 진행 |
 | 플랜 모드에서 실행으로 전환 직전 | 계획을 `.claude/plans/plan-YYYY-MM-DD-기능명.md`로 남길지 사용자에게 매번 확인 |
-
+| shrimp 도구가 도구 목록에 없음 | `.mcp.json`의 shrimp 경로에 `dist/index.js`가 있는지 확인. 없으면 사용자에게 서버 빌드(`npm install; npm run build`)를 요청하고, 있으면 `/mcp reconnect shrimp-task-manager`를 안내 |
+| 기획 문서의 저장소 밖 절대경로 링크(`C:/Users/swl01/.codex/.chatgpt-projects/...`) | 따라가지 않는다. 저장소 안 대응 파일(`topics/<slug>/docs/storyboard_v0.1/`, 루트 `_workspace/`)을 읽는다 |
 ## 9. 금지 행동
 
 - ⚠️ 허용 목록 밖의 `data-skill` 값을 쓰지 않는다. deck과 card-news 값을 섞지 않는다.
@@ -259,11 +279,12 @@ AGENTS.md  >  shrimp-rules.md  >  CLAUDE.md  >  .agents/skills/*  >  .codex/skil
 - ⚠️ `index.html`과 `overview.html` 중 한쪽만 수정하지 않는다.
 - ⚠️ 문서 갱신 없이 코드·워크플로만 바꾸지 않는다.
 - HyperFrames 문법·속성을 새로 만들지 않는다. `.codex/skills/skills/` 중첩 복사본을 기준으로 삼지 않는다.
-- `new_md/DESIGN-*.md`, `topics/_template/`, `topics/_card_news_template/`, `topics/oxxodok_50th/`, `.codex/skills/`를 수정하지 않는다.
+- `new_md/DESIGN-*.md`, `topics/_template/`, `topics/_card_news_template/`, `topics/oxxodok_50th/`, `topics/<slug>/docs/storyboard_v0.1/`, `.codex/skills/`를 수정하지 않는다.
 - 기획 장면 ID를 재번호하지 않는다.
 - 근거 없는 수치·가짜 스크린샷·가상의 성공 사례를 실제처럼 넣지 않는다.
 - API 키·비밀번호·토큰·사내 주소를 HTML·문서·커밋에 넣지 않는다.
 - `shrimp_data/`를 직접 편집하지 않는다.
+- 저장소 안에 임시 파일·폴더를 만들지 않는다. 임시 파일은 세션 scratchpad에 둔다.
 - 사용자 요청 없이 git commit·push를 하지 않는다. 커밋 메시지는 한국어로 쓴다.
 - 타임라인을 `async`·`setTimeout`·Promise 안에서 만들지 않는다. `repeat: -1`을 쓰지 않는다.
 
@@ -279,3 +300,4 @@ AGENTS.md  >  shrimp-rules.md  >  CLAUDE.md  >  .agents/skills/*  >  .codex/skil
 | `--color-accent: #0075de`를 `:root`에 두고 변수 참조 | 장면마다 `color: #0075de` 직접 기입 |
 | 에이전트 추가 후 `validate_codex_port.py` 실행 | toml만 추가하고 `AGENTS.md`·`orchestration-plan.md` 미갱신 |
 | "overview 최종 확인" 발화 후 export | 빌드 직후 "편의상" PDF부터 출력 |
+| 강사가 영상 요점을 확정하기 전에는 G00에 영상 제목·학습 4단계만 표시 | 2차 기사로 정리한 요점 4개를 확정된 것처럼 G00에 넣음 |
