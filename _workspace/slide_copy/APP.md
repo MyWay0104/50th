@@ -691,9 +691,11 @@ G02의 "다음: 부록은 질문 대응·후속 학습용" 안내는 B7 담당 �
 - V8. A05: 카드 예시 4개가 실제 교육 환경의 대표 오류와 맞는지. 예시 1–3은 현업 활용 가이드의 문제 해결 사례를 일반화한 것이고 실습 환경에서 확인된 오류가 아니다. v0.3 보류 6(사내 실행 가이드 문제 해결 장 이름, 리허설에서 난 오류)과 함께 강사가 확인한다.
 - V9. A06: `title-bullets` 장면에서 `.bullets`를 빼고 5단계 띠를 본문으로 두는 구조를 UI 담당·사용자가 받아들일지, 띠의 순서(권한 → 데이터 정의 → 정답 세트 → 호출 흐름 → 변경·피드백)를 권장 순서로 보여도 되는지.
 - V10. A07–A10 코드와 설명의 API 이름(StateGraph·add_node·add_edge·add_conditional_edges·compile(checkpointer)·invoke(config), with_structured_output, create_deep_agent의 model·tools·subagents·skills·backend·interrupt_on, interrupt()·Command(resume))을 공식 문서로 다시 확인해야 한다. 이번 작성 환경에는 문서 조회 도구가 없어 재확인하지 못했다. create_deep_agent 인자 이름은 현업 활용 가이드 참고 코드에서 같은 이름이 쓰인 것까지만 확인했다(판본 미확인).
+  - → 해결(2026-09-16, 오케스트레이터): Context7로 공식 문서 확인. LangGraph `StateGraph`·`add_node`·`add_edge(START, …)`·`add_conditional_edges`·`compile(checkpointer=…)`·`invoke(…, config)`, `langgraph.types`의 `interrupt()`·`Command(resume=…)`(체크포인터와 thread_id config 필요), Deep Agents `create_deep_agent`의 `model`·`tools`·`subagents`·`skills`·`backend`·`interrupt_on`(+`checkpointer`) 인자 이름이 모두 문서와 일치한다.
 - V11. 교안 호칭과 쪽수: 화면·노트에 "4일 과정 교안", "5일 과정 교안"으로 적었다. 수강생이 이 교안을 볼 수 있는지, 과정 이름을 정식 명칭으로 적을지 정해야 한다. 계획서의 쪽수(교안-5일 29–34·126–173·174–198·254–256·299–301쪽 등)는 확인하지 못해 넣지 않았다.
 - V12. A07: 분기 예시를 교안의 날씨·계산·일반에서 오전 실습 주제(기사 검색·SQL 조회·바로 답변)로 바꾼 것을 받아들일지, 교안 예시로 되돌릴지.
 - V13. A10: 스크린샷 원본(3600×1974)을 폭 40% 이하(`h-sm` 약 511px)로 줄이면 승인 카드 글자가 약 5px라 읽히지 않는다. 승인 카드 부분(요청 문장·"쉘 명령 실행 승인이 필요합니다"·명령 칸·승인/거부 버튼)만 자른 복사본(모델명 가림 유지)을 만들어 쓸지 사용자 확인이 필요하다. 자산 수정이므로 임의로 하지 않았다.
+  - → 해결(2026-09-16, 오케스트레이터): 승인 카드 부분만 자른 복사본 `assets/img/appendix/cowork-hitl-approval-card.png`(1543×421)를 만들었다. 폭 약 840px에서 글자 약 14px. A10은 이 파일을 쓴다(전체 화면 캡처는 쓰지 않음).
 - V14. A08: 설명이 화면 3줄로 넘치면 칩 줄(Corrective·Self-RAG·Adaptive)을 먼저 뺀다. 노트의 "사내망에서는 웹 검색 자체를 쓸 수 없을 수도 있음"이 교육 환경과 맞는지도 확인이 필요하다.
 - V15. 출처 정리: `docs/AI_Agent_Guide_출처목록.md`에 LangGraph Overview·LangGraph Human-in-the-loop(interrupts)·Deep Agents 개요 항목이 없다. A07–A10 출처 줄의 공식 문서를 목록에 추가해야 한다(문서 담당).
 - V16. A07 출처의 "뿌리강의 REMASTERED"(계획서 10장 인용, "경로를 밖으로 꺼내기")는 이번 작성에서 원문을 확인하지 못했다. 출처 줄에 둘지 강사가 확인한다.
