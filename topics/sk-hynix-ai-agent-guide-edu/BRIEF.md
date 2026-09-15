@@ -29,6 +29,8 @@
 
 v0.4 개정(2026-09-16): 기-승-전-결 막 태그 7곳, 장면마다 한 줄 요지(`.thesis`)와 설명 문단(`.explain`), 모든 장면에 시각 요소 1개 이상(인라인 `.dg` 도식·원 논문 그림·플레이스홀더), G00(왜 이런 순서로 배우나)과 부록 A07–A10(LangGraph·Agentic RAG·하네스·HITL) 추가. 결정 원본은 `docs/slide-plan-v0.4-visual-narrative.md` 12-1절.
 
+final-touch(2026-09-17): 사용자 수정 12건 반영 — SK hynix 주황 테마(`#dd5b00`·`#793400`), 구간 표시(B1–B7)·쪽번호·기승전결 태그 삭제, 첫 시간표 밖 시간 정보 삭제(실습 안내판은 순서 번호), 화면 존댓말, 제목 간결화(부록 '부록 ·'), 출처는 공식 문서·논문만, 로고·아이콘 보강. 기록은 `_workspace/final_touch.md`.
+
 ## 구현
 
 - `index.html`: 원본 슬라이드 소스. 장면 id는 순번 `s-N`, 콘티 ID는 `data-scene-id`, 발표자 노트는 `.speaker-note`.

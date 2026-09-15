@@ -29,6 +29,7 @@
 - [x] `scripts/sync_overview.py` 추가: scene-styles 규약 topic의 overview 재생성, 순번 정리, 최신 여부 검사
 - [x] `sk-hynix-ai-agent-guide-edu` topic v0.3 빌드 (Phase 0–4, 2026-09-14). 아래 v0.4로 대체됨. QA: `_workspace/ppt_qa_report.md`
 - [x] `sk-hynix-ai-agent-guide-edu` v0.4 57장 개정 (2026-09-16, 브랜치 `feat/sk-hynix-deck-v0.4`): 막 태그·한 줄 요지·설명 문단·장면별 시각 요소, G00·A07–A10 추가, 차수 묶음마다 강사 사전·사후 검토 반영. 사용자 overview 검토·export 대기. 진행 기록: `_workspace/v0.4_progress.md`
+- [x] `sk-hynix-ai-agent-guide-edu` final-touch (2026-09-17, 브랜치 `final-touch` → main): 사용자 수정 12건(주황 테마, 구간 표시·쪽번호·시간 정보 삭제, 존댓말, 제목 간결화, 공식 출처만, 로고·아이콘). 기록: `_workspace/final_touch.md`
 
 ## 코드
 

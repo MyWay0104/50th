@@ -253,7 +253,7 @@ AGENTS.md  >  shrimp-rules.md  >  CLAUDE.md  >  .agents/skills/*  >  .codex/skil
 | topic | 계획서 | 핵심 결정 |
 |---|---|---|
 | `sk-hynix-ai-agent-guide-edu` | `docs/slide-plan-2026-09-13.md` | deck, DESIGN-Notion **최소 적용**(오프화이트·근검정·파랑 액센트 1개·헤어라인·그림자 없음·스티커 팔레트 미사용·남색 반전은 S01·G02만), **애니메이션 없음**(빈 paused 타임라인만), 구간 표지 생략, 본문 46장 + 부록 6장 = 52장, 슬라이드 단위 루프 사용. v0.3(52장)은 v0.4로 대체됨 |
-| `sk-hynix-ai-agent-guide-edu` (v0.4) | `docs/slide-plan-v0.4-visual-narrative.md` | 57장(G00·A07–A10 추가, `#root` 285초), G00은 G01 다음, 모든 장면에 시각 요소 1개 이상, 텍스트 6층(한 줄 요지·설명 문단 추가), 기-승-전-결 막 태그. 결정 원본은 12-1절. **상태(v0.4, 2026-09-16)**: 57장 빌드 완료, 사용자 overview 검토 대기(브랜치 `feat/sk-hynix-deck-v0.4`). 사용자 확인 목록은 `_workspace/ppt_qa_report.md`의 "v0.4" 절 |
+| `sk-hynix-ai-agent-guide-edu` (v0.4) | `docs/slide-plan-v0.4-visual-narrative.md` | 57장(G00·A07–A10 추가, `#root` 285초), G00은 G01 다음, 모든 장면에 시각 요소 1개 이상, 텍스트 6층(한 줄 요지·설명 문단 추가), 기-승-전-결 막 태그. 결정 원본은 12-1절. **상태(final-touch, 2026-09-17)**: 57장, 사용자 수정 12건 반영(주황 테마 `#dd5b00`·구간 표시·쪽번호·시간 정보 삭제·존댓말·공식 출처만·로고), main 병합, 사용자 overview 검토 대기. 기록 `_workspace/final_touch.md`. 사용자 확인 목록은 `_workspace/ppt_qa_report.md`의 "v0.4" 절 |
 
 - ⚠️ v0.4 결정의 원본은 계획서 12-1절이다. 미확정 항목은 추정해 채우지 않는다. 영상 요점(6번)은 강사가 확정하기 전까지 G00에 영상 제목·학습 4단계만 두고, 실습 단계 이름(7번)은 현재 이름을 유지하고 실제 장 이름·앵커는 강사가 채운다.
 - ⚠️ 실습 자료는 사내 전용 HTML(반출 불가)이며, 처음 요청한 실습 내용(기사 RAG·SQL Tool·Streamlit·Claude Code·Skill)대로 진행한다. `C:\Users\swl01\workspace\skh_llm_guide\`(현업가이드)는 실습 자료가 아니라 참고 자료다. 실습 코드의 파일명·함수명·장 이름을 현업가이드에서 가져오지 않는다.
