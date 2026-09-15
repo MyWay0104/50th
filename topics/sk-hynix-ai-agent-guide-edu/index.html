@@ -1063,6 +1063,22 @@
         border-radius: 4px;
         vertical-align: -0.15em;
       }
+      /* 진행 시간 띠: 칩 7개 + 작은 화살표를 줄바꿈 없이 한 줄로 (S41–S43) */
+      .time-band { display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; }
+      .time-band > .dg-arrow { font-size: var(--fs-small); }
+      /* 4칸 한 줄 시간 블록의 글자 칸을 넓힌다 (S37) */
+      .time-blocks.row .time-block { padding: 24px 16px; }
+      /* 상자 안 칩 줄 위 간격 (S42 막히면, S43 기록 칸) */
+      .done-box > .chip-row, .fallback > .chip-row { margin-top: 16px; }
+      /* 인용 장면 질문 카드 번호: 흐림색 (S44) */
+      .quote-points { counter-reset: qp; }
+      .quote-points li::before { counter-increment: qp; content: counter(qp); margin-right: 16px; font-weight: 800; color: var(--ink-3); }
+      /* 남색 반전 장면의 비교 카드: 투명 카드 + 흰 헤어라인 (G02) */
+      .scene.night .compare-col { background: transparent; border-color: var(--on-night-line); }
+      .scene.night .compare-heading { border-bottom-color: var(--on-night-line); }
+      .scene.night .compare-list li { color: var(--on-night); }
+      .scene.night .compare-note { margin-top: 0; color: var(--on-night-2); }
+      .compare-note + .chip-row { margin-top: 16px; }
     </style>
   </head>
   <body>
