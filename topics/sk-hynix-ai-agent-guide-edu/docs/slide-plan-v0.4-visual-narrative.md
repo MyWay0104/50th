@@ -1,6 +1,7 @@
 # AI Agent Guide 사내 교육 — 슬라이드 콘티 v0.4 (HyperFrames 빌드 메타프롬프트)
 
 작성일: 2026-09-14 · 대상 topic: `topics/sk-hynix-ai-agent-guide-edu/` · 기준 버전: 현재 index.html 52장(v0.3) · 사용자 답변 반영: 2026-09-15 (12-1절)
+**진행 상태 (2026-09-16)**: 57장 빌드 완료 · 사용자 overview 검토 대기. 차수 묶음마다 강사 사전·사후 검토를 반영했다. 계획과 다르게 확정한 곳(S16 작은 줄, S17 패턴 띠, S19 타일)과 진행 기록은 `_workspace/v0.4_progress.md`, QA는 `_workspace/ppt_qa_report.md` "v0.4" 절.
 이 문서는 VS Code 터미널의 Claude Code에 **컨텍스트로 붙여 넣는 제작 지시서**다. 읽는 쪽(빌더)은 이 문서를 근거로 `index.html`을 고치고 `sync_overview.py`로 `overview.html`을 재생성한다.
 
 ---

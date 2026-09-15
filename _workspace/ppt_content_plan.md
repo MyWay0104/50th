@@ -49,64 +49,69 @@
 
 **근거:** `docs/AI_Agent_Guide_강의소재_조사정리.md` 1절 학습 성과 4가지
 
-## 장면 ID ↔ HTML 순번 매핑 (v0.2)
+## 장면 ID ↔ HTML 순번 매핑 (v0.4)
 
-HTML 장면 id는 overview patch 파서와 맞추기 위해 순번 `s-N`을 쓰고, 콘티 ID는 `data-scene-id`에 둔다. 장면이 추가·삭제되면 `scripts/sync_overview.py --renumber`로 순번을 다시 매긴다.
+HTML 장면 id는 overview patch 파서와 맞추기 위해 순번 `s-N`을 쓰고, 콘티 ID는 `data-scene-id`에 둔다. 장면이 추가·삭제되면 `scripts/sync_overview.py --renumber`로 순번을 다시 매긴다. v0.4(2026-09-16)에서 G00(3번)과 A07–A10(54–57번)이 추가돼 57장이 됐다. 제목은 `index.html`의 실제 제목이다.
 
 | 순번 | HTML id | 콘티 ID | data-skill | 블록 | 제목 |
 |---:|---|---|---|---|---|
 | 1 | s-1 | S01 | `title` | B1 | AI Agent Guide |
 | 2 | s-2 | G01 | `steps` | B1 | 하루 시간표 |
-| 3 | s-3 | S02 | `title-tags` | B1 | 공정 엔지니어의 개발 경험 |
-| 4 | s-4 | S03 | `split` | B1 | AI·머신러닝·LLM의 관계 |
-| 5 | s-5 | S04 | `steps` | B1 | LLM의 응답 생성 |
-| 6 | s-6 | S05 | `split` | B1 | Attention과 문맥 |
-| 7 | s-7 | S06 | `split` | B1 | 모델·서버·API의 역할 |
-| 8 | s-8 | S07 | `compare` | B1 | Temperature와 출력 변화 |
-| 9 | s-9 | S08 | `title-bullets` | B1 | 실습 1 · 호출과 비교 |
-| 10 | s-10 | S09 | `compare` | B2 | 외부 자료가 필요한 질문 |
-| 11 | s-11 | S10 | `steps` | B2 | RAG의 기본 구조 |
-| 12 | s-12 | S11 | `split` | B2 | 수집한 본문과 출처 |
-| 13 | s-13 | S12 | `compare` | B2 | LangChain의 역할 |
-| 14 | s-14 | S13 | `title-bullets` | B2 | 실습 2 · 기사 근거로 답하기 |
-| 15 | s-15 | S14 | `compare` | B2 | 답변과 검색 근거 확인 |
-| 16 | s-16 | S15 | `compare` | B3 | 정확한 조회와 계산 |
-| 17 | s-17 | S16 | `steps` | B3 | Tool 호출의 실행 순서 |
-| 18 | s-18 | S17 | `compare` | B3 | 스크립트·Workflow·Agent |
-| 19 | s-19 | S18 | `split` | B3 | Part Finder의 후보 검증 |
-| 20 | s-20 | S19 | `title-bullets` | B3 | 실습 3 · SQL Tool 연결 |
-| 21 | s-21 | S20 | `title-image` | B3 | 실습 4 · Streamlit 화면 실행 |
-| 22 | s-22 | S21 | `split` | B3 | 오전 실습의 전체 구조 |
-| 23 | s-23 | S22 | `compare` | B4 | 오전 앱과 Coding Agent |
-| 24 | s-24 | S23 | `split` | B4 | 로컬 실행과 접근 범위 |
-| 25 | s-25 | S24 | `split` | B4 | 변경하기 쉬운 프로그램 구조 |
-| 26 | s-26 | S25 | `compare` | B4 | 작업 요청과 완료 조건 |
-| 27 | s-27 | S26 | `title-bullets` | B4 | 실습 5 · Claude Code 실행 |
-| 28 | s-28 | S27 | `title-bullets` | B4 | 환경 확인과 다음 작업 |
-| 29 | s-29 | S28 | `steps` | B5 | 탐색·계획·구현·검증 |
-| 30 | s-30 | S29 | `split` | B5 | 웹앱의 입력부터 데이터까지 |
-| 31 | s-31 | S30 | `compare` | B5 | 프로젝트 지침과 작업 기록 |
-| 32 | s-32 | S31 | `compare` | B5 | 변경 내용과 실제 사용 확인 |
-| 33 | s-33 | S32 | `title-bullets` | B5 | 실습 6 · 오전 앱의 작은 개선 |
-| 34 | s-34 | S33 | `title-bullets` | B5 | 다른 입력으로 재확인 |
-| 35 | s-35 | S34 | `split` | B6 | 개인 지식의 원문과 판단 |
-| 36 | s-36 | S35 | `compare` | B6 | 지식 정리의 근거 확인 |
-| 37 | s-37 | S36 | `split` | B6 | Skill과 도구 연결의 역할 |
-| 38 | s-38 | S37 | `title-bullets` | B6 | 실습 7 · 근거 있는 지식 정리 |
-| 39 | s-39 | S38 | `compare` | B6 | 근거가 있는 질문과 없는 질문 |
-| 40 | s-40 | S39 | `compare` | B6 | 자유 실습 선택 주제 |
-| 41 | s-41 | S40 | `title-bullets` | B6 | 자유 실습의 작업 요청 |
-| 42 | s-42 | S41 | `title-bullets` | B7 | 자유 실습 · 목표와 계획 |
-| 43 | s-43 | S42 | `title-bullets` | B7 | 자유 실습 · 구현 |
-| 44 | s-44 | S43 | `title-bullets` | B7 | 자유 실습 · 검증과 기록 |
-| 45 | s-45 | S44 | `quote` | B7 | 실습 공유와 다음 업무 적용 |
-| 46 | s-46 | G02 | `title-bullets` | B7 | 오늘 남길 4가지 성과 |
-| 47 | s-47 | A01 | `split` | APP | 부록 · Transformer 구조와 Q·K·V |
-| 48 | s-48 | A02 | `compare` | APP | 부록 · RAG 검색 방식과 메타데이터 |
-| 49 | s-49 | A03 | `compare` | APP | 부록 · LangChain·LangGraph·Deep Agents 선택 |
-| 50 | s-50 | A04 | `compare` | APP | 부록 · MCP·Subagent·Hook 상세 예시 |
-| 51 | s-51 | A05 | `steps` | APP | 부록 · 사내 실행 환경 문제 해결 |
-| 52 | s-52 | A06 | `title-bullets` | APP | 부록 · 현업 적용 전 확인할 항목 |
+| 3 | s-3 | G00 | `split` | B1 | 왜 이런 순서로 배우나 |
+| 4 | s-4 | S02 | `title-tags` | B1 | 공정 엔지니어의 개발 경험 |
+| 5 | s-5 | S03 | `split` | B1 | AI·머신러닝·LLM의 관계 |
+| 6 | s-6 | S04 | `steps` | B1 | LLM의 응답 생성 |
+| 7 | s-7 | S05 | `split` | B1 | Attention과 문맥 |
+| 8 | s-8 | S06 | `split` | B1 | 모델·서버·API의 역할 |
+| 9 | s-9 | S07 | `compare` | B1 | Temperature와 출력 변화 |
+| 10 | s-10 | S08 | `title-bullets` | B1 | 실습 1 · 호출과 비교 |
+| 11 | s-11 | S09 | `compare` | B2 | 외부 자료가 필요한 질문 |
+| 12 | s-12 | S10 | `steps` | B2 | RAG의 기본 구조 |
+| 13 | s-13 | S11 | `split` | B2 | 수집한 본문과 출처 |
+| 14 | s-14 | S12 | `compare` | B2 | LangChain의 역할 |
+| 15 | s-15 | S13 | `title-bullets` | B2 | 실습 2 · 기사 근거로 답하기 |
+| 16 | s-16 | S14 | `compare` | B2 | 답변과 검색 근거 확인 |
+| 17 | s-17 | S15 | `compare` | B3 | 정확한 조회와 계산 |
+| 18 | s-18 | S16 | `steps` | B3 | Tool 호출의 실행 순서 |
+| 19 | s-19 | S17 | `compare` | B3 | 스크립트·Workflow·Agent |
+| 20 | s-20 | S18 | `split` | B3 | Part Finder의 후보 검증 |
+| 21 | s-21 | S19 | `title-bullets` | B3 | 실습 3 · SQL Tool 연결 |
+| 22 | s-22 | S20 | `title-image` | B3 | 실습 4 · Streamlit 화면 실행 |
+| 23 | s-23 | S21 | `split` | B3 | 오전 실습의 전체 구조 |
+| 24 | s-24 | S22 | `compare` | B4 | 오전 앱과 Coding Agent |
+| 25 | s-25 | S23 | `split` | B4 | 로컬 실행과 접근 범위 |
+| 26 | s-26 | S24 | `split` | B4 | 변경하기 쉬운 프로그램 구조 |
+| 27 | s-27 | S25 | `compare` | B4 | 작업 요청과 완료 조건 |
+| 28 | s-28 | S26 | `title-bullets` | B4 | 실습 5 · Claude Code 실행 |
+| 29 | s-29 | S27 | `title-bullets` | B4 | 환경 확인과 다음 작업 |
+| 30 | s-30 | S28 | `steps` | B5 | 탐색·계획·구현·검증 |
+| 31 | s-31 | S29 | `split` | B5 | 웹앱의 입력부터 데이터까지 |
+| 32 | s-32 | S30 | `compare` | B5 | 프로젝트 지침과 작업 기록 |
+| 33 | s-33 | S31 | `compare` | B5 | 변경 내용과 실제 사용 확인 |
+| 34 | s-34 | S32 | `title-bullets` | B5 | 실습 6 · 오전 앱의 작은 개선 |
+| 35 | s-35 | S33 | `title-bullets` | B5 | 다른 입력으로 재확인 |
+| 36 | s-36 | S34 | `split` | B6 | 개인 지식의 원문과 판단 |
+| 37 | s-37 | S35 | `compare` | B6 | 지식 정리의 근거 확인 |
+| 38 | s-38 | S36 | `split` | B6 | Skill과 도구 연결의 역할 |
+| 39 | s-39 | S37 | `title-bullets` | B6 | 실습 7 · 근거 있는 지식 정리 |
+| 40 | s-40 | S38 | `compare` | B6 | 근거가 있는 질문과 없는 질문 |
+| 41 | s-41 | S39 | `compare` | B6 | 자유 실습 선택 주제 |
+| 42 | s-42 | S40 | `title-bullets` | B6 | 자유 실습의 작업 요청 |
+| 43 | s-43 | S41 | `title-bullets` | B7 | 자유 실습 · 목표와 계획 |
+| 44 | s-44 | S42 | `title-bullets` | B7 | 자유 실습 · 구현 |
+| 45 | s-45 | S43 | `title-bullets` | B7 | 자유 실습 · 검증과 기록 |
+| 46 | s-46 | S44 | `quote` | B7 | ? |
+| 47 | s-47 | G02 | `title-bullets` | B7 | 오늘 남길 4가지 성과 |
+| 48 | s-48 | A01 | `split` | APP | Transformer와 Q·K·V |
+| 49 | s-49 | A02 | `compare` | APP | RAG 검색 방식과 메타데이터 |
+| 50 | s-50 | A03 | `compare` | APP | 프레임워크 선택 기준 |
+| 51 | s-51 | A04 | `compare` | APP | MCP·Subagent·Hook 역할 |
+| 52 | s-52 | A05 | `steps` | APP | 사내 실행 환경 문제 해결 |
+| 53 | s-53 | A06 | `title-bullets` | APP | 현업 적용 전 확인 항목 |
+| 54 | s-54 | A07 | `steps` | APP | LangGraph로 흐름 꺼내기 |
+| 55 | s-55 | A08 | `steps` | APP | Agentic RAG와 재검색 |
+| 56 | s-56 | A09 | `split` | APP | 하네스와 Deep Agents |
+| 57 | s-57 | A10 | `steps` | APP | HITL: 사람 승인을 흐름에 |
 
 ---
 

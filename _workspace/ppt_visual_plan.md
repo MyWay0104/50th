@@ -2,6 +2,43 @@
 
 버전: v0.2 · 2026-09-13 · topic: `topics/sk-hynix-ai-agent-guide-edu/`
 
+## v0.4 자산 표 (2026-09-16, 아래 v0.2보다 우선)
+
+원본은 `topics/sk-hynix-ai-agent-guide-edu/docs/slide-plan-v0.4-visual-narrative.md` 6절 자산 준비 표다. 계획서가 "CSS/SVG"로 적은 도식은 별도 SVG 파일을 만들지 않고 `index.html` 안의 `.dg` 계열 클래스(dg-row·dg-box·dg-arrow·dg-zone·dg-sub·dg-caption)로 그렸다.
+
+| 계획서 논리 이름 | 장면 | 실제 구현 |
+|---|---|---|
+| `common/yt-thumb-kf1dypnh.jpg` | G00 | 이미지 파일 `assets/img/common/yt-thumb-kf1dypnh.jpg` (P-G00 쓰지 않음) |
+| `b1/transformer-fig1.png` | S05 | 이미지 파일 `assets/img/b1/transformer-fig1.png` + 출처 캡션 |
+| `b1/attention-fig2.png` | A01 | 두 패널로 나눈 `assets/img/b1/attention-fig2a.png`·`attention-fig2b.png` + 출처 캡션 |
+| `b1/ai-ml-dl-llm.svg` 외 B1 도식 | S03·S04·S06·S07 | 인라인 `.dg` (S03 동심 `.dg-zone`, S04 `.steps.row`, S06 두 영역 `.dg-zone`, S07 `.dist` 막대) |
+| `b1/practice1-output.png` | S08 | 플레이스홀더 P-S08 |
+| `b2/*.svg` | S09·S10·S14 | 인라인 `.dg` (S10 두 시점 `.dg-zone.is-grow` + 조각·겹침 칩) |
+| `b2/article-body-check.png` | S11·S13 | 플레이스홀더 P-S11·P-S13 |
+| `b3/*.svg` | S15–S18·S21 | 인라인 `.dg`·`.steps.row.is-compact`·`.data-table` |
+| `b3/streamlit-app.png` | S20·S29 | 플레이스홀더 P-S20·P-S29 |
+| `b4/*.svg` | S22–S25 | 인라인 `.dg` (S25·S40 요청문 6칸은 같은 틀) |
+| `b4/claude-code-screen.png` | S26 | 플레이스홀더 P-S26 |
+| `b5/*.svg` | S28·S30 | 인라인 `.dg`·코드 카드 |
+| `b5/git-diff-example.png`·`dokmo-before-after.png` | S31 | 플레이스홀더 P-S31·P-S31b |
+| `b6/vault-raw-wiki.svg`·`vault-screenshot.png` | S34 | 인라인 `.dg` + 플레이스홀더 P-S34 (S37은 파일 카드 도식, 자리표시 없음) |
+| `b6/skill-*.svg` | S36·A04 | S36 인라인 `.dg-row.is-roles` 역할 카드 + 3단계 흐름, A04 `.compare-grid.cols-3` + N×M→N+M 칩 줄 |
+| `b7/free-practice-3tracks.svg` | S39 | `.compare-grid.cols-3` |
+| `appendix/*.svg` | A03·A07–A09 | 인라인 `.dg` + 코드 카드 (A03 공통 기반 띠 `.dg-row.is-band`) |
+| `appendix/hitl-interrupt.svg` | A10 | 인라인 `.dg` + 승인 카드만 자른 `assets/img/appendix/cowork-hitl-approval-card.png` (모델명 영역 없음) |
+
+쓰지 않은 자리표시: P-G00, P-S05, P-A01, P-S37, P-A10 (자산을 확보했거나 도식으로 대신함). 남은 자리표시 10곳 목록은 `_workspace/ppt_qa_report.md` "v0.4" 절.
+
+v0.4에서 디자인 시스템에 더한 클래스(원본 `index.html` `#scene-styles` 끝 v0.4 블록, 규칙은 `_workspace/slide_ui/00_component_catalog.md` 5·7절):
+
+- 텍스트 층: `.act-tag`(막 태그), `.thesis`(한 줄 요지 40px, 파랑 밑줄), `.explain`(설명 문단 32px)
+- G01 괄호선: `.act-group`·`.act-bracket`·`.act-name`
+- 자리표시 v2: `.placeholder.is-spec`·`.placeholder-id`
+- 그림 틀 높이: `.split-image.h-sm/h-md/h-lg`, 두 장 나란히 `.split-image.pair`
+- 분포 막대: `.dist`·`.dist-bar.lv-1…lv-5` (S07, 수치 없는 모양)
+- 진행 시간 띠: `.time-band` (S41–S43)
+- 그 밖: `.dg-check`(빈 체크 칸), `.dg-zone.is-grow`, `.steps.row.is-compact`, `.quote-points`, `.done-row.is-full`, `.dg-row.is-band`, `.dg-arrow.has-label`, `.nowrap`
+
 ## v0.2 디자인 시스템 (아래 v0.1 본문보다 우선)
 
 - 기준: topic `DESIGN.md`의 "교육 자료 최소 적용 규칙". Notion 원문은 참고용.
