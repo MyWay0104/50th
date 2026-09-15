@@ -1427,6 +1427,15 @@
       .compare-list + .dg-row { margin-top: 18px; }
       /* 역할 카드 줄의 보조 글자를 28px로 (S36) */
       .dg-row.is-roles .dg-sub { font-size: var(--fs-small); }
+      /* v0.4 강사 사후 검토 반영 (B6·B7, 2026-09-16) */
+      .done-row.is-full { max-width: none; grid-template-columns: auto 1fr; }
+      .done-row.is-full > .fallback { display: flex; align-items: center; }
+      .time-band { justify-content: space-between; }
+      .time-band > .chip.accent + .dg-arrow:has(+ .chip.accent) { color: var(--accent); }
+      .done-label.is-lg { font-size: var(--fs-small); }
+      .stack > .dg.is-sep { margin-top: 24px; }
+      .scene.quote .explain { text-wrap: balance; }
+      .scene > .explain.is-closing { margin-top: 64px; font-weight: 600; }
     
 
       /* ============ 오버뷰 공용 풋터 요소 ============ */
@@ -2744,7 +2753,7 @@ if q:
         <div class="dg-box" data-editable="true">Hook<span class="dg-sub">정해진 시점에 동작</span></div>
       </div>
     </div>
-    <div class="dg">
+    <div class="dg is-sep">
       <div class="dg-row">
         <span class="concept-badge" data-editable="true">개념 예시</span>
         <p class="panel-title" data-editable="true">SKILL.md를 불러오는 3단계</p>
@@ -2868,7 +2877,7 @@ if q:
         <li data-editable="true">확인: 기존 입력 유지</li>
         <li data-editable="true">예외: 빈 결과 안내</li>
       </ul>
-      <p class="compare-note" data-editable="true">배울 점: 코드 이해·범위·회귀 확인</p>
+      <p class="compare-note" data-editable="true">배울 점: 코드 이해·범위·기존 기능 확인</p>
     </div>
   </div>
   <p class="source" data-editable="true">근거: 사용자 제공 강의안 · 교육 설계 제안(강의 준비 조사 자료 8절)</p>
@@ -2894,8 +2903,8 @@ if q:
       <div class="dg-box accent" data-editable="true">완료 조건<span class="dg-sub">정상·예외 입력의 기대 결과</span></div>
     </div>
   </div>
-  <div class="done-row">
-    <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">여섯 칸을 채운 요청 초안 한 개</div></div>
+  <div class="done-row is-full">
+    <div class="done-box"><div class="done-label" data-editable="true">이번 실습 완료 조건</div><div class="done-text" data-editable="true">여섯 칸을 채운 요청 초안 한 개</div></div>
     <div class="fallback" data-editable="true"><strong>막히면</strong>주제가 정해지지 않았으면 CSV 과제(장비별 건수표)로 시작합니다</div>
   </div>
   <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안 · 강의 준비 조사 자료 8절 요청문 템플릿</p>
@@ -2980,9 +2989,9 @@ if q:
       </div>
       <div>
         <div class="time-blocks cols-3">
-          <div class="time-block"><div class="min" data-editable="true">20<small>분</small></div><div class="what" data-editable="true">첫 실행</div></div>
-          <div class="time-block"><div class="min" data-editable="true">20<small>분</small></div><div class="what" data-editable="true">다른 입력</div></div>
-          <div class="time-block"><div class="min" data-editable="true">10<small>분</small></div><div class="what" data-editable="true">멈춤·정리</div></div>
+          <div class="time-block"><div class="min" data-editable="true">20<small>분</small></div><div class="what" data-editable="true">첫 실행 ~16:35</div></div>
+          <div class="time-block"><div class="min" data-editable="true">20<small>분</small></div><div class="what" data-editable="true">다른 입력 ~16:55</div></div>
+          <div class="time-block"><div class="min" data-editable="true">10<small>분</small></div><div class="what" data-editable="true">멈춤·정리 ~17:05</div></div>
         </div>
         <div class="fallback">
           <p data-editable="true"><strong>막히면</strong>질문할 때 보여 줄 세 가지</p>
@@ -3029,7 +3038,7 @@ if q:
           <li data-editable="true">변경 내용과 실제 결과 비교</li>
         </ul>
         <div class="done-box">
-          <div class="done-label" data-editable="true">완료 조건 · 네 칸 채우기 · 입력 둘 이상</div>
+          <div class="done-label is-lg" data-editable="true">완료 조건 · 네 칸 채우기 · 입력 둘 이상</div>
           <div class="chip-row">
             <span class="chip" data-editable="true">실행 방법</span>
             <span class="chip" data-editable="true">확인 입력</span>
@@ -3058,7 +3067,7 @@ if q:
   <div class="quote-mark" aria-hidden="true">“</div>
   <p class="quote-body" data-editable="true">완성 여부보다 <em>확인한 것과 남은 것</em>을 말합니다</p>
   <p class="quote-attrib" data-editable="true">17:20–17:30 · 사례 공유 6분 · Q&amp;A 3분 · 17:30 종료</p>
-  <p class="explain" data-editable="true">발표는 한 사람당 2분 안팎이며, 결과가 완성되지 않아도 세 질문에 답하면 된다. 발표하지 않은 사람은 같은 답을 실행 방법 옆에 적는다.</p>
+  <p class="explain" data-editable="true">발표는 한 사람당 2분 안팎이며, 결과가 완성되지 않아도 세 질문에 답하면 된다. 발표하지 않은 사람은 세 질문의 답을 기록 파일에 적는다.</p>
   <ol class="quote-points">
     <li data-editable="true">해결하려던 문제는?</li>
     <li data-editable="true">확인한 결과와 남은 한계는?</li>
@@ -3066,7 +3075,7 @@ if q:
   </ol>
   <p class="guide-ref" data-editable="true">현업 적용 전 확인 항목은 부록 참고</p>
   <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
-  <aside class="speaker-note">두세 분의 사례를 한 분당 2분 안팎으로 보고, 화면의 번호 카드 세 질문에 맞춰 짧게 말씀해 주시면 됩니다. 결과가 완성되지 않았어도 괜찮고, 어디까지 확인했고 무엇이 남았는지 말하는 것이 오늘 발표의 기준입니다. 사례 공유 6분 뒤 공통 질문을 3분 받고, 마지막 1분에 오늘을 정리하겠습니다. 발표하지 않은 분은 같은 세 질문의 답을 실행 방법 옆에 적어 두세요. 오늘 만든 도구를 실제 업무에 쓰기 전에 확인할 권한·데이터 정의·실패 처리·운영 항목은 화면 아래 안내처럼 부록의 '현업 적용 전 확인 항목' 장에 정리해 두었으니, 질문이 나오면 함께 보겠습니다.</aside>
+  <aside class="speaker-note">두세 분의 사례를 한 분당 2분 안팎으로 보고, 화면의 번호 카드 세 질문에 맞춰 짧게 말씀해 주시면 됩니다. 결과가 완성되지 않았어도 괜찮고, 어디까지 확인했고 무엇이 남았는지 말하는 것이 오늘 발표의 기준입니다. 사례 공유 6분 뒤 공통 질문을 3분 받고, 마지막 1분에 오늘을 정리하겠습니다. 발표하지 않은 분은 같은 세 질문의 답을 방금 만든 기록 파일에 적어 두세요. 오늘 만든 도구를 실제 업무에 쓰기 전에 확인할 권한·데이터 정의·실패 처리·운영 항목은 화면 아래 안내처럼 부록의 '현업 적용 전 확인 항목' 장에 정리해 두었으니, 질문이 나오면 함께 보겠습니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
   <div class="page-num">46 / 57</div>
 </section>
@@ -3101,7 +3110,7 @@ if q:
       <div class="chip-row"><span class="chip" data-editable="true">실습 2</span><span class="chip" data-editable="true">실습 6</span><span class="chip" data-editable="true">자유 실습</span></div>
     </div>
   </div>
-  <p class="explain" data-editable="true">LLM에게 맡길 일과 코드·데이터·사람이 책임질 일을 구분하면 작은 업무 도구부터 만들고 개선할 수 있다.</p>
+  <p class="explain is-closing" data-editable="true">LLM에게 맡길 일과 코드·데이터·사람이 책임질 일을 구분하면 작은 업무 도구부터 만들고 개선할 수 있다.</p>
   <p class="source" data-editable="true">근거: 교육 설계 제안 (강의 준비 조사 자료 1절 학습 성과)</p>
   <aside class="speaker-note">오늘 만든 결과물보다 오래 남길 것은 이 네 가지 습관입니다. 하루 처음에 본 순서, 즉 만들고, 설명하고, 조건 바꾸고, 검증하기를 오늘 일곱 번 반복했습니다. 화면 아래 문장처럼 오늘을 한 문장으로 줄이면, LLM에게 맡길 일과 코드·데이터·사람이 책임질 일을 구분하면 작은 업무 도구부터 직접 만들고 고칠 수 있다는 것입니다. 오전에는 역할을 나누고 필요한 수준을 고르는 기준을 봤고, 오후에는 완료 조건을 담아 요청하고 다른 입력과 실패 상황으로 결과를 확인했습니다. 다음 업무에서 AI에게 일을 맡길 때 완료 조건과 검증 방법을 먼저 한 줄 적어 보시고, 더 깊이 보고 싶은 분은 교안 내용을 옮겨 둔 부록에서 관심 있는 장을 골라 보시면 됩니다. 오늘 함께해 주셔서 감사합니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
