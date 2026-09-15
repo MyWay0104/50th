@@ -72,7 +72,7 @@ HTML 장면 id는 overview patch 파서와 맞추기 위해 순번 `s-N`을 쓰�
 | 15 | s-15 | S13 | `title-bullets` | B2 | 실습 2 · 기사 근거로 답하기 |
 | 16 | s-16 | S14 | `compare` | B2 | 답변과 검색 근거 확인 |
 | 17 | s-17 | S15 | `compare` | B3 | 정확한 조회와 계산 |
-| 18 | s-18 | S16 | `steps` | B3 | Tool 호출의 실행 순서 |
+| 18 | s-18 | S16 | `steps` | B3 | 도구(Tool) 호출의 실행 순서 |
 | 19 | s-19 | S17 | `compare` | B3 | 스크립트·Workflow·Agent |
 | 20 | s-20 | S18 | `split` | B3 | Part Finder의 후보 검증 |
 | 21 | s-21 | S19 | `title-bullets` | B3 | 실습 3 · SQL Tool 연결 |
