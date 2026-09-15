@@ -69,14 +69,14 @@
       "name": "F3 문구 표 작성(존댓말·제목·시간·출처·기승전결)",
       "description": "slide_content_writer 3개를 병렬로 돌려(B1–B3 S01–S21·G00·G01 / B4–B7 S22–S44·G02 / 부록 A01–A10) 장면별 치환 표를 JSON으로 만든다. 항목: 새 제목(간결한 명사구, S02는 '강사 소개'), 화면 문장의 평서형(~다)을 존댓말(~습니다/~입니다)로, 첫 시간표 G01을 뺀 화면 시간 정보 삭제(실습 안내판 board-meta의 시각·분, 시간 블록은 분 대신 순서 단계 문구, S41–S43 시간 띠는 시각 없는 단계, S27·S40·S42·S44 문구), 노트의 시각·분·'N시 구간'을 순서 표현으로, 기승전결·'네 막' 표현 삭제, 출처 줄 새 값(공식 문서·논문만, 없으면 삭제). 결과: _workspace/final_touch/copy_<묶음>.json과 요약 md.",
       "notes": "명사형 라벨·칩·표 칸은 존댓말 대상이 아니다. 시간 블록 구조 변경은 F4 배치 명세와 짝을 맞춘다(문구는 F3, 구조는 F4).",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "912f4c00-ab5f-4264-ac33-1b1d9a9279a8"
         }
       ],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T18:00:10.397Z",
+      "updatedAt": "2026-09-15T18:07:22.384Z",
       "relatedFiles": [
         {
           "path": "_workspace/final_touch",
@@ -91,7 +91,9 @@
       ],
       "implementationGuide": "F1 적용 뒤 dump_deck_text.py로 57장 화면·노트 추출본을 만들어 입력으로 준다. JSON 형식: {\"S09\": {\"title\": \"새 제목\", \"source\": \"출처: … 또는 빈 문자열\", \"replace\": [{\"where\": \"screen|note\", \"old\": \"정확한 원문\", \"new\": \"새 문구\"}]}}. old는 추출본 원문 그대로(장면 안에서 1회).",
       "verificationCriteria": "57장 모두 제목 항목 존재, 표를 dry-run 적용했을 때 못 찾음 0, 화면 평서 종결 잔여 0(G01 제외 시간 패턴 0) 예상, 출처에 '근거:'·교안·개인 자료 없음.",
-      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push."
+      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push.",
+      "summary": "slide_content_writer 3개(B1–B3 23장·B4–B7 24장·부록 10장)가 장면별 치환 표를 JSON Lines로 작성했다(copy_B1-B3/B4-B7/APP.jsonl, 57장 전부). 제목은 13장 간결화(G00 'AI를 잘 활용하는 공부법', S02 '강사 소개', S41–S43 '자유 실습 N단계', 부록 '부록 ·' 접두어 10장), 화면 평서형은 존댓말로, 첫 시간표 밖 시간 정보와 막 표현 삭제, 출처 줄은 공식 문서·논문만(근거·교안·개인 자료 0). 오케스트레이터 결정(S18 가상 데이터 표기 복원, S01 노트 강사 이름)은 copy_ORCH.jsonl로 분리했다. apply_ft_copy.py --dry로 59항목 모두 장면 안 1회 일치(못 찾음 0). 적용 뒤 일괄 처리(색 표현 파랑→주황, G02 카드 명사형, 시간 블록 끝 시각)는 apply_ft_sweep.py·apply_ft_steps.py에 넣었다. 노트 속 교안 연계 문장 처리 방식은 강사 사전 검토에 판단을 맡겼다.",
+      "completedAt": "2026-09-15T18:07:22.381Z"
     },
     {
       "id": "98dd45af-5b4f-43c0-a5e8-ecd419028adf",

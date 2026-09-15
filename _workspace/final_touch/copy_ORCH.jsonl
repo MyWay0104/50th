@@ -1,0 +1,2 @@
+{"sid": "S18", "title": null, "source": "표는 가상 데이터 · 사내 운영 구조와 같다고 단정하지 않음", "replace": [], "reason": "출처 줄 삭제로 사라지는 가상 데이터 표기를 출처 접두어 없이 되살림(가상 데이터 장면 표기 원칙)"}
+{"sid": "S01", "title": null, "source": null, "replace": [{"where": "note", "old": "진행할 [강사명]입니다.", "new": "진행할 NAND Implant기술 이상우 TL입니다."}], "reason": "표지 강사 표기와 노트를 맞춤"}
