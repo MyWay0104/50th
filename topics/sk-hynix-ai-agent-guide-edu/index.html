@@ -1112,19 +1112,30 @@
     </style>
   </head>
   <body>
-    <div id="root" data-output-type="deck" data-composition-id="main" data-start="0" data-duration="260" data-width="1920" data-height="1080">
+    <div id="root" data-output-type="deck" data-composition-id="main" data-start="0" data-duration="265" data-width="1920" data-height="1080">
       <!-- BLOCK:B1 START -->
             <section id="s-1" class="scene clip title-scene night" data-skill="title" data-scene-id="S01" data-start="0" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span><span class="time-chip" data-editable="true">09:00–09:40</span></div>
+              <p class="act-tag" data-editable="true"><strong>기 · 만나다</strong>지금 내가 호출하는 이것은 무엇인가?</p>
               <div class="hero-rule" aria-hidden="true"></div>
               <div class="hero-kicker" data-editable="true">SK hynix 사내 교육 · 하루 과정</div>
               <h1 class="hero-title" data-editable="true">AI Agent Guide</h1>
               <p class="hero-sub" data-editable="true">내 업무에 적용할 작은 AI 도구 만들기</p>
+              <div class="chip-row">
+                <span class="panel-title" data-editable="true">하루 흐름</span>
+                <span class="chip" data-editable="true">만나다</span>
+                <span class="dg-arrow" aria-hidden="true">→</span>
+                <span class="chip" data-editable="true">연결하다</span>
+                <span class="dg-arrow" aria-hidden="true">→</span>
+                <span class="chip" data-editable="true">뒤집다</span>
+                <span class="dg-arrow" aria-hidden="true">→</span>
+                <span class="chip" data-editable="true">남기다</span>
+              </div>
               <div class="hero-meta"><span data-editable="true">[강사명]</span><span data-editable="true">[교육일]</span></div>
               <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
-              <aside class="speaker-note">안녕하세요, 오늘 하루 AI Agent 과정을 진행할 [강사명]입니다. 하루 흐름은 다음 장에서 보고, 첫 40분은 LLM이 입력을 받아 답을 만드는 과정을 이해한 뒤 직접 호출해 temperature를 바꿔 비교합니다. 시작 전에 AI 코딩 도구를 써 본 분과 오늘 처음인 분을 손들어 확인하겠습니다.</aside>
+              <aside class="speaker-note">안녕하세요, 오늘 하루 AI Agent 과정을 진행할 [강사명]입니다. 첫 40분은 LLM이 입력을 받아 답을 만드는 과정을 이해한 뒤, 직접 호출해 temperature를 바꿔 비교합니다. 부제 아래 하루 흐름 줄의 만나다, 연결하다, 뒤집다, 남기다가 오늘 하루의 네 막입니다. 시작 전에 AI 코딩 도구를 써 본 분과 오늘 처음인 분을 손들어 확인하겠습니다. 다음 장에서 오늘 하루 시간표를 보겠습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">1 / 52</div>
+              <div class="page-num">1 / 53</div>
             </section>
             <section id="s-2" class="scene clip" data-skill="steps" data-scene-id="G01" data-start="5" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
@@ -1132,73 +1143,136 @@
               <div class="split-grid">
                 <div class="stack">
                   <div class="panel-title" data-editable="true">오전</div>
-                  <ol class="steps timeline">
-                    <li class="step">
-                      <div class="step-time" data-editable="true">09:00</div>
-                      <div class="step-num" data-editable="true">B1</div>
-                      <div class="step-body" data-editable="true">LLM 원리와 첫 호출<span class="step-desc">산출물: 첫 호출 결과</span></div>
-                    </li>
-                    <li class="step">
-                      <div class="step-time" data-editable="true">10:00</div>
-                      <div class="step-num" data-editable="true">B2</div>
-                      <div class="step-body" data-editable="true">외부 근거와 기사 RAG<span class="step-desc">산출물: 근거 있는 답변</span></div>
-                    </li>
-                    <li class="step">
-                      <div class="step-time" data-editable="true">11:00</div>
-                      <div class="step-num" data-editable="true">B3</div>
-                      <div class="step-body" data-editable="true">SQL Tool과 Streamlit<span class="step-desc">산출물: 조회 결과 화면</span></div>
-                    </li>
-                  </ol>
+                  <div class="act-group">
+                    <ol class="steps timeline">
+                      <li class="step">
+                        <div class="step-time" data-editable="true">09:00</div>
+                        <div class="step-num" data-editable="true">B1</div>
+                        <div class="step-body" data-editable="true">LLM 원리와 첫 호출<span class="step-desc">→ 첫 호출 결과</span></div>
+                      </li>
+                    </ol>
+                    <div class="act-bracket" aria-hidden="true"></div>
+                    <div class="act-name"><span data-editable="true">기</span><span class="dg-sub" data-editable="true">만나다</span></div>
+                  </div>
+                  <div class="act-group">
+                    <ol class="steps timeline">
+                      <li class="step">
+                        <div class="step-time" data-editable="true">10:00</div>
+                        <div class="step-num" data-editable="true">B2</div>
+                        <div class="step-body" data-editable="true">외부 근거와 기사 RAG<span class="step-desc">→ 근거 있는 답변</span></div>
+                      </li>
+                      <li class="step">
+                        <div class="step-time" data-editable="true">11:00</div>
+                        <div class="step-num" data-editable="true">B3</div>
+                        <div class="step-body" data-editable="true">SQL Tool과 Streamlit<span class="step-desc">→ 조회 결과 화면</span></div>
+                      </li>
+                    </ol>
+                    <div class="act-bracket" aria-hidden="true"></div>
+                    <div class="act-name"><span data-editable="true">승</span><span class="dg-sub" data-editable="true">연결하다</span></div>
+                  </div>
                   <div class="chip-row"><span class="chip" data-editable="true">점심 11:40–13:20</span></div>
-                  <div class="callout" data-editable="true">휴식 09:40 · 10:40 · 14:00 · 15:00 (각 20분)</div>
+                  <div class="chip-row"><span class="chip" data-editable="true">휴식 09:40 · 10:40 · 14:00 · 15:00 (각 20분)</span></div>
                 </div>
                 <div class="stack">
                   <div class="panel-title" data-editable="true">오후</div>
-                  <ol class="steps timeline">
-                    <li class="step">
-                      <div class="step-time" data-editable="true">13:20</div>
-                      <div class="step-num" data-editable="true">B4</div>
-                      <div class="step-body" data-editable="true">Claude Code와 개발 계획<span class="step-desc">산출물: 작업 요청문</span></div>
-                    </li>
-                    <li class="step">
-                      <div class="step-time" data-editable="true">14:20</div>
-                      <div class="step-num" data-editable="true">B5</div>
-                      <div class="step-body" data-editable="true">Claude Code로 앱 개선<span class="step-desc">산출물: 개선된 앱</span></div>
-                    </li>
-                    <li class="step">
-                      <div class="step-time" data-editable="true">15:20</div>
-                      <div class="step-num" data-editable="true">B6</div>
-                      <div class="step-body" data-editable="true">지식 축적과 Skill<span class="step-desc">산출물: 근거 있는 노트</span></div>
-                    </li>
-                    <li class="step">
-                      <div class="step-time" data-editable="true">16:00</div>
-                      <div class="step-num" data-editable="true">B7</div>
-                      <div class="step-body" data-editable="true">자유 실습과 Q&amp;A<span class="step-desc">산출물: 나의 작은 도구 · 17:30 종료</span></div>
-                    </li>
-                  </ol>
+                  <div class="act-group">
+                    <ol class="steps timeline">
+                      <li class="step">
+                        <div class="step-time" data-editable="true">13:20</div>
+                        <div class="step-num" data-editable="true">B4</div>
+                        <div class="step-body" data-editable="true">Claude Code와 개발 계획<span class="step-desc">→ 작업 요청문</span></div>
+                      </li>
+                      <li class="step">
+                        <div class="step-time" data-editable="true">14:20</div>
+                        <div class="step-num" data-editable="true">B5</div>
+                        <div class="step-body" data-editable="true">Claude Code로 앱 개선<span class="step-desc">→ 개선된 앱</span></div>
+                      </li>
+                    </ol>
+                    <div class="act-bracket" aria-hidden="true"></div>
+                    <div class="act-name"><span data-editable="true">전</span><span class="dg-sub" data-editable="true">뒤집다</span></div>
+                  </div>
+                  <div class="act-group">
+                    <ol class="steps timeline">
+                      <li class="step">
+                        <div class="step-time" data-editable="true">15:20</div>
+                        <div class="step-num" data-editable="true">B6</div>
+                        <div class="step-body" data-editable="true">지식 축적과 Skill<span class="step-desc">→ 근거 있는 노트</span></div>
+                      </li>
+                      <li class="step">
+                        <div class="step-time" data-editable="true">16:00</div>
+                        <div class="step-num" data-editable="true">B7</div>
+                        <div class="step-body" data-editable="true">자유 실습과 Q&amp;A<span class="step-desc">→ 나의 작은 도구 · 17:30 종료</span></div>
+                      </li>
+                    </ol>
+                    <div class="act-bracket" aria-hidden="true"></div>
+                    <div class="act-name"><span data-editable="true">결</span><span class="dg-sub" data-editable="true">남기다</span></div>
+                  </div>
+                  <p class="dg-caption is-left" data-editable="true">→ 뒤는 산출물 · 다음 구간의 재료가 된다</p>
                 </div>
               </div>
               <p class="source" data-editable="true">근거: 사용자 제공 시간표</p>
-              <aside class="speaker-note">오늘은 40분 단위 여섯 구간과 마지막 90분 자유 실습으로 진행합니다. 오전에는 모델을 호출하고, 자료와 도구를 연결해 작은 앱을 만듭니다. 오후에는 그 앱을 Claude Code로 읽고 고친 다음, 작업 경험을 근거 있는 노트로 정리합니다. 각 구간 아래에 적힌 산출물이 다음 구간의 재료가 됩니다. 휴식은 아래에 적힌 네 번, 각 20분이고 점심은 11시 40분부터입니다.</aside>
+              <aside class="speaker-note">오늘은 40분 단위 여섯 구간과 마지막 90분 자유 실습으로 진행합니다. 시간표 옆 괄호로 묶은 네 덩어리가 오늘의 줄거리입니다. 오전에는 모델을 만나고 자료와 도구를 연결해 작은 앱을 만들고, 오후에는 역할을 뒤집어 그 앱을 Claude Code에게 고치게 한 뒤 작업 경험을 근거 있는 노트로 남깁니다. 각 구간 아래 화살표 뒤에 적힌 산출물이 다음 구간의 재료가 됩니다. 휴식은 아래에 적힌 네 번, 각 20분이고 점심은 11시 40분부터입니다. 다음 장에서 왜 이런 순서로 배우는지 1분만 보겠습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">2 / 52</div>
+              <div class="page-num">2 / 53</div>
             </section>
-            <section id="s-3" class="scene clip" data-skill="title-tags" data-scene-id="S02" data-start="10" data-duration="5" data-track-index="0">
+            <section id="s-3" class="scene clip" data-skill="split" data-scene-id="G00" data-start="10" data-duration="5" data-track-index="0">
+              <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
+              <h2 class="scene-title" data-editable="true">왜 이런 순서로 배우나</h2>
+              <p class="thesis" data-editable="true">만들고, 설명하고, 조건을 바꾸고, 검증하는 순서로 배운다.</p>
+              <p class="explain" data-editable="true">시간표의 네 막이 하루의 줄거리라면, 네 단계는 구간마다 되풀이하는 공부 방법이다. 먼저 만들되 기초는 결과를 설명하며 채우고, 실습 완료 조건에도 설명과 확인이 들어 있다.</p>
+              <div class="split-grid">
+                <div class="stack">
+                  <div class="split-image h-sm"><img src="assets/img/common/yt-thumb-kf1dypnh.jpg" alt="참고 영상 썸네일 · AgentOS 채널"></div>
+                  <p class="dg-caption" data-editable="true">참고 영상 제목 "6년 걸릴 공부를 3일로 끝내는 법 — OpenAI 연구원이 인터뷰에서 직접 밝혔습니다" · 제목의 기간 표현은 영상의 것이며 이 교육의 근거가 아님</p>
+                </div>
+                <div class="stack">
+                  <ol class="steps">
+                    <li class="step"><div class="step-num" data-editable="true">1</div><div class="step-body" data-editable="true">만들기</div></li>
+                    <li class="step"><div class="step-num" data-editable="true">2</div><div class="step-body" data-editable="true">설명하기</div></li>
+                    <li class="step"><div class="step-num" data-editable="true">3</div><div class="step-body" data-editable="true">조건 바꾸기</div></li>
+                    <li class="step"><div class="step-num" data-editable="true">4</div><div class="step-body" data-editable="true">검증하기</div></li>
+                  </ol>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: YouTube Kf1dYpnH-N4 (AgentOS 채널) · 수업 중 재생하지 않음 · 링크는 실습 가이드 후속 읽을거리</p>
+              <aside class="speaker-note">오늘 가져갈 것은 오른쪽의 네 단계, 만들고 설명하고 조건을 바꾸고 검증하는 순서입니다. 앞 장의 네 막이 하루의 줄거리라면, 이 네 단계는 구간마다 되풀이하는 공부 방법입니다. 먼저 만든다고 기초를 건너뛰는 것은 아니고, 만든 결과를 설명하면서 필요한 원리를 채워 갑니다. 그래서 실습의 완료 조건도 결과를 한 문장으로 설명하거나 다른 입력으로 확인하는 식으로 되어 있습니다. 왼쪽은 참고 영상인데 지금 틀지 않고, 제목의 '6년, 3일'은 영상이 붙인 표현이라 오늘 근거로 쓰지 않습니다. 링크는 실습 가이드 후속 읽을거리에 있으니 수업 후에 보셔도 됩니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+              <div class="page-num">3 / 53</div>
+            </section>
+            <section id="s-4" class="scene clip" data-skill="title-tags" data-scene-id="S02" data-start="15" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">공정 엔지니어의 개발 경험</h2>
-              <p class="scene-subtitle" data-editable="true">목표: 만들고, 설명하고, 조건 바꾸고, 검증하기</p>
-              <div class="tags"><span class="tag accent" data-editable="true">NAND Implant 공정 Engineer</span><span class="tag" data-editable="true">Part Finder</span><span class="tag" data-editable="true">Dokmo</span><span class="tag" data-editable="true">기술 블로그</span></div>
-              <p class="source" data-editable="true">근거: 사용자 제공 경력 · Part Number Finder Beta 공개 README · Dokmo README</p>
-              <aside class="speaker-note">저는 NAND Implant 공정 Engineer로 일하면서 Part Finder와 개인 웹앱 Dokmo를 만들고, 그 과정을 기술 블로그에 기록해 왔습니다. 만들면서 가장 크게 배운 것은 구조, 데이터 검증, 사용자 경험이 코드만큼 중요하다는 점입니다. 오늘은 그 과정에서 실제로 필요했던 개념과 작업 방법만 골라 다룹니다. 잠깐 각자 줄이고 싶은 반복 업무 하나를 떠올려 두세요. 오늘 마지막 자유 실습의 재료가 됩니다.</aside>
+              <p class="thesis" data-editable="true">비전공자의 출발점에서 만들며 배운 것을 소개한다.</p>
+              <p class="explain" data-editable="true">강사는 공정 업무를 하며 도구를 만들었고, 코드만큼 구조·데이터 검증·사용자 동선이 중요했다. 세 도구는 표시한 구간에서 개념 설명 바로 뒤에 사례로 다시 나온다.</p>
+              <div class="split-grid wide-left">
+                <div class="stack">
+                  <div class="tags"><span class="tag accent" data-editable="true">NAND Implant 공정 Engineer</span><span class="tag" data-editable="true">기술 블로그</span></div>
+                  <span class="concept-badge" data-editable="true">개인 기록</span>
+                  <div class="dg-row stretch">
+                    <div class="dg-box"><span class="dg-sub" data-editable="true">B3에서 다룸</span><span data-editable="true">Part Finder</span><span class="dg-sub" data-editable="true">부품 번호 후보 검증 · 공개 Beta</span></div>
+                    <div class="dg-box"><span class="dg-sub" data-editable="true">B5에서 다룸</span><span data-editable="true">Dokmo</span><span class="dg-sub" data-editable="true">개인 웹앱 · 사용 흐름 점검</span></div>
+                    <div class="dg-box"><span class="dg-sub" data-editable="true">B6에서 다룸</span><span data-editable="true">Vault</span><span class="dg-sub" data-editable="true">Obsidian · 원문과 판단 구분</span></div>
+                  </div>
+                </div>
+                <div class="placeholder is-spec">
+                  <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S02]</div>
+                  <div class="placeholder-desc" data-editable="true">넣을 자료: 프로젝트 1개의 공개 화면</div>
+                  <div class="placeholder-desc" data-editable="true">조건: 계정·사내 정보 가리기</div>
+                  <div class="placeholder-desc" data-editable="true">대체: 확보 전엔 카드 설명으로 진행</div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">근거: 사용자 제공 경력 · Part Number Finder Beta·Dokmo·Claude Study 공개 README</p>
+              <aside class="speaker-note">저는 NAND Implant 공정 Engineer로 일하면서 Part Finder와 개인 웹앱 Dokmo를 만들고, 그 과정을 기술 블로그에 기록해 왔습니다. 만들면서 가장 크게 배운 것은 구조, 데이터 검증, 사용자 동선이 코드만큼 중요하다는 점입니다. 화면의 세 카드는 오늘 다시 만날 곳으로, Part Finder는 11시 구간, Dokmo는 2시 20분 구간, 개인 지식 노트인 Vault는 3시 20분 구간에서 봅니다. Part Finder는 공개한 Beta 버전의 설계를 기준으로 설명하고, 사내 운영 버전과 같다고 말하지는 않겠습니다. 잠깐 각자 줄이고 싶은 반복 업무 하나를 떠올려 두세요. 오늘 마지막 자유 실습의 재료가 됩니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">3 / 52</div>
+              <div class="page-num">4 / 53</div>
             </section>
-            <section id="s-4" class="scene clip" data-skill="split" data-scene-id="S03" data-start="15" data-duration="5" data-track-index="0">
+            <section id="s-5" class="scene clip" data-skill="split" data-scene-id="S03" data-start="20" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">AI·머신러닝·LLM의 관계</h2>
-              <div class="split-grid">
-                <div class="split-panel">
-                  <span class="concept-badge" data-editable="true">개념 예시</span>
+              <p class="thesis" data-editable="true">AI·머신러닝·딥러닝·LLM은 대체가 아니라 포함 관계다.</p>
+              <p class="explain" data-editable="true">AI 안에 머신러닝이, 그 안에 신경망을 쓰는 딥러닝이 있고, 현대 LLM은 주로 딥러닝 기반이다. 오늘은 역사 전체가 아니라 문맥을 다루는 방식만 가져간다.</p>
+              <div class="split-grid wide-right">
+                <div class="stack">
                   <div class="dg">
                     <div class="dg-zone">
                       <div class="dg-zone-label" data-editable="true">AI · 넓은 분야 전체</div>
@@ -1206,114 +1280,120 @@
                         <div class="dg-zone-label" data-editable="true">머신러닝 · 데이터로 패턴을 학습</div>
                         <div class="dg-zone">
                           <div class="dg-zone-label" data-editable="true">딥러닝 · 신경망으로 학습</div>
-                          <div class="dg-box accent" data-editable="true">LLM<span class="dg-sub">현대 LLM은 주로 여기</span></div>
+                          <div class="dg-box accent" data-editable="true">LLM</div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <p class="dg-caption" data-editable="true">포함 관계를 나타낸 그림 · 연표가 아님</p>
+                  <p class="dg-caption" data-editable="true">개념 예시 · 포함 관계를 나타낸 그림 · 연표가 아님</p>
                 </div>
-                <ul class="bullets">
-                  <li data-editable="true">AI 안에 머신러닝, 그 안에 딥러닝</li>
-                  <li data-editable="true">현대 LLM은 주로 딥러닝 기반</li>
-                  <li data-editable="true">2017년 Transformer 등장<span class="sub">문맥을 다루는 방식을 바꾼 구조</span></li>
-                </ul>
+                <div class="stack">
+                  <div class="dg-row stretch">
+                    <div class="dg-box muted"><span data-editable="true">앞 몇 단어만</span><span class="dg-sub" data-editable="true">N-gram 등 · 가까운 단어로 예측</span></div>
+                    <span class="dg-arrow" aria-hidden="true">→</span>
+                    <div class="dg-box muted"><span data-editable="true">순서대로 읽기</span><span class="dg-sub" data-editable="true">RNN·LSTM 등 · 먼 정보가 흐려짐</span></div>
+                    <span class="dg-arrow" aria-hidden="true">→</span>
+                    <div class="dg-box"><span data-editable="true">2017 Transformer</span><span class="dg-sub" data-editable="true">멀리 있는 단어도 직접 참고</span></div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">언어 모델이 문맥을 다루는 방식의 변화 · 교안 내용 재구성</p>
+                </div>
               </div>
-              <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017)</p>
-              <aside class="speaker-note">세 용어는 앞의 기술이 뒤의 기술로 대체된 순서가 아니라 포함 관계로 보시면 됩니다. 머신러닝은 데이터로 패턴을 학습하고, 딥러닝은 그중 신경망을 쓰는 방법이며, 현대 LLM은 주로 딥러닝 기반입니다. 역사 전체를 외울 필요는 없고, 2017년 Transformer가 문맥을 다루는 방식을 바꿨다는 점만 기억하면 됩니다. 분류, 요약, 코드 생성 중 내 업무와 가까운 작업을 하나 마음속으로 골라 두세요.</aside>
+              <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017) · LLM 활용과 고급화 과정 교안 1장 재구성</p>
+              <aside class="speaker-note">세 용어는 앞의 기술이 뒤의 기술로 대체된 순서가 아니라 포함 관계로 보시면 됩니다. 화면 왼쪽 그림처럼 머신러닝은 데이터로 패턴을 학습하고, 딥러닝은 그중 신경망을 쓰는 방법이며, 현대 LLM은 주로 딥러닝 기반입니다. 오른쪽은 언어 모델이 문맥을 다뤄 온 방식의 변화로, 바로 앞 몇 단어만 보던 방식에서 순서대로 읽는 방식을 거쳐 2017년 Transformer가 멀리 떨어진 단어도 직접 참고하게 만들었습니다. 이 흐름은 LLM 활용과 고급화 과정 교안 1장에서 더 자세히 다루니, 오늘은 문맥을 다루는 방식이 바뀌었다는 점만 기억하면 됩니다. 분류, 요약, 코드 생성 중 내 업무와 가까운 작업을 하나 마음속으로 골라 두세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">4 / 52</div>
+              <div class="page-num">5 / 53</div>
             </section>
-            <section id="s-5" class="scene clip" data-skill="steps" data-scene-id="S04" data-start="20" data-duration="5" data-track-index="0">
+            <section id="s-6" class="scene clip" data-skill="steps" data-scene-id="S04" data-start="25" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">LLM의 응답 생성</h2>
+              <p class="thesis" data-editable="true">LLM은 사실을 조회하지 않고 다음 토큰의 확률 분포를 계산한다.</p>
+              <p class="explain" data-editable="true">보통의 호출은 학습된 모델로 계산만 하므로, 질문을 더 보낸다고 모델이 재학습되지 않는다. 다음 실습에서 바꿀 temperature 값은 3단계의 선택에 영향을 준다.</p>
               <div class="stack">
                 <ol class="steps row">
                   <li class="step">
                     <div class="step-num" data-editable="true">1</div>
-                    <div class="step-body" data-editable="true">토큰으로 나누기<span class="step-desc">문장을 모델의 처리 단위로 분할</span></div>
+                    <div class="step-body" data-editable="true">토큰으로 나누기<span class="step-desc">회의 | 내용을 | 세 | 줄로</span></div>
                   </li>
                   <li class="step">
                     <div class="step-num" data-editable="true">2</div>
-                    <div class="step-body" data-editable="true">다음 토큰 분포 계산<span class="step-desc">지금까지의 문맥으로 후보별 가능성 계산</span></div>
+                    <div class="step-body" data-editable="true">다음 토큰 분포 계산<span class="step-desc">후보: 요약 · 정리 · …</span></div>
                   </li>
-                  <li class="step">
+                  <li class="step is-accent">
                     <div class="step-num" data-editable="true">3</div>
-                    <div class="step-body" data-editable="true">선택하고 반복<span class="step-desc">하나를 골라 붙이고 다시 계산</span></div>
+                    <div class="step-body" data-editable="true">선택하고 반복<span class="step-desc">'요약'을 골라 뒤에 붙임</span></div>
                   </li>
                 </ol>
-                <div class="chip-row">
-                  <span class="concept-badge" data-editable="true">개념 예시</span>
-                  <span class="chip" data-editable="true">회의</span>
-                  <span class="chip" data-editable="true">내용을</span>
-                  <span class="chip" data-editable="true">세</span>
-                  <span class="chip" data-editable="true">줄로</span>
-                  <span class="dg-arrow" aria-hidden="true">→</span>
-                  <span class="panel-title" data-editable="true">다음 후보</span>
-                  <span class="chip accent" data-editable="true">요약</span>
-                  <span class="chip" data-editable="true">정리</span>
-                  <span class="chip" data-editable="true">…</span>
-                </div>
-                <p class="dg-caption is-left" data-editable="true">실제 토큰 분할은 모델마다 다름 · 확률 수치는 표시하지 않음</p>
-                <div class="callout" data-editable="true">학습은 매개변수를 바꾸고, 보통의 호출은 학습된 모델로 계산만 한다</div>
+                <div class="chip-row"><span class="chip" data-editable="true">고른 토큰을 입력 끝에 붙여 2단계로 돌아간다 — 답이 끝나거나 길이 한도에 닿을 때까지 반복</span></div>
+                <p class="dg-caption is-left" data-editable="true">개념 예시 · 실제 토큰 분할은 모델마다 다름 · 확률 수치 없음</p>
               </div>
-              <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022 (지시 수행 학습)</p>
-              <aside class="speaker-note">LLM은 입력을 토큰이라는 단위로 나누고, 지금까지의 문맥으로 다음 토큰 후보들의 가능성을 계산해 하나를 고르는 과정을 반복합니다. 토큰은 단어 하나와 항상 같지 않고, 나누는 방식은 모델마다 다릅니다. 학습 단계에서는 모델 매개변수를 바꾸지만, 오늘 우리가 하는 API 호출은 이미 학습된 모델로 결과를 계산할 뿐입니다. 그러면 질문을 한 번 더 보내면 모델이 바로 재학습될까요? 한 분만 짧게 답해 주세요.</aside>
+              <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022 (지시 수행 학습) · LLM 활용과 고급화 과정 교안 재구성</p>
+              <aside class="speaker-note">LLM은 입력을 토큰이라는 단위로 나누고, 지금까지의 문맥으로 다음 토큰 후보들의 가능성을 계산해 하나를 고르는 과정을 반복합니다. 화면의 세 카드 아래 줄처럼, 고른 토큰을 입력 끝에 붙여 다시 2단계로 돌아가는 방식을 자기회귀 생성이라고 합니다. 토큰은 단어 하나와 항상 같지 않고, 나누는 방식은 모델마다 다릅니다. 학습 단계에서는 모델 매개변수를 바꾸지만, 오늘 우리가 하는 API 호출은 이미 학습된 모델로 결과를 계산할 뿐입니다. 토큰 수가 비용과 속도, 한 번에 넣을 수 있는 입력 길이의 단위라는 점은 LLM 활용과 고급화 과정 교안에서 더 자세히 다룹니다. 그러면 재학습이 아닌데도 같은 질문의 답이 달라진다면, 세 단계 중 어디에서 갈리는지 한 분만 답해 주세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">5 / 52</div>
+              <div class="page-num">6 / 53</div>
             </section>
-            <section id="s-6" class="scene clip" data-skill="split" data-scene-id="S05" data-start="25" data-duration="5" data-track-index="0">
+            <section id="s-7" class="scene clip" data-skill="split" data-scene-id="S05" data-start="30" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">Attention과 문맥</h2>
-              <div class="split-grid">
-                <div class="split-panel">
+              <p class="thesis" data-editable="true">Attention은 다른 위치의 정보를 얼마나 반영할지 계산하는 장치다.</p>
+              <p class="explain" data-editable="true">오른쪽 그림의 주황색 Attention 칸이 이 계산을 한다. 원 논문은 번역용 encoder–decoder 구조이고, 오늘날 많은 생성 모델은 decoder 중심이다.</p>
+              <div class="split-grid wide-right">
+                <div class="stack">
                   <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">같은 '배', 다른 문맥</div></div>
                   <div class="dg">
                     <div class="dg-row">
-                      <div class="dg-box" data-editable="true">디저트로 배를 먹었다</div>
+                      <div class="dg-box" data-editable="true">디저트로 배를 <strong>먹었다</strong></div>
                       <span class="dg-arrow" aria-hidden="true">→</span>
                       <div class="dg-box accent" data-editable="true">배 = 과일</div>
                     </div>
                     <div class="dg-row">
-                      <div class="dg-box" data-editable="true">항구에서 배를 탔다</div>
+                      <div class="dg-box" data-editable="true">항구에서 배를 <strong>탔다</strong></div>
                       <span class="dg-arrow" aria-hidden="true">→</span>
                       <div class="dg-box accent" data-editable="true">배 = 선박</div>
                     </div>
                   </div>
-                  <p class="dg-caption" data-editable="true">주변 단어가 표현에 반영되는 개념도 · 측정값 아님</p>
+                  <p class="dg-caption" data-editable="true">굵은 글씨: 참고하는 주변 단어 · 개념 예시 · 측정값 아님</p>
                 </div>
-                <ul class="bullets">
-                  <li data-editable="true">같은 표현도 문맥에 따라 다름</li>
-                  <li data-editable="true">다른 위치의 정보를 반영하는 계산</li>
-                  <li data-editable="true">데이터·규모·학습 방법으로 활용 확장</li>
-                </ul>
+                <div class="stack">
+                  <div class="split-grid wide-right">
+                    <div class="split-image h-md"><img src="assets/img/b1/transformer-fig1.png" alt="Transformer 전체 구조 그림(원 논문 Figure 1)"></div>
+                    <div class="stack">
+                      <div class="dg-box"><span data-editable="true">왼쪽 묶음 · encoder</span><span class="dg-sub" data-editable="true">입력을 읽는 쪽</span></div>
+                      <div class="dg-box"><span data-editable="true">오른쪽 묶음 · decoder</span><span class="dg-sub" data-editable="true">출력을 만드는 쪽</span></div>
+                      <p class="dg-caption is-left" data-editable="true">Vaswani et al., Attention Is All You Need (2017), Figure 1 · arXiv:1706.03762</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022</p>
-              <aside class="speaker-note">같은 '배'라도 '먹었다'와 함께 오면 과일, '탔다'와 함께 오면 선박으로 읽힙니다. Attention은 각 위치의 표현을 만들 때 다른 위치의 정보를 얼마나 반영할지 계산하는 장치이고, 이 값은 입력마다 새로 계산되므로 학습된 모델 매개변수와는 다릅니다. 참고로 원 논문은 번역용 encoder–decoder 구조였고, 오늘날 많은 생성 모델은 decoder 중심 구조를 씁니다. 데이터·규모·학습 방법이 발전하며 쓰임이 넓어졌지만, 이를 어느 순간의 특이점으로 단정하지는 않겠습니다. Q·K·V 계산이 궁금하신 분은 부록 A01을 참고하세요.</aside>
+              <aside class="speaker-note">같은 '배'라도 '먹었다'와 함께 오면 과일, '탔다'와 함께 오면 선박으로 읽힙니다. Attention은 각 위치의 표현을 만들 때 다른 위치의 정보를 얼마나 반영할지 계산하는 장치이고, 이 값은 입력마다 새로 계산되므로 학습된 모델 매개변수와는 다릅니다. 화면 오른쪽은 원 논문의 전체 구조 그림으로, 왼쪽 묶음이 입력을 읽는 encoder, 오른쪽 묶음이 출력을 만드는 decoder이고, 주황색 Multi-Head Attention 칸이 방금 말한 계산을 문장 안 모든 위치에 대해 한꺼번에 합니다. 원 논문은 번역용 encoder–decoder 구조였고, 오늘날 많은 생성 모델은 decoder 중심 구조를 씁니다. 데이터·규모·학습 방법이 발전하며 쓰임이 넓어졌지만, 이를 어느 순간의 특이점으로 단정하지는 않겠습니다. Multi-Head 구조와 Q·K·V 계산은 부록의 Transformer 장과 LLM 활용과 고급화 과정 교안에서 더 자세히 다루니, 궁금한 분은 쉬는 시간에 보셔도 됩니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">6 / 52</div>
+              <div class="page-num">7 / 53</div>
             </section>
-            <section id="s-7" class="scene clip" data-skill="split" data-scene-id="S06" data-start="30" data-duration="5" data-track-index="0">
+            <section id="s-8" class="scene clip" data-skill="split" data-scene-id="S06" data-start="35" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">모델·서버·API의 역할</h2>
+              <p class="thesis" data-editable="true">코드는 내 PC에서 돌고, 모델 계산은 서버에서 한다.</p>
+              <p class="explain" data-editable="true">API는 요청·응답 형식의 약속, SDK는 그 호출을 돕는 Python 라이브러리다. 코드에 OpenAI라는 이름이 있어도 요청은 base_url에 적은 서버로 간다.</p>
               <div class="split-grid">
-                <div class="split-panel">
+                <div class="stack">
                   <span class="concept-badge" data-editable="true">개념 예시</span>
                   <div class="dg">
                     <div class="dg-row">
                       <div class="dg-zone">
-                        <div class="dg-zone-label" data-editable="true">수강생 프로그램</div>
-                        <div class="dg-box" data-editable="true">실습 코드<span class="dg-sub">SDK로 요청 작성</span></div>
+                        <div class="dg-zone-label" data-editable="true">내 PC</div>
+                        <div class="dg-box"><span data-editable="true">실습 코드</span><span class="dg-sub" data-editable="true">SDK로 요청 작성</span></div>
                       </div>
                       <div class="stack">
                         <span class="dg-arrow" aria-hidden="true">⇄</span>
                         <span class="dg-sub" data-editable="true">API 요청·응답</span>
                       </div>
                       <div class="dg-zone accent">
-                        <div class="dg-zone-label" data-editable="true">사내 추론 서버</div>
-                        <div class="dg-box" data-editable="true">vLLM</div>
-                        <span class="dg-arrow" aria-hidden="true">↓</span>
-                        <div class="dg-box accent" data-editable="true">모델</div>
+                        <div class="dg-zone-label" data-editable="true">사내 서버</div>
+                        <div class="dg-row stretch">
+                          <div class="dg-box"><span data-editable="true">추론 서버</span><span class="dg-sub" data-editable="true">vLLM</span></div>
+                          <span class="dg-arrow" aria-hidden="true">→</span>
+                          <div class="dg-box accent" data-editable="true">모델</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1328,84 +1408,84 @@ llm = ChatOpenAI(
     <span class="hl">base_url=BASE_URL</span>,  <span class="cm"># 요청을 받을 서버 주소</span>
 )                       <span class="cm"># 키는 환경변수에서 읽음</span></pre>
                   </div>
-                  <ul class="bullets">
-                    <li data-editable="true">모델: 응답을 계산하는 핵심</li>
-                    <li data-editable="true">vLLM: 모델을 실행하는 서버</li>
-                    <li data-editable="true">API·SDK: 요청 약속과 호출 도구</li>
-                  </ul>
+                  <p class="guide-ref" data-editable="true">코드 위치: 모델 연결 설정 — 실습 가이드 해당 장</p>
                 </div>
               </div>
               <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · LangChain Models 문서</p>
-              <aside class="speaker-note">모델은 응답을 계산하는 핵심이고, vLLM은 요청을 받아 모델을 실행하는 서버 프로그램입니다. API는 프로그램끼리 요청과 응답을 주고받는 약속이고, SDK는 그 호출 코드를 편하게 쓰게 돕는 Python 도구입니다. 코드에 OpenAI라는 이름이 있어도 실제 요청이 가는 곳은 base_url에 적은 주소이고, 호환 API라고 해서 모든 옵션과 도구 호출이 똑같이 지원되는 것은 아닙니다. 코드는 내 PC에서 돌아도 모델 계산은 서버에서 일어난다는 점도 기억해 두세요. 코드 첫 줄의 langchain은 10시 구간에서 다루니, 지금은 model과 base_url 두 줄만 보세요. 이제 실습 코드에서 모델 이름과 요청 주소를 지정하는 위치를 같이 보겠습니다.</aside>
+              <aside class="speaker-note">모델은 응답을 계산하는 핵심이고, vLLM은 요청을 받아 모델을 실행하는 서버 프로그램입니다. API는 프로그램끼리 요청과 응답을 주고받는 약속이고, SDK는 그 호출 코드를 편하게 쓰게 돕는 Python 도구입니다. 화면 왼쪽 그림처럼 코드는 내 PC에서 돌아도 모델 계산은 사내 서버에서 일어나고, 그 요청이 어디로 갈지는 오른쪽 코드의 base_url이 정합니다. 그래서 코드에 OpenAI라는 이름이 있어도 요청이 OpenAI로 가는 것은 아니고, 호환 API라고 해서 모든 옵션과 도구 호출이 똑같이 지원되는 것도 아닙니다. 코드 첫 줄의 langchain은 10시 구간에서 다루니, 지금은 model과 base_url 두 줄만 보세요. 이제 실습 가이드 해당 장의 모델 연결 설정에서 모델 이름과 요청 주소를 지정하는 위치를 같이 보겠습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">7 / 52</div>
+              <div class="page-num">8 / 53</div>
             </section>
-            <section id="s-8" class="scene clip" data-skill="compare" data-scene-id="S07" data-start="35" data-duration="5" data-track-index="0">
+            <section id="s-9" class="scene clip" data-skill="compare" data-scene-id="S07" data-start="40" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">Temperature와 출력 변화</h2>
-              <div class="compare-grid cols-3">
-                <div class="compare-col">
-                  <div class="compare-kicker" data-editable="true">temperature 낮게</div>
-                  <div class="compare-heading" data-editable="true">낮은 값</div>
-                  <ul class="compare-list">
-                    <li data-editable="true">선택의 다양성 감소</li>
-                    <li data-editable="true">결과가 비슷해지기 쉬움</li>
-                  </ul>
+              <p class="thesis" data-editable="true">temperature는 다양성을 조절할 뿐, 정확성 스위치가 아니다.</p>
+              <p class="explain" data-editable="true">응답 생성 3단계에서 분포를 얼마나 뾰족하게 볼지 정한다. 바뀌는 것은 선택의 폭뿐이다.</p>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">temperature 낮게</div>
+                    <div class="compare-heading" data-editable="true">상위 후보에 몰림</div>
+                    <div class="dist" aria-hidden="true"><span class="dist-bar lv-5"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-1"></span><span class="dist-bar lv-1"></span><span class="dist-bar lv-1"></span></div>
+                    <ul class="compare-list"><li data-editable="true">결과가 비슷해지기 쉬움</li></ul>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-kicker" data-editable="true">temperature 높게</div>
+                    <div class="compare-heading" data-editable="true">여러 후보로 퍼짐</div>
+                    <div class="dist" aria-hidden="true"><span class="dist-bar lv-4"></span><span class="dist-bar lv-3"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-2"></span></div>
+                    <ul class="compare-list"><li data-editable="true">표현이 자주 달라짐</li></ul>
+                  </div>
+                  <div class="compare-col is-accent">
+                    <div class="compare-kicker" data-editable="true">두 값 공통</div>
+                    <div class="compare-heading" data-editable="true">별도 확인</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">새 정보를 더하지 않음</li>
+                      <li data-editable="true">낮아도 틀릴 수 있음</li>
+                      <li data-editable="true">완전 동일도 보장 안 됨</li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="compare-col">
-                  <div class="compare-kicker" data-editable="true">temperature 높게</div>
-                  <div class="compare-heading" data-editable="true">높은 값</div>
-                  <ul class="compare-list">
-                    <li data-editable="true">선택의 다양성 증가</li>
-                    <li data-editable="true">표현이 자주 달라짐</li>
-                  </ul>
-                </div>
-                <div class="compare-col is-accent">
-                  <div class="compare-kicker" data-editable="true">두 값 공통</div>
-                  <div class="compare-heading" data-editable="true">별도 확인</div>
-                  <ul class="compare-list">
-                    <li data-editable="true">새 정보를 더하지 않음</li>
-                    <li data-editable="true">낮아도 틀릴 수 있음</li>
-                    <li data-editable="true">완전 동일도 보장 안 됨</li>
-                  </ul>
-                </div>
+                <p class="dg-caption is-left" data-editable="true">같은 후보 5개의 분포 모양 · 개념 예시 · 수치 없음 · 교안 내용 재구성</p>
               </div>
-              <p class="source" data-editable="true">출처: vLLM Reproducibility 문서 · LangChain Models 문서</p>
-              <aside class="speaker-note">temperature는 다음 토큰을 고를 때 선택의 다양성에 영향을 주는 값입니다. 낮추면 결과가 비슷해지기 쉽고, 높이면 표현이 호출마다 달라지기 쉽습니다. 하지만 어느 쪽이든 모델이 모르는 정보를 더하거나 사실을 검증해 주지는 않습니다. 낮은 값에서도 틀릴 수 있고, 서버 환경에 따라 모든 실행이 완전히 같다는 보장도 없습니다. 같은 질문을 여러 번 보내면 어떤 차이가 날지 먼저 예측해 보세요.</aside>
+              <p class="source" data-editable="true">출처: vLLM Reproducibility 문서 · LangChain Models 문서 · LLM 활용과 고급화 과정 교안 재구성</p>
+              <aside class="speaker-note">temperature는 다음 토큰을 고를 때 선택의 다양성에 영향을 주는 값입니다. 화면의 막대처럼 같은 후보라도 값을 낮추면 확률이 높은 후보 쪽으로 몰리고, 높이면 여러 후보로 퍼져서 표현이 호출마다 달라지기 쉽습니다. 하지만 어느 쪽이든 모델이 모르는 정보를 더하거나 사실을 검증해 주지는 않습니다. 낮은 값에서도 틀릴 수 있고, 서버 환경에 따라 모든 실행이 완전히 같다는 보장도 없습니다. 같은 선택 단계에서 후보 범위를 좁히는 Top-K·Top-P 같은 값도 있는데, LLM 활용과 고급화 과정 교안의 샘플링 제어 부분에서 더 다룹니다. 같은 질문을 여러 번 보내면 어떤 차이가 날지 먼저 예측해 보세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">8 / 52</div>
+              <div class="page-num">9 / 53</div>
             </section>
-            <section id="s-9" class="scene clip" data-skill="title-bullets" data-scene-id="S08" data-start="40" data-duration="5" data-track-index="0">
+            <section id="s-10" class="scene clip" data-skill="title-bullets" data-scene-id="S08" data-start="45" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B1</span><span data-editable="true">LLM 원리와 첫 호출</span></div>
               <h2 class="scene-title" data-editable="true">실습 1 · 호출과 비교</h2>
               <p class="board-meta" data-editable="true">09:24–09:40 · 16분 · 실습 가이드 해당 장</p>
+              <p class="explain" data-editable="true"><strong>관찰할 것</strong>temperature 두 값에서 같은 질문을 각각 3회 이상 보내고, 차이가 없어도 기록한다. 최신 자료 질문의 답변에는 근거가 있는지 표시해 10시 구간에 가져간다.</p>
               <div class="practice-grid">
                 <div class="stack">
-                  <ul class="bullets">
-                    <li data-editable="true">준비된 호출로 첫 응답 확인</li>
-                    <li data-editable="true">temperature만 바꿔 같은 질문 반복</li>
-                    <li data-editable="true">최신 자료 질문으로 한계 관찰</li>
-                  </ul>
-                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">바꾼 값과 관찰한 차이를 한 문장으로 설명한다</div></div>
-                </div>
-                <div>
-                  <div class="time-blocks">
+                  <div class="time-blocks row">
                     <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">첫 호출</div></div>
                     <div class="time-block is-accent"><div class="min" data-editable="true">6<small>분</small></div><div class="what" data-editable="true">반복 비교</div></div>
-                    <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">최신 자료 질문</div></div>
+                    <div class="time-block"><div class="min" data-editable="true">4<small>분</small></div><div class="what" data-editable="true">최신 자료</div></div>
                     <div class="time-block"><div class="min" data-editable="true">2<small>분</small></div><div class="what" data-editable="true">결과 확인</div></div>
                   </div>
-                  <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 출력으로 같은 비교를 계속합니다</div>
+                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">바꾼 값과 관찰한 차이를 한 문장으로 설명한다</div></div>
+                  <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 출력으로 비교를 계속합니다</div>
+                </div>
+                <div class="stack">
+                  <div class="placeholder is-spec">
+                    <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S08]</div>
+                    <div class="placeholder-desc" data-editable="true">넣을 자료: 실습 1 호출 결과 캡처 — 같은 질문, temperature 두 조건</div>
+                    <div class="placeholder-desc" data-editable="true">조건: 모델명·주소·키 가리기 · 실행일 표기 · 1600×900 이상</div>
+                    <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 이 자리를 두고 왼쪽 안내로 진행</div>
+                  </div>
+                  <p class="guide-ref" data-editable="true">코드 위치: 모델 연결 설정 · 모델 호출부 — 실습 가이드 해당 장</p>
                 </div>
               </div>
               <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · vLLM Reproducibility 문서</p>
-              <aside class="speaker-note">처음 4분은 준비된 호출을 실행해 첫 응답이 오는지 확인합니다. 다음 6분은 질문은 그대로 두고 temperature만 바꿔 여러 번 호출합니다. 매번 눈에 띄는 차이가 나지 않을 수도 있으니, 차이가 없었다는 것도 관찰 결과로 적어 두세요. 이어서 4분은 학습 이후에 나왔을 수 있는 최신 자료를 물어보고 답변에 근거가 있는지 살펴봅니다. 마지막 2분에 바꾼 값과 관찰한 차이를 한 문장으로 발표하고, temperature가 앞에서 본 응답 생성 세 단계 중 어디에 영향을 주는지도 함께 말해 봅니다. 접속이 안 되는 분은 준비된 출력으로 같은 비교를 계속하고, 직접 실행한 결과와 구분해 둡니다.</aside>
+              <aside class="speaker-note">처음 4분은 준비된 호출을 실행해 첫 응답이 오는지 확인하고, 다음 6분은 질문은 그대로 두고 temperature 두 값에서 각각 세 번 이상 호출합니다. 매번 눈에 띄는 차이가 나지 않을 수도 있으니, 차이가 없었다는 것도 관찰 결과로 적어 두세요. 오른쪽 캡처는 제가 미리 돌린 결과이고, 여러분 결과와 다르다면 그 차이가 오늘 첫 관찰입니다. 이어서 4분은 학습 이후에 나왔을 수 있는 최신 자료를 물어보고, 답변에 근거가 있는지 표시해 둡니다. 마지막 2분에 바꾼 값과 관찰한 차이를 한 문장으로 발표하고, temperature가 앞에서 본 응답 생성 세 단계 중 어디에 영향을 주는지도 함께 말해 봅니다. 접속이 안 되는 분은 준비된 출력으로 같은 비교를 계속하되 직접 실행한 결과와 구분해 두고, 최신 자료 질문에서 표시한 한계는 10시 구간에서 외부 근거로 채워 보겠습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">9 / 52</div>
+              <div class="page-num">10 / 53</div>
             </section>
       <!-- BLOCK:B1 END -->
       <!-- BLOCK:B2 START -->
-      <section id="s-10" class="scene clip" data-skill="compare" data-scene-id="S09" data-start="45" data-duration="5" data-track-index="0">
+      <section id="s-11" class="scene clip" data-skill="compare" data-scene-id="S09" data-start="50" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span><span class="time-chip" data-editable="true">10:00–10:40</span></div>
         <h2 class="scene-title" data-editable="true">외부 자료가 필요한 질문</h2>
         <p class="scene-subtitle" data-editable="true">같은 질문을 두 방식으로 답할 때</p>
@@ -1434,9 +1514,9 @@ llm = ChatOpenAI(
         <p class="source" data-editable="true">출처: Lewis et al. 2020 (Retrieval-Augmented Generation) · LangChain Retrieval 가이드</p>
         <aside class="speaker-note">실습 1 마지막에 최신 자료를 물었을 때 어떤 답이 나왔는지 한 분만 말씀해 주세요. 학습 이후에 나온 기사나 모델이 접근한 적 없는 사내 자료는 모델만으로 답하기 어렵습니다. 그래도 모델은 자연스러운 문장을 만들 수 있기 때문에, 문장이 그럴듯하다는 것과 근거가 있다는 것은 따로 확인해야 합니다. 필요한 근거를 찾아 질문과 함께 전달하면 모델은 그 자료를 사용해 답할 수 있습니다. 다만 근거를 붙여도 검색이 틀리거나 자료가 부실하면 답도 틀릴 수 있습니다. 이번 구간 내내 "이 문장이 기사에 실제로 있나?"를 확인하는 습관을 들이겠습니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">10 / 52</div>
+        <div class="page-num">11 / 53</div>
       </section>
-      <section id="s-11" class="scene clip" data-skill="steps" data-scene-id="S10" data-start="50" data-duration="5" data-track-index="0">
+      <section id="s-12" class="scene clip" data-skill="steps" data-scene-id="S10" data-start="55" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
         <h2 class="scene-title" data-editable="true">RAG의 기본 구조</h2>
         <div class="stack">
@@ -1462,9 +1542,9 @@ llm = ChatOpenAI(
         <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
         <aside class="speaker-note">RAG는 검색한 자료를 이번 답변을 만들 때 사용하는 방식입니다. 자료를 나누는 이유는 긴 문서 전체가 아니라 질문에 필요한 부분을 찾기 위해서입니다. 임베딩은 내용을 숫자 표현으로 바꾸는 과정이고, Vector DB는 그 표현과 원문을 보관하고 검색하는 저장소인데, 키워드 검색처럼 다른 방법도 있어 항상 필수는 아닙니다. 그리고 RAG는 모델 가중치를 바꾸는 학습이 아니므로, 다음 질문에서 그 자료를 모델이 기억하는 것도 아닙니다. 기사 한 편 전체를 요약하는 것과 질문에 맞는 근거를 찾아 답하는 것의 차이를 한 문장으로 말해 볼까요?</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">11 / 52</div>
+        <div class="page-num">12 / 53</div>
       </section>
-      <section id="s-12" class="scene clip" data-skill="split" data-scene-id="S11" data-start="55" data-duration="5" data-track-index="0">
+      <section id="s-13" class="scene clip" data-skill="split" data-scene-id="S11" data-start="60" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
         <h2 class="scene-title" data-editable="true">수집한 본문과 출처</h2>
         <div class="split-grid">
@@ -1491,9 +1571,9 @@ llm = ChatOpenAI(
         <p class="source" data-editable="true">출처: 강사 개인 기록 (지식 저장소 원문 수집 메모)</p>
         <aside class="speaker-note">제 개인 지식 저장소에서 문서를 수집했을 때, 접힌 내용이 빠져 제목만 남은 적이 있습니다. 파일이 생겼으니 성공이라고 판단하면, 답할 근거가 없는 채로 요약과 검색 단계가 그대로 진행됩니다. 이것은 제가 쓰던 환경에서 겪은 일이고, 모든 수집 도구의 결함이라는 뜻은 아닙니다. 실습 기사에서도 제목, 본문 길이, 대표 문단을 눈으로 한 번 확인하고 다음 단계로 넘어가겠습니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">12 / 52</div>
+        <div class="page-num">13 / 53</div>
       </section>
-      <section id="s-13" class="scene clip" data-skill="compare" data-scene-id="S12" data-start="60" data-duration="5" data-track-index="0">
+      <section id="s-14" class="scene clip" data-skill="compare" data-scene-id="S12" data-start="65" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
         <h2 class="scene-title" data-editable="true">LangChain의 역할</h2>
         <p class="scene-subtitle" data-editable="true">같은 작업: 근거와 질문을 담은 prompt로 답변 받기</p>
@@ -1532,9 +1612,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: LangChain Overview · LangChain Models 문서 · OpenAI Python SDK README</p>
         <aside class="speaker-note">두 코드는 같은 일을 합니다. 근거와 질문을 담은 prompt를 모델에 보내고 답을 받습니다. 단순 호출 하나라면 왼쪽처럼 SDK로 충분하고, LangChain이 꼭 필요한 것은 아닙니다. LangChain의 장점은 모델, 메시지, 검색기, 도구를 같은 방식으로 연결하게 해 준다는 데 있고, 모델을 더 똑똑하게 만들어 주지는 않습니다. 이번 실습에서는 검색 결과와 모델 호출을 잇는 부분에 집중하고, LangGraph나 Deep Agents 같은 다음 단계는 필요할 때 고르면 되므로 부록 A03에만 두었습니다. 실습 코드에서 질문, 검색 결과, 모델 응답이 각각 어디 있는지 짚어 보세요.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">13 / 52</div>
+        <div class="page-num">14 / 53</div>
       </section>
-      <section id="s-14" class="scene clip" data-skill="title-bullets" data-scene-id="S13" data-start="65" data-duration="5" data-track-index="0">
+      <section id="s-15" class="scene clip" data-skill="title-bullets" data-scene-id="S13" data-start="70" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
         <h2 class="scene-title" data-editable="true">실습 2 · 기사 근거로 답하기</h2>
         <p class="board-meta" data-editable="true">10:14–10:36 · 22분 · 실습 가이드 해당 장</p>
@@ -1560,9 +1640,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · LangChain Retrieval 가이드</p>
         <aside class="speaker-note">처음 5분은 기사 본문을 확보하고, 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 확인합니다. 다음 7분은 질문을 넣고 어떤 문단이 검색됐는지 확인합니다. 이어서 7분 동안 그 근거를 붙여 답변을 만들고, 질문을 바꿔 검색 결과가 어떻게 달라지는지 봅니다. 마지막 3분은 기사에 없는 내용을 물어보고, 모델이 없다고 답하는지 확인합니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로 같은 단계를 진행하면 됩니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">14 / 52</div>
+        <div class="page-num">15 / 53</div>
       </section>
-      <section id="s-15" class="scene clip" data-skill="compare" data-scene-id="S14" data-start="70" data-duration="5" data-track-index="0">
+      <section id="s-16" class="scene clip" data-skill="compare" data-scene-id="S14" data-start="75" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
         <h2 class="scene-title" data-editable="true">답변과 검색 근거 확인</h2>
         <div class="stack">
@@ -1591,10 +1671,10 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: LangChain Retrieval 가이드 · Lewis et al. 2020</p>
         <aside class="speaker-note">답변이 좋아 보이는지보다, 근거가 그 문장을 실제로 뒷받침하는지를 봅니다. 한 분이 답변에서 문장 하나를 고르고, 그 문장이 들어 있는 기사 문단을 짚어 주세요. 근거 밖의 내용이 나왔다면 검색이 잘못된 것인지, 가져온 자료를 잘못 설명한 것인지를 나눠 보면 고칠 위치가 좁아집니다. 그런데 "이번 달 장비별 합계는?"이나 "지금 재고는?"처럼 정확한 조회가 필요한 질문은 기사 검색으로 풀기 어렵습니다. 휴식 후에는 이런 질문을 SQL 조회 도구로 연결합니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">15 / 52</div>
+        <div class="page-num">16 / 53</div>
       </section>      <!-- BLOCK:B2 END -->
       <!-- BLOCK:B3 START -->
-      <section id="s-16" class="scene clip" data-skill="compare" data-scene-id="S15" data-start="75" data-duration="5" data-track-index="0">
+      <section id="s-17" class="scene clip" data-skill="compare" data-scene-id="S15" data-start="80" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span><span class="time-chip" data-editable="true">11:00–11:40</span></div>
         <h2 class="scene-title" data-editable="true">정확한 조회와 계산</h2>
         <p class="scene-subtitle" data-editable="true">질문 예: 최근 일주일 장비별 점검 건수는?</p>
@@ -1622,9 +1702,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · Part Number Finder Beta 공개 README</p>
         <aside class="speaker-note">장비별 건수나 특정 파트가 있는지는 기준을 정하고 실제 데이터로 확인해야 하는 질문입니다. 모델은 "최근"이 며칠인지 같은 표현을 해석하고 결과를 설명하는 데 쓰고, 세는 일은 SQL이나 Python에 맡길 수 있습니다. 같은 자료라도 날짜 기준, 단위, 중복 처리에 따라 답이 달라지므로 그 기준을 코드에 고정해 두는 것이 중요합니다. 오른쪽 숫자는 교육용 가상 데이터입니다. "최근"이라는 말에 어떤 날짜 기준이 필요한지 한 분만 답해 주세요.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">16 / 52</div>
+        <div class="page-num">17 / 53</div>
       </section>
-      <section id="s-17" class="scene clip" data-skill="steps" data-scene-id="S16" data-start="80" data-duration="5" data-track-index="0">
+      <section id="s-18" class="scene clip" data-skill="steps" data-scene-id="S16" data-start="85" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
         <h2 class="scene-title" data-editable="true">Tool 호출의 실행 순서</h2>
         <div class="stack">
@@ -1661,9 +1741,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: LangChain Tools 문서 · OpenAI Function calling 가이드</p>
         <aside class="speaker-note">"모델이 도구를 쓴다"는 말은 모델이 Python 함수를 자기 안에서 실행한다는 뜻이 아닙니다. 프로그램이 먼저 도구의 이름, 설명, 입력 형식을 알려 주면, 모델은 어떤 도구를 어떤 인자로 부를지 요청만 합니다. 실제 함수나 SQL은 프로그램이 실행하고, 그 결과를 모델에게 돌려주면 모델이 답하거나 다음 도구를 요청합니다. @tool은 함수 정보로 도구 설명과 입력 형식을 만드는 데 쓰입니다. 화면의 도구 호출 기록은 요청과 결과일 뿐, 모델의 생각 전체를 보여 주는 것은 아닙니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">17 / 52</div>
+        <div class="page-num">18 / 53</div>
       </section>
-      <section id="s-18" class="scene clip" data-skill="compare" data-scene-id="S17" data-start="85" data-duration="5" data-track-index="0">
+      <section id="s-19" class="scene clip" data-skill="compare" data-scene-id="S17" data-start="90" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
         <h2 class="scene-title" data-editable="true">스크립트·Workflow·Agent</h2>
         <p class="scene-subtitle" data-editable="true">같은 업무: 자료를 읽고 결과 만들기</p>
@@ -1702,9 +1782,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: Anthropic, Building effective agents</p>
         <aside class="speaker-note">정해진 규칙으로 충분한 일은 스크립트가 가장 간단하고 결과도 예측하기 쉽습니다. 순서가 정해져 있다면 코드가 그 순서대로 모델과 도구를 부르는 작업 흐름, 즉 Workflow로 만들 수 있습니다. 모델이 상황을 보고 다음에 어떤 도구나 행동을 쓸지 골라야 할 때 Agent가 유용하지만, 호출이 늘어나 시간과 사용량도 늘 수 있습니다. 그래서 오른쪽으로 갈수록 좋은 것이 아니라, 문제에 맞는 수준을 고르는 것입니다. 방금 한 기사 실습은 순서가 고정돼 있었나요, 모델이 다음 행동을 골랐나요?</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">18 / 52</div>
+        <div class="page-num">19 / 53</div>
       </section>
-      <section id="s-19" class="scene clip" data-skill="split" data-scene-id="S18" data-start="90" data-duration="5" data-track-index="0">
+      <section id="s-20" class="scene clip" data-skill="split" data-scene-id="S18" data-start="95" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
         <h2 class="scene-title" data-editable="true">Part Finder의 후보 검증</h2>
         <div class="split-grid wide-left">
@@ -1732,9 +1812,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: Part Number Finder Beta 공개 README (GitHub MyWay0104)</p>
         <aside class="speaker-note">앞에서 조회 쪽은 없는 식별자를 만들지 않아야 한다고 했는데, 공개 Beta 설계에서 이것을 어떻게 지켰는지 보겠습니다. Part Finder 공개 Beta 설계에서는 실제 검색 후보에 있는 Part Number만 답에 쓰고, 파트 종류와 제조사·장비 조건이 맞는지 확인합니다. 화면처럼 제조사 A의 로봇 블레이드를 찾는데 해당 품목이 없다면, 같은 제조사의 다른 부품을 내놓는 대신 "조건에 맞는 후보 없음"이라고 답해야 합니다. 이 검증이 그럴듯한 답과 업무에 쓸 수 있는 답을 가르는 장치입니다. 참고로 이 공개 Beta는 외부 Vector DB 없이 단어 빈도 기반 검색을 쓰는데, 10시 구간에서 말한 'Vector DB가 항상 필수는 아니다'의 예이기도 합니다. 여기 표는 공개 설계를 단순화한 가상 데이터이고, 현재 사내 운영 버전과 같다는 뜻은 아닙니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">19 / 52</div>
+        <div class="page-num">20 / 53</div>
       </section>
-      <section id="s-20" class="scene clip" data-skill="title-bullets" data-scene-id="S19" data-start="95" data-duration="5" data-track-index="0">
+      <section id="s-21" class="scene clip" data-skill="title-bullets" data-scene-id="S19" data-start="100" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
         <h2 class="scene-title" data-editable="true">실습 3 · SQL Tool 연결</h2>
         <p class="board-meta" data-editable="true">11:14–11:30 · 16분 · 실습 가이드 해당 장</p>
@@ -1760,9 +1840,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · 근거: 사용자 제공 강의안·시간표</p>
         <aside class="speaker-note">처음 3분은 테이블 구조와 날짜 기준, 단위를 확인합니다. 다음 7분은 준비된 읽기 전용 조회 도구를 연결해 호출하고, 도구에 넘어간 인자와 실제 조회 결과를 나눠서 봅니다. 이어서 4분은 정답을 알고 있는 질문과 결과가 없어야 하는 질문을 넣어 비교하고, 마지막 2분은 결과를 한 문장으로 설명합니다. 참고로 프롬프트에 "위험한 SQL은 실행하지 마"라고 적는 것만으로는 접근 제한이 되지 않고, 읽기 권한과 허용 테이블은 실행 환경에서 막아야 합니다. DB 접속이 안 되는 분은 같은 구조의 교육용 DB로 진행합니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">20 / 52</div>
+        <div class="page-num">21 / 53</div>
       </section>
-      <section id="s-21" class="scene clip title-image" data-skill="title-image" data-scene-id="S20" data-start="100" data-duration="5" data-track-index="0">
+      <section id="s-22" class="scene clip title-image" data-skill="title-image" data-scene-id="S20" data-start="105" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
         <h2 class="scene-title" data-editable="true">실습 4 · Streamlit 화면 실행</h2>
         <p class="scene-subtitle" data-editable="true">11:30–11:38 · 8분 · 실행 3분 → 질문·결과 3분 → 코드 위치 2분 · 실습 가이드 해당 장</p>
@@ -1776,9 +1856,9 @@ print(res.content)</pre>
         <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · 근거: 사용자 제공 강의안·시간표</p>
         <aside class="speaker-note">준비된 화면 코드에 방금 만든 조회 호출을 연결하고 실행합니다. 처음 3분은 앱을 띄우고, 다음 3분은 질문을 넣어 조회 결과와 근거가 화면 어디에 나오는지 확인합니다. 마지막 2분은 입력 칸의 값이 어떤 함수로 들어가고 그 결과가 어느 코드에서 화면에 그려지는지 짚습니다. 화면을 처음부터 설계하는 일은 오후 자유 실습에서 확장할 수 있습니다. 혼자 막힌 분은 옆 사람 화면으로 같은 단계를 함께 보세요. 실행이 5분 넘게 막히면 제가 완성 코드를 시연하는 것으로 바꾸고, 개별 실행은 자유 실습 선택지로 넘기겠습니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">21 / 52</div>
+        <div class="page-num">22 / 53</div>
       </section>
-      <section id="s-22" class="scene clip" data-skill="split" data-scene-id="S21" data-start="105" data-duration="5" data-track-index="0">
+      <section id="s-23" class="scene clip" data-skill="split" data-scene-id="S21" data-start="110" data-duration="5" data-track-index="0">
         <div class="eyebrow"><span class="block-chip" data-editable="true">B3</span><span data-editable="true">SQL Tool과 Streamlit</span></div>
         <h2 class="scene-title" data-editable="true">오전 실습의 전체 구조</h2>
         <div class="split-grid wide-left">
@@ -1804,10 +1884,10 @@ print(res.content)</pre>
         <p class="source" data-editable="true">근거: 사용자 제공 강의안 · Streamlit Architecture 문서</p>
         <aside class="speaker-note">오전에는 화면, 모델과 도구, 근거 데이터를 하나씩 연결했고, 실제 개발에서는 이런 연결 때문에 작은 수정이 다른 부분에 영향을 주는 일이 자주 생깁니다. 그런데 이 그림에서 SQL을 실제로 실행하는 것은 모델인가요, 프로그램인가요? 한 분만 답해 주세요. 오후에는 Claude Code로 이 구조를 먼저 읽고, 바꿀 범위를 정해 결과 없음 안내나 근거 표시 같은 작은 기능 하나를 개선합니다. 오후에 Claude Code가 쓰는 모델 연결은 오전 실습 API와 별도로 준비된 경로입니다. 점심 전에 내가 고쳐 보고 싶은 곳을 한 군데 골라 두시고, 13시 20분에 다시 시작합니다.</aside>
         <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-        <div class="page-num">22 / 52</div>
+        <div class="page-num">23 / 53</div>
       </section>      <!-- BLOCK:B3 END -->
       <!-- BLOCK:B4 START -->
-            <section id="s-23" class="scene clip" data-skill="compare" data-scene-id="S22" data-start="110" data-duration="5" data-track-index="0">
+            <section id="s-24" class="scene clip" data-skill="compare" data-scene-id="S22" data-start="115" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span><span class="time-chip" data-editable="true">13:20–14:00</span></div>
               <p class="act-tag" data-editable="true"><strong>전 · 뒤집다</strong>오전엔 내가 모델에 도구를 붙였고, 오후엔 Coding Agent에게 앱 수정을 맡긴다</p>
               <h2 class="scene-title" data-editable="true">오전 앱과 Coding Agent</h2>
@@ -1839,9 +1919,9 @@ print(res.content)</pre>
               <p class="source" data-editable="true">출처: Claude Code How Claude Code works · Building effective agents · Kaggle Agents 백서(교안 내용 재구성)</p>
               <aside class="speaker-note">오전에 만든 기사·SQL 조회 앱이 이번 시간 Claude Code의 작업 대상이고, 이번 40분의 목표는 Claude Code 실행 환경을 확인하고 오전 앱에서 고칠 기능 하나의 목표·범위·완료 조건을 적는 것입니다. 오전엔 우리가 모델에 검색·조회 도구를 붙였고, 오후엔 이미 도구가 붙은 Claude Code에게 일을 맡깁니다. Claude Code는 모델 자체가 아니라, 모델에 파일 읽기·수정·명령 실행 도구와 실행 환경을 붙여 프로젝트 자체를 다루는 프로그램입니다. 오른쪽 열의 그림처럼 파일과 실행 결과를 관찰하고, 모델이 다음 행동을 판단하고, 도구로 행동한 뒤 그 결과를 다시 관찰하는 반복이 핵심입니다. 교안에서 인용한 Agent 3요소(모델·도구·오케스트레이션)로 보면, 이 반복을 관리하는 부분이 오케스트레이션입니다. 이 흐름을 한 번에 이어갈 수 있어서 이번 실습에 쓰는 것이고, 다른 도구보다 항상 낫다는 뜻은 아닙니다. 오전 SQL 조회 도구와 지금 볼 파일 수정 도구의 공통점을 한 가지만 말해 주세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">23 / 52</div>
+              <div class="page-num">24 / 53</div>
             </section>
-            <section id="s-24" class="scene clip" data-skill="split" data-scene-id="S23" data-start="115" data-duration="5" data-track-index="0">
+            <section id="s-25" class="scene clip" data-skill="split" data-scene-id="S23" data-start="120" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
               <h2 class="scene-title" data-editable="true">로컬 실행과 접근 범위</h2>
               <p class="thesis" data-editable="true">실행 위치와 모델이 처리하는 위치는 다르다</p>
@@ -1876,9 +1956,9 @@ print(res.content)</pre>
               <p class="source" data-editable="true">출처: Claude Code 공식 문서 How Claude Code works · Permissions · Data usage</p>
               <aside class="speaker-note">왼쪽 그림에서 점선 영역 '내 PC' 안의 Claude Code가 파일 읽기·수정과 명령 실행을 하고, 가운데 화살표를 따라 요청과 읽은 파일 내용 같은 맥락이 오른쪽 모델 경로로 전달됩니다. 공식 문서 Data usage도 로컬에서 실행하더라도 모델이 처리하려면 데이터가 네트워크로 전송된다고 설명합니다. 그래서 로컬에서 실행한다는 것만으로 자료가 내 PC에만 머문다고 판단할 수 없고, 사내에서 허용한 모델 경로와 보낼 수 있는 자료 범위를 먼저 확인해야 하며, 오후 Claude Code의 모델 경로는 오전 실습의 사내 추론 서버와 따로 준비·확인된 것입니다. 또 로컬에 접근한다는 것이 컴퓨터로 하는 모든 일을 할 수 있다는 뜻은 아니어서, 허용된 파일·명령 도구와 권한 범위 안에서 일하고, 아래 회색 상자처럼 다른 앱 화면 조작이나 사내 시스템 접근에는 별도 도구·연결·권한이 필요할 수 있습니다. 파일 읽기, Python 실행, 다른 프로그램 화면 클릭 중 지금 환경에서 바로 될 것 같은 것을 예상해 보세요. 예상이 맞는지는 잠시 뒤 실습 5에서 직접 확인합니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">24 / 52</div>
+              <div class="page-num">25 / 53</div>
             </section>
-            <section id="s-25" class="scene clip" data-skill="split" data-scene-id="S24" data-start="120" data-duration="5" data-track-index="0">
+            <section id="s-26" class="scene clip" data-skill="split" data-scene-id="S24" data-start="125" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
               <h2 class="scene-title" data-editable="true">변경하기 쉬운 프로그램 구조</h2>
               <p class="thesis" data-editable="true">경계와 입출력을 먼저 정하면 바꿀 곳과 확인할 곳이 좁아진다</p>
@@ -1907,9 +1987,9 @@ print(res.content)</pre>
               <p class="source" data-editable="true">근거: 강사의 아키텍처 회고(사용자 제공) · Claude Code 공식 문서 Best practices</p>
               <aside class="speaker-note">제가 앱을 만들 때 개발 후반으로 갈수록 작은 수정 하나가 여러 곳에 영향을 줘서 고치기 어려워진 경험이 있습니다. 그래서 처음부터 완벽한 구조를 목표로 하기보다, 바뀌기 쉬운 부분의 경계와 각 부분이 주고받는 값을 먼저 정해 두는 편이 낫다고 봅니다. 왼쪽 그림은 오전 마지막에 본 세 층 그림을 역할 이름으로 다시 그린 것인데, 검색 결과 없음 안내는 파랑 점선 안의 화면과 처리 중 업무 규칙만 바꾸고, 모델 연결은 그대로 두며, 데이터 쪽은 빈 결과가 어떤 형태로 오는지만 확인하면 됩니다. 이렇게 경계가 보이면 Claude Code에 요청할 때도 바꿀 곳과 건드리지 않을 곳을 말할 수 있고, 공식 모범사례도 요청에 관련 파일과 제약을 구체적으로 적으라고 권합니다. 작은 앱이라면 파일을 많이 나눌 필요 없이 역할별 함수 몇 개와 짧은 README로 충분합니다. 그러면 "근거 문단을 답변 옆에 함께 보여 주기"는 세 층 중 어디를 바꿔야 할까요? 한 분만 답해 주세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">25 / 52</div>
+              <div class="page-num">26 / 53</div>
             </section>
-            <section id="s-26" class="scene clip" data-skill="compare" data-scene-id="S25" data-start="125" data-duration="5" data-track-index="0">
+            <section id="s-27" class="scene clip" data-skill="compare" data-scene-id="S25" data-start="130" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
               <h2 class="scene-title" data-editable="true">작업 요청과 완료 조건</h2>
               <p class="thesis" data-editable="true">입력 예와 기대 결과가 곧 완료 조건이다</p>
@@ -1935,9 +2015,9 @@ print(res.content)</pre>
               <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · 근거: 사용자 제공 강의안(요청문 템플릿)</p>
               <aside class="speaker-note">"앱 개선해줘"라고만 하면 Claude Code는 무엇을 어디까지 바꿀지 스스로 추측해야 하고, 우리도 결과를 받았을 때 끝난 것인지 판단할 기준이 없습니다. 아래 여섯 칸처럼 목표, 입력과 출력, 바꿀 범위, 지켜야 할 제약에 더해 어떤 입력에서 어떤 결과가 나오면 끝인지를 적으면 작업 방향과 확인 방법이 함께 정해지고, 공식 모범사례도 확인할 수 있는 기준을 요청에 함께 주라고 권합니다. 특히 파랑 칸의 완료 조건처럼 기존 질문의 결과가 그대로여야 한다는 조건을 넣어 두면, 새 기능을 붙이다 원래 기능을 망가뜨렸는지 확인할 수 있습니다. 오류 없이 실행되는 것, 결과가 정확한 것, 사용자의 목적에 맞는 것은 각각 따로 확인할 대상입니다. 이제 점심 전에 골라 둔 곳을 떠올려, 오전 앱에 붙이고 싶은 작은 기능 하나의 완료 조건을 "어떤 입력에서 무엇이 나오면 끝"이라는 한 문장으로 적어 보세요. 두 분 정도 읽어 보겠습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">26 / 52</div>
+              <div class="page-num">27 / 53</div>
             </section>
-            <section id="s-27" class="scene clip" data-skill="title-bullets" data-scene-id="S26" data-start="130" data-duration="5" data-track-index="0">
+            <section id="s-28" class="scene clip" data-skill="title-bullets" data-scene-id="S26" data-start="135" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
               <h2 class="scene-title" data-editable="true">실습 5 · Claude Code 실행</h2>
               <p class="board-meta" data-editable="true">13:36–13:56 · 20분 · 실습 가이드 해당 장</p>
@@ -1965,9 +2045,9 @@ print(res.content)</pre>
               <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표 · Claude Code 공식 문서 How Claude Code works · Best practices</p>
               <aside class="speaker-note">처음 10분은 사내 가이드에 적힌 방법 그대로 Claude Code를 실행하고 접속되는지 확인하며, 미리 설치를 마친 분은 바로 다음 단계로 넘어갑니다. 다음 5분은 오전 실습 폴더를 열고 파일 목록과 내용을 읽을 수 있는지 확인합니다. 마지막 5분은 각 파일이 무슨 역할을 하는지와 앱을 어떻게 실행하는지 설명하게 한 뒤, 그 설명이 실제 파일 내용과 실습 가이드에 맞는지 직접 열어 대조합니다. 오른쪽 자리에 들어갈 화면처럼 Claude Code가 구조를 설명해 줘도 그 설명이 곧 정답은 아니므로, 실제 파일과 대조하는 단계를 꼭 거칩니다. 아래 띠처럼 이번 실습은 읽기와 설명까지로, 공식 모범사례가 권하는 "고치기 전에 먼저 탐색하기" 단계에 해당하며, 파일 수정은 다음 시간에 계획을 세운 뒤에 합니다. 설치나 접속이 막히면 인터넷에서 찾은 다른 접속 방식으로 우회하지 말고, 옆 사람과 짝을 이루거나 제 시연 화면으로 같은 단계를 따라오세요. 아까 예상한 것 중 파일 읽기와 Python 실행이 실제로 되는지 이때 확인하고, 다른 프로그램 화면 클릭은 별도 도구가 연결돼 있지 않으면 되지 않으므로 직접 시켜 보거나 도구를 새로 설치하지 않습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">27 / 52</div>
+              <div class="page-num">28 / 53</div>
             </section>
-            <section id="s-28" class="scene clip" data-skill="title-bullets" data-scene-id="S27" data-start="135" data-duration="5" data-track-index="0">
+            <section id="s-29" class="scene clip" data-skill="title-bullets" data-scene-id="S27" data-start="140" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B4</span><span data-editable="true">Claude Code와 개발 계획</span></div>
               <h2 class="scene-title" data-editable="true">환경 확인과 다음 작업</h2>
               <p class="thesis" data-editable="true">14:20의 준비물은 읽은 파일, 실행 방법, 완료 조건 한 줄이다</p>
@@ -1993,11 +2073,11 @@ print(res.content)</pre>
               <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
               <aside class="speaker-note">위 세 카드를 하나씩 읽을 테니, 된 항목에는 손을 들어 주시고, 막힌 분은 아래 다섯 칸 중 어느 단계에서 막혔는지만 손으로 알려 주세요. 파일은 읽었지만 실행 방법을 못 찾은 분은 Claude Code에게 이 앱을 실행하는 방법을 찾아 설명해 달라고 요청하고, 그 설명을 실습 가이드와 대조해 보세요. 개선 목표는 앞에서 적은 완료 조건 한 문장을 그대로 쓰면 됩니다. 환경이 아직 준비되지 않은 분은 휴식 뒤에 준비된 분과 짝을 이뤄 같은 화면으로 진행합니다. 방금 한 파일 읽기와 설명 대조는 공식 모범사례가 말하는 탐색 단계이고, 다음 시간에는 여기에 계획·구현·검증이 이어집니다. 14시 20분에는 이 기능을 먼저 계획하고, 고친 뒤, 결과를 확인하는 순서로 진행합니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">28 / 52</div>
+              <div class="page-num">29 / 53</div>
             </section>
       <!-- BLOCK:B4 END -->
       <!-- BLOCK:B5 START -->
-            <section id="s-29" class="scene clip" data-skill="steps" data-scene-id="S28" data-start="140" data-duration="5" data-track-index="0">
+            <section id="s-30" class="scene clip" data-skill="steps" data-scene-id="S28" data-start="145" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span><span class="time-chip" data-editable="true">14:20–15:00</span></div>
               <p class="act-tag" data-editable="true"><strong>전 · 뒤집다 (2)</strong>계획하고, 고치고, 확인한다</p>
               <h2 class="scene-title" data-editable="true">탐색·계획·구현·검증</h2>
@@ -2024,9 +2104,9 @@ print(res.content)</pre>
               <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · 뿌리강의 REMASTERED(습관 문구)</p>
               <aside class="speaker-note">이번 40분의 목표는 오전 앱의 기존 코드를 읽고 작은 기능 하나를 고친 뒤, 제대로 됐는지 확인하는 것입니다. 네 카드 순서대로, 먼저 Claude Code에게 현재 구조와 지금의 정상 동작을 설명하게 하고, 바꿀 곳과 완료 조건을 계획으로 받아 우리가 읽어 본 뒤, 계획한 범위만 수정하게 하고, 새 기능과 기존 기능을 둘 다 실행해 확인합니다. 각 카드의 산출물 줄은 그 단계가 끝났을 때 손에 남는 것, 곧 구조 설명·계획 문서·바뀐 줄·실행 결과이고, 검증에서 문제가 보이면 탐색으로 되돌아갑니다. 공식 모범사례도 여러 파일을 바꾸거나 방법이 불확실할 때 계획을 먼저 세우라고 권하며, 한두 줄짜리 작은 수정까지 긴 계획을 세울 필요는 없습니다. 참고 강의에서 말하는 "마지막 정상 지점과 첫 실패 지점을 증거로 말하기"도 같은 습관이어서, 단계마다 산출물이 남아 있어야 어디까지 정상이었는지 말할 수 있습니다. 고치기 전에 정상 동작을 먼저 확인해 두어야 하는 이유는 무엇일까요? 한 분만 짧게 답해 주세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">29 / 52</div>
+              <div class="page-num">30 / 53</div>
             </section>
-            <section id="s-30" class="scene clip" data-skill="split" data-scene-id="S29" data-start="145" data-duration="5" data-track-index="0">
+            <section id="s-31" class="scene clip" data-skill="split" data-scene-id="S29" data-start="150" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
               <h2 class="scene-title" data-editable="true">웹앱의 입력부터 데이터까지</h2>
               <p class="thesis" data-editable="true">Streamlit 앱도 화면·처리·데이터로 나눠 읽는다</p>
@@ -2050,9 +2130,9 @@ if q:
               <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Streamlit API 문서(st.text_input, st.write) · 근거: 사용자 제공 강의안</p>
               <aside class="speaker-note">화면에서 입력을 받고, 데이터를 조회하고, 규칙과 모델 호출로 처리해 다시 화면에 보여 주는 전체 흐름을 다루는 것을 흔히 풀스택이라고 부릅니다. Streamlit에서는 이 흐름을 Python 코드 몇 줄로 이을 수 있어서, 왼쪽 예시처럼 입력 칸, 조회, 모델 호출, 결과 표시가 차례로 나오고, 줄 끝 주석이 각 줄의 역할입니다. 오른쪽 자리에는 오전 앱의 실제 화면이 들어가는데, 입력 칸과 결과 영역이 왼쪽 코드의 어느 줄에 해당하는지 짝지어 보면 됩니다. Streamlit 공식 문서 설명처럼 Python 서버가 코드를 실행하고 브라우저는 화면을 보여 주는 구조라서, 오전 앱은 화면과 처리 사이에 별도 백엔드 서버를 두지 않았고 모델만 오전에 본 추론 서버에 API로 요청합니다. React나 별도 백엔드를 처음부터 모두 배우기보다, 지금 바꿀 부분이 화면인지, 처리인지, 데이터인지 알아보는 것부터 시작하면 AI가 만든 코드도 더 잘 판단할 수 있습니다. 앞 시간에 적은 개선 기능은 화면, 처리, 데이터 중 어디를 바꾸는 일인가요? 손가락으로 1, 2, 3을 표시해 주세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">30 / 52</div>
+              <div class="page-num">31 / 53</div>
             </section>
-            <section id="s-31" class="scene clip" data-skill="compare" data-scene-id="S30" data-start="150" data-duration="5" data-track-index="0">
+            <section id="s-32" class="scene clip" data-skill="compare" data-scene-id="S30" data-start="155" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
               <h2 class="scene-title" data-editable="true">프로젝트 지침과 작업 기록</h2>
               <p class="thesis" data-editable="true">긴 대화는 영구 기억이 아니다 — 다음 작업에 필요한 사실은 파일에</p>
@@ -2079,9 +2159,9 @@ if q:
               <p class="source" data-editable="true">출처: Claude Code 공식 문서 Memory · Context window</p>
               <aside class="speaker-note">새 대화를 시작할 때마다 프로젝트 구조와 실행 방법을 다시 설명하는 대신, 왼쪽 카드처럼 CLAUDE.md에 저장소 성격, 실행 명령, 주의점 같은 반복해서 필요한 안내를 적어 두면 Claude Code가 작업을 시작할 때 읽습니다. 다만 CLAUDE.md는 모델이 읽는 지침일 뿐 권한을 막는 보안 장치가 아니므로, 접근을 제한해야 하는 일은 권한 설정과 실행 환경에서 막아야 합니다. 오른쪽 작업 기록에는 결정, 근거, 검증, 다음 행동 네 줄을 적어 둡니다. 아래 띠처럼 대화에는 주고받은 말뿐 아니라 읽은 파일과 도구 출력도 쌓이고, 공식 문서 Context window 설명대로 한도가 있어 길어지면 요약되면서 세부가 빠질 수 있어서, 긴 대화가 곧 영구 기억은 아닙니다. 개인 전역 설정을 통째로 복사하기보다 이 프로젝트에 필요한 몇 줄만 적는 것이 좋습니다. 지금 작업을 내일 이어서 한다면 네 줄 중 꼭 남겨야 할 내용 두 가지는 무엇일까요?</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">31 / 52</div>
+              <div class="page-num">32 / 53</div>
             </section>
-            <section id="s-32" class="scene clip" data-skill="compare" data-scene-id="S31" data-start="155" data-duration="5" data-track-index="0">
+            <section id="s-33" class="scene clip" data-skill="compare" data-scene-id="S31" data-start="160" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
               <h2 class="scene-title" data-editable="true">변경 내용과 실제 사용 확인</h2>
               <p class="thesis" data-editable="true">바뀐 줄, 실행 결과, 실제 화면은 따로 확인한다</p>
@@ -2110,9 +2190,9 @@ if q:
               <p class="source" data-editable="true">근거: 강사 개인 기록(Dokmo 수동 점검 기록) · Claude Code 공식 문서 Best practices</p>
               <aside class="speaker-note">제가 만든 개인 웹앱 Dokmo에서는 앱이 동작하는 상태에서도, 직접 써 보는 수동 점검에서 한글 이름 입력 문제와 다음에 무엇을 해야 할지 알려 주는 안내가 부족한 문제가 드러났고, 오른쪽 아래 자리에는 그 안내를 보완하기 전후 화면이 들어갑니다. 그래서 변경 확인은 위 세 칸처럼 따로 봅니다: 무엇이 바뀌었는지는 바뀐 줄 비교로, 조건을 만족하는지는 실행 결과로, 목적에 맞게 쓸 수 있는지는 실제 화면에 직접 입력해 봅니다. 실습 폴더가 Git 저장소라면 왼쪽 아래 같은 바뀐 줄 비교를 Git diff로 볼 수 있습니다. 공식 모범사례도 Claude Code에게 확인 방법을 알려 주고 실행 결과를 받으라고 권하지만, 그 결과가 맞는지와 사용자에게 편한지는 사람이 마지막으로 봐야 합니다. 버튼을 화면에서 숨겼다고 해서 그 데이터에 접근할 권한까지 막힌 것은 아니라는 점도 기억해 두세요. 여러분이 고른 기능은 화면에서 무엇을 입력하고 무엇이 보이면 확인이 끝날까요?</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">32 / 52</div>
+              <div class="page-num">33 / 53</div>
             </section>
-            <section id="s-33" class="scene clip" data-skill="title-bullets" data-scene-id="S32" data-start="160" data-duration="5" data-track-index="0">
+            <section id="s-34" class="scene clip" data-skill="title-bullets" data-scene-id="S32" data-start="165" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
               <h2 class="scene-title" data-editable="true">실습 6 · 오전 앱의 작은 개선</h2>
               <p class="board-meta" data-editable="true">14:36–14:57 · 21분 · 실습 가이드 해당 장</p>
@@ -2141,9 +2221,9 @@ if q:
               <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · Permissions · 근거: 사용자 제공 강의안·시간표</p>
               <aside class="speaker-note">처음 4분은 Claude Code에게 오전 앱의 구조와 수정할 위치를 설명하게 하고, 다음 4분은 바꿀 곳과 완료 조건을 담은 계획을 받아 우리가 읽고 확인합니다. 이어서 8분 동안 계획한 범위만 구현하게 하는데, 전체 앱을 다시 짜거나 기능을 여러 개 붙이는 것은 이번 범위에 넣지 않습니다. 마지막 5분은 없는 키워드 같은 새 기능용 입력과 오전에 정상 동작하던 질문을 둘 다 실행하고, 바뀐 내용도 확인합니다. 기본 과제인 검색 결과 없음 안내가 이미 되어 있다면 근거 표시(또는 결과 다운로드)로 바꿔 진행하세요. 왼쪽 승인 요청 카드는 요청 화면의 모양을 일반화한 개념 예시로 실제 화면과 다를 수 있는데, Claude Code가 이런 식으로 파일 수정이나 명령 실행 승인을 요청하면 무엇을 하려는지 읽고 나서 승인하고, 무엇을 하려는지 모르겠으면 아니오를 고른 뒤 손을 들어 주세요. 부록의 HITL, 곧 사람이 작업 흐름 중간에서 승인하는 방식을 오늘 직접 겪는 장면이고, 공식 문서 Permissions도 이런 승인 범위를 설정으로 정하는 방법을 설명합니다. 앱의 모델 호출이 막히면 준비된 결과로 화면과 규칙 부분만 확인하고, Claude Code 환경이 준비되지 않은 분은 앞 시간에 정한 짝과 같은 화면으로 진행합니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">33 / 52</div>
+              <div class="page-num">34 / 53</div>
             </section>
-            <section id="s-34" class="scene clip" data-skill="title-bullets" data-scene-id="S33" data-start="165" data-duration="5" data-track-index="0">
+            <section id="s-35" class="scene clip" data-skill="title-bullets" data-scene-id="S33" data-start="170" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">B5</span><span data-editable="true">Claude Code로 앱 개선</span></div>
               <h2 class="scene-title" data-editable="true">다른 입력으로 재확인</h2>
               <p class="thesis" data-editable="true">실행 전에 결과를 먼저 말하고, 다르면 그것이 단서다</p>
@@ -2164,11 +2244,11 @@ if q:
               <p class="source" data-editable="true">근거: 강사 Python 교육 진행 규칙(예측·실행·설명·입력 변형)</p>
               <aside class="speaker-note">실습에서 한 번 성공한 입력 말고, 옆 사람이 골라 준 다른 입력을 하나 받아서 실행 전에 결과를 먼저 예상해 말해 보겠습니다. 세 칸 순서대로, 예측한 다음 기존 정상 질문이 이전과 같은 결과를 내는지, 새 기능에 해당하는 입력에서 예상한 안내나 표시가 나오는지 차례로 실행해 확인합니다. 결과가 예상과 다르면 틀렸다고 끝내지 말고 바꾼 코드가 어떤 조건에서 그렇게 동작하는지 찾는 단서로 쓰고, 이렇게 먼저 예측하고 입력을 바꿔 보는 과정에서 필요한 기초가 채워집니다. 두 분 정도 마지막 칸처럼 바꾼 코드가 무엇을 하는지 한 문장으로 설명해 주세요. 시간 안에 확인하지 못한 입력은 아래처럼 미확인으로, 기존 질문 결과가 달라진 것은 고칠 일로 적어 두면 자유 실습에서 이어 갈 수 있고, 15시 20분에는 이런 작업 경험과 자료를 다시 쓸 수 있게 정리하는 방법으로 넘어갑니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">34 / 52</div>
+              <div class="page-num">35 / 53</div>
             </section>
       <!-- BLOCK:B5 END -->
       <!-- BLOCK:B6 START -->
-<section id="s-35" class="scene clip" data-skill="split" data-scene-id="S34" data-start="170" data-duration="5" data-track-index="0">
+<section id="s-36" class="scene clip" data-skill="split" data-scene-id="S34" data-start="175" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span><span class="time-chip" data-editable="true">15:20–16:00</span></div>
   <p class="act-tag" data-editable="true"><strong>결 · 남기다</strong>이 경험을 어떻게 내 것으로 쌓나?</p>
   <h2 class="scene-title" data-editable="true">개인 지식의 원문과 판단</h2>
@@ -2198,9 +2278,9 @@ if q:
   <p class="source" data-editable="true">출처: 강사 개인 기록 · Claude Study 공개 README (GitHub MyWay0104)</p>
   <aside class="speaker-note">지난 시간에는 작업 기록을 파일로 남기는 이야기를 했는데, 이번 40분은 자료와 내 판단을 근거 있는 노트로 쌓는 절차를 한 번 체험하고 자유 실습 요청문까지 준비합니다. 화면 왼쪽 그림처럼 저는 Obsidian이라는 메모 앱에 원문, 제가 직접 쓴 의견, 재사용할 정리를 폴더로 나눠 두는데, 앱보다 나누는 방식이 핵심이고 폴더 이름은 예시입니다. 원문을 가져올 때 왜 가져왔는지와 어디에 쓸지를 제 손으로 적어 두면, 나중에 제가 어떤 기준으로 판단했는지 다시 찾을 수 있습니다. 이런 기록으로 개인 Agent를 만든다면 저와 똑같이 판단하는 분신이 아니라, 과거의 결정과 근거를 찾아 판단을 돕는 보조자에 가깝습니다. 프레임워크 교안은 Agent의 장기 메모리를 사실·경험·절차 세 유형으로 나누는데, 원문과 정리는 사실, 판단 기록은 경험, 다음 장에서 볼 Skill은 절차 쪽에 가깝다고 볼 수 있습니다. 오른쪽 자리에는 실제 노트 예시가 들어갈 예정이고, 지금은 오늘 오전에 한 일 중 나중에 다시 찾고 싶은 결정 하나와 그 이유를 한 문장으로 적어 두세요.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">35 / 52</div>
+  <div class="page-num">36 / 53</div>
 </section>
-<section id="s-36" class="scene clip" data-skill="compare" data-scene-id="S35" data-start="175" data-duration="5" data-track-index="0">
+<section id="s-37" class="scene clip" data-skill="compare" data-scene-id="S35" data-start="180" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
   <h2 class="scene-title" data-editable="true">지식 정리의 근거 확인</h2>
   <p class="thesis" data-editable="true">AI가 만든 정리는 '검토 전'으로 두고 원문·의견·미확인을 나눈다.</p>
@@ -2228,9 +2308,9 @@ if q:
   <p class="source" data-editable="true">출처: 강사 개인 기록 (Claude Study README · 원문 수집 메모) · 노트 내용은 개념 예시</p>
   <aside class="speaker-note">10시 구간에서 말씀드린 수집 누락은 지식 정리에서도 문제가 되는데, 제목만 남은 문서 위에 그럴듯한 정리가 만들어진 적이 있기 때문입니다. 화면의 두 노트 미리보기를 보면 왼쪽은 출처 줄이 비어 있고 요약과 의견이 섞여 있으며, 오른쪽은 요약마다 원문 위치가 붙어 있고 의견과 미확인이 따로 표시돼 있습니다. 그래서 정리를 믿기 전에 원문 본문이 실제로 들어왔는지, 요약과 제 의견이 섞이지 않았는지, 사람이 검토했는지를 봅니다. 제 방식에서는 AI가 만든 정리를 일단 검토 전으로 표시해 두는데, 나중에 어느 문장을 얼마나 믿을지 구분하기 위해서이며, 제 환경의 기록일 뿐 모든 도구가 그렇다는 뜻은 아닙니다. 오전 RAG 구조 그림에서 자료를 준비하는 앞 단계가 흔들리면 뒤의 검색과 답변이 함께 흔들렸던 것과 같은 구조입니다. 오전 기사 실습에서 받은 답변을 이 두 노트 중 어느 쪽에 두시겠어요? 이유와 함께 한 분만 답해 주세요.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">36 / 52</div>
+  <div class="page-num">37 / 53</div>
 </section>
-<section id="s-37" class="scene clip" data-skill="split" data-scene-id="S36" data-start="180" data-duration="5" data-track-index="0">
+<section id="s-38" class="scene clip" data-skill="split" data-scene-id="S36" data-start="185" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
   <h2 class="scene-title" data-editable="true">Skill과 도구 연결의 역할</h2>
   <p class="thesis" data-editable="true">Skill은 절차 파일 — 네 기능은 위아래가 아닌 다른 역할이다.</p>
@@ -2263,9 +2343,9 @@ if q:
   <p class="source" data-editable="true">출처: Claude Code Skills · Features overview 문서 · 프레임워크 교안(4일) SKILL.md 구조 재구성</p>
   <aside class="speaker-note">Skill은 반복하는 절차와 참고자료를 파일로 적어 두고 필요할 때 불러 쓰는 방법이며, 모델을 다시 학습시키는 기능은 아닙니다. 화면 아래 줄처럼 처음에는 각 Skill의 이름과 설명만 목록으로 보이고 작업에 맞는 것을 고를 때 본문 절차를 읽는데, 프레임워크 교안에서는 이것을 Progressive Disclosure라고 부르며 맥락을 아끼는 방식으로 설명합니다. 위 줄의 네 카드는 위아래 단계가 아니라 나란히 놓인 다른 역할이라 필요한 것만 골라 조합합니다. 오늘 손으로 해 볼 것은 Skill 하나이고, 나머지 셋은 이름과 역할만 알아 두시면 됩니다. 오전에는 SQL 조회 함수를 우리 코드에서 직접 도구로 붙였는데, MCP는 사내 문서나 DB 같은 외부 시스템의 도구를 정해진 규약으로 연결하는 방식이고, Subagent는 예외 입력만 따로 점검하게 하는 것처럼 떼어 낼 수 있는 하위 작업을 별도 맥락에서 맡기며, Hook은 정해진 시점에 동작을 자동으로 겁니다. 교안에서는 MCP를 앱 N개와 도구 M개를 하나씩 잇는 대신 규약 하나로 연결 수를 N+M으로 줄이는 방식으로 설명하고, 자세한 예시는 부록의 MCP·Subagent·Hook 역할 장에 두었습니다. 앞 시간의 CLAUDE.md가 모델이 읽는 지침일 뿐 권한을 강제하지 않았던 것처럼, 오늘 쓰는 절차 파일도 작업 방법을 알려 줄 뿐 실행 권한은 실행 환경의 설정이 정합니다. 같은 자료를 매번 같은 규칙으로 정리하고 싶다면 넷 중 무엇이 맞을까요? 답은 Skill입니다. Skill은 어떻게 정리할지 절차를 적은 것이고, Hook은 'Claude Code가 파일을 고친 직후마다'처럼 언제 동작할지를 정하는 쪽이라 둘을 함께 쓸 수도 있습니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">37 / 52</div>
+  <div class="page-num">38 / 53</div>
 </section>
-<section id="s-38" class="scene clip" data-skill="title-bullets" data-scene-id="S37" data-start="185" data-duration="5" data-track-index="0">
+<section id="s-39" class="scene clip" data-skill="title-bullets" data-scene-id="S37" data-start="190" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
   <h2 class="scene-title" data-editable="true">실습 7 · 근거 있는 지식 정리</h2>
   <p class="board-meta" data-editable="true">15:32–15:46 · 14분 · 실습 가이드 해당 장</p>
@@ -2297,9 +2377,9 @@ if q:
   <p class="source" data-editable="true">출처: Claude Code Skills 문서 · 강사 개인 기록(Claude Study README) · 근거: 사용자 제공 강의안·시간표</p>
   <aside class="speaker-note">화면 왼쪽 세 파일 카드가 이 실습의 순서로, 원문을 읽고, 절차 파일을 확인해 실행하고, 결과 노트를 확인합니다. 처음 3분은 준비된 짧은 원문을 읽고, 왜 이 자료를 골랐는지와 어디에 쓸지를 내 의견으로 적습니다. 다음 3분은 준비된 Skill의 절차 파일을 열어 무엇을 입력받고 어떤 노트를 만드는지 읽는데, 앞 장에서 본 것처럼 이름·설명 부분과 본문 절차 부분이 나뉘어 있는지도 확인해 보세요. 이어서 5분 동안 실행하고, 마지막 3분은 결과 노트에서 출처 연결, 내 의견, 미확인으로 표시된 내용이 서로 구분되는지 확인하며, Obsidian이 없어도 텍스트 파일로 똑같이 진행할 수 있습니다. Skill 실행이 안 되는 분은 실습 가이드에 있는 같은 절차를 요청문으로 붙여 넣어 실행하고, 마지막 3분에 짝의 Skill 결과와 비교해 보세요. 결과가 비슷하다면 Skill이 모델을 바꾸는 것이 아니라 같은 절차를 불러 쓰는 것임을 확인한 셈입니다. Claude Code 환경이 아직 안 되는 분은 짝과 같은 화면으로 진행합니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">38 / 52</div>
+  <div class="page-num">39 / 53</div>
 </section>
-<section id="s-39" class="scene clip" data-skill="compare" data-scene-id="S38" data-start="190" data-duration="5" data-track-index="0">
+<section id="s-40" class="scene clip" data-skill="compare" data-scene-id="S38" data-start="195" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
   <h2 class="scene-title" data-editable="true">근거가 있는 질문과 없는 질문</h2>
   <p class="thesis" data-editable="true">오전 기사 실습의 '근거 문장 찾기'를 내 노트에 그대로 적용한다.</p>
@@ -2330,9 +2410,9 @@ if q:
   <p class="source" data-editable="true">출처: 강사 개인 기록(Claude Study README) · 근거: 강사 개인 교육 규칙</p>
   <aside class="speaker-note">정리가 끝났으면 같은 노트에 세 종류의 질문을 던져 봅니다. 세 카드 위의 예시 질문처럼, 자료에 있는 내용은 근거 문장과 함께 답해야 하고, 자료에 없는 내용은 없다고 알려야 하며, 내가 왜 이 자료를 골랐는지 묻는 질문에는 원문의 사실과 내가 쓴 의견을 나눠 답해야 합니다. 카드 아래 표시는 기대하는 답의 모양으로, 인용 부호는 근거 인용, 빈 상자는 자료 없음, 나뉜 칸은 사실과 의견의 구분입니다. 오전 기사 실습에서 답변 문장의 근거를 찾던 것과 같은 확인이고, 부록의 Agentic RAG 장에서 보듯 검색 결과와 답변을 따로 평가해 다시 검색하게 만드는 방식도 같은 생각에서 나왔습니다. 2분 동안 세 질문을 실행하고, 2분 동안 근거를 점검하면서 사실과 의견이 섞인 문장을 하나 찾아 고칩니다. 마지막 2분에는 두 분이 자료에 없는 질문에 어떤 답이 나왔는지 말씀해 주세요.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">39 / 52</div>
+  <div class="page-num">40 / 53</div>
 </section>
-<section id="s-40" class="scene clip" data-skill="compare" data-scene-id="S39" data-start="195" data-duration="5" data-track-index="0">
+<section id="s-41" class="scene clip" data-skill="compare" data-scene-id="S39" data-start="200" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
   <h2 class="scene-title" data-editable="true">자유 실습 선택 주제</h2>
   <p class="thesis" data-editable="true">결과 하나와 완료 조건 두 가지를 먼저 정한다.</p>
@@ -2372,9 +2452,9 @@ if q:
   <p class="source" data-editable="true">근거: 사용자 제공 강의안 · 교육 설계 제안(강의 준비 조사 자료 8절)</p>
   <aside class="speaker-note">16시부터 90분 동안의 자유 실습은 가상 CSV 집계, 출처 있는 지식 정리, 오전 앱 개선 중에서 고릅니다. 세 카드 모두 결과, 확인, 예외 세 줄을 같은 순서로 두었으니 가로로 비교해 보시고, 카드 아래 한 줄은 그 주제에서 배울 점입니다. 오전 앱 개선은 실습 6에서 고친 것 말고 결과 다운로드처럼 기능 하나를 더하는 과제이고, 지식 정리는 Obsidian 없이 텍스트 파일로도 할 수 있습니다. CSV 집계에서 계산을 코드에 맡기는 것은 오전 SQL Tool에서 정확한 조회를 모델이 아니라 도구에 맡긴 것과 같은 원칙입니다. 아침에 떠올린 반복 업무를 본인 주제로 골라도 되지만, 오늘 안에 확인할 수 있는 결과 하나로 범위를 줄이고 자료는 가상이거나 공개 가능한 것으로 준비해 주세요. Python이나 Claude Code가 아직 낯선 분께는 '처음이면 추천' 표시가 있는 CSV 과제나 오전 앱 개선을 권합니다. 지금 한 주제를 골라 손으로 표시해 주세요.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">40 / 52</div>
+  <div class="page-num">41 / 53</div>
 </section>
-<section id="s-41" class="scene clip" data-skill="title-bullets" data-scene-id="S40" data-start="200" data-duration="5" data-track-index="0">
+<section id="s-42" class="scene clip" data-skill="title-bullets" data-scene-id="S40" data-start="205" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B6</span><span data-editable="true">지식 축적과 Skill</span></div>
   <h2 class="scene-title" data-editable="true">자유 실습의 작업 요청</h2>
   <p class="board-meta" data-editable="true">15:56–16:00 · 4분 · 요청 초안 작성</p>
@@ -2398,11 +2478,11 @@ if q:
   <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안 · 강의 준비 조사 자료 8절 요청문 템플릿</p>
   <aside class="speaker-note">이제 4분 동안 방금 고른 주제의 작업 요청문을 적습니다. 화면의 여섯 칸은 13시 반 작업 요청 장에서 본 틀과 같은 모양이고, 이번에는 빈칸을 직접 채웁니다. 기능을 여러 개 적기보다 가장 먼저 쓸 수 있는 결과 하나를 정하고, 완료 조건 칸에는 정상 입력뿐 아니라 파일이 비었거나 잘못된 입력에서 무엇을 보여줄지도 적어 주세요. 주제가 정해지지 않은 분은 CSV 과제로 시작하면 되는데, 예를 들어 목표는 장비별 작업 건수표, 입력은 가상 CSV 1개, 제약은 Python과 새 파일 1개, 완료 조건은 예제 파일의 건수가 정답표와 일치하고 빈 파일이면 '자료 없음'을 안내하는 것입니다. 이렇게 적은 요청문은 오후에 연습한 탐색·계획·구현·검증 가운데 계획 단계의 산출물이기도 합니다. 4분 안에 다 못 채운 칸은 16시 자유 실습 첫 5분에 마저 채우고, 첫 15분 동안 범위를 한 번 더 점검합니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">41 / 52</div>
+  <div class="page-num">42 / 53</div>
 </section>
       <!-- BLOCK:B6 END -->
       <!-- BLOCK:B7 START -->
-<section id="s-42" class="scene clip" data-skill="title-bullets" data-scene-id="S41" data-start="205" data-duration="5" data-track-index="0">
+<section id="s-43" class="scene clip" data-skill="title-bullets" data-scene-id="S41" data-start="210" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span><span class="time-chip" data-editable="true">16:00–17:30</span></div>
   <p class="act-tag" data-editable="true"><strong>결 · 남기다 (2)</strong>내 업무에 적용한다</p>
   <h2 class="scene-title" data-editable="true">자유 실습 · 목표와 계획</h2>
@@ -2444,9 +2524,9 @@ if q:
   <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안·시간표</p>
   <aside class="speaker-note">지금부터 17시 30분까지 자유 실습이고, 화면의 시간 띠에서 파랗게 표시된 첫 15분은 목표와 계획만 정합니다. 처음 5분은 앞에서 쓴 요청문을 다시 읽고 입력과 결과물을 확정하며, 계획에 큰 기능이 들어 있으면 이번에 만들 부분만 남깁니다. 다음 10분은 Claude Code로 관련 파일이나 자료를 먼저 살펴보게 하고 작업 순서와 완료 조건 두 가지 이상을 계획으로 받는데, 오후에 연습한 탐색·계획 단계를 그대로 쓰는 것입니다. 사내 DB에 쓰거나 외부로 보내는 작업처럼 되돌리기 어려운 일은 오늘 범위에 넣지 않는데, 파일 되돌리기로 복구할 수 있는 것은 파일 변경까지이고 DB 변경이나 외부 전송은 되돌리지 못하기 때문입니다. 16시 15분에 구현을 시작하니, 그 전에 한 분만 계획을 소리 내어 읽어 주시면 범위를 같이 점검하겠습니다. 순회할 때는 설치·접속 문제와 과제 범위 문제를 나눠서 돕겠습니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">42 / 52</div>
+  <div class="page-num">43 / 53</div>
 </section>
-<section id="s-43" class="scene clip" data-skill="title-bullets" data-scene-id="S42" data-start="210" data-duration="5" data-track-index="0">
+<section id="s-44" class="scene clip" data-skill="title-bullets" data-scene-id="S42" data-start="215" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
   <h2 class="scene-title" data-editable="true">자유 실습 · 구현</h2>
   <p class="board-meta" data-editable="true">16:15–17:05 · 50분 · 17:05 검증 시작 · 실습 가이드 자유 실습 장</p>
@@ -2495,9 +2575,9 @@ if q:
   <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 사용자 제공 강의안·시간표 · 강사 개인 교육 규칙</p>
   <aside class="speaker-note">50분 구현은 가장 작은 결과를 먼저 실행해 보고, 실행할 때마다 결과를 확인하면서 한 걸음씩 늘립니다. 시간 띠의 16시 35분 칸이 첫 실행 점검인데, 그때 첫 실행이 된 분은 손을 들어 주시고, 안 된 분은 저와 함께 기능을 더 줄이겠습니다. 막히면 오른쪽 아래 카드의 세 가지, 즉 요청한 내용과 실제 오류 원문, 지금까지 확인한 것을 함께 보여 주시면 빨리 도울 수 있습니다. 오류 원문을 그대로 보여 달라는 것은 오후에 말씀드린 "마지막 정상 지점과 첫 실패 지점을 증거로 말하기"와 같은 습관입니다. 진행이 빠른 분은 새 기능을 붙이기보다 다른 입력에서 어떻게 동작하는지 먼저 확인하세요. 16시 55분에는 기능 추가를 멈추고 결과를 정리하며, 17시 5분부터 검증합니다. 이 시간에는 전체 강의를 추가하지 않고 개별 질문을 돕겠습니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">43 / 52</div>
+  <div class="page-num">44 / 53</div>
 </section>
-<section id="s-44" class="scene clip" data-skill="title-bullets" data-scene-id="S43" data-start="215" data-duration="5" data-track-index="0">
+<section id="s-45" class="scene clip" data-skill="title-bullets" data-scene-id="S43" data-start="220" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
   <h2 class="scene-title" data-editable="true">자유 실습 · 검증과 기록</h2>
   <p class="board-meta" data-editable="true">17:05–17:20 · 15분 · 17:20 공유 시작 · 실습 가이드 자유 실습 장</p>
@@ -2546,9 +2626,9 @@ if q:
   <p class="source" data-editable="true">출처: Claude Code Best practices 문서 · 근거: 강사 개인 교육 규칙</p>
   <aside class="speaker-note">17시 5분부터 10분은 검증이며, 정상 입력에서 기대한 결과가 나오는지와 빈 자료나 잘못된 입력에서 안내가 나오는지를 직접 실행해 확인합니다. Claude Code가 완료했다고 말해도 그 말이 아니라 변경 내용과 실제 실행 결과를 보고 판단하세요. 확인하지 못한 부분은 미확인으로 적고, 결과가 끝내 나오지 않았다면 멈춘 단계와 오류를 기록한 것으로 완료입니다. 마지막 5분은 완료 조건 상자의 네 칸, 즉 실행 방법과 확인한 입력, 남은 한계, 다음 작업을 다른 사람이 다시 실행할 수 있게 적고, 공유할 화면이나 파일 하나를 정합니다. 이 네 칸은 오후에 본 작업 기록처럼, 다음에 이어서 작업할 때 가장 먼저 읽을 파일이 됩니다. 17시 20분 공유에서 사례를 보여 주실 분은 지금 손을 들어 주세요.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">44 / 52</div>
+  <div class="page-num">45 / 53</div>
 </section>
-<section id="s-45" class="scene clip quote" data-skill="quote" data-scene-id="S44" data-start="220" data-duration="5" data-track-index="0">
+<section id="s-46" class="scene clip quote" data-skill="quote" data-scene-id="S44" data-start="225" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
   <div class="quote-mark" aria-hidden="true">“</div>
   <p class="quote-body" data-editable="true">완성 여부보다 <em>확인한 것과 남은 것</em>을 말합니다</p>
@@ -2563,9 +2643,9 @@ if q:
   <p class="source" data-editable="true">근거: 사용자 제공 강의안·시간표</p>
   <aside class="speaker-note">두세 분의 사례를 한 분당 2분 안팎으로 보고, 화면의 번호 카드 세 질문에 맞춰 짧게 말씀해 주시면 됩니다. 결과가 완성되지 않았어도 괜찮고, 어디까지 확인했고 무엇이 남았는지 말하는 것이 오늘 발표의 기준입니다. 사례 공유 6분 뒤 공통 질문을 3분 받고, 마지막 1분에 오늘을 정리하겠습니다. 발표하지 않은 분은 같은 세 질문의 답을 실행 방법 옆에 적어 두세요. 오늘 만든 도구를 실제 업무에 쓰기 전에 확인할 권한·데이터 정의·실패 처리·운영 항목은 화면 아래 안내처럼 부록의 '현업 적용 전 확인 항목' 장에 정리해 두었으니, 질문이 나오면 함께 보겠습니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">45 / 52</div>
+  <div class="page-num">46 / 53</div>
 </section>
-<section id="s-46" class="scene clip night" data-skill="title-bullets" data-scene-id="G02" data-start="225" data-duration="5" data-track-index="0">
+<section id="s-47" class="scene clip night" data-skill="title-bullets" data-scene-id="G02" data-start="230" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B7</span><span data-editable="true">자유 실습과 Q&amp;A</span></div>
   <h2 class="scene-title" data-editable="true">오늘 남길 4가지 성과</h2>
   <p class="thesis" data-editable="true">오늘 만든 결과물보다 오래 남길 것은 네 가지 습관이다.</p>
@@ -2599,11 +2679,11 @@ if q:
   <p class="source" data-editable="true">근거: 교육 설계 제안 (강의 준비 조사 자료 1절 학습 성과)</p>
   <aside class="speaker-note">오늘 만든 결과물보다 오래 남길 것은 이 네 가지 습관입니다. 하루 처음에 본 순서, 즉 만들고, 설명하고, 조건 바꾸고, 검증하기를 오늘 일곱 번 반복했습니다. 화면 아래 문장처럼 오늘을 한 문장으로 줄이면, LLM에게 맡길 일과 코드·데이터·사람이 책임질 일을 구분하면 작은 업무 도구부터 직접 만들고 고칠 수 있다는 것입니다. 오전에는 역할을 나누고 필요한 수준을 고르는 기준을 봤고, 오후에는 완료 조건을 담아 요청하고 다른 입력과 실패 상황으로 결과를 확인했습니다. 다음 업무에서 AI에게 일을 맡길 때 완료 조건과 검증 방법을 먼저 한 줄 적어 보시고, 더 깊이 보고 싶은 분은 교안 내용을 옮겨 둔 부록에서 관심 있는 장을 골라 보시면 됩니다. 오늘 함께해 주셔서 감사합니다.</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">46 / 52</div>
+  <div class="page-num">47 / 53</div>
 </section>
       <!-- BLOCK:B7 END -->
       <!-- BLOCK:APP START -->
-            <section id="s-47" class="scene clip" data-skill="split" data-scene-id="A01" data-start="230" data-duration="5" data-track-index="0">
+            <section id="s-48" class="scene clip" data-skill="split" data-scene-id="A01" data-start="235" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
               <h2 class="scene-title" data-editable="true">Transformer와 Q·K·V</h2>
               <div class="split-grid wide-left">
@@ -2637,9 +2717,9 @@ if q:
               <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017)</p>
               <aside class="speaker-note">S05에서 Attention을 문맥을 반영하는 계산이라고 했는데, 그 계산의 재료가 Q·K·V입니다. 각 토큰 표현은 학습된 가중치로 세 벡터로 바뀌는데, 비유하면 Q는 찾는 기준, K는 비교될 이름표, V는 실제로 전달할 내용입니다. 한 위치의 Q를 모든 위치의 K와 비교해 반영 비율을 정하고, 그 비율대로 V를 모아 문맥이 반영된 새 표현을 만듭니다. 이 비율은 입력마다 새로 계산되는 값이라 학습된 매개변수와 다르고, 실제 모델은 이 계산을 여러 헤드와 여러 층에서 반복합니다. 원 논문은 번역을 위해 입력을 읽는 encoder와 출력을 만드는 decoder를 함께 썼고, 오늘날 많은 생성 모델은 앞쪽 토큰만 참고하도록 가린 decoder 중심 구조를 씁니다. 화면 그림은 개념도이며 실제 가중치를 측정한 결과가 아닙니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">47 / 52</div>
+              <div class="page-num">48 / 53</div>
             </section>
-            <section id="s-48" class="scene clip" data-skill="compare" data-scene-id="A02" data-start="235" data-duration="5" data-track-index="0">
+            <section id="s-49" class="scene clip" data-skill="compare" data-scene-id="A02" data-start="240" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
               <h2 class="scene-title" data-editable="true">RAG 검색 방식과 메타데이터</h2>
               <div class="stack">
@@ -2677,9 +2757,9 @@ if q:
               <p class="source" data-editable="true">출처: Lewis et al. 2020 (Retrieval-Augmented Generation) · LangChain Retrieval 가이드 · Part Number Finder Beta 공개 README</p>
               <aside class="speaker-note">B2 실습의 RAG 구조를 한 단계 더 나누면, 미리 해 두는 청킹·임베딩과 질문할 때 하는 검색으로 볼 수 있고, 어느 단계도 모델을 다시 학습시키지 않습니다. 청킹은 긴 문서를 찾기 좋은 단위로 나누는 일이고, 임베딩은 조각을 뜻이 가까운 것끼리 찾을 수 있는 벡터로 바꾸는 일이며, 키워드 검색은 같은 단어가 들어 있는 조각을 찾습니다. 어느 방식이 나은지는 내 자료와 질문으로 직접 비교해 봐야 하고, Part Finder 공개 Beta처럼 Vector DB 없이 단어 빈도로 검색하는 구성도 있습니다. 메타데이터는 장식이 아니라, 출처·발행일·장비처럼 답변에서 구분해야 하는 조건부터 거꾸로 설계합니다. 다만 "승인 필요" 같은 값을 적어 두는 것만으로 승인이 강제되지는 않고, 그 처리는 프로그램이 해야 합니다. 답이 틀렸을 때는 검색이 틀린 것인지, 찾은 근거로 잘못 답한 것인지부터 나눠 보세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">48 / 52</div>
+              <div class="page-num">49 / 53</div>
             </section>
-            <section id="s-49" class="scene clip" data-skill="compare" data-scene-id="A03" data-start="240" data-duration="5" data-track-index="0">
+            <section id="s-50" class="scene clip" data-skill="compare" data-scene-id="A03" data-start="245" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
               <h2 class="scene-title" data-editable="true">프레임워크 선택 기준</h2>
               <p class="scene-subtitle" data-editable="true">배우는 순서가 아니라 필요한 제어 수준으로</p>
@@ -2718,9 +2798,9 @@ if q:
               <p class="source" data-editable="true">출처: LangChain Overview · LangGraph Overview · LangChain Concepts(Agent harnesses: Deep Agents)</p>
               <aside class="speaker-note">LangChain, LangGraph, Deep Agents는 차례로 모두 배워야 하는 과정이 아니라, 필요한 제어 수준에 따라 고르는 선택지입니다. 오전 실습처럼 모델과 검색기, 도구를 연결하는 정도라면 LangChain으로 충분하고, 단순 호출 하나라면 SDK만으로도 됩니다. 단계와 분기를 직접 정하고, 상태를 저장했다가 중단한 곳에서 이어가거나 사람 확인 단계를 넣어야 한다면 LangGraph를 봅니다. Deep Agents는 LangGraph 위에 계획, 파일 공간, 하위 작업 위임을 미리 묶어 둔 하네스로, 여러 단계로 이어지는 긴 작업에 맞춰져 있습니다. 예제 코드 길이가 다르다고 성능이 다른 것은 아니며, 같은 과제로 비교한 결과가 아니면 성능 비교로 읽지 않습니다. 내 업무에 흐름 제어가 정말 필요한지부터 확인해 보세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">49 / 52</div>
+              <div class="page-num">50 / 53</div>
             </section>
-            <section id="s-50" class="scene clip" data-skill="compare" data-scene-id="A04" data-start="245" data-duration="5" data-track-index="0">
+            <section id="s-51" class="scene clip" data-skill="compare" data-scene-id="A04" data-start="250" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
               <h2 class="scene-title" data-editable="true">MCP·Subagent·Hook 역할</h2>
               <p class="scene-subtitle" data-editable="true">상하위 단계가 아닌 서로 다른 역할 · 함께 쓸 수 있음</p>
@@ -2759,9 +2839,9 @@ if q:
               <p class="source" data-editable="true">출처: Claude Code 문서 — Features overview · MCP · Subagents · Hooks</p>
               <aside class="speaker-note">S36에서 Skill 옆에 짧게 보여 드린 세 기능을 조금 더 풀어 보겠습니다. MCP는 외부 시스템의 도구와 자료를 Claude Code에 전달하는 연결 규약이고, 기존 파일·명령 도구로 충분하면 추가하지 않아도 됩니다. Subagent는 예외 입력 점검이나 설정 위치 조사처럼 독립적인 하위 작업을 별도 맥락에서 맡기고 결과만 돌려받는 방식인데, 여러 개를 쓰면 비용과 조정 작업도 늘어납니다. Hook은 파일 수정 후 포맷처럼 정해진 시점에 설정된 동작을 실행하며, 명령을 실행하는 유형과 모델 판단을 쓰는 유형이 따로 있습니다. 세 기능은 상하위 단계가 아니라 서로 다른 역할이고 필요하면 함께 조합합니다. 실제 설치와 권한 설정은 사내 가이드의 승인된 방법을 따르고, CLAUDE.md에 적은 지침은 권한을 강제하지 않는다는 점도 기억해 두세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">50 / 52</div>
+              <div class="page-num">51 / 53</div>
             </section>
-            <section id="s-51" class="scene clip" data-skill="steps" data-scene-id="A05" data-start="250" data-duration="5" data-track-index="0">
+            <section id="s-52" class="scene clip" data-skill="steps" data-scene-id="A05" data-start="255" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
               <h2 class="scene-title" data-editable="true">사내 실행 환경 문제 해결</h2>
               <div class="stack">
@@ -2788,9 +2868,9 @@ if q:
               <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · Claude Code 작동 원리 문서 · 근거: 사용자 제공 강의안</p>
               <aside class="speaker-note">실습 중 막히면 오류가 어느 층에서 났는지부터 좁히는 것이 빠릅니다. 먼저 서버에 접속되는지와 인증 오류인지를 확인하고, 접속이 되면 설치된 패키지 판본이 실습 가이드와 같은지 봅니다. 그다음 사용 중인 모델이 도구 호출이나 임베딩 같은 기능을 지원하는지 확인하는데, 호환 API라고 모든 옵션이 똑같이 동작하지는 않습니다. 마지막으로 코드가 실행되는 위치를 기준으로 파일 경로가 맞는지 확인합니다. 오류 원문을 그대로 남기고 한 번에 한 가지만 바꿔 다시 실행해야 무엇이 원인이었는지 알 수 있습니다. 주소, 계정, 키, 설치 명령은 이 슬라이드가 아니라 사내 실행 가이드에서 확인하고, 오후 Claude Code 연결은 오전 API와 별도 경로로 점검합니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">51 / 52</div>
+              <div class="page-num">52 / 53</div>
             </section>
-            <section id="s-52" class="scene clip" data-skill="title-bullets" data-scene-id="A06" data-start="255" data-duration="5" data-track-index="0">
+            <section id="s-53" class="scene clip" data-skill="title-bullets" data-scene-id="A06" data-start="260" data-duration="5" data-track-index="0">
               <div class="eyebrow"><span class="block-chip" data-editable="true">부록</span><span data-editable="true">질문 대응·후속 학습</span></div>
               <h2 class="scene-title" data-editable="true">현업 적용 전 확인 항목</h2>
               <ul class="bullets">
@@ -2802,7 +2882,7 @@ if q:
               <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · Anthropic, Building effective agents</p>
               <aside class="speaker-note">오늘 만든 작은 도구를 실제 업무에 쓰기 전에는 네 가지를 먼저 확인합니다. 권한은 프롬프트 문장이 아니라 실행 환경에서 읽기 범위와 허용 테이블로 제한해야 합니다. 날짜 기준, 단위, 결측값 의미 같은 데이터 정의가 사람마다 다르면 코드가 맞아도 답이 달라집니다. 정답을 아는 입력, 자료가 없는 질문, 도구가 실패하는 상황에서 각각 어떻게 동작하는지 확인하고, 응답 시간과 호출량, 누가 무엇을 바꿨는지, 사용자 피드백을 남길 방법도 정합니다. 화면이 뜨는 것과 업무에 쓸 준비가 된 것은 다르다는 점을 기억해 주세요.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-              <div class="page-num">52 / 52</div>
+              <div class="page-num">53 / 53</div>
             </section>      <!-- BLOCK:APP END -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
