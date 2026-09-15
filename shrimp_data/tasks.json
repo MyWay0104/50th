@@ -5,10 +5,10 @@
       "name": "T1 공통 확장: v0.4 클래스 5종·자산 폴더·카탈로그",
       "description": "index.html의 <style id=\"scene-styles\">에 v0.4 보강용 클래스를 추가하고 컴포넌트 카탈로그와 자산 폴더를 준비한다. 새 클래스: .thesis(한 줄 요지, 40px, weight 700, display inline, border-bottom 3px solid var(--accent)), .explain(설명 문단, var(--fs-body), weight 400, line-height 1.4, max-width 1680px, var(--ink-2)), .act-tag(막 태그, var(--fs-small), var(--ink-3), eyebrow 아래 줄 margin-top 8px), .act-bracket(G01 네 막 괄호선: border-top 2px solid var(--line-strong) + 막 이름 var(--fs-small)), .placeholder-id(font-family var(--font-mono), var(--fs-caption)). 규칙 1줄: .scene.night .chip { border-color: var(--on-night-line); color: var(--on-night-2); }. 색·크기는 :root 토큰만 참조한다. assets/img/{common,b1,b2,b3,b4,b5,b6,b7,appendix}/ 폴더를 만든다(빈 폴더는 .gitkeep). _workspace/slide_ui/00_component_catalog.md 5절에 새 클래스 표와 플레이스홀더 v2 규격(placeholder-label에 [IMG-PLACEHOLDER · P-<장면ID>], placeholder-desc 3개: 넣을 자료/조건/대체, 폭 50% 이하)과 v0.4 텍스트 6층 배치 순서(eyebrow → act-tag → scene-title → thesis → explain → 본문 컴포넌트 → source)를 추가한다. 인포그래픽은 .dg 인라인 구성 원칙과 '상자 7개 이하·글자 32px 이상·개념 예시 캡션' 규칙을 카탈로그에 명시한다.",
       "notes": "카탈로그 규칙상 새 클래스는 오케스트레이터만 추가한다. 이 작업이 끝나야 UI 담당이 참조할 수 있다. hex 직접 기입 금지.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [],
       "createdAt": "2026-09-15T10:04:27.727Z",
-      "updatedAt": "2026-09-15T10:14:07.000Z",
+      "updatedAt": "2026-09-15T10:18:09.810Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
@@ -33,21 +33,23 @@
       ],
       "implementationGuide": "1. index.html scene-styles의 .placeholder-desc 정의 뒤에 새 클래스 5종 + night chip 규칙을 추가(기존 명명 규칙 kebab-case, 토큰 참조). 2. mkdir assets/img/{common,b1..b7,appendix} + .gitkeep. 3. 카탈로그 5절 표에 행 추가, 3절 장면 뼈대에 act-tag·thesis·explain 위치 추가, 플레이스홀더 v2 예시 HTML 추가. 4. python scripts/sync_overview.py topics/sk-hynix-ai-agent-guide-edu (재생성) → validate_topic.py → npx hyperframes lint → --check. 5. 장면 마크업은 이 작업에서 바꾸지 않는다(52장 유지).",
       "verificationCriteria": "validate_topic.py 통과, hyperframes lint 오류 0(경고 2개는 기존), sync_overview.py --check 최신, 장면 수 52 유지. index.html에 새 클래스 5종+night 규칙이 있고 hex 직접 기입이 없다(grep '#[0-9a-f]{6}'가 :root 밖에서 늘지 않음). assets/img 하위 9개 폴더 존재. 카탈로그에 새 클래스 표·플레이스홀더 v2·6층 순서가 있다.",
-      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어."
+      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어.",
+      "summary": "scene-styles 끝에 v0.4 블록 추가(cascade 우선 위해 맨 끝 배치): .act-tag, .thesis, .explain(+관찰할 것 strong), 요지·설명 뒤 본문 간격 32px 규칙, night 변형(.thesis/.explain/.act-tag/.chip), G01용 .act-group/.act-bracket/.act-name, .placeholder.is-spec/.placeholder-id, .split-image.h-sm/md/lg. 토큰 --fs-thesis 40px, --fs-explain 32px 추가(설명 문단은 계획 범위 32–36px 중 32px로 공간 확보). assets/img 9개 폴더+.gitkeep. 카탈로그 3절 뼈대·5절 표·7절(6층 순서, 높이 예산: 요지+설명3줄 시 본문 401px, 인포그래픽·이미지·플레이스홀더 v2·G01 괄호선·현업가이드 인용 금지) 갱신. 검증: validate 통과, lint 오류 0/기존 경고 2, --check 최신, 52장 유지, :root 밖 hex 0개(HEAD와 동일), overview에 새 클래스 복제 확인.",
+      "completedAt": "2026-09-15T10:18:09.807Z"
     },
     {
       "id": "e8ed5903-2683-482c-8ef1-3880f17db7fa",
       "name": "T2 외부 자산 확보: 논문 Figure 1·2, YouTube 썸네일, HITL 캡처",
       "description": "이미지 자산 4개를 assets/img/에 만든다. (a) arXiv 1706.03762 PDF(세션 scratchpad에 복사본 attention-1706.03762.pdf)에서 PyMuPDF로 내장 이미지를 추출: 3쪽 이미지 1개 → assets/img/b1/transformer-fig1.png, 4쪽 이미지 2개 → assets/img/b1/attention-fig2.png(두 패널을 눈으로 확인해 Scaled Dot-Product·Multi-Head 순으로 판단, 필요 시 두 파일 attention-fig2a/2b). 좌표 크롭이 아니라 doc.extract_image(xref)로 원본 그대로 꺼낸다. (b) https://img.youtube.com/vi/Kf1dYpnH-N4/maxresdefault.jpg를 curl -fL로 받아 assets/img/common/yt-thumb-kf1dypnh.jpg (404면 hqdefault.jpg). (c) C:/Users/swl01/workspace/skh_llm_guide/examples/04_agent_deploy/docs/screenshots/03-cowork-hitl-approval.png(3600×1974)을 assets/img/appendix/cowork-hitl-approval.png로 복사한 뒤 PyMuPDF Pixmap.set_rect로 모델명 gpt-4.1-mini 두 곳(우상단 배지, 하단 model= 줄; 표시 화면 좌표×1.8로 계산)을 --canvas 색(246,245,244)으로 덮는다. 원본 파일은 수정하지 않는다. 일회성 스크립트는 세션 scratchpad에 두고 저장소에 넣지 않는다(logging·타입 힌트 규칙 준수). 결과 이미지 4개를 Read로 열어 눈으로 확인한다.",
       "notes": "논문 그림 사용 근거: 논문 1쪽 'Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures…' (12-1절 3번). 캡션 문구는 T3·T7에서 쓴다. Pillow는 미설치이므로 PyMuPDF만 쓴다.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "0125502e-fb66-419c-952d-9f68fcbf13e7"
         }
       ],
       "createdAt": "2026-09-15T10:04:27.727Z",
-      "updatedAt": "2026-09-15T10:04:27.727Z",
+      "updatedAt": "2026-09-15T10:22:12.615Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/assets/img/b1/transformer-fig1.png",
@@ -77,21 +79,23 @@
       ],
       "implementationGuide": "scratchpad/extract_assets.py: pymupdf.open(pdf) → for page 3,4: page.get_images(full=True) → doc.extract_image(xref)['image'] bytes → 파일 저장. 4쪽 벡터 도형 8개는 무시하고 추출 결과를 확인. HITL: pix = pymupdf.Pixmap(png); pix.set_rect(pymupdf.IRect(x0,y0,x1,y1),(246,245,244)) 두 번; pix.save(dst). 썸네일: curl -fL -o … 실패 시 hqdefault. 모든 결과를 Read(이미지)로 확인하고 크기(px)·용량을 기록한다.",
       "verificationCriteria": "파일 4개 존재, 각각 Read로 열어 그림이 맞는지 확인(Fig.1 encoder-decoder 전체 구조, Fig.2 attention 두 패널, 썸네일 16:9, HITL 화면에 gpt-4.1-mini 문자열이 보이지 않음). 원본 skh_llm_guide 파일의 수정 시각이 바뀌지 않음. 저장소에 스크립트·임시 파일이 없음(git status에 assets/img 파일만).",
-      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어."
+      "analysisResult": "sk-hynix-ai-agent-guide-edu 덱을 v0.3(52장)에서 v0.4(57장)로 개정한다. 결정 원본은 docs/slide-plan-v0.4-visual-narrative.md 12-1절(2026-09-15 사용자 답변 9건). 공통 규칙: index.html만 수정하고 overview.html은 scripts/sync_overview.py --renumber로 재생성한다. 허용 data-skill 11종만, 새 문법 창작 금지, 색·크기는 :root 토큰만, 인라인 style·hex·<br> 금지, 텍스트 leaf마다 data-editable=\"true\". 기획 ID(data-scene-id)는 재번호하지 않고 신규 장면은 G00·A07–A10. 근거 없는 수치·가짜 스크린샷·사내 모델명·주소·키 금지. JAEN 교안 도판 복제 금지(CSS 재구성 + '교안 내용 재구성' 표기). 현업가이드(skh_llm_guide)는 실습 자료가 아니므로 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다(코드 위치는 역할 이름 + '실습 가이드 해당 장'). 미확정 항목은 추정하지 않는다: G00에는 영상 제목·썸네일·학습 4단계만(13절 요점 4개 금지), 실습 단계 이름은 현재 유지. HTML 수정 후 매번 python scripts/validate_topic.py + npx hyperframes lint + sync_overview.py --check 실행(lint 경고 2개 composition_file_too_large·timeline_track_too_dense는 v0.3부터 있던 것으로 오류 아님). 레이아웃 예산: 본문 가용 약 613px 중 요지(.thesis 40px)+설명(.explain 34px 3줄)이 약 235px을 쓰므로 나머지 약 378px 안에 시각 자료·항목을 넣는다. 넘치면 문장 축소·항목 3→2개 축소 우선, 글자 축소 금지. 인포그래픽은 별도 SVG 파일이 아니라 기존 .dg 클래스(dg-row/dg-box/dg-arrow/dg-zone/dg-sub/dg-caption)로 인라인 구성하고 '개념 예시' 캡션을 둔다. 캡션은 .dg-caption, 이미지 틀은 .split-image/.image-frame 재사용. 사용자 최종 확인 전 PDF/PPTX export 금지, 사용자 요청 없이 git commit·push 금지. 작업 브랜치 feat/sk-hynix-deck-v0.4, 세이브 포인트 main 64780c4. 모든 문서는 한국어.",
+      "summary": "PyMuPDF로 arXiv 1706.03762 PDF의 내장 이미지를 좌표 크롭 없이 원본 추출: 3쪽 1520×2239 → b1/transformer-fig1.png(Figure 1 encoder–decoder 확인), 4쪽 두 패널 → b1/attention-fig2a.png(Scaled Dot-Product 445×884), b1/attention-fig2b.png(Multi-Head, 아래 흰 여백을 내용 끝+24px로 잘라 835×1100). 썸네일 maxresdefault 1280×720 → common/yt-thumb-kf1dypnh.jpg, YouTube oEmbed로 제목·채널(AgentOS)이 계획서와 일치함을 확인. HITL 캡처 복사본(3600×1974)에서 우상단 모델 배지와 하단 model= 줄을 인접 배경 픽셀색으로 덮음 → appendix/cowork-hitl-approval.png, 눈으로 gpt-4.1-mini 부재 확인. 원본 수정 시각(2026-08-19) 불변. 일회성 스크립트는 scratchpad에만 두었고 저장소에는 이미지 5개와 카탈로그 파일명 갱신만 커밋(🍱). 계획의 attention-fig2.png 단일 파일은 두 패널이 별도 이미지라 2a/2b로 나눔.",
+      "completedAt": "2026-09-15T10:22:12.613Z"
     },
     {
       "id": "fc8c4a64-69a7-4bb6-9cd4-f591b978a40d",
       "name": "T3 B1 묶음 v0.4: S01·G01·G00 신규·S02–S08 문구→UI→검토→빌드",
       "description": "B1 블록(BLOCK:B1) 9장을 v0.4로 보강하고 G00을 G01 뒤에 새로 만든다(→ 53장). 순서: (1) slide_content_writer: _workspace/slide_copy/B1.md에 장면마다 '## v0.4 보강' 절 추가 — 한 줄 요지(40자 이내), 설명 문단(2–4문장 120자 이내, 수강생 3인칭), 시각 자료 캡션, speaker-note 추가분(그림 가리키는 문장+교안 연계 1–2문장), 체크리스트 16항목 대조. S08은 요지·설명 대신 '관찰할 것' 2문장. G00 신규: 제목 '왜 지금, 왜 이렇게 배우나', 왼쪽 썸네일+캡션('참고 영상 · … (YouTube, Kf1dYpnH-N4) · 수업 중 재생하지 않음'), 오른쪽 학습 4단계(만들기→설명하기→조건 바꾸기→검증하기), 보조 라벨 '영상 요점은 강사 확정 전 · 원 발언 직접 인용 아님'. 13절 요점 4개는 넣지 않는다. S01 노트: '다음 장에서 오늘 하루 시간표를 보고, 그다음 왜 이런 순서로 배우는지 1분만'. G01 노트 끝: '다음 장에서 왜 이런 순서로 배우는지 1분만 보겠습니다'. S01 act-tag '기 · 만나다 — 지금 내가 호출하는 이것은 무엇인가?'. (2) slide_ui_designer: _workspace/slide_ui/B1.md에 '## v0.4 배치' 절 — 장면마다 thesis·explain 위치, 시각 자료 .dg 구성(S03 동심원 dg-zone 3겹, S04 자기회귀 화살표 흐름, S05 오른쪽 .split-image에 transformer-fig1.png + dg-caption 출처, S06 내 PC/사내 서버 dg-zone 2영역, S07 온도 분포 막대 dg-box 높이 차이, S08 P-S08 플레이스홀더 45%), G01 act-bracket, 높이 예산 계산. (3) lecture_expert pre → _workspace/lecture_review/B1-v0.4-pre.md, 수정 요청을 담당자에게 재전달·반영. (4) 오케스트레이터가 index.html BLOCK:B1만 수정(G00 section을 G01 section 뒤에 삽입, data-scene-id=\"G00\", data-skill=\"split\"). (5) sync_overview.py --renumber → validate → lint → --check → npm run snapshot -- topics/sk-hynix-ai-agent-guide-edu -- --at 4,9,14,29,44 확인. (6) lecture_expert post → B1-v0.4-post.md.",
       "notes": "S05 논문 캡션: 'Vaswani et al., Attention Is All You Need (2017), Figure 1 · arXiv:1706.03762'. G00 썸네일 <img src=\"assets/img/common/yt-thumb-kf1dypnh.jpg\" alt=…>. 실습 코드 위치 라벨은 역할 이름 + '실습 가이드 해당 장'.",
-      "status": "pending",
+      "status": "in_progress",
       "dependencies": [
         {
           "taskId": "e8ed5903-2683-482c-8ef1-3880f17db7fa"
         }
       ],
       "createdAt": "2026-09-15T10:04:27.727Z",
-      "updatedAt": "2026-09-15T10:04:27.727Z",
+      "updatedAt": "2026-09-15T10:26:01.547Z",
       "relatedFiles": [
         {
           "path": "topics/sk-hynix-ai-agent-guide-edu/index.html",
