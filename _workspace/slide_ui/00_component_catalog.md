@@ -38,12 +38,15 @@
 ```html
 <section id="s-N" class="scene clip" data-skill="split" data-scene-id="S10" data-start="0" data-duration="5" data-track-index="0">
   <div class="eyebrow"><span class="block-chip" data-editable="true">B2</span><span data-editable="true">외부 근거와 기사 RAG</span></div>
+  <p class="act-tag" data-editable="true"><strong>승 · 연결하다</strong>모르는 것을 어떻게 근거와 도구로 채우나?</p>  <!-- v0.4: 구간 첫 장면 7곳만 -->
   <h2 class="scene-title" data-editable="true">RAG의 기본 구조</h2>
+  <p class="thesis" data-editable="true">미리 준비하는 인덱싱과 질문할 때의 검색·생성, 두 시점이 있다</p>  <!-- v0.4: 한 줄 요지 -->
+  <p class="explain" data-editable="true">설명 문단 2–4문장, 120자 이내</p>  <!-- v0.4: 설명 문단 -->
   <!-- 본문 컴포넌트 1개 (아래 4절) -->
   <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
   <aside class="speaker-note">발표자 노트 3–6문장</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
-  <div class="page-num">N / 52</div>
+  <div class="page-num">N / 57</div>
 </section>
 ```
 
@@ -211,6 +214,17 @@
 
 `dg-arrow` 문자는 `→`, `↓`, `⇄`만 쓴다.
 
+추가 클래스 (2026-09-15, v0.4 — 상세는 7절):
+
+| 클래스 | 용도 |
+|---|---|
+| `.act-tag` (+`strong`) | ① 막 태그. 구간 첫 장면 7곳만, eyebrow 바로 아래 |
+| `.thesis` | ③ 한 줄 요지. 40자 이내 1줄, 글자 폭만큼 파랑 밑줄 |
+| `.explain` (+`strong`) | ④ 설명 문단 2–4문장 120자 이내. 실습 안내판은 `<strong>관찰할 것</strong>` + 2문장 |
+| `.act-group` > `.steps.timeline` + `.act-bracket` + `.act-name` | G01 전용 네 막 괄호선 |
+| `.placeholder.is-spec` > `.placeholder-id` + `.placeholder-desc`×3 | 플레이스홀더 v2 |
+| `.split-image.h-sm` / `.h-md` / `.h-lg` | 이미지 높이 280 / 360 / 440px (인라인 style 대신) |
+
 ## 6. 금지 예시
 
 | 하지 말 것 | 대신 |
@@ -220,3 +234,88 @@
 | 가짜 앱 화면을 CSS로 그림 | `.placeholder` + 설명 |
 | `<br>`으로 줄 맞춤 | 문구 축소 또는 `max-width` 조정 요청 |
 | 사내 URL·모델명·키 | "사내 추론 서버", "승인된 모델 경로" |
+
+## 7. v0.4 보강 규칙 (2026-09-15)
+
+근거: `topics/sk-hynix-ai-agent-guide-edu/docs/slide-plan-v0.4-visual-narrative.md` 7절, 결정 원본 12-1절.
+
+### 7-1. 텍스트 6층 배치 순서
+
+`eyebrow` → `.act-tag`(구간 첫 장면만) → `.scene-title` → `.thesis` → `.explain` → 본문 컴포넌트(시각 자료 1개 이상) → `.source`
+
+- 실습 안내판(S08·S13·S19·S20·S26·S32·S37, 자유 실습 S40–S43)은 `.thesis`·설명 문단 대신 `<p class="explain"><strong>관찰할 것</strong>…2문장</p>`를 `.board-meta` 뒤에 둔다.
+- 설명 문단은 수강생이 읽는 3인칭 문장이다. 강사 1인칭 발표 멘트를 넣지 않는다.
+- 요지·설명 뒤 본문 컴포넌트의 위 간격은 CSS가 32px로 줄인다(56px 아님).
+
+### 7-2. 높이 예산 (장면 내부 872px, 폭 1680px)
+
+| 요소 | 높이 |
+|---|---|
+| eyebrow + 제목 1줄 | 145px |
+| `.act-tag` 1줄 (구간 첫 장면) | 49px |
+| `.thesis` 1줄 (20 + 40×1.3 + 9) | 81px |
+| `.explain` 2줄 / 3줄 (16 + 32×1.45×줄수) | 109 / 155px |
+| 본문 위 간격 | 32px |
+| `.source` 1줄 | 58px |
+| **본문 가용 (요지 + 설명 3줄)** | **401px** |
+| **본문 가용 (요지 + 설명 2줄)** | **447px** |
+| 구간 첫 장면은 위에서 | −49px |
+
+- 글자 수: `.thesis` 40px × 1680px → 1줄 약 42자. `.explain` 32px × 1600px → 1줄 약 50자(120자 = 3줄).
+- 넘치면 글자 크기를 줄이지 않는다. 설명 문단을 2줄로 줄이거나, 기존 항목을 3→2개로 줄이거나, 설명 문단이 기존 bullets를 대신하게 한다.
+
+### 7-3. 인포그래픽 (계획서 6절 `*.svg` 논리 이름)
+
+- 별도 SVG 파일을 만들지 않는다. 기존 `.dg` 클래스(`.dg-row`, `.dg-box`, `.dg-arrow`, `.dg-zone`, `.dg-sub`, `.dg-caption`)로 HTML 안에 구성한다. 글자를 overview에서 Edit할 수 있고 외부 파일 의존이 없다.
+- 그림 하나에 상자 7개 이하. 주 글자는 `.dg-box` 32px, `.dg-sub`는 보조 한 줄만.
+- 책임이 다른 영역(모델 영역/프로그램 영역, 내 PC/사내 서버)은 `.dg-zone`으로 나누고 `.dg-zone-label`에 영역 이름을 적는다.
+- 개념도에는 `.concept-badge`("개념 예시") 또는 `.dg-caption`("개념 예시 · 측정값 아님")을 둔다. 교안 내용을 옮긴 도식은 "교안 내용 재구성"을 캡션에 적는다.
+- 강조는 `.dg-box.accent`·`.compare-col.is-accent` 한 곳. 상태 표시는 `.status-dot.ok/.warn`만.
+
+### 7-4. 실제 이미지
+
+```html
+<div class="split-panel">
+  <div class="split-image h-md"><img src="assets/img/b1/transformer-fig1.png" alt="Transformer 전체 구조 그림(원 논문 Figure 1)"></div>
+  <p class="dg-caption" data-editable="true">Vaswani et al., Attention Is All You Need (2017), Figure 1 · arXiv:1706.03762</p>
+</div>
+```
+
+- 경로는 `assets/img/<b1~b7|appendix|common>/` 상대 경로만. 외부 URL `<img src>` 금지.
+- 확보된 이미지: `b1/transformer-fig1.png`(S05), `b1/attention-fig2.png`(A01), `common/yt-thumb-kf1dypnh.jpg`(G00), `appendix/cowork-hitl-approval.png`(A10, 모델명 가림본).
+
+### 7-5. 플레이스홀더 v2 (강사 제공 캡처 자리)
+
+```html
+<div class="placeholder is-spec">
+  <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S08]</div>
+  <div class="placeholder-desc" data-editable="true">넣을 자료: 실습 1 호출 결과 캡처 — 같은 질문, temperature 두 조건</div>
+  <div class="placeholder-desc" data-editable="true">조건: 모델명·주소·키 가리기 · 실행일 표기 · 1600×900 이상</div>
+  <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 이 자리를 두고 설명 텍스트만으로 진행</div>
+</div>
+```
+
+- ID는 `P-<장면ID>`, 한 장면에 둘이면 `P-S31`, `P-S31b`.
+- 화면 폭의 절반을 넘지 않는다. 나머지 절반에 설명 텍스트를 둔다. 빈 박스만 있는 장면을 만들지 않는다.
+
+### 7-6. G01 네 막 괄호선
+
+```html
+<div class="stack">
+  <div class="act-group">
+    <ol class="steps timeline">…B1 한 줄…</ol>
+    <div class="act-bracket" aria-hidden="true"></div>
+    <div class="act-name" data-editable="true">기 · 만나다</div>
+  </div>
+  <div class="act-group">…B2·B3… <div class="act-name" data-editable="true">승 · 연결하다</div></div>
+  …점심 구분…
+  <div class="act-group">…B4·B5… 전 · 뒤집다</div>
+  <div class="act-group">…B6·B7… 결 · 남기다</div>
+</div>
+```
+
+색이 아니라 괄호선으로 묶는다(스티커 팔레트 금지 유지).
+
+### 7-7. 현업가이드 인용 금지
+
+실습 자료는 사내 전용 HTML이다. 현업가이드(`skh_llm_guide`)의 파일명·함수명·장 이름을 실습 코드 위치로 쓰지 않는다. 코드 위치는 역할 이름 + "실습 가이드 해당 장"으로 적는다(예: "코드 위치: 모델 연결 설정 · 모델 호출부 — 실습 가이드 해당 장").

@@ -67,6 +67,8 @@
         --fs-small: 28px;
         --fs-caption: 24px;
         --radius: 12px;
+        --fs-thesis: 40px;
+        --fs-explain: 32px;
       }
 
       /* ===== 장면 기본 ===== */
@@ -955,6 +957,84 @@
       }
       .scene .done-row .done-box,
       .scene .done-row .fallback { margin-top: 0; }
+
+      /* ===== v0.4 텍스트 층 (2026-09-15) =====
+         배치 순서: eyebrow → act-tag → scene-title → thesis → explain → 본문 컴포넌트 → source
+         cascade 우선을 위해 스타일 블록 맨 끝에 둔다. */
+      /* ① 막 태그: 구간 첫 장면 7곳만, eyebrow 아래 한 줄 */
+      .act-tag {
+        margin-top: 10px;
+        font-size: var(--fs-small);
+        font-weight: 600;
+        line-height: 1.4;
+        color: var(--ink-3);
+      }
+      .act-tag strong { margin-right: 12px; color: var(--ink-2); font-weight: 700; }
+      .scene.title-scene .act-tag { position: absolute; top: 124px; left: 120px; margin: 0; }
+      /* ③ 한 줄 요지: 글자 폭만큼 파랑 밑줄 */
+      .thesis {
+        align-self: flex-start;
+        max-width: 1680px;
+        margin-top: 20px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--accent);
+        font-size: var(--fs-thesis);
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--ink);
+      }
+      /* ④ 설명 문단: 2–4문장. 실습 안내판은 strong "관찰할 것" + 2문장 */
+      .explain {
+        max-width: 1600px;
+        margin-top: 16px;
+        font-size: var(--fs-explain);
+        font-weight: 400;
+        line-height: 1.45;
+        color: var(--ink-2);
+      }
+      .explain strong { margin-right: 12px; color: var(--ink); font-weight: 700; }
+      /* 요지·설명 뒤 본문은 56px 대신 32px 간격 */
+      .scene > .thesis + :not(.explain):not(.source),
+      .scene > .explain + :not(.source) { margin-top: 32px; }
+      .stack > .explain, .split-grid > .explain, .split-panel > .explain { margin-top: 0; }
+      .scene.night .act-tag, .scene.night .explain { color: var(--on-night-2); }
+      .scene.night .act-tag strong, .scene.night .explain strong { color: var(--on-night); }
+      .scene.night .thesis { color: var(--on-night); border-bottom-color: var(--on-night); }
+      .scene.night .chip { border-color: var(--on-night-line); background: transparent; color: var(--on-night-2); }
+      /* G01 네 막 묶음: 시간표 행 묶음 오른쪽에 "]" 괄호선 + 막 이름 */
+      .act-group { display: flex; align-items: stretch; gap: 20px; }
+      .act-group > .steps { flex: 1; margin-top: 0; }
+      .act-bracket {
+        flex-shrink: 0;
+        width: 24px;
+        border: 2px solid var(--line-strong);
+        border-left: 0;
+        border-radius: 0 var(--radius) var(--radius) 0;
+      }
+      .act-name {
+        flex-shrink: 0;
+        width: 260px;
+        align-self: center;
+        font-size: var(--fs-small);
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--ink-2);
+      }
+      .act-name .dg-sub { font-weight: 500; }
+      /* 플레이스홀더 v2: [IMG-PLACEHOLDER · P-<장면ID>] + 넣을 자료/조건/대체 */
+      .placeholder.is-spec { align-items: flex-start; text-align: left; gap: 10px; }
+      .placeholder-id {
+        font-family: var(--font-mono);
+        font-size: var(--fs-caption);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: var(--ink-3);
+      }
+      .placeholder.is-spec .placeholder-desc { max-width: 100%; }
+      /* 이미지 높이 단계: 인라인 style 대신 클래스로 지정 */
+      .split-image.h-sm { height: 280px; }
+      .split-image.h-md { height: 360px; }
+      .split-image.h-lg { height: 440px; }
     </style>
   </head>
   <body>
