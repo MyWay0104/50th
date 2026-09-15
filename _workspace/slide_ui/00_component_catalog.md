@@ -235,6 +235,9 @@
 | `.scene.night .panel-title`, `.scene.night .dg-arrow` | 남색 표지 보조 글자 대비 (S01) |
 | `.scene.title-scene .chip-row` | 표지 하루 흐름 칩 줄, 위 40px (S01) |
 | `.compare-col .dist` | 비교 카드 안 막대 분포 높이 120px (S07) |
+| `.dg-zone.is-grow` | 한 줄 안에서 남은 폭을 채우는 점선 영역 (S10) |
+| `.steps.row.is-compact` (+`.step.is-muted`) | 가로 단계 카드 압축(패딩 24·36, 본문 40px), 모델 쪽 카드는 오프화이트 톤 (S16) |
+| `.chip-row > .concept-badge` 등 | 칩·상자 줄 안 배지·캡션 세로 가운데 |
 
 ## 6. 금지 예시
 

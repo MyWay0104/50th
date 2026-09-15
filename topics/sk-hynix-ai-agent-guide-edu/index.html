@@ -1088,6 +1088,15 @@
       .scene.title-scene .chip-row { margin-top: 40px; align-items: center; }
       /* 비교 카드 안의 막대 분포는 낮게 (S07) */
       .compare-col .dist { height: 120px; margin-top: 24px; }
+      /* 한 줄 안에서 남은 폭을 채우는 점선 영역 (S10) */
+      .dg-zone.is-grow { flex: 1; min-width: 0; }
+      /* 가로 단계 카드 압축 변형 (S16 전용) */
+      .steps.row.is-compact .step { padding: 24px 36px; }
+      .steps.row.is-compact .step-body { font-size: var(--fs-thesis); }
+      /* 가로 단계 카드 중 다른 영역(모델 쪽) 톤 구분 (S16) */
+      .steps.row .step.is-muted { background: var(--canvas); }
+      /* 칩·상자 줄 안의 배지·캡션을 세로 가운데로 (S10·S12·S17) */
+      .chip-row > .concept-badge, .dg-row > .concept-badge, .chip-row > .dg-caption { align-self: center; }
     </style>
   </head>
   <body>
