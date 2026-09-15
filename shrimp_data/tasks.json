@@ -220,14 +220,14 @@
       "name": "F8 문서 동기화와 커밋·main 병합·push",
       "description": "_workspace/final_touch.md(치환 표 요약·결정·자산 출처), v0.4_progress·ppt_qa_report에 final-touch 절, BRIEF·DESIGN.md·TASK·shrimp-rules 상태, 매핑표 제목 갱신. final-touch 커밋 → main 병합 → main·final-touch 원격 push.",
       "notes": "push는 사용자 요청 범위. export는 하지 않는다.",
-      "status": "in_progress",
+      "status": "completed",
       "dependencies": [
         {
           "taskId": "1bc7ea9e-201f-4807-8854-ae1fc0672fc5"
         }
       ],
       "createdAt": "2026-09-15T17:52:49.142Z",
-      "updatedAt": "2026-09-15T18:43:48.942Z",
+      "updatedAt": "2026-09-15T18:44:30.580Z",
       "relatedFiles": [
         {
           "path": "_workspace/final_touch.md",
@@ -242,7 +242,9 @@
       ],
       "implementationGuide": "gen_mapping.py·sync_docs_v04.py 재사용. git checkout main → git merge final-touch(fast-forward 가능하면 ff) → git push origin main final-touch.",
       "verificationCriteria": "문서 표 칸 불일치 0, main과 final-touch가 원격과 같은 커밋, exports 비어 있음.",
-      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push."
+      "analysisResult": "final-touch: sk-hynix-ai-agent-guide-edu 57장 덱(index.html 최종본)에 사용자 수정 12건을 반영한다. 기승전결 표현·B1–B7 구간 표시·쪽번호·첫 시간표 외 시간 정보·'근거:' 출처를 없애고, 화면 문장을 존댓말로, 제목을 간결하게, 표지를 정리(강사 'NAND Implant기술 이상우 TL'), 강조색을 DESIGN-Notion.md의 주황(#dd5b00)·짙은 주황(#793400)으로 바꾸고, 웹에서 받은 로고(Simple Icons·vLLM 공식)와 개념 아이콘(Lucide)으로 시각 자료를 보강하며 이미지를 키운다. 자리표시는 유지하고 장면마다 이미지 또는 인포그래픽 1개 이상. overview.html은 sync_overview.py로 재생성. 매 수정 뒤 validate_topic.py·hyperframes lint·--check·Playwright 넘침 검사. 한국어 문구 판단은 slide_content_writer, 배치는 slide_ui_designer, 검토는 lecture_expert, 반복 편집은 Sonnet 빌더. export 금지. 완료 후 final-touch 커밋 → main 병합 → push.",
+      "summary": "문서 동기화: _workspace/final_touch.md(요청 12건별 처리·결정·도구·검증·확인 항목), ppt_qa_report.md final-touch 절과 사용자 확인 목록 F1–F6, 매핑표 57행 새 제목(gen_mapping·sync_docs 재사용), BRIEF·TASK·shrimp-rules 상태, DESIGN.md 주황 테마 기록, 진행 기록. 문서 5개 표 칸 불일치 0. git: final-touch에 커밋(최종 43817c5, shrimp 작업 상태·이전 작업 백업 포함) → main fast-forward 병합 → origin에 main·final-touch push. main·origin/main·final-touch·origin/final-touch 모두 43817c5로 같음. exports/는 비어 있음(사용자 최종 확인 전 export 없음). 로컬 웹 서버 종료.",
+      "completedAt": "2026-09-15T18:44:30.577Z"
     }
   ]
 }
