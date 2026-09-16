@@ -157,3 +157,11 @@ npx hyperframes lint topics\<topic-name>
 ```
 
 PDF/PPTX export는 사용자가 overview 최종 확인 후 요청한 경우에 진행한다. MP4 render는 사용자가 명시적으로 영상 파일을 요청한 경우에만 실행한다.
+
+## 덱 제작 도구와 하우스 룰
+
+- 묶음 단위 제작·덱 전체 수정 도구는 `scripts/deck/` 에 있다(조각 검사·조립, 치환 표 적용, 하우스 룰 검사, 본문 추출, 매핑표, 자산 로컬화).
+- 서브에이전트 지시문 템플릿은 `templates/briefs/` 에 있다.
+- HTML 을 고친 뒤 QA 게이트는 `sync_overview.py` → `validate_topic.py` → `npx hyperframes check` → `scripts/deck/qa_rules.py` → `sync_overview.py --check` 순서다.
+- 사내 교육 덱의 하우스 룰(시간 표기·존댓말·출처·사내 정보 금지 등)은 `CLAUDE.md` 의 "사내 교육 덱 하우스 룰" 절과 topic 의 `deck-rules.json` 이 기준이다.
+- CDN 글꼴·스크립트는 `scripts/deck/localize_assets.py` 로 topic 안 로컬 파일로 바꾼다. 인터넷이 막힌 곳에서 글꼴이 바뀌면 줄바꿈과 넘침이 달라진다.

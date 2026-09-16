@@ -77,6 +77,48 @@ deck/card-news 값을 섞지 않는다. 출력 타입 판별은 `index.html`의 
 - `hyperframes/` (핵심 문법, `house-style.md`, `palettes/`), `hyperframes-slide*/` (deck 레이아웃별), `hyperframes-card-news*/`, `hyperframes-overview*/` (overview 템플릿·live 편집), `hyperframes-overview-pptx-export/` (overview → PPTX 변환 스크립트), `hyperframes-fx-*/`, `gsap/`
 - `.codex/skills/skills/`는 같은 스킬의 중첩 복사본이다. `.codex/skills/` 최상위를 기준으로 본다.
 
+## 덱 제작 도구 (`scripts/deck/`)
+
+묶음(차수) 단위 제작과 덱 전체 수정에 쓰는 도구다. 모두 `python scripts/deck/<파일> --help` 로 사용법을 볼 수 있다.
+
+| 스크립트 | 언제 쓰나 |
+|---|---|
+| `check_fragment.py` | 빌더가 만든 BLOCK 조각을 `index.html`에 끼우기 전 검사(장면 ID·data-skill·금지 마크업·CSS 없는 클래스) |
+| `splice_blocks.py` | `<!-- BLOCK:X START -->` 구간 교체(`--extract` 로 추출) |
+| `apply_table.py` | 문구·배치 치환 표(JSONL) 적용. **항상 `--dry` 로 먼저 확인** |
+| `qa_rules.py` | topic 의 `deck-rules.json` 으로 하우스 룰 검사 |
+| `dump_deck_text.py` | 검토 서브에이전트용 화면 글자·노트 추출 |
+| `scene_map.py` | 장면 ID ↔ 순번 매핑표 생성(기획 문서 갱신용) |
+| `localize_assets.py` | CDN 글꼴·스크립트를 topic 안 로컬 파일로 바꿈(인터넷 없는 환경 필수) |
+
+서브에이전트 지시문 템플릿은 `templates/briefs/` 에 있다.
+
+## QA 게이트 (HTML 을 고친 뒤 이 순서로)
+
+```powershell
+python scripts\sync_overview.py topics\<topic>            # 장면을 더하거나 뺐으면 --renumber
+python scripts\validate_topic.py topics\<topic>
+npx hyperframes check topics\<topic>                      # lint·런타임·레이아웃 겹침·명암비를 한 번에
+python scripts\deck\qa_rules.py topics\<topic> --rules topics\<topic>\deck-rules.json
+python scripts\sync_overview.py topics\<topic> --check
+```
+
+`hyperframes check` 가 레이아웃 겹침·넘침과 WCAG 명암비를 보므로 별도 브라우저 스크립트는 필요 없다. `qa_rules.py` 는 `check` 가 모르는 우리 교육 규칙(시간 표기·존댓말·출처 등)만 본다.
+
+## 사내 교육 덱 하우스 룰 (`sk-hynix-ai-agent-guide-edu`)
+
+`deck-rules.json` 이 자동으로 검사하는 규칙이다. 새 사내 교육 덱도 이 규칙을 복사해 쓴다.
+
+- **실습 자료는 사내 전용**이다. 현업 가이드(`skh_llm_guide`)의 파일명·함수명·장 이름을 실습 코드처럼 쓰지 않는다. 코드 위치는 역할 이름 + "실습 가이드 해당 장"으로만 적는다.
+- **시간 정보는 첫 시간표(G01) 한 장에만** 둔다. 실습 시간은 실제와 달라 수강생에게 압박이 된다. 나머지는 순서 표현(먼저·이어서·다음 구간)으로 쓴다.
+- **화면 문장은 존댓말**(…합니다/…입니다)로 쓴다. 명사형 라벨·칩·표 칸은 그대로 둔다.
+- **출처 줄은 공식 문서와 논문만** 남긴다. "근거:", 교안, 개인 기록, 사내 가이드는 적지 않는다(수강생이 볼 수 없는 자료).
+- **사내 주소·모델명·키를 화면에 쓰지 않는다.** 역할 이름으로 표시한다.
+- **구간 코드(B1–B7)·쪽번호·기승전결 표현을 화면에 두지 않는다.**
+- **장면마다 이미지 또는 인포그래픽이 하나 이상** 있어야 한다. 자리표시(`[IMG-PLACEHOLDER · P-…]`)는 캡처가 들어올 자리이므로 지우지 않는다.
+- 강조색은 주황 `--accent: #dd5b00`, 반전 배경은 `--night: #793400` 이다(`DESIGN.md` 참고).
+- **PDF/PPTX export 는 사용자가 overview 최종 확인을 말한 뒤에만** 실행한다.
+
 ## 문서화 규칙
 
 기능이나 workflow를 바꾸면 `README.md`, `architecture.md`, `TASK.md`, `_workspace/orchestration-plan.md` 중 해당 문서를 함께 갱신한다 (`AGENTS.md`: 문서 없이 코드만 수정하지 않는다). 이 문서들은 `문제 분석 / 설계 / 구현 / 코드 / 테스트 방법 / 향후 개선사항` 섹션 구조를 공통으로 쓴다.

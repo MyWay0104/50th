@@ -1,0 +1,10 @@
+# 덱 제작 보조 도구용 Python 패키지 (Python 3.11+)
+# 설치: pip install -r requirements.txt
+# 사내망에서는 사내 PyPI 미러를 쓰거나, 사외에서 `pip download -r requirements.txt -d wheels`로 받아 반입한다.
+
+# 논문 그림 추출·이미지 가림·격자 이미지 만들기에 쓴다. 이미지 작업을 하지 않으면 없어도 된다.
+PyMuPDF>=1.24,<2
+
+# 화면 검사·스크린샷은 `npx hyperframes check` / `snapshot` 으로 하므로 playwright 는 필수가 아니다.
+# 브라우저 자동화를 직접 하고 싶을 때만 아래 주석을 푼다(브라우저 바이너리 별도 설치 필요).
+# playwright>=1.47

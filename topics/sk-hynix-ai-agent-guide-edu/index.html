@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Agent Guide · SK hynix 사내 교육</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <!-- 캔버스 전용 규칙: overview.html 로 복사하지 않는다 (sync_overview.py 는 #scene-styles 만 복사) -->
     <style>
       html, body {
@@ -30,14 +29,14 @@
     <!-- 장면 스타일: 폰트 · 토큰 · 컴포넌트. overview.html 에 그대로 복사된다 -->
     <style id="scene-styles">
       /* ===== 폰트: Paperlogy (jsdelivr CDN) ===== */
-      @font-face { font-family: "Paperlogy"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2") format("woff2"); }
-      @font-face { font-family: "Paperlogy"; font-weight: 500; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-5Medium.woff2") format("woff2"); }
-      @font-face { font-family: "Paperlogy"; font-weight: 600; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2") format("woff2"); }
-      @font-face { font-family: "Paperlogy"; font-weight: 700; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-7Bold.woff2") format("woff2"); }
-      @font-face { font-family: "Paperlogy"; font-weight: 800; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 400; font-style: normal; font-display: swap; src: url("assets/vendor/fonts/Paperlogy-4Regular.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 500; font-style: normal; font-display: swap; src: url("assets/vendor/fonts/Paperlogy-5Medium.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 600; font-style: normal; font-display: swap; src: url("assets/vendor/fonts/Paperlogy-6SemiBold.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 700; font-style: normal; font-display: swap; src: url("assets/vendor/fonts/Paperlogy-7Bold.woff2") format("woff2"); }
+      @font-face { font-family: "Paperlogy"; font-weight: 800; font-style: normal; font-display: swap; src: url("assets/vendor/fonts/Paperlogy-8ExtraBold.woff2") format("woff2"); }
 
       /* ===== 코드 글꼴: JetBrains Mono 고정. 브라우저와 HyperFrames 렌더러의 폭을 맞춘다 ===== */
-      @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.20/files/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("assets/vendor/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
 
       /* ===== 토큰: DESIGN.md "교육 자료 최소 적용 규칙" ===== */
       :root {
@@ -3117,7 +3116,7 @@ grade = grader.invoke(prompt).score</pre>
 </section>
       <!-- BLOCK:APP END -->
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="assets/vendor/js/gsap.min.js"></script>
     <script>
       // 애니메이션 없음: 최종 산출물이 PDF 정지 화면이므로 트윈을 등록하지 않는다.
       // HyperFrames 계약상 paused 타임라인만 동기적으로 등록한다.

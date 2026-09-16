@@ -42,6 +42,10 @@ python scripts\sync_overview.py topics\<topic-name> --check
 - `topics/<topic-name>/`: topic별 HyperFrames 산출물
 - `_workspace/`: 기획, 디자인, QA, harness 참조 자료
 - `user_guide.md`: 새 주제 요청 프롬프트 예시와 작업 순서
+- `scripts/deck/`: 묶음 단위 제작·덱 전체 수정 도구(조각 검사·조립, 치환 표 적용, 하우스 룰 검사, 본문 추출, 매핑표, 자산 로컬화)
+- `templates/briefs/`: 서브에이전트 지시문 템플릿(빌더·사전 검토·마지막 검토)
+- `assets/vendor/`: 글꼴·GSAP 원본. 인터넷이 막힌 환경에서 `scripts/deck/localize_assets.py` 가 topic 으로 복사한다
+- `hynix-ingest-handoff.md`: 사내 반입·설치·적용 안내
 
 ## 구현
 

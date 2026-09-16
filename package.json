@@ -8,16 +8,22 @@
     "node": ">=20"
   },
   "scripts": {
-    "docs": "npx hyperframes docs",
-    "lint": "npx hyperframes lint",
-    "lint:verbose": "npx hyperframes lint --verbose",
-    "preview": "npx hyperframes preview",
-    "preview:port": "npx hyperframes preview --port 3000",
-    "render": "npx hyperframes render",
-    "snapshot": "npx hyperframes snapshot",
-    "skills": "npx hyperframes skills",
+    "check": "hyperframes check",
+    "docs": "hyperframes docs",
+    "lint": "hyperframes lint",
+    "lint:verbose": "hyperframes lint --verbose",
+    "localize": "python scripts/deck/localize_assets.py",
     "new-topic": "python scripts/create_topic.py",
+    "preview": "hyperframes preview",
+    "preview:port": "hyperframes preview --port 3000",
+    "qa:rules": "python scripts/deck/qa_rules.py",
+    "render": "hyperframes render",
+    "skills": "hyperframes skills",
+    "snapshot": "hyperframes snapshot",
     "validate:harness": "python scripts/validate_codex_port.py",
     "validate:topic": "python scripts/validate_topic.py"
+  },
+  "devDependencies": {
+    "hyperframes": "0.8.41"
   }
 }
