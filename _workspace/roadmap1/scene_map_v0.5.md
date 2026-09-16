@@ -2,8 +2,8 @@
 |---:|---|---|---|---|---|
 | 1 | s-1 | S01 | `title` | - | AI Agent Guide |
 | 2 | s-2 | G01 | `steps` | - | 하루 흐름 |
-| 3 | s-3 | G00 | `split` | - | AI를 잘 활용하는 공부법 |
-| 4 | s-4 | S02 | `title-tags` | - | 강사 소개 |
+| 3 | s-3 | S02 | `title-tags` | - | 강사 소개 |
+| 4 | s-4 | G00 | `split` | - | AI를 잘 활용하는 공부법 |
 | 5 | s-5 | E01 | `split` | - | 실습 환경의 세 층 |
 | 6 | s-6 | S04 | `steps` | - | LLM의 응답 생성 |
 | 7 | s-7 | S07 | `compare` | - | Temperature와 출력 변화 |
