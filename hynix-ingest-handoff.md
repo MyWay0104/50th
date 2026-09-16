@@ -8,6 +8,24 @@
 
 ---
 
+## 0. 먼저 해 보기 (이 순서로 시작한다)
+
+준비물을 미리 다 갖추지 말고, 아래를 그대로 해 본 다음 막히는 곳만 해결한다.
+
+```bash
+git clone <사내 Git 주소 또는 사외 저장소> slide-master
+cd slide-master
+npm ci                                   # 실패하면 3절
+pip install -r requirements.txt          # 실패하면 3절 (이미지 작업을 안 하면 건너뛰어도 된다)
+npx --no-install hyperframes doctor      # Node·Chrome 만 ✓ 면 충분
+npx --no-install hyperframes check topics/sk-hynix-ai-agent-guide-edu --samples 3
+```
+
+마지막 명령이 `Check passed` 면 준비 끝이다. 바로 5절로 가서 새 발표자료를 만든다.
+막히면 **10절 "자주 나는 문제"** 를 먼저 보고, 그래도 안 되면 3절(오프라인 묶음)로 간다.
+
+---
+
 ## 1. 무엇을 가져가나
 
 | 항목 | 내용 | 용량 | 비고 |
@@ -32,7 +50,10 @@
 - [x] `hyperframes` 0.8.41 고정 + `package-lock.json`
 - [x] `requirements.txt`
 
-## 3. 사외에서 반입 직전에 할 일 (사람)
+## 3. (선택) 인터넷·미러가 막혔을 때만: 오프라인 묶음
+
+사내에서 `npm ci` 와 `pip install` 이 되면 이 절은 건너뛴다. 막힐 때만 사외에서 아래를 만들어 반입한다.
+
 
 ```bash
 # 1) 오프라인 npm 묶음 — 사내와 같은 OS/아키텍처(Windows x64)에서 실행
