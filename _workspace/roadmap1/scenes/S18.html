@@ -1,0 +1,36 @@
+<section id="s-20" class="scene clip" data-skill="split" data-scene-id="S18" data-start="95" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">Part Finder의 후보 검증</h2>
+  <p class="thesis" data-editable="true">데이터에 있는 후보만, 조건이 다 맞을 때만 답합니다.</p>
+  <p class="explain" data-editable="true">강사가 만든 부품 번호 검색 도구 Part Finder의 공개 Beta 설계는 검색 후보에 있는 Part Number만 쓰고, <span class="nowrap">파트 종류·제조사·장비 조건을</span> 코드로 검증합니다. 맞는 후보가 없으면 '없음'이라고 답합니다.</p>
+  <div class="split-grid wide-left">
+    <div class="stack">
+      <div class="dg-row"><img class="logo-inline" src="assets/img/logos/github.svg" alt="GitHub 로고"><span class="concept-badge" data-editable="true">공개 Beta 설계 기반 개념 예시</span><div class="panel-title" data-editable="true">요청: 제조사 A의 로봇 블레이드</div></div>
+      <table class="data-table">
+        <thead>
+          <tr><th data-editable="true">Part Number</th><th data-editable="true">파트 종류</th><th data-editable="true">제조사</th><th data-editable="true">판정</th></tr>
+        </thead>
+        <tbody>
+          <tr class="is-dim"><td data-editable="true">PN-A-2001</td><td data-editable="true">O-ring</td><td data-editable="true">A</td><td><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">종류 불일치</span></td></tr>
+          <tr class="is-dim"><td data-editable="true">PN-B-1001</td><td data-editable="true">로봇 블레이드</td><td data-editable="true">B</td><td><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">제조사 불일치</span></td></tr>
+          <tr><td colspan="4"><strong data-editable="true">결과: 조건에 맞는 후보 없음</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dg">
+      <div class="dg-row stretch">
+        <div class="dg-box" data-editable="true">질문<span class="dg-sub">요청 조건</span></div>
+        <span class="dg-arrow" aria-hidden="true">→</span>
+        <div class="dg-box" data-editable="true">후보 검색<span class="dg-sub">데이터</span></div>
+      </div>
+      <span class="dg-arrow is-end is-half" aria-hidden="true">↓</span>
+      <div class="dg-row stretch">
+        <div class="dg-box muted" data-editable="true">답변·없음<span class="dg-sub">모델이 설명</span></div>
+        <span class="dg-arrow" aria-hidden="true">←</span>
+        <div class="dg-box accent" data-editable="true">조건 검증<span class="dg-sub">코드</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">표는 가상 데이터 · 사내 운영 버전과 다를 수 있음</p>
+  <aside class="speaker-note">앞에서 조회 쪽은 없는 ID를 만들지 않아야 한다고 했는데, 공개 Beta 설계에서 이것을 어떻게 지켰는지 보겠습니다. Part Finder 공개 Beta 설계에서는 실제 검색 후보에 있는 Part Number만 답에 쓰고, 파트 종류와 제조사·장비 조건이 맞는지 코드로 확인합니다. 왼쪽 표처럼 제조사 A의 로봇 블레이드를 찾는데 같은 제조사의 O-ring만 있다면, 그것을 내놓는 것은 그럴듯한 답이고 "조건에 맞는 후보 없음"이라고 말하는 것이 업무에 쓸 수 있는 답입니다. 오른쪽 네 상자에서 주황 상자인 조건 검증을 모델이 아니라 코드가 맡는다는 점이 핵심이고, 앞 구간에서 본 '출처를 보장하지 못하는' 한계를 데이터와 코드로 막는 방법이기도 합니다. 참고로 이 공개 Beta는 외부 벡터 저장소 없이 단어 빈도 기반 검색을 쓰는데, 앞의 RAG 구간에서 말한 '벡터 검색은 여러 검색 방법 중 하나'의 예입니다. 여기 표는 공개 설계를 단순화한 가상 데이터이고, 현재 사내 운영 버전과 같다는 뜻은 아닙니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

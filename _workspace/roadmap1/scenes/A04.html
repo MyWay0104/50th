@@ -1,0 +1,42 @@
+<section id="s-51" class="scene clip" data-skill="compare" data-scene-id="A04" data-start="250" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · MCP·Subagent·Hook</h2>
+  <p class="thesis" data-editable="true">셋은 상하위 단계가 아니라 서로 다른 역할입니다.</p>
+  <p class="explain" data-editable="true">세 기능은 필요할 때만 골라 조합하고, 기본 도구로 충분하면 더하지 않습니다. CLAUDE.md 지침은 권한을 강제하지 않으므로 설치·권한은 사내 가이드의 승인된 설정을 따릅니다.</p>
+  <div class="compare-grid cols-3">
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/link.svg" alt="도구 연결 아이콘"><div class="compare-kicker" data-editable="true">외부 연결</div>
+      <div class="compare-heading" data-editable="true">MCP</div>
+      <ul class="compare-list">
+        <li data-editable="true">앱 N개·도구 M개를 한 규약으로</li>
+      </ul>
+      <div class="dg-row">
+        <span class="chip" data-editable="true">N×M</span>
+        <span class="dg-arrow" aria-hidden="true">→</span>
+        <span class="chip accent" data-editable="true">N+M</span>
+        <span class="dg-caption" data-editable="true">앱·도구 연결 수</span>
+      </div>
+      <p class="compare-note" data-editable="true">개념 예시</p>
+    </div>
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/users.svg" alt="하위 작업 아이콘"><div class="compare-kicker" data-editable="true">작업 분담</div>
+      <div class="compare-heading" data-editable="true">Subagent</div>
+      <ul class="compare-list">
+        <li data-editable="true">별도 맥락에서 하위 작업</li>
+        <li data-editable="true">결과를 주 대화로 반환</li>
+      </ul>
+      <p class="compare-note" data-editable="true">예: 예외 입력만 점검</p>
+    </div>
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/workflow.svg" alt="시점 동작 아이콘"><div class="compare-kicker" data-editable="true">이벤트 처리</div>
+      <div class="compare-heading" data-editable="true">Hook</div>
+      <ul class="compare-list">
+        <li data-editable="true">정해진 시점에 자동 실행</li>
+        <li data-editable="true">명령 실행형·모델 판단형</li>
+      </ul>
+      <p class="compare-note" data-editable="true">예: 파일 수정 후 포맷</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 문서 — Features overview · MCP · Subagents · Hooks</p>
+  <aside class="speaker-note">앞서 Claude Code의 Skill을 다룰 때 옆에 짧게 보여 드린 세 기능을 조금 더 풀어 보겠습니다. MCP는 외부 시스템의 도구와 자료를 Claude Code에 전달하는 연결 규약인데, MCP 칸의 작은 그림처럼 AI 앱 N개와 도구 M개를 하나하나 이으면 N×M개의 연결이 필요하지만, 같은 규약을 따르면 앱과 도구가 각자 한 번씩만 맞추면 되어 N+M으로 줄어든다는 발상이며, 이 그림은 그 발상을 옮겨 그린 개념도입니다. MCP 서버가 내놓는 것은 도구, 자료, 프롬프트 세 가지이고, 승인된 문서나 DB를 읽는 식으로 쓰되 기존 파일·명령 도구로 충분하면 추가하지 않아도 됩니다. Subagent는 예외 입력 점검이나 설정 위치 조사처럼 독립적인 하위 작업을 별도 맥락에서 맡기고 결과만 돌려받는 방식인데, 여러 개를 쓰면 비용과 조정 작업도 늘어납니다. Hook은 파일 수정 후 포맷처럼 정해진 시점에 설정된 동작을 실행하며, 명령을 실행하는 유형과 모델 판단을 쓰는 유형이 따로 있습니다. 세 기능은 상하위 단계가 아니라 서로 다른 역할이라 필요하면 함께 조합하고, 실제 설치와 권한 설정은 사내 가이드의 승인된 방법을 따릅니다. CLAUDE.md에 적은 지침은 모델이 읽는 안내일 뿐 권한을 강제하지 않는다는 점도 기억해 두세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

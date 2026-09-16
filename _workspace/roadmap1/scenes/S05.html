@@ -1,0 +1,38 @@
+<section id="s-7" class="scene clip" data-skill="split" data-scene-id="S05" data-start="30" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">Attention과 문맥</h2>
+              <p class="thesis" data-editable="true">Attention은 다른 위치의 정보를 얼마나 반영할지 계산하는 장치입니다.</p>
+              <p class="explain" data-editable="true">오른쪽 그림의 주황색 Attention 칸이 이 계산을 합니다. 원 논문은 번역용 encoder–decoder 구조이고, 오늘날 많은 생성 모델은 decoder 중심입니다.</p>
+              <div class="split-grid wide-right">
+                <div class="stack">
+                  <div class="dg-row"><span class="concept-badge" data-editable="true">개념 예시</span><div class="panel-title" data-editable="true">같은 '배', 다른 문맥</div></div>
+                  <div class="dg">
+                    <div class="dg-row">
+                      <div class="dg-box is-wide" data-editable="true">디저트로 배를 <strong>먹었다</strong></div>
+                      <span class="dg-arrow" aria-hidden="true">→</span>
+                      <div class="dg-box accent" data-editable="true">배 = 과일</div>
+                    </div>
+                    <div class="dg-row">
+                      <div class="dg-box is-wide" data-editable="true">항구에서 배를 <strong>탔다</strong></div>
+                      <span class="dg-arrow" aria-hidden="true">→</span>
+                      <div class="dg-box accent" data-editable="true">배 = 선박</div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">밑줄 친 말: 참고하는 주변 단어 · 개념 예시 · 측정값 아님</p>
+                </div>
+                <div class="stack">
+                  <div class="split-grid wide-right">
+                    <div class="stack is-fig">
+                      <div class="split-image h-lg"><img src="assets/img/b1/transformer-fig1.png" alt="Transformer 전체 구조 그림(원 논문 Figure 1)"></div>
+                      <p class="dg-caption is-left" data-editable="true">Vaswani et al. (2017), Figure 1 · arXiv:1706.03762</p>
+                    </div>
+                    <div class="stack">
+                      <div class="dg-box"><span data-editable="true">왼쪽 묶음 · encoder</span><span class="dg-sub" data-editable="true">입력을 읽는 쪽</span></div>
+                      <div class="dg-box"><span data-editable="true">오른쪽 묶음 · decoder</span><span class="dg-sub" data-editable="true">출력을 만드는 쪽</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al. 2017</p>
+              <aside class="speaker-note">같은 '배'라도 '먹었다'와 함께 오면 과일, '탔다'와 함께 오면 선박으로 읽힙니다. Attention은 각 위치의 표현을 만들 때 다른 위치의 정보를 얼마나 반영할지 계산하는 장치이고, 이 값은 입력마다 새로 계산되므로 학습된 모델 매개변수와는 다릅니다. 화면 오른쪽은 원 논문의 전체 구조 그림으로, 왼쪽 묶음이 입력을 읽는 encoder, 오른쪽 묶음이 출력을 만드는 decoder이고, 주황색 Multi-Head Attention 칸이 방금 말한 계산을 하는 곳입니다. 원 논문은 번역용 encoder–decoder 구조였고, 오늘날 많은 생성 모델은 decoder 중심 구조를 씁니다. 데이터·규모·학습 방법이 발전하며 쓰임이 넓어졌지만, 이를 어느 한순간에 갑자기 달라진 일로 단정하지는 않겠습니다. Multi-Head 구조와 Q·K·V 계산은 부록의 Transformer 장면에서 더 자세히 다루니, 궁금한 분은 쉬는 시간에 보셔도 됩니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

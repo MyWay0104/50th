@@ -1,0 +1,45 @@
+<section id="s-8" class="scene clip" data-skill="split" data-scene-id="S06" data-start="35" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">모델·서버·API의 역할</h2>
+              <p class="thesis" data-editable="true">코드는 내 PC에서 돌고, 모델 계산은 서버에서 합니다.</p>
+              <p class="explain" data-editable="true">API는 요청·응답 형식의 약속, SDK·LangChain 같은 Python 라이브러리는 그 호출을 돕습니다. 코드에 OpenAI라는 이름이 있어도 요청은 base_url에 적은 서버로 갑니다.</p>
+              <div class="split-grid">
+                <div class="stack">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <div class="dg">
+                    <div class="dg-row">
+                      <div class="dg-zone">
+                        <div class="dg-zone-label" data-editable="true">내 PC</div>
+                        <div class="dg-box"><img class="dg-icon is-logo" src="assets/img/logos/python.svg" alt="Python 로고"><span data-editable="true">실습 코드</span><span class="dg-sub" data-editable="true">라이브러리로</span><span class="dg-sub" data-editable="true">요청 작성</span></div>
+                      </div>
+                      <div class="stack">
+                        <span class="dg-arrow" aria-hidden="true">⇄</span>
+                        <span class="dg-sub" data-editable="true">API</span><span class="dg-sub" data-editable="true">요청·응답</span>
+                      </div>
+                      <div class="dg-zone accent">
+                        <div class="dg-zone-label" data-editable="true">사내 서버</div>
+                        <div class="dg-row stretch">
+                          <div class="dg-box"><img class="dg-icon is-logo" src="assets/img/logos/vllm.png" alt="vLLM 로고"><span data-editable="true"><span class="nowrap">추론 서버</span></span><span class="dg-sub" data-editable="true">vLLM</span></div>
+                          <span class="dg-arrow" aria-hidden="true">→</span>
+                          <div class="dg-box accent is-center" data-editable="true">모델</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">주소·모델명·키 대신 역할 이름으로 표시</p>
+                </div>
+                <div class="stack">
+                  <div class="code-card has-logos"><div class="code-logos"><img class="logo-inline" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><img class="logo-inline" src="assets/img/logos/openai.svg" alt="OpenAI 로고"></div>
+                    <div class="code-title" data-editable="true">요청 목적지를 정하는 곳 · 개념 예시</div>
+                    <pre class="code-body" data-editable="true">from langchain_openai import ChatOpenAI
+llm = ChatOpenAI(
+    <span class="hl">model=MODEL</span>,        <span class="cm"># 사용할 모델 이름</span>
+    <span class="hl">base_url=BASE_URL</span>,  <span class="cm"># 요청을 받을 서버 주소</span>
+)                       <span class="cm"># 키는 환경변수에서 읽음</span></pre>
+                  </div>
+                  <p class="guide-ref" data-editable="true">코드 위치: 모델 연결 설정 — 실습 가이드 해당 장</p>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · LangChain Models 문서</p>
+              <aside class="speaker-note">모델은 응답을 계산하는 핵심이고, vLLM은 요청을 받아 모델을 실행하는 서버 프로그램입니다. API는 프로그램끼리 요청과 응답을 주고받는 약속이고, SDK나 LangChain은 그 호출 코드를 편하게 쓰게 돕는 Python 도구이고, 오른쪽 코드는 LangChain으로 쓴 것입니다. 화면 왼쪽 그림처럼 코드는 내 PC에서 돌아도 모델 계산은 사내 서버에서 일어나고, 그 요청이 어디로 갈지는 오른쪽 코드의 base_url이 정합니다. 그래서 코드에 OpenAI라는 이름이 있어도 요청이 OpenAI로 가는 것은 아니고, 호환 API라고 해서 모든 옵션과 도구 호출이 똑같이 지원되는 것도 아닙니다. 코드 첫 줄의 langchain은 다음 RAG 구간에서 다루니, 지금은 model과 base_url 두 줄만 보세요. 이제 실습 가이드 해당 장의 모델 연결 설정에서 모델 이름과 요청 주소를 지정하는 위치를 같이 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

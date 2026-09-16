@@ -1,0 +1,241 @@
+<section id="s-1" class="scene clip title-scene night" data-skill="title" data-scene-id="S01" data-start="0" data-duration="5" data-track-index="0">
+              <div class="hero-art" aria-hidden="true"><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/user.svg" alt="사용자 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/message-square.svg" alt="대화 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/file-text.svg" alt="문서 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/database.svg" alt="데이터베이스 아이콘"></span><span class="hero-tile is-core"><img class="hero-icon" src="assets/img/icons/bot.svg" alt="에이전트 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/wrench.svg" alt="도구 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/code.svg" alt="코드 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/workflow.svg" alt="흐름 아이콘"></span><span class="hero-tile"><img class="hero-icon" src="assets/img/icons/monitor.svg" alt="화면 아이콘"></span></div><div class="hero-rule" aria-hidden="true"></div>
+              <div class="hero-kicker" data-editable="true">SK hynix 사내 교육</div>
+              <h1 class="hero-title" data-editable="true">AI Agent Guide</h1>
+              <p class="hero-sub" data-editable="true">내 업무에 적용할 작은 AI 도구 만들기</p>
+              <div class="hero-meta"><span data-editable="true">강사 · NAND Implant기술 이상우 TL</span></div>
+              <aside class="speaker-note">안녕하세요, 오늘 하루 AI Agent 과정을 진행할 NAND Implant기술 이상우 TL입니다. 오늘은 LLM을 직접 호출하는 데서 시작해 자료와 도구를 붙인 작은 앱을 만들고, 오후에는 Claude Code로 그 앱을 고쳐 봅니다. 시작 전에 AI 코딩 도구를 써 본 분과 오늘 처음인 분을 손들어 확인하겠습니다. 다음 장에서 오늘 하루 시간표를 보겠습니다.</aside>
+            </section>
+<section id="s-2" class="scene clip" data-skill="steps" data-scene-id="G01" data-start="5" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">하루 흐름</h2>
+              <div class="chip-row"><img class="row-icon" src="assets/img/icons/play.svg" alt="시작 아이콘"><span class="chip accent" data-editable="true">시작 09:00</span><span class="chip" data-editable="true">점심 11:40–13:20</span><span class="chip" data-editable="true">종료 17:30</span><span class="chip" data-editable="true">휴식은 진행에 따라 안내합니다</span></div>
+              <div class="stack">
+                <div class="panel-title" data-editable="true">오전 · 다섯 구간</div>
+                <div class="time-blocks is-steps row time-band">
+                  <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">실습 환경<span class="when">→ 첫 응답</span></div><img class="tb-icon" src="assets/img/icons/key.svg" alt="환경변수 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">LLM 단순 호출<span class="when">→ 프롬프트 비교</span></div><img class="tb-icon" src="assets/img/icons/brain.svg" alt="모델 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">기사 한 편으로 RAG<span class="when">→ 근거 있는 요약</span></div><img class="tb-icon" src="assets/img/icons/file-search.svg" alt="문서 검색 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">조회 도구 붙이기<span class="when">→ 도구 호출 기록</span></div><img class="tb-icon" src="assets/img/icons/database.svg" alt="데이터베이스 아이콘"></div>
+                  <div class="time-block is-accent"><div class="min" data-editable="true">5</div><div class="what" data-editable="true">Streamlit 챗봇<span class="when">→ 조회 결과 화면</span></div><img class="tb-icon" src="assets/img/icons/monitor.svg" alt="화면 아이콘"></div>
+                </div>
+                <div class="panel-title" data-editable="true">오후 · 세 구간</div>
+                <div class="time-blocks is-steps row time-band">
+                  <div class="time-block"><div class="min" data-editable="true">6</div><div class="what" data-editable="true">Claude Code 설치·작동<span class="when">→ 폴더 읽기 결과</span></div><img class="tb-icon" src="assets/img/icons/terminal.svg" alt="터미널 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">7</div><div class="what" data-editable="true">사용 방향 세 가지<span class="when">→ 내 방향 하나</span></div><img class="tb-icon" src="assets/img/icons/workflow.svg" alt="흐름 아이콘"></div>
+                  <div class="time-block is-accent"><div class="min" data-editable="true">8</div><div class="what" data-editable="true">자유 실습<span class="when">→ 나의 작은 도구</span></div><img class="tb-icon" src="assets/img/icons/rocket.svg" alt="실습 아이콘"></div>
+                </div>
+                <p class="dg-caption is-left" data-editable="true">→ 뒤는 구간의 산출물 · 다음 구간의 재료가 됩니다</p>
+              </div>
+              <aside class="speaker-note">오늘은 오전 다섯 구간과 오후 세 구간으로 진행합니다. 오전에는 실습 환경을 확인하고 모델을 직접 호출한 뒤, 기사 한 편으로 RAG를 만들고 조회 도구를 붙여 Streamlit 챗봇까지 갑니다. 오후에는 Claude Code를 설치해 작동을 확인하고, 사용 방향 세 가지를 본 다음 자유 실습으로 마무리합니다. 각 구간 아래 화살표 뒤에 적힌 산출물이 다음 구간의 재료가 됩니다. 화면에 적힌 시각은 시작, 점심, 종료 세 개뿐이고 구간별 시각은 두지 않았습니다. 시간에 맞추기보다 여러분의 진행 상황에 맞춰 유연하게 조절할 테니, 휴식도 진행을 보며 그때그때 안내하겠습니다. 다음 장에서 오늘 공부하는 방법을 짧게 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-3" class="scene clip" data-skill="split" data-scene-id="G00" data-start="10" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">AI를 잘 활용하는 공부법</h2>
+              <p class="thesis" data-editable="true">만들고, 설명하고, 조건을 바꾸고, 검증하는 순서로 배웁니다.</p>
+              <p class="explain" data-editable="true">네 단계는 구간마다 되풀이하는 공부 방법입니다. 먼저 만들되 기초는 결과를 설명하며 채우고, 실습 완료 조건에도 설명과 확인이 들어 있습니다.</p>
+              <div class="split-grid wide-left">
+                <div class="stack">
+                  <div class="split-image h-sm is-left is-thumb"><img src="assets/img/common/yt-thumb-kf1dypnh.jpg" alt="참고 영상 썸네일 · AgentOS 채널"></div>
+                  <p class="dg-caption is-left" data-editable="true"><img class="logo-inline" src="assets/img/logos/youtube.svg" alt="YouTube 로고">참고 영상 제목 "6년 걸릴 공부를 3일로 끝내는 법 — OpenAI 연구원이 인터뷰에서 직접 밝혔습니다" · 제목·썸네일 문구는 영상의 것이며 이 교육의 근거가 아님</p>
+                </div>
+                <div class="stack">
+                  <ol class="steps">
+                    <li class="step"><div class="step-num" data-editable="true">1</div><div class="step-body" data-editable="true">만들기</div></li>
+                    <li class="step"><div class="step-num" data-editable="true">2</div><div class="step-body" data-editable="true">설명하기</div></li>
+                    <li class="step"><div class="step-num" data-editable="true">3</div><div class="step-body" data-editable="true">조건 바꾸기</div></li>
+                    <li class="step"><div class="step-num" data-editable="true">4</div><div class="step-body" data-editable="true">검증하기</div></li>
+                  </ol>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: YouTube · AgentOS 채널 · https://www.youtube.com/watch?v=Kf1dYpnH-N4</p>
+              <aside class="speaker-note">오늘 가져갈 것은 오른쪽의 네 단계, 만들고 설명하고 조건을 바꾸고 검증하는 순서입니다. 이 네 단계는 오늘 구간마다 되풀이하는 공부 방법입니다. 먼저 만든다고 기초를 건너뛰는 것은 아니고, 만든 결과를 설명하면서 필요한 원리를 채워 갑니다. 그래서 실습의 완료 조건도 결과를 한 문장으로 설명하거나 다른 입력으로 확인하는 식으로 되어 있습니다. 왼쪽은 참고 영상인데 지금 틀지 않고, 제목의 '6년, 3일'은 영상이 붙인 표현이라 오늘 근거로 쓰지 않습니다. 링크는 실습 가이드 후속 읽을거리에 있으니 수업 후에 보셔도 됩니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-4" class="scene clip" data-skill="title-tags" data-scene-id="S02" data-start="15" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">강사 소개</h2>
+              <p class="thesis" data-editable="true">비전공자의 출발점에서 만들며 배운 것을 소개합니다.</p>
+              <p class="explain" data-editable="true">강사는 공정 업무를 하며 도구를 만들었고, 코드만큼 구조·데이터 검증·사용자 동선이 중요했습니다. 세 도구는 관련 개념 설명 바로 뒤에 사례로 다시 나옵니다.</p>
+              <div class="split-grid wide-left">
+                <div class="stack">
+                  <div class="tags"><span class="tag accent" data-editable="true">NAND Implant 공정 Engineer</span><span class="tag" data-editable="true">기술 블로그</span></div>
+                  <span class="concept-badge" data-editable="true">개인 기록</span>
+                  <div class="dg-row stretch">
+                    <div class="dg-box"><img class="dg-icon" src="assets/img/icons/search.svg" alt="검색 아이콘"><span data-editable="true">Part Finder</span><span class="dg-sub" data-editable="true">공개 Beta</span><span class="dg-sub" data-editable="true">부품 번호 후보 검증</span></div>
+                    <div class="dg-box"><img class="dg-icon" src="assets/img/icons/monitor.svg" alt="웹앱 아이콘"><span data-editable="true">Dokmo</span><span class="dg-sub" data-editable="true">개인 웹앱</span><span class="dg-sub" data-editable="true">사용 흐름 점검</span></div>
+                    <div class="dg-box"><img class="dg-icon is-logo" src="assets/img/logos/obsidian.svg" alt="Obsidian 로고"><span data-editable="true">Vault</span><span class="dg-sub" data-editable="true">Obsidian</span><span class="dg-sub" data-editable="true">원문과 판단 구분</span></div>
+                  </div>
+                </div>
+                <div class="placeholder is-spec">
+                  <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S02]</div>
+                  <div class="placeholder-desc" data-editable="true">넣을 자료: 프로젝트 1개의 공개 화면</div>
+                  <div class="placeholder-desc" data-editable="true">조건: 계정·사내 정보 가리기</div>
+                  <div class="placeholder-desc" data-editable="true">대체: 확보 전엔 카드 설명으로 진행</div>
+                </div>
+              </div>
+              <aside class="speaker-note">저는 NAND Implant 공정 Engineer로 일하면서 Part Finder와 개인 웹앱 Dokmo를 만들고, 그 과정을 기술 블로그에 기록해 왔습니다. 만들면서 가장 크게 배운 것은 구조, 데이터 검증, 사용자 동선이 코드만큼 중요하다는 점입니다. 화면의 세 카드는 오늘 사례로 다시 나옵니다. Part Finder는 오전 조회 도구 구간의 노트와 오후 coding agent 예시에서, Dokmo는 자유 실습의 검증 단계에서, 개인 지식 노트인 Vault는 오후 지식 자산화 구간에서 봅니다. Part Finder는 공개한 Beta 버전의 설계를 기준으로 설명하고, 사내 운영 버전과 같다고 말하지는 않겠습니다. 잠깐 각자 줄이고 싶은 반복 업무 하나를 떠올려 두세요. 오늘 마지막 자유 실습의 재료가 됩니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-5" class="scene clip" data-skill="split" data-scene-id="E01" data-start="20" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">실습 환경의 세 층</h2>
+              <p class="thesis" data-editable="true">코드는 내 PC에서 돌고, 계산은 사내 추론 서버에서 하며, 환경변수가 둘을 잇습니다.</p>
+              <p class="explain" data-editable="true">설치는 사전 과제로 마쳤으니 오늘은 세 층이 이어지는지만 확인합니다. 코드에 OpenAI라는 이름이 있어도 요청은 환경변수에 적은 서버로 갑니다.</p>
+              <div class="split-grid wide-left">
+                <div class="stack">
+                  <span class="concept-badge" data-editable="true">개념 예시</span>
+                  <div class="dg">
+                    <div class="dg-row even stretch">
+                      <div class="dg-zone">
+                        <div class="dg-zone-label" data-editable="true">내 PC</div>
+                        <div class="dg-box"><img class="dg-icon is-logo" src="assets/img/logos/python.svg" alt="Python 로고"><span data-editable="true">실습 코드</span><span class="dg-sub" data-editable="true">VS Code와 Python</span><span class="dg-sub" data-editable="true">요청을 보냄</span></div>
+                      </div>
+                      <span class="dg-arrow" aria-hidden="true">⇄</span>
+                      <div class="dg-zone">
+                        <div class="dg-zone-label" data-editable="true">환경변수</div>
+                        <div class="dg-box"><img class="dg-icon" src="assets/img/icons/key.svg" alt="열쇠 아이콘"><span data-editable="true">환경변수</span><span class="dg-sub" data-editable="true">주소·모델·키</span><span class="dg-sub" data-editable="true">사내 모델 운영 페이지에서 받음</span></div>
+                      </div>
+                      <span class="dg-arrow" aria-hidden="true">⇄</span>
+                      <div class="dg-zone accent">
+                        <div class="dg-zone-label" data-editable="true">사내 추론 서버</div>
+                        <div class="dg-box"><img class="dg-icon is-logo" src="assets/img/logos/vllm.png" alt="vLLM 로고"><span data-editable="true">추론 서버</span><span class="dg-sub" data-editable="true">vLLM → 모델</span><span class="dg-sub" data-editable="true">계산은 여기서</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="dg-caption" data-editable="true">주소·모델명·키 대신 역할 이름으로 표시 · 한 층만 어긋나도 첫 응답이 오지 않습니다</p>
+                </div>
+                <div class="stack">
+                  <div class="code-card">
+                    <div class="code-title" data-editable="true">요청 목적지를 정하는 두 줄 · 개념 예시</div>
+                    <pre class="code-body" data-editable="true">llm = ChatOpenAI(
+    <span class="hl">model=MODEL</span>,        <span class="cm"># 모델 이름</span>
+    <span class="hl">base_url=BASE_URL</span>,  <span class="cm"># 서버 주소</span>
+)   <span class="cm"># 키는 환경변수에서 읽음</span></pre>
+                  </div>
+                  <p class="guide-ref" data-editable="true">코드 위치: 모델 연결 설정 — 실습 가이드 해당 장</p>
+                  <div class="chip-row"><img class="row-icon" src="assets/img/icons/clipboard-check.svg" alt="확인 아이콘"><span class="chip" data-editable="true">첫 응답 = content</span><span class="chip" data-editable="true">토큰 사용량도 함께</span></div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · LangChain Models 문서</p>
+              <aside class="speaker-note">실습 환경은 세 층으로만 기억하시면 됩니다. 코드는 내 PC의 VS Code와 Python에서 돌고, 실제 계산은 사내 추론 서버에서 vLLM이 모델을 실행해 처리하며, 그 둘을 잇는 것이 서버 주소, 모델 이름, 키 세 개의 환경변수입니다. 환경변수 값은 사내 모델 운영 페이지에서 받아 코드 밖에 두고, 오른쪽 코드의 model과 base_url 두 줄이 그 값을 읽어 요청의 목적지를 정합니다. 그래서 코드에 OpenAI라는 이름이 있어도 요청이 OpenAI로 가는 것은 아니고, API는 요청과 응답 형식의 약속, SDK나 LangChain은 그 호출을 돕는 Python 도구라는 정도만 알아 두시면 됩니다. VS Code, Python, Claude Code 설치는 사전 과제로 마치셨으니 오늘은 첫 호출이 되는지만 확인하고, 첫 응답이 오면 content와 함께 토큰 사용량도 같이 보겠습니다. 이 토큰이 오늘 내내 길이와 비용을 재는 단위입니다. 질문 하나 드리겠습니다. 환경변수 한 줄이 틀리면 세 층 중 어디에서 막힐까요? 주소가 틀리면 서버에 닿지 못하고, 모델 이름이 틀리면 서버가 거절하고, 키가 틀리면 인증에서 막힙니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-6" class="scene clip" data-skill="steps" data-scene-id="S04" data-start="25" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">LLM의 응답 생성</h2>
+              <p class="thesis" data-editable="true">LLM은 사실을 조회하지 않고 다음 토큰의 확률 분포를 계산합니다.</p>
+              <p class="explain" data-editable="true">보통의 호출은 학습된 모델로 계산만 하므로, 질문을 더 보낸다고 모델이 재학습되지 않습니다. 한 번에 넣을 수 있는 입력·출력 길이의 한도를 컨텍스트 윈도우라고 합니다. 다음 실습에서 바꿀 temperature 값은 3단계의 선택에 영향을 줍니다.</p>
+              <div class="stack">
+                <ol class="steps row">
+                  <li class="step">
+                    <div class="step-num" data-editable="true">1</div><img class="step-icon" src="assets/img/icons/split.svg" alt="나누기 아이콘">
+                    <div class="step-body" data-editable="true">토큰으로 나누기<span class="step-desc">회의 | 내용을 | 세 | 줄로</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">2</div><img class="step-icon" src="assets/img/icons/calculator.svg" alt="계산 아이콘">
+                    <div class="step-body" data-editable="true">다음 토큰 분포 계산<span class="step-desc">후보: 요약 · 정리 · …</span></div>
+                  </li>
+                  <li class="step is-accent">
+                    <div class="step-num" data-editable="true">3</div><img class="step-icon" src="assets/img/icons/repeat.svg" alt="반복 아이콘">
+                    <div class="step-body" data-editable="true">선택하고 반복<span class="step-desc">'요약'을 골라 뒤에 붙임</span></div>
+                  </li>
+                </ol>
+                <div class="chip-row"><span class="chip" data-editable="true">고른 토큰을 입력 끝에 붙여 2단계로 돌아가기 — 답이 끝나거나 길이 한도에 닿을 때까지 반복</span></div>
+                <p class="dg-caption is-left" data-editable="true">개념 예시 · 실제 토큰 분할은 모델마다 다름 · 확률 수치 없음 · 길이 한도 = 컨텍스트 윈도우</p>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022 (지시 수행 학습)</p>
+              <aside class="speaker-note">용어를 먼저 정리하면, AI 안에 데이터로 패턴을 학습하는 머신러닝이 있고 그 안에 신경망을 쓰는 딥러닝이 있으며, 오늘 다루는 LLM은 딥러닝 기반의 언어 모델입니다. 대체 관계가 아니라 포함 관계이고, 오늘은 그중 LLM이 답을 만드는 방식만 가져갑니다. LLM은 입력을 토큰이라는 단위로 나누고, 지금까지의 문맥으로 다음 토큰 후보들의 가능성을 계산해 하나를 고르는 과정을 반복합니다. 화면의 세 카드 아래 줄처럼, 고른 토큰을 입력 끝에 붙여 다시 2단계로 돌아가는 방식을 자기회귀 생성이라고 합니다. 토큰은 단어 하나와 항상 같지 않고, 나누는 방식은 모델마다 다릅니다. 학습 단계에서는 모델 매개변수를 바꾸지만, 오늘 우리가 하는 호출은 이미 학습된 모델로 결과를 계산할 뿐입니다. 토큰 수는 비용과 속도를 재는 단위이면서, 한 번에 넣을 수 있는 입력과 출력 길이의 한도인 컨텍스트 윈도우를 재는 단위이기도 합니다. 이 한도는 다음 RAG 구간에서 자료를 나누는 첫 이유로 다시 나옵니다. 그러면 재학습이 아닌데도 같은 질문의 답이 달라진다면, 세 단계 중 어디에서 갈리는지 한 분만 답해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-7" class="scene clip" data-skill="compare" data-scene-id="S07" data-start="30" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">Temperature와 출력 변화</h2>
+              <p class="thesis" data-editable="true">temperature는 다양성을 조절할 뿐, 정확성 스위치가 아닙니다.</p>
+              <p class="explain" data-editable="true">응답 생성 3단계에서 분포를 얼마나 뾰족하게 볼지 정합니다. 바뀌는 것은 선택의 폭뿐입니다.</p>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <img class="col-icon" src="assets/img/icons/thermometer.svg" alt="온도 아이콘"><div class="compare-kicker" data-editable="true">temperature 낮게</div>
+                    <div class="compare-heading" data-editable="true">상위 후보에 몰림</div>
+                    <div class="dist" aria-hidden="true"><span class="dist-bar lv-5"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-1"></span><span class="dist-bar lv-1"></span><span class="dist-bar lv-1"></span></div>
+                    <ul class="compare-list"><li data-editable="true">결과가 비슷해지기 쉬움</li></ul>
+                  </div>
+                  <div class="compare-col">
+                    <img class="col-icon" src="assets/img/icons/thermometer.svg" alt="온도 아이콘"><div class="compare-kicker" data-editable="true">temperature 높게</div>
+                    <div class="compare-heading" data-editable="true">여러 후보로 퍼짐</div>
+                    <div class="dist" aria-hidden="true"><span class="dist-bar lv-4"></span><span class="dist-bar lv-3"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-2"></span></div>
+                    <ul class="compare-list"><li data-editable="true">표현이 자주 달라짐</li></ul>
+                  </div>
+                  <div class="compare-col is-accent"><img class="col-icon" src="assets/img/icons/clipboard-check.svg" alt="확인 아이콘">
+                    <div class="compare-kicker" data-editable="true">두 값 공통</div>
+                    <div class="compare-heading" data-editable="true">별도 확인</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">새 정보를 더하지 않음</li>
+                      <li data-editable="true">낮아도 틀릴 수 있음</li>
+                      <li data-editable="true">완전 동일도 보장 안 됨</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="dg-caption is-left" data-editable="true">같은 후보 5개의 분포 모양 · 개념 예시 · 수치 없음</p>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Reproducibility 문서 · LangChain Models 문서</p>
+              <aside class="speaker-note">temperature는 다음 토큰을 고를 때 선택의 다양성에 영향을 주는 값입니다. 화면의 막대처럼 같은 후보라도 값을 낮추면 확률이 높은 후보 쪽으로 몰리고, 높이면 여러 후보로 퍼져서 표현이 호출마다 달라지기 쉽습니다. 하지만 어느 쪽이든 모델이 모르는 정보를 더하거나 사실을 검증해 주지는 않습니다. 낮은 값에서도 틀릴 수 있고, 서버 환경에 따라 모든 실행이 완전히 같다는 보장도 없습니다. 같은 선택 단계에서 후보 범위를 좁히는 Top-K·Top-P 같은 값도 있지만, 오늘 실습에서는 temperature 하나만 바꿔 봅니다. 같은 질문을 여러 번 보내면 어떤 차이가 날지 먼저 예측해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-8" class="scene clip" data-skill="split" data-scene-id="L01" data-start="35" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">메시지 역할과 프롬프트</h2>
+              <p class="thesis" data-editable="true">system이 규칙을 정하고, user가 묻고, assistant가 답합니다.</p>
+              <p class="explain" data-editable="true">모델에 보내는 것은 문장 하나가 아니라 역할이 붙은 메시지 목록입니다. 모델은 목록에 있는 것만 보므로, 앞의 답을 다시 넣지 않으면 이전 대화를 모릅니다.</p>
+              <div class="split-grid">
+                <div class="stack">
+                  <div class="dg-row stretch is-roles">
+                    <div class="dg-box accent"><img class="dg-icon" src="assets/img/icons/list-checks.svg" alt="규칙 아이콘"><span data-editable="true">system</span><span class="dg-sub" data-editable="true">규칙·말투·역할</span><span class="dg-sub" data-editable="true">한 줄이 답 전체를 바꿈</span></div>
+                    <div class="dg-box"><img class="dg-icon" src="assets/img/icons/user.svg" alt="사용자 아이콘"><span data-editable="true">user</span><span class="dg-sub" data-editable="true">이번 질문</span><span class="dg-sub" data-editable="true">매번 새로 보냄</span></div>
+                    <div class="dg-box"><img class="dg-icon" src="assets/img/icons/bot.svg" alt="모델 아이콘"><span data-editable="true">assistant</span><span class="dg-sub" data-editable="true">모델의 답</span><span class="dg-sub" data-editable="true">다음 요청에 다시 넣어야 기억</span></div>
+                  </div>
+                  <div class="callout" data-editable="true">예시 몇 개를 함께 넣으면 <strong>답의 모양이 예시를 따라옵니다</strong></div>
+                </div>
+                <div class="stack">
+                  <div class="code-card">
+                    <div class="code-title" data-editable="true">역할이 붙은 메시지 목록 · 개념 예시</div>
+                    <pre class="code-body" data-editable="true">messages = [
+  (<span class="hl">"system"</span>, "정중하게 답합니다"),   <span class="cm"># 규칙</span>
+  (<span class="hl">"user"</span>, "첫 질문"),
+  (<span class="hl">"assistant"</span>, "첫 답"),  <span class="cm"># 앞 답을 다시 넣음</span>
+  (<span class="hl">"user"</span>, "두 번째 질문"),
+]</pre>
+                  </div>
+                  <p class="guide-ref" data-editable="true">코드 위치: 프롬프트 구성부 · 긍정봇 — 실습 가이드 해당 장</p>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: LangChain Messages 문서 · OpenAI Chat Completions 가이드</p>
+              <aside class="speaker-note">모델에 보내는 것은 문장 하나가 아니라 역할이 붙은 메시지 목록이고, 역할은 세 가지만 기억하시면 됩니다. system은 규칙과 말투와 역할을 정하는 자리라 한 줄만 바꿔도 답 전체의 성격이 바뀌고, user는 이번 질문이며, assistant는 모델이 낸 답입니다. 오른쪽 코드처럼 앞의 답을 assistant 메시지로 다시 넣어야 모델이 이전 대화를 참고할 수 있고, 넣지 않으면 매번 처음 만난 것처럼 답합니다. 이 성질은 이어지는 실습의 긍정봇에서 직접 확인합니다. 아래 상자의 한 줄처럼 원하는 답의 예시를 몇 개 같이 넣으면 답의 형식과 말투가 그 예시를 따라오는데, 이 방식을 few-shot 프롬프팅이라고 부릅니다. 예측 질문 하나 드리겠습니다. system 한 줄을 바꾸면 답의 무엇이 달라질까요? 내용이 달라질지, 말투와 형식이 달라질지 예측해 두시고 실습에서 확인해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>
+<section id="s-9" class="scene clip" data-skill="title-bullets" data-scene-id="S08" data-start="40" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">실습 1 · 첫 호출과 프롬프트</h2>
+              <p class="board-meta" data-editable="true">코드 위치: 모델 연결 설정 · 모델 호출부 · 긍정봇 — 실습 가이드 해당 장</p>
+              <p class="explain" data-editable="true"><strong>관찰할 것</strong>같은 질문에서 system 한 줄과 temperature가 각각 무엇을 바꾸는지, 긍정봇이 규칙 없이 → system만 → 예시 추가로 어떻게 달라지는지 봅니다. 두 번째 말에 앞 대화를 기억하는지, 최신 자료 답에 근거가 있는지도 표시합니다.</p>
+              <div class="stack">
+                <div class="time-blocks is-steps row time-band">
+                  <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">환경·첫 호출</div><img class="tb-icon" src="assets/img/icons/play.svg" alt="실행 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">system 바꾸기</div><img class="tb-icon" src="assets/img/icons/list-checks.svg" alt="규칙 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">temperature 3회</div><img class="tb-icon" src="assets/img/icons/thermometer.svg" alt="온도 아이콘"></div>
+                  <div class="time-block is-accent"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">럭키비키 긍정봇</div><img class="tb-icon" src="assets/img/icons/bot.svg" alt="봇 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">5</div><div class="what" data-editable="true">최신 자료 질문</div><img class="tb-icon" src="assets/img/icons/globe.svg" alt="최신 자료 아이콘"></div>
+                </div>
+                <div class="chip-row"><span class="chip" data-editable="true">① 환경 · 세 층</span><span class="chip" data-editable="true">② 역할 · system</span><span class="chip" data-editable="true">③ temperature</span><span class="chip accent" data-editable="true">④ 역할 · 예시</span><span class="chip" data-editable="true">⑤ 환각</span></div>
+                <div class="practice-grid">
+                  <div class="stack">
+                    <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">바꾼 것 하나와 달라진 것 하나를 한 문장으로 설명합니다</div></div>
+                    <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 출력으로 진행합니다</div>
+                  </div>
+                  <div class="stack">
+                    <div class="placeholder is-spec">
+                      <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S08]</div>
+                      <div class="placeholder-desc" data-editable="true">넣을 자료: 긍정봇 3단 비교 캡처</div>
+                      <div class="placeholder-desc" data-editable="true">조건: 세 답을 한 화면에 · 주소·키 가리기</div>
+                      <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 안내로 진행</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <aside class="speaker-note">먼저 설치와 환경변수를 확인하고 준비된 첫 호출을 실행해, 첫 응답의 content와 토큰 사용량이 함께 오는지 봅니다. 이것이 앞에서 본 세 층이 이어졌다는 확인입니다. 이어서 질문은 그대로 두고 system 한 줄만 바꿔 답의 말투와 형식이 어떻게 달라지는지 보고, 다음으로 temperature 두 값에서 같은 질문을 각각 세 번 이상 보내 표현의 흔들림을 비교합니다. 차이가 없었다는 것도 관찰 결과로 적어 두세요. 네 번째로 럭키비키 긍정봇을 규칙 없이, system 한 줄만, 예시 추가의 세 단계로 만들어 답이 어떻게 바뀌는지 비교하고, 완성된 봇에 두 번째 말을 걸어 앞 대화를 기억하지 못하는 것을 확인합니다. 앞 장의 assistant 메시지를 다시 넣지 않았기 때문이고, 이 결핍의 해법은 오후에 다시 다룹니다. 마지막으로 학습 이후에 나왔을 수 있는 최신 자료를 물어보고, 그럴듯하지만 근거 없는 답이 나오는지 표시합니다. 이것을 환각이라고 부르고, 확률로 다음 토큰을 만드는 방식의 부작용입니다. 접속이 안 되는 분은 준비된 출력으로 같은 비교를 계속하되 직접 실행한 결과와 구분해 두세요. 완료 조건은 바꾼 것 하나와 달라진 것 하나를 한 문장으로 말하는 것이고, 최신 자료 질문에서 본 한계는 다음 구간에서 외부 근거로 채워 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

@@ -1,0 +1,24 @@
+<section id="s-31" class="scene clip" data-skill="split" data-scene-id="S29" data-start="150" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">웹앱의 화면·처리·데이터</h2>
+              <p class="thesis" data-editable="true">Streamlit 앱도 화면·처리·데이터로 나눠 읽습니다.</p>
+              <p class="explain" data-editable="true">입력을 받고, 데이터를 조회해 처리한 뒤 화면에 다시 보여 주는 전체 흐름을 흔히 풀스택이라 부릅니다. 화면·서버 기술을 다 배우기 전에, 바꿀 부분이 어느 층인지부터 알아봅니다.</p>
+              <div class="split-grid wide-left">
+                <div class="code-card has-logos"><div class="code-logos"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+                  <div class="code-title" data-editable="true">개념 예시 · 함수 이름은 가상 · 실제 실습 코드와 다를 수 있음</div>
+<pre class="code-body" data-editable="true">q = st.text_input("질문")   <span class="cm"># 화면: 입력</span>
+if q:
+    rows = search(q)       <span class="cm"># 데이터: 조회</span>
+    ans = answer(q, rows)  <span class="cm"># 처리: 규칙·모델</span>
+    st.write(ans)          <span class="cm"># 화면: 결과</span></pre>
+                </div>
+                <div class="placeholder is-spec">
+                  <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S29]</div>
+                  <div class="placeholder-desc" data-editable="true">넣을 자료: 오전 Streamlit 앱 화면 — 입력 칸·결과 영역을 왼쪽 코드 줄과 짝지어 표시</div>
+                  <div class="placeholder-desc" data-editable="true">조건: 모델명·주소·키 가리기 · <span class="nowrap">실행일 표기 · 1600×900 이상</span></div>
+                  <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 코드 예시로 설명</div>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Streamlit API 문서(st.text_input, st.write)</p>
+              <aside class="speaker-note">화면에서 입력을 받고, 데이터를 조회하고, 규칙과 모델 호출로 처리해 다시 화면에 보여 주는 전체 흐름을 다루는 것을 흔히 풀스택이라고 부릅니다. Streamlit에서는 이 흐름을 Python 코드 몇 줄로 이을 수 있어서, 왼쪽 예시처럼 입력 칸, 조회, 모델 호출, 결과 표시가 차례로 나오고, 줄 끝 주석이 각 줄의 역할입니다. 오른쪽 자리에는 오전 앱의 실제 화면이 들어가는데, 입력 칸과 결과 영역이 왼쪽 코드의 어느 줄에 해당하는지 짝지어 보면 됩니다. Streamlit 공식 문서 설명처럼 Python 서버가 코드를 실행하고 브라우저는 화면을 보여 주는 구조라서, 오전 앱은 화면과 처리 사이에 별도 백엔드 서버를 두지 않았고 모델만 오전에 본 추론 서버에 API로 요청합니다. React나 별도 백엔드를 처음부터 모두 배우기보다, 지금 바꿀 부분이 화면인지, 처리인지, 데이터인지 알아보는 것부터 시작하면 AI가 만든 코드도 더 잘 판단할 수 있습니다. 앞 시간에 적은 개선 기능은 화면, 처리, 데이터 중 어디를 바꾸는 일인가요? 손가락으로 1, 2, 3을 표시해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

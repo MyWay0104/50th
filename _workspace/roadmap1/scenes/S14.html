@@ -1,0 +1,32 @@
+<section id="s-16" class="scene clip" data-skill="compare" data-scene-id="S14" data-start="75" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">답변과 검색 근거 확인</h2>
+  <p class="thesis" data-editable="true">틀렸다면 검색이 틀렸는지, 근거를 잘못 설명했는지부터 나눕니다.</p>
+  <p class="explain" data-editable="true">RAG 품질은 검색(관련 조각을 가져왔나)과 답변(근거에 충실했나)으로 나눠 봅니다. 검색 문제면 분할·검색 방식을, 답변 문제면 프롬프트 제약을 고칩니다. 정확한 집계 질문은 다음 구간의 도구(Tool)로 넘깁니다.</p>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/file-search.svg" alt="문서 대조 아이콘"><div class="compare-kicker" data-editable="true">문장마다 대조</div>
+      <div class="compare-heading" data-editable="true">근거에 있나요?</div>
+      <ul class="compare-list">
+        <li data-editable="true">근거에 있음: 문단에 같은 내용·날짜</li>
+        <li data-editable="true">근거 밖: 문단에 없는 추측·설명</li>
+      </ul>
+    </div>
+    <div class="compare-col">
+      <div class="stack">
+        <img class="col-icon" src="assets/img/icons/wrench.svg" alt="고칠 곳 아이콘"><div class="compare-kicker" data-editable="true">고칠 곳 찾기</div>
+        <table class="data-table">
+          <thead>
+            <tr><th data-editable="true">구분</th><th data-editable="true">답변 맞음</th><th data-editable="true">답변 틀림</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-editable="true">검색 맞음</td><td><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">통과</span></td><td data-editable="true">프롬프트 제약</td></tr>
+            <tr><td data-editable="true">검색 틀림</td><td data-editable="true">분할·검색</td><td data-editable="true">둘 다 점검</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Retrieval 가이드 · Lewis et al. 2020</p>
+  <aside class="speaker-note">답변이 좋아 보이는지보다, 근거가 그 문장을 실제로 뒷받침하는지를 봅니다. 한 분이 답변에서 문장 하나를 고르고, 그 문장이 들어 있는 기사 문단을 짚어 주세요. 근거 밖의 내용이 나왔다면 화면 오른쪽 표처럼 검색이 잘못된 것인지, 가져온 자료를 잘못 설명한 것인지를 나눠 보면 고칠 위치가 좁아집니다. RAGAS 같은 RAG 평가 도구도 검색 쪽과 답변 쪽을 나눠서 점수를 매깁니다. 그런데 "최근 일주일 장비별 점검 건수는?"이나 "지금 재고는?"처럼 정확한 조회가 필요한 질문은 기사 검색으로 풀기 어렵습니다. 휴식 후에는 이런 질문을 SQL 조회 도구로 연결합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

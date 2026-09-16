@@ -1,0 +1,36 @@
+<section id="s-55" class="scene clip" data-skill="steps" data-scene-id="A08" data-start="270" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · Agentic RAG</h2>
+  <p class="thesis" data-editable="true">검색 결과를 평가해 부족하면 질문을 고쳐 다시 찾습니다.</p>
+  <p class="explain" data-editable="true">앞의 RAG 구간에서 본 '검색이 틀렸나' 확인을 그래프에 넣은 구조입니다. 모델이 문서마다 관련성을 yes/no로 매기고, 그 결과로 경로가 갈립니다. 판정마다 호출이 늘어 재시도 횟수를 제한합니다.</p>
+  <div class="stack">
+    <div class="split-grid wide-left">
+      <div class="dg">
+        <div class="dg-row">
+          <div class="dg-box" data-editable="true">검색<span class="dg-sub">retrieve</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent" data-editable="true">관련성 평가<span class="dg-sub">문서별 yes/no</span></div>
+          <span class="dg-arrow has-label"><span aria-hidden="true">→</span><span class="dg-sub" data-editable="true">yes</span></span>
+          <div class="dg-box" data-editable="true">답변 생성<span class="dg-sub">generate</span></div>
+        </div>
+        <div class="dg-arrow"><span aria-hidden="true">↓</span> <span class="dg-caption" data-editable="true">no</span></div>
+        <div class="dg-row">
+          <div class="dg-box" data-editable="true">질문 재작성<span class="dg-sub">다시 검색으로 · 횟수 제한</span></div>
+          <span class="dg-caption" data-editable="true">개념 예시</span>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="code-card">
+          <div class="code-title" data-editable="true">관련성 판정 스키마 · 교육용 축약(일부 줄 생략)</div><div class="code-logos"><img class="logo-inline" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+          <pre class="code-body" data-editable="true">class GradeDocuments(BaseModel):
+    <span class="hl">score: Literal["yes", "no"]</span>
+grader = model.with_structured_output(
+    GradeDocuments)
+grade = grader.invoke(prompt).score</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangGraph Agentic RAG 문서 · Lewis et al. 2020</p>
+  <aside class="speaker-note">앞의 RAG 구간에서 답이 틀리면 검색이 틀렸는지, 가져온 자료를 잘못 설명했는지부터 나눠 보자고 했는데, Agentic RAG는 그 판단의 일부를 그래프 안에 넣은 구조입니다. 화면 왼쪽 그림처럼 검색한 뒤 모델이 문서마다 질문과 관련 있는지 yes나 no로 판정하고, 관련 문서가 있으면 답변을 만들고 없으면 질문을 고쳐 다시 검색합니다. 오른쪽 코드는 그 판정을 정해진 형식으로 받도록 yes와 no 두 값만 허용하는 스키마를 모델에 연결하는 부분을 교육용으로 줄인 것입니다. 이 그림에서 모델이 하는 일은 관련성 판정이고, 어느 길로 갈지는 그 결과를 받은 조건부 Edge가 정한다는 점도 봐 두세요. 같은 계열인 Corrective RAG는 근거가 부족하면 웹 검색으로 보완하고, Self-RAG는 답변이 근거에 맞는지까지 평가하며, Adaptive RAG는 질문에 따라 검색을 안 할지, 한 번 할지, 여러 번 할지를 먼저 고르는데, 사내망에서는 웹 검색 자체를 쓸 수 없을 수도 있습니다. 판정 한 번마다 모델 호출이 늘어 시간과 비용이 커지므로 재검색 횟수에 상한을 두고, 상한에 닿으면 억지로 답하지 않고 근거를 찾지 못했다고 알리게 합니다. 평가 단계를 넣었다고 환각이 사라지는 것은 아니니 근거 확인은 계속 필요합니다. 오늘 실습한 기본 RAG로 충분한지부터 확인하세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

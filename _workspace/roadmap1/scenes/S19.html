@@ -1,0 +1,27 @@
+<section id="s-21" class="scene clip" data-skill="title-bullets" data-scene-id="S19" data-start="100" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 3 · SQL Tool 연결</h2>
+  <p class="board-meta" data-editable="true">코드 위치: 교육용 DB 준비 부분 · SQL 조회 도구 연결 부분 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>조회 도구에 넘어간 인자와 실제 조회 결과를 나누고, 인자를 누가 정했는지 봅니다. 프롬프트의 '위험한 SQL 금지'는 접근 제한이 아니며, 권한은 실행 환경에서 막습니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">스키마 확인</div><img class="tb-icon" src="assets/img/icons/table.svg" alt="표 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">연결·조회</div><img class="tb-icon" src="assets/img/icons/database.svg" alt="조회 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">다른 입력</div><img class="tb-icon" src="assets/img/icons/pencil.svg" alt="입력 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">결과 설명</div><img class="tb-icon" src="assets/img/icons/message-square.svg" alt="설명 아이콘"></div>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">정답을 아는 질문과 결과 없는 질문의 차이를 설명합니다</div></div>
+    </div>
+    <div class="stack">
+      <p class="dg-caption is-left" data-editable="true">실행 환경에서 막는 네 층 · 개념 정리, 실습 코드 구성과 별개</p>
+      <div class="dg">
+        <div class="dg-row stretch"><div class="dg-box" data-editable="true">읽기 전용</div><div class="dg-box" data-editable="true">허용 테이블</div></div>
+        <div class="dg-row stretch"><div class="dg-box" data-editable="true">쿼리 검사</div><div class="dg-box" data-editable="true">사람 승인</div></div>
+      </div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>DB 접속이 안 되면 같은 구조의 교육용 DB로, <span class="nowrap">도구 호출이</span> 안 되면 옆 사람 화면으로 진행합니다</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드</p>
+  <aside class="speaker-note">먼저 테이블 구조와 날짜 기준, 단위를 확인합니다. 실제 테이블과 컬럼 이름은 실습 가이드 해당 장을 기준으로 봅니다. 다음으로 준비된 읽기 전용 조회 도구를 연결해 호출하고, 도구에 넘어간 인자와 실제 조회 결과를 나눠서 보면서 그 인자를 모델이 정했는지 코드가 정했는지도 확인합니다. 이어서 정답을 알고 있는 질문과 결과가 없어야 하는 질문을 넣어 비교하고, 마지막으로 결과를 한 문장으로 설명합니다. 프롬프트에 "위험한 SQL은 실행하지 마"라고 적는 것만으로는 접근 제한이 되지 않아서, 오른쪽 네 칸처럼 읽기 전용 계정, 허용 테이블, 쿼리 검사, 사람 승인(HITL) 같은 층을 실행 환경에 둡니다. 사람 승인을 흐름 안에 넣는 방법은 부록의 사람 승인(HITL) 장면에서 따로 다룹니다. DB 접속이 안 되는 분은 같은 구조의 교육용 DB로, 도구 호출이 안 되는 분은 옆 사람 화면으로 진행합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

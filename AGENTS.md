@@ -132,6 +132,7 @@ PDF/PPTX로 파일화하기 전까지 사용자가 `overview.html`에서 수작�
 - `slide_content_writer`: 장면별 화면 문구·발표자 노트·출처를 최종 문장으로 확정한다. 산출물 `_workspace/slide_copy/<차수>.md`.
 - `slide_ui_designer`: 장면별 배치·글자 크기·색 역할을 DESIGN.md 기준으로 지시한다. 애니메이션은 다루지 않는다. 산출물 `_workspace/slide_ui/<차수>.md`.
 - `lecture_expert`: 강사·교수설계 관점에서 차수 단위로 검토하고 수정 요청을 낸다. 빌드 전·후 2회. 산출물 `_workspace/lecture_review/<차수>-pre|post.md`.
+- `llm-professional`: LLM·Agent 교안(4일 프레임워크·5일 LLM·agent-handbook) 제작자 관점에서 "실습 단계마다 직전 개념이 짝으로 있는가"를 검토한다. 로드맵·콘티·문구 단계에서 쓴다. 산출물 `_workspace/roadmap1/review_llm_professional.md`(호출자가 경로 지정 가능).
 
 정의는 `.codex/agents/*.toml`(규약·검증용)과 `.claude/agents/*.md`(Claude Code 실행용) 양쪽에 둔다.
 

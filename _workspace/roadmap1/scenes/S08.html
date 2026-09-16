@@ -1,0 +1,29 @@
+<section id="s-10" class="scene clip" data-skill="title-bullets" data-scene-id="S08" data-start="45" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">실습 1 · 호출과 비교</h2>
+              <p class="board-meta" data-editable="true">실습 가이드 해당 장</p>
+              <p class="explain" data-editable="true"><strong>관찰할 것</strong>temperature 두 값에서 같은 질문을 각각 3회 이상 보내고, 차이가 없어도 기록합니다. 최신 자료 질문의 답변에는 근거가 있는지 표시해 다음 RAG 구간에 가져갑니다.</p>
+              <div class="practice-grid">
+                <div class="stack">
+                  <div class="time-blocks is-steps row">
+                    <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">첫 호출</div><img class="tb-icon" src="assets/img/icons/play.svg" alt="실행 아이콘"></div>
+                    <div class="time-block is-accent"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">반복 비교</div><img class="tb-icon" src="assets/img/icons/repeat.svg" alt="반복 아이콘"></div>
+                    <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">최신 자료</div><img class="tb-icon" src="assets/img/icons/globe.svg" alt="최신 자료 아이콘"></div>
+                    <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">결과 확인</div><img class="tb-icon" src="assets/img/icons/clipboard-check.svg" alt="확인 아이콘"></div>
+                  </div>
+                  <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">바꾼 값과 관찰한 차이를 한 문장으로 설명합니다</div></div>
+                  <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 출력으로 비교를 계속합니다</div>
+                </div>
+                <div class="stack">
+                  <div class="placeholder is-spec">
+                    <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S08]</div>
+                    <div class="placeholder-desc" data-editable="true">넣을 자료: 실습 1 호출 결과 캡처 — 같은 질문, temperature 두 조건</div>
+                    <div class="placeholder-desc" data-editable="true">조건: 모델명·주소·키 가리기 · 실행일 표기 · 1600×900 이상</div>
+                    <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 이 자리를 두고 왼쪽 안내로 진행</div>
+                  </div>
+                  <p class="guide-ref" data-editable="true">코드 위치: 모델 연결 설정 · 모델 호출부 — 실습 가이드 해당 장</p>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Reproducibility 문서</p>
+              <aside class="speaker-note">먼저 준비된 호출을 실행해 첫 응답이 오는지 확인하고, 이어서 질문은 그대로 두고 temperature 두 값에서 각각 세 번 이상 호출합니다. 매번 눈에 띄는 차이가 나지 않을 수도 있으니, 차이가 없었다는 것도 관찰 결과로 적어 두세요. 오른쪽 캡처는 제가 미리 돌린 결과이고, 여러분 결과와 다르다면 그 차이가 오늘 첫 관찰입니다. 그다음에는 학습 이후에 나왔을 수 있는 최신 자료를 물어보고, 답변에 근거가 있는지 표시해 둡니다. 마지막으로 바꾼 값과 관찰한 차이를 한 문장으로 발표하고, temperature가 앞에서 본 응답 생성 세 단계 중 어디에 영향을 주는지도 함께 말해 봅니다. 접속이 안 되는 분은 준비된 출력으로 같은 비교를 계속하되 직접 실행한 결과와 구분해 두고, 최신 자료 질문에서 표시한 한계는 다음 RAG 구간에서 외부 근거로 채워 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

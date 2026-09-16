@@ -357,3 +357,11 @@ v0.3 52장을 v0.4 57장으로 개정한 뒤의 QA다. 기준 문서: `topics/sk
 | F4 | 실습 안내판 배치 통일·안내 줄 정리는 사내 실습 HTML 반영 때 함께 | S08, S13, S19, S20, S26, S32, S37, S40–S43 |
 | F5 | 캡처를 확보하지 못한 자리표시가 있으면 캡처를 전제한 노트 문장을 '대체' 안내에 맞게 수정 | 자리표시 10곳 |
 | F6 | 노트의 교안 연계 문장은 출처 표현만 지우고 내용은 남겼다. 교안을 따로 안내하려면 강사가 말로 덧붙인다 | 노트 22곳 |
+
+
+## v0.5 재구성 (2026-09-17 밤 · ROADMAP1)
+
+- 장면 50장(도입 4 · 오전 18 · 오후 18 · 부록 10). 매핑표 `_workspace/roadmap1/scene_map_v0.5.md`.
+- `validate_topic.py` 통과 · `npx hyperframes check` 통과(0 error / 9 warning: composition_file_too_large·timeline_track_too_dense·duplicate_media_discovery_risk, v0.4와 동일 성격) · `qa_rules.py` 위반 0건(시간 표기 예외 G01·G03) · `sync_overview.py --check` 최신.
+- 빌드 후 검토 2건(`_workspace/roadmap1/review_*-post.md`) 수정 요청 전부 반영 후 게이트 재통과.
+- 미완: 사용자 overview 검토, 캡처 자리표시 교체, export.

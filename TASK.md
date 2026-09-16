@@ -26,9 +26,11 @@
 - [x] topic scaffold에 `exports/` 추가
 - [x] PDF/PPTX export gate 중심으로 workflow 문서 수정
 - [x] 슬라이드 단위 서브에이전트 3종 추가 (`slide_content_writer`, `slide_ui_designer`, `lecture_expert`)
+- [x] LLM·Agent 내용 전문가 서브에이전트 `llm-professional` 추가 (2026-09-17). 교안 3권 제작자 관점의 개념-실습 짝 검토. 첫 사용: `sk-hynix-ai-agent-guide-edu` 재구성 로드맵(`topics/sk-hynix-ai-agent-guide-edu/ROADMAP1.md`)
 - [x] `scripts/sync_overview.py` 추가: scene-styles 규약 topic의 overview 재생성, 순번 정리, 최신 여부 검사
 - [x] `sk-hynix-ai-agent-guide-edu` topic v0.3 빌드 (Phase 0–4, 2026-09-14). 아래 v0.4로 대체됨. QA: `_workspace/ppt_qa_report.md`
 - [x] `sk-hynix-ai-agent-guide-edu` v0.4 57장 개정 (2026-09-16, 브랜치 `feat/sk-hynix-deck-v0.4`): 막 태그·한 줄 요지·설명 문단·장면별 시각 요소, G00·A07–A10 추가, 차수 묶음마다 강사 사전·사후 검토 반영. 사용자 overview 검토·export 대기. 진행 기록: `_workspace/v0.4_progress.md`
+- [x] `sk-hynix-ai-agent-guide-edu` v0.5 재구성 (2026-09-17 밤): 사내 실습 흐름에 맞춰 50장으로 재편, `ROADMAP1.md` 기준. 신규 서브에이전트 `llm-professional`과 `lecture_expert`로 빌드 전·후 검토. QA 게이트 통과. 사용자 overview 검토·export 대기. 기록: `_workspace/roadmap1/`
 - [x] `sk-hynix-ai-agent-guide-edu` final-touch (2026-09-17, 브랜치 `final-touch` → main): 사용자 수정 12건(주황 테마, 구간 표시·쪽번호·시간 정보 삭제, 존댓말, 제목 간결화, 공식 출처만, 로고·아이콘). 기록: `_workspace/final_touch.md`
 
 ## 코드

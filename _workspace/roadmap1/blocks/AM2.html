@@ -1,0 +1,430 @@
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="S09" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">외부 자료가 필요한 질문</h2>
+  <p class="thesis" data-editable="true">그럴듯함과 근거 있음은 다릅니다.</p>
+  <p class="explain" data-editable="true">모델은 학습 이후 정보와 사내 자료를 모르고 출처도 보장하지 못합니다. 이렇게 그럴듯하지만 근거 없는 답을 환각이라 부릅니다. 근거를 찾아 질문과 함께 전달하면 이번 답변에 쓰게 할 수 있지만, 검색·자료 품질 확인은 여전히 필요합니다.</p>
+  <div class="stack">
+    <div class="dg-row">
+      <div class="dg-box muted" data-editable="true">학습 이후 정보 없음</div>
+      <div class="dg-box muted" data-editable="true">사내 자료 없음</div>
+      <div class="dg-box muted" data-editable="true">출처 보장 못 함</div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col"><img class="col-icon" src="assets/img/icons/bot.svg" alt="모델 아이콘">
+        <div class="compare-heading"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">모델만 사용</span></div>
+        <ul class="compare-list">
+          <li data-editable="true">문장이 자연스러워도 근거는 따로 확인 · 환각</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent"><img class="col-icon" src="assets/img/icons/file-text.svg" alt="근거 문서 아이콘">
+        <div class="compare-heading"><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">근거 전달</span></div>
+        <ul class="compare-list">
+          <li data-editable="true">답변 문장을 기사와 대조할 수 있음</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">실습 1 마지막 최신 자료 질문에서 어떤 답이 나왔는지 한 분만 말씀해 주세요. 화면 위쪽 상자 세 개가 모델만으로 답할 때의 한계로, 학습 이후 정보, 접근한 적 없는 사내 자료, 답의 출처는 모델이 스스로 채우지 못합니다. 그런데도 모델은 문맥상 자연스러운 문장을 이어 쓰기 때문에 그럴듯한 답이 나오는데, 이렇게 근거 없이 그럴듯한 답을 환각이라고 부르며, 다음 토큰을 확률로 고르는 방식의 부작용입니다. 오전 내내 이 부작용을 자료(RAG), 도구(Tool), 검증으로 보완해 가겠습니다. 필요한 근거를 찾아 질문과 함께 전달하면 모델은 이번 답변에 그 자료를 사용할 수 있지만, 근거를 붙여도 검색이 틀리거나 자료가 부실하면 답도 틀릴 수 있습니다. 이번 구간 내내 "이 문장이 기사에 실제로 있나?"를 확인하는 습관을 들이겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="steps" data-scene-id="S10" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">RAG의 기본 구조</h2>
+  <p class="thesis" data-editable="true">미리 준비하는 인덱싱과 질문할 때의 검색·답변, 두 시점이 있습니다.</p>
+  <p class="explain" data-editable="true">RAG는 질문에 맞는 자료 조각을 찾아 질문과 함께 모델에 넘기는 방식입니다. 인덱싱은 문서를 나누고 임베딩해 저장해 두는 과정이고, 벡터 검색은 여러 검색 방법 중 하나입니다. 모델을 학습시키지 않으므로 자료를 기억하지 않습니다.</p>
+  <div class="stack">
+    <div class="dg-row stretch">
+      <div class="dg-zone is-grow">
+        <div class="dg-zone-label" data-editable="true">미리 준비 · 인덱싱</div><img class="zone-icon" src="assets/img/icons/database.svg" alt="저장소 아이콘">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">분할</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">임베딩</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">저장</div>
+        </div>
+      </div>
+      <span class="dg-arrow is-zone-gap" aria-hidden="true">→</span>
+      <div class="dg-zone is-grow">
+        <div class="dg-zone-label" data-editable="true">질문할 때</div><img class="zone-icon" src="assets/img/icons/search.svg" alt="검색 아이콘">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">질문</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent" data-editable="true">검색</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">답변</div>
+        </div>
+      </div>
+    </div>
+    <div class="chip-row">
+      <span class="concept-badge" data-editable="true">개념 예시</span><img class="row-icon" src="assets/img/icons/file-text.svg" alt="문서 아이콘">
+      <span class="chip" data-editable="true">조각 1</span>
+      <span class="chip" data-editable="true">겹침</span>
+      <span class="chip" data-editable="true">조각 2</span>
+      <span class="chip" data-editable="true">겹침</span>
+      <span class="chip" data-editable="true">조각 3</span>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">위 흐름은 일반 구조 · 분할 크기·겹침: 작으면 문맥 손실, 크면 잡음</p>
+    <p class="guide-ref" data-editable="true">코드 위치: 자료 준비(수집·분할) 부분 · 검색 부분 — 실습 가이드 해당 장</p>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">RAG는 검색한 자료를 이번 답변을 만들 때 사용하는 방식입니다. 화면 왼쪽 구역은 질문이 오기 전에 미리 해 두는 인덱싱이고, 오른쪽 구역은 질문이 올 때마다 도는 검색과 답변입니다. 더 잘게 나누면 로드·분할·임베딩·저장과 질문·검색·증강·생성으로 볼 수 있는데, 오늘은 여섯 상자로 줄였습니다. 아래 조각 띠처럼 자료를 나눌 때 조각이 너무 작으면 문맥이 끊기고 너무 크면 관계없는 내용이 섞이므로, 조각끼리 조금 겹치게 나누기도 합니다. 이번 실습은 기사 한 편이라 본문을 통째로 모델에 넣어 요약하지만, 기사가 100편이면 앞에서 본 컨텍스트 윈도우에 다 넣을 수 없으므로 나누고 찾아야 합니다. 그래서 다음 장에서 나누기·숫자로 바꾸기·가까운 것 찾기 세 단계를 먼저 보고 실습에 들어갑니다. 임베딩과 벡터 저장소는 검색 방법 중 하나이고 키워드 검색 같은 다른 방법도 있어 항상 필수는 아니며, RAG는 모델 가중치를 바꾸는 학습이 아니므로 다음 질문에서 그 자료를 모델이 기억하는 것도 아닙니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="steps" data-scene-id="R01" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">나누고, 숫자로 바꾸고, 가까운 것 찾기</h2>
+  <p class="thesis" data-editable="true">긴 자료는 조각으로 나누고, 조각을 뜻이 담긴 숫자로 바꿔 두면 가까운 조각을 찾을 수 있습니다.</p>
+  <p class="explain" data-editable="true">한 번에 넣을 수 있는 길이에 한도가 있고, 자료가 크면 질문과 관계없는 부분까지 섞이므로 나눕니다. 나눈 조각을 숫자 묶음으로 바꿔 두면, 질문과 뜻이 가까운 조각만 골라 모델에 넘길 수 있습니다.</p>
+  <div class="stack">
+    <ol class="steps row is-compact">
+      <li class="step">
+        <div class="panel-title" data-editable="true">① 나누기 · 청킹</div><img class="step-icon" src="assets/img/icons/split.svg" alt="나누기 아이콘">
+        <div class="step-body" data-editable="true">긴 자료를 조각으로<span class="step-desc">조각 크기 · 겹침</span></div>
+      </li>
+      <li class="step is-accent">
+        <div class="panel-title" data-editable="true">② 숫자로 바꾸기 · 임베딩</div><img class="step-icon" src="assets/img/icons/calculator.svg" alt="숫자 변환 아이콘">
+        <div class="step-body" data-editable="true">뜻이 가까우면 숫자도 가까움<span class="step-desc">조각마다 숫자 묶음</span></div>
+      </li>
+      <li class="step">
+        <div class="panel-title" data-editable="true">③ 가까운 것 찾기 · 벡터 검색</div><img class="step-icon" src="assets/img/icons/search.svg" alt="검색 아이콘">
+        <div class="step-body" data-editable="true">질문과 가까운 조각만<span class="step-desc">저장소에서 몇 개</span></div>
+      </li>
+    </ol>
+    <div class="chip-row">
+      <span class="concept-badge" data-editable="true">개념 예시</span>
+      <span class="chip accent" data-editable="true">반도체 공정</span>
+      <span class="dg-arrow" aria-hidden="true">↔</span>
+      <span class="chip accent" data-editable="true">웨이퍼 제조</span>
+      <span class="dg-caption" data-editable="true">숫자가 가까움</span>
+      <span class="dg-arrow" aria-hidden="true">↔</span>
+      <span class="chip" data-editable="true">맛있는 김치</span>
+      <span class="dg-caption" data-editable="true">숫자가 멂</span>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">조각 수는 조각 크기에 따라 달라집니다 · 저장소 이름과 거리 계산 방식은 실습 가이드 해당 장</p>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드(Text splitters · Embeddings)</p>
+  <aside class="speaker-note">앞 장에서 기사가 100편이면 다 못 넣는다고 했는데, 그러면 무엇을 해야 할까요? 첫째, 긴 자료를 조각으로 나눕니다. 컨텍스트 윈도우 한도 때문이기도 하고, 조각이 작아야 질문과 관계있는 부분만 정확히 찾을 수 있기 때문이며, 실습 코드의 chunk_size가 조각 크기이고 조각끼리 조금 겹치게 하는 값이 overlap입니다. 둘째, 조각마다 뜻이 담긴 숫자 묶음, 곧 임베딩으로 바꿉니다. 아래 예시처럼 반도체 공정과 웨이퍼 제조는 숫자가 가깝고 맛있는 김치는 멀리 있는데, 가깝다는 것은 두 숫자 묶음 사이 거리나 코사인 값으로 계산합니다. 셋째, 질문도 같은 방식으로 숫자로 바꿔 저장소에서 가까운 조각 몇 개만 꺼내는 것이 벡터 검색이고, 실습에서 쓰는 저장소 이름과 점수가 거리인지 유사도인지는 실습 가이드 해당 장에서 확인합니다. LangChain은 이 세 단계를 부품처럼 이어 주는 도구 상자이며 자세한 비교는 부록에 있습니다. 조각을 두 배 크게 하면 조각 수는 어떻게 될까요? 실습에서 직접 바꿔 세어 봅니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title-bullets" data-scene-id="S13" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 2 · 기사 한 편으로 RAG 만들기</h2>
+  <p class="board-meta" data-editable="true">코드 위치: 본문 수집 부분 · 나누기와 저장 부분 · 본문을 붙여 요약하는 호출부 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>조각이 몇 개 나오는지(두 개 안팎)와 chunk_size를 바꾸면 몇 개가 되는지 셉니다. 요약의 한 문장이 본문 어디에 있는지, 기사에 없는 것을 물으면 없다고 하는지 확인합니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">본문 확보</div><img class="tb-icon" src="assets/img/icons/file-text.svg" alt="본문 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">나누고 저장</div><img class="tb-icon" src="assets/img/icons/split.svg" alt="나누기 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">붙여 요약</div><img class="tb-icon" src="assets/img/icons/message-square.svg" alt="요약 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">없는 것 묻기</div><img class="tb-icon" src="assets/img/icons/circle-help.svg" alt="물음 아이콘"></div>
+      </div>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① 찾아서 읽기</span>
+        <span class="chip accent" data-editable="true">② 나누기 · 임베딩</span>
+        <span class="chip" data-editable="true">③ 근거 대조</span>
+        <span class="chip" data-editable="true">④ 없으면 없다</span>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">요약의 한 문장을 뒷받침하는 본문 문장을 찾습니다</div></div>
+    </div>
+    <div class="stack">
+      <div class="image-frame">
+        <div class="placeholder is-spec">
+          <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S13]</div>
+          <div class="placeholder-desc" data-editable="true">넣을 자료: 조각 수 출력 · 요약 결과와 본문을 나란히 둔 화면</div>
+          <div class="placeholder-desc" data-editable="true">조건: 주소·키·모델명 가리기 · 1600×900 이상</div>
+          <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 이 자리를 비워 둠</div>
+        </div>
+      </div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>기사 접속이 안 되면 준비된 저장 본문으로 진행합니다</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">먼저 기사 페이지에서 본문을 가져와 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 눈으로 확인합니다. 여기까지는 AI 없이 찾아서 읽기만 한 것입니다. 이어서 본문을 나누고 저장소에 넣은 뒤 조각이 몇 개 나왔는지 세고, chunk_size를 바꿔 다시 세어 봅니다. 조각이 두 개면 통째로 넣어도 되는데 왜 나누냐고 물으실 텐데, 기사가 많아지면 컨텍스트 윈도우에 다 못 넣기 때문이고, 오늘은 그 방법을 작은 크기로 미리 손에 익히는 것입니다. 다음으로 본문을 질문에 붙여 요약하게 하는데, 이것은 외부 문서 기반 요약이고 질문에 맞는 조각을 골라 넘길 때 비로소 RAG라 부릅니다. 요약의 한 문장을 고르고 그 문장이 본문 어디에 있는지 찾아 대조하고, 마지막으로 기사에 없는 것을 물어 없다고 답하는지 확인합니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로 같은 단계를 진행합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="S14" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">답변과 검색 근거 확인</h2>
+  <p class="thesis" data-editable="true">틀렸다면 검색이 틀렸는지, 근거를 잘못 설명했는지부터 나눕니다.</p>
+  <p class="explain" data-editable="true">RAG 품질은 검색(관련 조각을 가져왔나)과 답변(근거에 충실했나)으로 나눠 봅니다. 검색 문제면 분할·검색 방식을, 답변 문제면 프롬프트 제약을 고칩니다. 정확한 집계 질문은 다음 구간의 도구(Tool)로 넘깁니다.</p>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/file-search.svg" alt="문서 대조 아이콘"><div class="compare-kicker" data-editable="true">문장마다 대조</div>
+      <div class="compare-heading" data-editable="true">근거에 있나요?</div>
+      <ul class="compare-list">
+        <li data-editable="true">근거에 있음: 문단에 같은 내용·날짜</li>
+        <li data-editable="true">근거 밖: 문단에 없는 추측·설명</li>
+      </ul>
+    </div>
+    <div class="compare-col">
+      <div class="stack">
+        <img class="col-icon" src="assets/img/icons/wrench.svg" alt="고칠 곳 아이콘"><div class="compare-kicker" data-editable="true">고칠 곳 찾기</div>
+        <table class="data-table">
+          <thead>
+            <tr><th data-editable="true">구분</th><th data-editable="true">답변 맞음</th><th data-editable="true">답변 틀림</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-editable="true">검색 맞음</td><td><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">통과</span></td><td data-editable="true">프롬프트 제약</td></tr>
+            <tr><td data-editable="true">검색 틀림</td><td data-editable="true">분할·검색</td><td data-editable="true">둘 다 점검</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Retrieval 가이드 · Lewis et al. 2020</p>
+  <aside class="speaker-note">답변이 좋아 보이는지보다, 근거가 그 문장을 실제로 뒷받침하는지를 봅니다. 한 분이 답변에서 문장 하나를 고르고, 그 문장이 들어 있는 기사 문단을 짚어 주세요. 근거 밖의 내용이 나왔다면 화면 오른쪽 표처럼 검색이 잘못된 것인지, 가져온 자료를 잘못 설명한 것인지를 나눠 보면 고칠 위치가 좁아집니다. RAGAS 같은 RAG 평가 도구도 검색 쪽과 답변 쪽을 나눠서 점수를 매깁니다. 그런데 "최근 일주일 장비별 점검 건수는?"이나 "지금 재고는?"처럼 정확한 조회가 필요한 질문은 기사 검색으로 풀기 어렵습니다. 휴식 후에는 이런 질문을 SQL 조회 도구로 연결합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="S15" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">정확한 조회와 계산</h2>
+  <p class="thesis" data-editable="true">숫자와 ID는 코드가 맡고, 모델은 해석하고 설명합니다.</p>
+  <p class="explain" data-editable="true">'최근 일주일 장비별 건수'는 날짜 기준·단위·중복 처리를 정해야 답이 하나로 나옵니다. 집계 기준은 코드에 고정하고, 정답을 아는 작은 데이터로 먼저 확인합니다.</p>
+  <div class="stack">
+    <div class="dg-row stretch">
+      <div class="dg-box" data-editable="true">질문</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box muted" data-editable="true">모델 · 조건 해석</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box accent" data-editable="true">SQL·Python · 집계</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box muted" data-editable="true">모델 · 설명</div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/bot.svg" alt="모델 아이콘"><div class="compare-heading" data-editable="true">모델 · 해석과 설명</div>
+        <ul class="compare-list">
+          <li data-editable="true">'최근 일주일'을 조회 인자로 바꿈</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <span class="col-icons"><img class="head-icon" src="assets/img/icons/database.svg" alt="데이터베이스 아이콘"><img class="head-icon" src="assets/img/logos/python.svg" alt="Python 로고"></span><div class="compare-heading" data-editable="true">SQL·Python · 조회와 집계</div>
+        <ul class="compare-list">
+          <li data-editable="true">없는 ID는 만들지 않음</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · 흐름도는 개념 예시</p>
+  <aside class="speaker-note">장비별 건수나 특정 파트가 있는지는 기준을 정하고 실제 데이터로 확인해야 하는 질문입니다. 화면 위쪽 네 상자에서 주황 상자인 집계만 SQL이나 Python이 맡고, 앞뒤의 조건 해석과 설명은 모델이 맡습니다. 예를 들어 교육용 가상 데이터에서 EQ-01 12건, EQ-02 7건이라는 값은 코드가 세고, 모델은 그 값을 옮겨 설명만 합니다. 같은 자료라도 날짜 기준, 단위, 중복 처리에 따라 답이 달라지므로 그 기준을 코드에 고정해 두는 것이 중요합니다. 제 개인 기록의 Part Finder도 분석 로직을 따로 떼어 입력 레코드로 먼저 집계하고, 모델은 그 결과를 설명하게 바꾼 과정이 있습니다. 앞 구간에서 본 LLM의 한계처럼, 정확한 계산과 ID 확인도 모델 바깥에 두는 편이 안전합니다. "최근"이라는 말에 어떤 날짜 기준이 필요한지 한 분만 답해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="steps" data-scene-id="S16" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">도구(Tool) 호출 순서</h2>
+  <p class="thesis" data-editable="true">모델은 도구 호출을 요청하고, 실행은 프로그램이 합니다.</p>
+  <p class="explain" data-editable="true">프로그램이 도구의 이름·설명·입력 형식을 알려 주면 모델은 쓸 도구를 돌려줍니다. @tool은 <span class="nowrap">함수 설명문(docstring)을</span> 도구 설명으로 쓰므로, 설명이 모호하면 도구를 잘못 고릅니다. 이번 실습의 도구는 인자가 없어 모델이 정하는 것은 '부를지 말지'뿐입니다.</p>
+  <div class="stack">
+    <ol class="steps row is-compact">
+      <li class="step">
+        <div class="panel-title" data-editable="true">① 프로그램</div><img class="step-icon" src="assets/img/icons/code.svg" alt="프로그램 아이콘">
+        <div class="step-body" data-editable="true">도구 알려주기<span class="step-desc">이름·설명·형식</span></div>
+      </li>
+      <li class="step is-muted">
+        <div class="panel-title" data-editable="true">② 모델</div><img class="step-icon" src="assets/img/icons/bot.svg" alt="모델 아이콘">
+        <div class="step-body" data-editable="true">호출 요청<span class="step-desc">tool_calls</span></div>
+      </li>
+      <li class="step is-accent">
+        <div class="panel-title" data-editable="true">③ 프로그램</div><img class="step-icon" src="assets/img/icons/code.svg" alt="프로그램 아이콘">
+        <div class="step-body" data-editable="true">실행과 반환<span class="step-desc">조회 결과</span></div>
+      </li>
+      <li class="step is-muted">
+        <div class="panel-title" data-editable="true">④ 모델</div><img class="step-icon" src="assets/img/icons/repeat.svg" alt="반복 아이콘">
+        <div class="step-body" data-editable="true">결과로 응답<span class="step-desc">답변 또는 다시 ②로</span></div>
+      </li>
+    </ol>
+    <p class="dg-caption is-left" data-editable="true">④에서 도구 호출이 더 없으면 답하고 끝냅니다 · 더 있으면 ②로 돌아가 반복합니다</p>
+    <div class="code-card has-logos"><div class="code-logos"><img class="logo-inline" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+<pre class="code-body" data-editable="true">@tool  <span class="cm"># 교육용 가상 함수 · 인자 없음</span>
+def equipment_status() -&gt; list:
+    """장비별 현재 위치와 진행 공정"""</pre>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Tools · OpenAI Function calling 가이드 · 코드는 개념 예시</p>
+  <aside class="speaker-note">"모델이 도구를 쓴다"는 말은 모델이 Python 함수를 자기 안에서 실행한다는 뜻이 아닙니다. 화면 네 카드의 위쪽 라벨은 그 단계를 누가 하는지, 카드 아래 작은 줄은 각 단계에서 오가는 내용입니다. LangChain 코드에서는 각 단계를 도구 스키마, tool_calls, ToolMessage, AIMessage라는 이름으로 부릅니다. 프로그램이 도구 스키마를 알려 주면 모델은 tool_calls에 도구 이름을 담아 요청만 하고, 실제 함수나 SQL은 프로그램이 실행해 결과를 ToolMessage로 돌려주며, 모델은 그 결과를 보고 답하거나 도구가 더 필요하면 다시 ②로 돌아가 요청합니다. 도구 호출이 더 없을 때 답하고 끝나는 것이 이 반복의 종료 조건이고, 오후에 볼 Claude Code도 같은 반복 구조입니다. 아래 코드처럼 @tool은 함수 이름, docstring, 타입 힌트로 도구 설명을 만들기 때문에 docstring은 동료에게 설명하듯 써야 하고, 이번 실습의 도구는 인자가 없어 모델이 정하는 것은 이 도구를 부를지 말지뿐입니다. 도구 호출은 모델의 '행동'이고, 그 권한과 부작용은 실행하는 프로그램 쪽에서 책임집니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title-bullets" data-scene-id="S19" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 3 · 조회 함수를 도구로</h2>
+  <p class="board-meta" data-editable="true">코드 위치: 사내 데이터 조회 라이브러리 호출부 · @tool 연결 부분 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>같은 함수가 도구가 되기 전과 후에 무엇이 달라지는지 봅니다. 도구가 필요 없는 질문에서 도구 호출 기록이 비는지 확인합니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">테이블 불러오기</div><img class="tb-icon" src="assets/img/icons/table.svg" alt="표 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">상태 조회 값</div><img class="tb-icon" src="assets/img/icons/database.svg" alt="조회 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">@tool 붙이기</div><img class="tb-icon" src="assets/img/icons/wrench.svg" alt="도구 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">세 가지 질문</div><img class="tb-icon" src="assets/img/icons/message-square.svg" alt="질문 아이콘"></div>
+      </div>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① 조회 함수</span>
+        <span class="chip" data-editable="true">② 숫자는 코드가</span>
+        <span class="chip accent" data-editable="true">③ tool_calls</span>
+        <span class="chip" data-editable="true">④ 부를지 말지</span>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">정답을 아는 질문과 도구가 필요 없는 질문의 차이를 설명합니다</div></div>
+    </div>
+    <div class="stack">
+      <p class="dg-caption is-left" data-editable="true">Text-to-SQL이 아니라 정해진 쿼리이며 인자도 없습니다 · 아래는 실행 환경에서 막는 네 층</p>
+      <div class="dg">
+        <div class="dg-row stretch"><div class="dg-box" data-editable="true">읽기 전용</div><div class="dg-box" data-editable="true">허용 테이블</div></div>
+        <div class="dg-row stretch"><div class="dg-box" data-editable="true">쿼리 검사</div><div class="dg-box" data-editable="true">사람 승인</div></div>
+      </div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 조회 결과로, <span class="nowrap">도구 호출이</span> 안 되면 옆 사람 화면으로 진행합니다</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Tools 가이드 · LangChain SQL Agent 가이드</p>
+  <aside class="speaker-note">먼저 사내 데이터 조회 라이브러리로 정해진 쿼리를 보내 장비 테이블을 불러옵니다. 여기에는 AI가 없고, 쿼리는 코드에 고정돼 있어 Text-to-SQL도 아니며 인자도 없습니다. 이어서 상태 조회 값을 눈으로 확인합니다. 교육용 가상 예시로 어떤 장비가 어느 구역에서 어느 공정을 진행 중인지 같은 값이며, 실제 테이블과 컬럼 이름은 실습 가이드 해당 장을 기준으로 봅니다. 다음으로 같은 함수에 @tool을 붙여 모델에게 알려 주고 도구 호출 기록을 보는데, 함수 자체는 그대로이고 달라진 것은 모델이 이 함수를 부를지 말지 정할 수 있게 된 것뿐입니다. 마지막으로 정답을 아는 질문, 결과가 없어야 하는 질문, 도구가 필요 없는 인사 같은 질문 세 가지를 넣어 도구 호출 기록이 비는 경우를 확인합니다. 프롬프트에 "위험한 SQL은 실행하지 마"라고 적는 것만으로는 접근 제한이 되지 않아서 오른쪽 네 칸처럼 읽기 전용 계정, 허용 테이블, 쿼리 검사, 사람 승인 같은 층을 실행 환경에 두며, 사람 승인은 부록에서 따로 다룹니다. 접속이 안 되는 분은 준비된 조회 결과로, 도구 호출이 안 되는 분은 옆 사람 화면으로 진행합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="S17" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">스크립트·Workflow·Agent</h2>
+  <p class="thesis" data-editable="true">문제에 필요한 만큼의 자율성만 줍니다.</p>
+  <p class="explain" data-editable="true">Workflow는 코드가 순서를 정해 모델·도구를 부르고, Agent는 모델이 다음 행동을 고릅니다. Agent는 호출이 늘어 <span class="nowrap">시간·사용량이</span> 커지기 쉽고 결과를 예측하기 어려워질 수 있습니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/terminal.svg" alt="스크립트 아이콘"><div class="compare-kicker" data-editable="true">규칙이 명확</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">스크립트</div>
+          <div class="dg-box" data-editable="true">규칙 → 결과</div>
+          <p class="compare-note" data-editable="true">모델 없이 코드가 끝까지</p>
+        </div>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/workflow.svg" alt="워크플로 아이콘"><div class="compare-kicker" data-editable="true">순서가 고정</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Workflow</div>
+          <div class="dg-box" data-editable="true">검색 → LLM → 답변</div>
+          <p class="compare-note" data-editable="true">순서는 코드가 정함</p>
+        </div>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/bot.svg" alt="에이전트 아이콘"><div class="compare-kicker" data-editable="true">상황에 따라</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Agent</div>
+          <div class="dg-box" data-editable="true">LLM ⇄ 도구 반복</div>
+          <p class="compare-note" data-editable="true">다음 행동은 모델이 정함</p>
+        </div>
+      </div>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">세 방식은 우열이 아니라 필요한 자율성의 차이 · 개념 예시</p>
+  </div>
+  <p class="source" data-editable="true">출처: Anthropic, Building effective agents</p>
+  <aside class="speaker-note">파일 형식 변환처럼 정해진 규칙으로 충분한 일은 스크립트가 가장 간단하고 결과도 예측하기 쉬우니, 규칙으로 충분하면 스크립트부터 봅니다. 순서가 정해져 있다면 가운데 열처럼 코드가 그 순서대로 모델과 도구를 부르는 Workflow로 만들 수 있고, 모델이 상황을 보고 다음 도구나 행동을 골라야 할 때는 오른쪽 열의 Agent가 유용하지만 호출이 늘어나 시간과 사용량도 늘 수 있습니다. 그래서 오른쪽으로 갈수록 좋은 것이 아니라, 문제에 맞는 수준을 고르는 것입니다. Anthropic의 글은 Workflow를 순차 연결, 라우팅, 병렬, 오케스트레이터-워커, 평가-개선 다섯 패턴으로 정리하는데, 모두 미리 정한 틀 안에서 모델을 쓰는 방법이고, 흐름을 그래프로 설계하는 방법은 부록의 LangGraph 장면에 두었습니다. 방금 만든 조회 도구는 세 열 중 어디일까요? 순서를 코드가 정했으니 Workflow에 가깝습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="split" data-scene-id="S29" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">웹앱의 화면·처리·데이터</h2>
+  <p class="thesis" data-editable="true">Streamlit 앱도 화면·처리·데이터로 나눠 읽습니다.</p>
+  <p class="explain" data-editable="true">입력을 받고, 데이터를 조회해 처리한 뒤 화면에 다시 보여 주는 전체 흐름을 흔히 풀스택이라 부릅니다. 화면·서버 기술을 다 배우기 전에, 바꿀 부분이 어느 층인지부터 알아봅니다.</p>
+  <div class="split-grid wide-left">
+    <div class="code-card has-logos"><div class="code-logos"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+      <div class="code-title" data-editable="true">개념 예시 · 함수 이름은 가상 · 실제 실습 코드와 다를 수 있음</div>
+<pre class="code-body" data-editable="true">q = st.text_input("질문")   <span class="cm"># 화면: 입력</span>
+if q:
+    rows = search(q)       <span class="cm"># 데이터: 조회</span>
+    ans = answer(q, rows)  <span class="cm"># 처리: 규칙·모델</span>
+    st.write(ans)          <span class="cm"># 화면: 결과</span></pre>
+    </div>
+    <div class="placeholder is-spec">
+      <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S29]</div>
+      <div class="placeholder-desc" data-editable="true">넣을 자료: 오전 Streamlit 앱 화면 — 입력 칸·결과 영역을 왼쪽 코드 줄과 짝지어 표시</div>
+      <div class="placeholder-desc" data-editable="true">조건: 모델명·주소·키 가리기 · <span class="nowrap">실행일 표기 · 1600×900 이상</span></div>
+      <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 코드 예시로 설명</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Streamlit API 문서(st.text_input, st.write)</p>
+  <aside class="speaker-note">화면에서 입력을 받고, 데이터를 조회하고, 규칙과 모델 호출로 처리해 다시 화면에 보여 주는 전체 흐름을 다루는 것을 흔히 풀스택이라고 부릅니다. Streamlit에서는 이 흐름을 Python 코드 몇 줄로 이을 수 있어서, 왼쪽 예시처럼 입력 칸, 조회, 모델 호출, 결과 표시가 차례로 나오고, 줄 끝 주석이 각 줄의 역할입니다. 오른쪽 자리에는 오전 앱의 실제 화면이 들어가는데, 입력 칸과 결과 영역이 왼쪽 코드의 어느 줄에 해당하는지 짝지어 보면 됩니다. Streamlit 공식 문서 설명처럼 Python 서버가 코드를 실행하고 브라우저는 화면을 보여 주는 구조라서, 오전 앱은 화면과 처리 사이에 별도 백엔드 서버를 두지 않았고 모델만 오전에 본 추론 서버에 API로 요청합니다. React나 별도 백엔드를 처음부터 모두 배우기보다, 지금 바꿀 부분이 화면인지, 처리인지, 데이터인지 알아보는 것부터 시작하면 AI가 만든 코드도 더 잘 판단할 수 있습니다. 다음 실습에서 실행할 앱은 화면, 처리, 데이터 중 어디를 바꾸면 무엇이 달라질지 생각하며 보세요. 손가락으로 1, 2, 3을 표시해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title-image" data-scene-id="S20" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 4 · 장비 위치·진행 공정 조회 챗봇</h2>
+  <p class="board-meta" data-editable="true"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고">순서: 실행 → 장비 ID 입력 → 연결 짚기 · 코드 위치: 화면 앱 파일 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>입력한 장비 ID가 어떤 조회 함수로 들어가고, 결과가 어느 코드에서 화면에 그려지는지 짚습니다. 세 영역이 앞 장의 화면·처리·데이터 중 어디인지 봅니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <ul class="compare-list is-numbered">
+        <li data-editable="true">① 앱 실행 — 화면 코드를 실행해 브라우저에서 엽니다</li>
+        <li data-editable="true">② 장비 ID 입력 — 위치와 진행 공정이 나오는지 확인합니다</li>
+        <li data-editable="true">③ 연결 짚기 — 입력 → 조회 함수 → 화면 결과의 줄을 찾습니다</li>
+      </ul>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① 화면</span>
+        <span class="chip" data-editable="true">② 데이터</span>
+        <span class="chip accent" data-editable="true">③ 처리</span>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">입력 → 함수 → 화면 결과의 연결을 설명합니다</div></div>
+    </div>
+    <div class="stack">
+      <div class="image-frame">
+        <div class="placeholder is-spec">
+          <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S20]</div>
+          <div class="placeholder-desc" data-editable="true">넣을 자료: 장비 조회 챗봇 화면 · 세 영역에 ①–③ 번호</div>
+          <div class="placeholder-desc" data-editable="true">조건: 주소·키·모델명·실제 장비 ID 가리기 · 1600×900 이상</div>
+          <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 ①–③으로 진행</div>
+        </div>
+      </div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>옆 사람 화면으로 함께 확인하고, 계속 막히면 <span class="nowrap">강사 시연</span>으로 봅니다</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서</p>
+  <aside class="speaker-note">준비된 화면 코드에 실습 3에서 만든 조회 함수가 연결돼 있습니다. 먼저 앱을 실행해 브라우저에서 열고, 이어서 장비 ID를 입력해 그 장비의 위치와 진행 공정이 화면에 나오는지 확인합니다. 마지막으로 입력 칸의 값이 어떤 조회 함수로 들어가고 그 결과가 어느 코드에서 화면에 그려지는지 코드 줄을 짚습니다. 왼쪽 칩처럼 입력 칸은 화면, 조회 함수는 데이터, 둘을 잇는 코드는 처리이며, 앞 장의 세 층이 실제 앱에서 어디인지 눈으로 확인하는 것이 이 실습의 목적입니다. 두 번째 질문이 앞 대화를 참고하는지도 한 번 확인해 보세요. 이 앱은 오후 시연과 선택 과제의 대상이 되므로, 혼자 막힌 분은 옆 사람 화면으로 같은 단계를 함께 보시고 실행이 계속 막히면 제가 시연하는 것으로 바꾸겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="split" data-scene-id="S21" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">오전 실습의 전체 구조</h2>
+  <p class="thesis" data-editable="true">오전에 연결한 세 층이 곧 하네스이고, 오후엔 이 앱을 Agent에게 맡깁니다.</p>
+  <p class="explain" data-editable="true">오전엔 내가 도구를 붙였고, 오후엔 도구가 이미 붙은 Agent에게 맡깁니다. 한 층의 작은 수정이 다른 층에 영향을 주므로 오후에는 구조를 먼저 읽고 바꿀 범위를 정하며, 오후 Claude Code의 모델 연결은 오전 실습 API와 별개라 따로 확인합니다.</p>
+  <div class="split-grid wide-left">
+    <div class="split-panel">
+      <span class="concept-badge" data-editable="true">개념 예시</span><span class="corner-logos"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"></span>
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box accent" data-editable="true">화면<span class="dg-sub">Streamlit</span></div>
+          <div class="dg-arrow" aria-hidden="true">⇄</div>
+          <div class="dg-box" data-editable="true">모델·도구<span class="dg-sub">LLM·조회 함수</span></div>
+          <div class="dg-arrow" aria-hidden="true">⇄</div>
+          <div class="dg-box" data-editable="true">데이터<span class="dg-sub">기사·장비 테이블</span></div>
+        </div>
+      </div>
+      <div class="chip-row">
+        <span class="concept-badge" data-editable="true">하네스</span>
+        <span class="dg-arrow" aria-hidden="true">=</span>
+        <span class="chip accent" data-editable="true">Tools · 조회 도구</span>
+        <span class="dg-arrow" aria-hidden="true">+</span>
+        <span class="chip accent" data-editable="true">Memory · 대화 이력</span>
+        <span class="dg-arrow" aria-hidden="true">+</span>
+        <span class="chip accent" data-editable="true">Context · 근거 자료</span>
+      </div>
+      <p class="dg-caption" data-editable="true">주황 테두리: 오후 시연과 선택 과제의 대상(예: 결과 없음 안내)</p>
+    </div>
+    <div class="dg">
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/layers.svg" alt="세 층 아이콘"><div class="dg-box muted" data-editable="true">오전 · 내가 도구를 붙인 앱</div></div>
+      <span class="dg-arrow" aria-hidden="true">↓</span>
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/bot.svg" alt="에이전트 아이콘"><div class="dg-box" data-editable="true">오후 · 도구가 이미 붙은 Agent에게</div></div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Anthropic, Building effective agents</p>
+  <aside class="speaker-note">오전에는 화면, 모델과 도구, 근거 데이터를 하나씩 손으로 연결했습니다. 모델에 도구, 대화 이력, 근거 자료를 묶어 주는 이 틀을 하네스라고 부르며, 왼쪽 칩처럼 Tools, Memory, Context 세 요소로 이름을 붙여 두면 오후에 같은 이름이 다시 나옵니다. 오전엔 내가 도구를 붙였고, 오후엔 도구가 이미 붙은 Agent인 Claude Code에게 이 앱을 맡깁니다. 한 분만 답해 주세요, 이 그림에서 SQL을 실제로 실행하는 것은 모델인가요, 프로그램인가요? 도구 호출 순서에서 본 '모델은 요청하고 프로그램이 실행한다'는 원리는 오후에도 그대로이고, 주황 테두리 자리는 오후 시연과 선택 과제에서 결과 없음 안내 같은 작은 기능이 들어갈 곳입니다. 오후 Claude Code가 쓰는 모델 연결은 오전 실습 API와 별개이므로 오후 첫 실습에서 따로 확인합니다. 다음 장은 점심 안내입니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title" data-scene-id="G03" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">점심시간</h2>
+  <p class="thesis" data-editable="true">오후는 Claude Code 실행 확인부터 시작합니다.</p>
+  <div class="stack">
+    <div class="stats cols-2">
+      <div class="stat accent"><div class="num" data-editable="true">11:40</div><div class="label" data-editable="true">점심 시작</div></div>
+      <div class="stat"><div class="num" data-editable="true">13:20</div><div class="label" data-editable="true">오후 재개 · Claude Code 실행 확인</div></div>
+    </div>
+    <div class="dg-row stretch">
+      <div class="dg-box"><img class="dg-icon" src="assets/img/icons/terminal.svg" alt="터미널 아이콘"><span data-editable="true">사전 설치한 Claude Code</span></div>
+      <div class="dg-box"><img class="dg-icon" src="assets/img/icons/folder.svg" alt="폴더 아이콘"><span data-editable="true">오전 실습 폴더</span></div>
+      <div class="dg-box"><img class="dg-icon" src="assets/img/icons/notebook-pen.svg" alt="메모 아이콘"><span data-editable="true">아침에 적은 반복 업무 하나</span></div>
+    </div>
+    <div class="chip-row">
+      <span class="concept-badge" data-editable="true">준비물</span>
+      <span class="chip" data-editable="true">Claude Code</span>
+      <span class="chip" data-editable="true">오전 실습 폴더</span>
+      <span class="chip" data-editable="true">반복 업무 하나</span>
+    </div>
+  </div>
+  <aside class="speaker-note">점심시간입니다. 오후는 사전 설치한 Claude Code가 실행되는지 확인하는 것부터 시작하니, 돌아오실 때 오전 실습 폴더를 열어 두시고 아침에 적어 둔 반복 업무 하나를 떠올려 와 주세요. 그 업무가 오후 자유 실습의 주제가 됩니다. 맛있게 드시고 오후에 뵙겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

@@ -1,0 +1,37 @@
+<section id="s-19" class="scene clip" data-skill="compare" data-scene-id="S17" data-start="90" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">스크립트·Workflow·Agent</h2>
+  <p class="thesis" data-editable="true">문제에 필요한 만큼의 자율성만 줍니다.</p>
+  <p class="explain" data-editable="true">Workflow는 코드가 순서를 정해 모델·도구를 부르고, Agent는 모델이 다음 행동을 고릅니다. Agent는 호출이 늘어 <span class="nowrap">시간·사용량이</span> 커지기 쉽고 결과를 예측하기 어려워질 수 있습니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/terminal.svg" alt="스크립트 아이콘"><div class="compare-kicker" data-editable="true">규칙이 명확</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">스크립트</div>
+          <div class="dg-box" data-editable="true">규칙 → 결과</div>
+          <p class="compare-note" data-editable="true">모델 없이 코드가 끝까지</p>
+        </div>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/workflow.svg" alt="워크플로 아이콘"><div class="compare-kicker" data-editable="true">순서가 고정</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Workflow</div>
+          <div class="dg-box" data-editable="true">검색 → LLM → 답변</div>
+          <p class="compare-note" data-editable="true">순서는 코드가 정함</p>
+        </div>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/bot.svg" alt="에이전트 아이콘"><div class="compare-kicker" data-editable="true">상황에 따라</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Agent</div>
+          <div class="dg-box" data-editable="true">LLM ⇄ 도구 반복</div>
+          <p class="compare-note" data-editable="true">다음 행동은 모델이 정함</p>
+        </div>
+      </div>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">세 방식은 우열이 아니라 필요한 자율성의 차이 · 개념 예시</p>
+  </div>
+  <p class="source" data-editable="true">출처: Anthropic, Building effective agents</p>
+  <aside class="speaker-note">파일 형식 변환처럼 정해진 규칙으로 충분한 일은 스크립트가 가장 간단하고 결과도 예측하기 쉬우니, 규칙으로 충분하면 스크립트부터 봅니다. 순서가 정해져 있다면 가운데 열처럼 코드가 그 순서대로 모델과 도구를 부르는 Workflow로 만들 수 있고, 모델이 상황을 보고 다음 도구나 행동을 골라야 할 때는 오른쪽 열의 Agent가 유용하지만 호출이 늘어나 시간과 사용량도 늘 수 있습니다. 그래서 오른쪽으로 갈수록 좋은 것이 아니라, 문제에 맞는 수준을 고르는 것입니다. Anthropic의 글은 Workflow를 순차 연결, 라우팅, 병렬, 오케스트레이터-워커, 평가-개선 다섯 패턴으로 정리하는데, 모두 미리 정한 틀 안에서 모델을 쓰는 방법이고, 흐름을 그래프로 설계하는 방법은 부록의 LangGraph 장면에 두었습니다. 방금 한 기사 실습은 순서가 고정돼 있었나요, 모델이 다음 행동을 골랐나요?</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

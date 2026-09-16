@@ -1,0 +1,357 @@
+<section id="s-48" class="scene clip" data-skill="split" data-scene-id="A01" data-start="235" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · Transformer와 Q·K·V</h2>
+  <p class="thesis" data-editable="true">Attention은 Q·K 비교로 정한 비율대로 V를 모읍니다.</p>
+  <p class="explain" data-editable="true">비율은 입력마다 새로 계산되는 값이며 학습된 매개변수와 다릅니다. 원 논문은 encoder–decoder 구조이고, 많은 생성 모델은 decoder 중심입니다.</p>
+  <div class="split-grid wide-left">
+    <ul class="bullets">
+      <li data-editable="true"><strong>Q·K·V</strong> 찾는 기준·이름표·내용<span class="sub">비유 · 한 토큰 표현에서 나온 세 벡터</span></li>
+      <li data-editable="true">그림 왼쪽: 헤드 하나의 계산<span class="sub">softmax(QK<sup>T</sup> / √d) · V</span></li>
+      <li data-editable="true">그림 오른쪽: 여러 헤드를 나란히<span class="sub">헤드 = Q·K·V 계산 한 벌 · 헤드마다 다른 변환</span></li>
+    </ul>
+    <div class="split-panel">
+      <div class="split-image h-sm pair">
+        <img src="assets/img/b1/attention-fig2a.png" alt="원 논문 Figure 2 왼쪽: Scaled Dot-Product Attention">
+        <img src="assets/img/b1/attention-fig2b.png" alt="원 논문 Figure 2 오른쪽: Multi-Head Attention">
+      </div>
+      <p class="dg-caption" data-editable="true">Vaswani et al. (2017), Figure 2 · arXiv:1706.03762</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017) · arXiv:1706.03762</p>
+  <aside class="speaker-note">오전 응답 생성 장면에서 모델이 문맥을 보고 다음 토큰을 고른다고 했는데, 그 문맥을 반영하는 계산이 Attention이고 그 재료가 Q·K·V이며, 비유하면 Q는 찾는 기준, K는 비교될 이름표, V는 실제로 전달할 내용입니다. 화면 오른쪽 원 논문 그림 중 왼쪽이 헤드 하나의 계산으로, 아래에서부터 Q와 K를 곱해 비교하고 크기를 조정한 뒤 softmax로 반영 비율을 만들어 그 비율대로 V를 모읍니다. 중간의 Mask는 선택 단계인데, 생성 모델은 이것으로 아직 나오지 않은 뒤쪽 토큰을 가립니다. 오른쪽 그림은 서로 다른 변환을 가진 여러 헤드가 이 계산을 나란히 한 뒤 이어 붙이는 구조이고, 실제 모델은 이것을 여러 층에서 반복합니다. 이 비율은 입력마다 새로 계산되는 값이라 학습된 매개변수와 다르며, 그림은 구조도이지 가중치를 측정한 결과가 아닙니다. 원 논문은 번역을 위해 encoder와 decoder를 함께 썼고, 오늘날 많은 생성 모델은 앞쪽 토큰만 참고하도록 가린 decoder 중심 구조를 씁니다. 원 논문 이후 여러 공개 모델은 RMSNorm, SwiGLU, RoPE 같은 변형을 쓰지만, Q·K 비교로 비율을 정해 V를 모으는 원리는 같습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-49" class="scene clip" data-skill="compare" data-scene-id="A02" data-start="240" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · RAG 품질 다듬기</h2>
+  <p class="thesis" data-editable="true">RAG 품질은 재학습이 아니라 분할·검색·메타데이터로 다듬습니다.</p>
+  <p class="explain" data-editable="true">메타데이터는 답변에서 구분할 조건부터 설계합니다. 답이 틀리면 검색이 틀렸는지, 찾은 근거로 잘못 답했는지부터 나눕니다. 검색 쪽은 재정렬(Reranking), 답변 쪽은 프롬프트 제약을 봅니다.</p>
+  <div class="stack">
+    <div class="dg-row is-compact">
+      <div class="dg-box" data-editable="true">분할</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">임베딩</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">벡터 저장소</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">검색</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">답변</div>
+      <span class="dg-caption" data-editable="true">개념 예시</span>
+    </div>
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/split.svg" alt="분할 아이콘"><div class="compare-kicker" data-editable="true">미리 준비</div>
+        <div class="compare-heading" data-editable="true">분할·임베딩</div>
+        <ul class="compare-list">
+          <li data-editable="true">찾기 좋은 단위로 분할</li>
+          <li data-editable="true">크기·겹침은 실험해 결정</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/search.svg" alt="검색 아이콘"><div class="compare-kicker" data-editable="true">질문할 때</div>
+        <div class="compare-heading" data-editable="true">벡터·키워드 검색</div>
+        <ul class="compare-list">
+          <li data-editable="true">벡터: 뜻이 가까운 조각</li>
+          <li data-editable="true">둘을 합친 하이브리드도</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/table.svg" alt="메타데이터 아이콘"><div class="compare-kicker" data-editable="true">먼저 설계</div>
+        <div class="compare-heading" data-editable="true">메타데이터</div>
+        <ul class="compare-list">
+          <li data-editable="true">출처·발행일·문서 버전</li>
+          <li data-editable="true">질문에서 필터를 뽑기도</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">화면 위쪽 띠는 앞의 RAG 구간에서 본 흐름을 줄인 것으로, 분할·임베딩·저장은 미리 해 두고 검색·답변은 질문할 때 하며, 어느 단계도 모델을 다시 학습시키지 않습니다. 분할은 흔히 청킹이라고도 부르는데, 긴 문서를 찾기 좋은 단위로 나누는 일이고, 조각 크기와 겹치는 폭에는 정답이 없으니 내 문서와 질문으로 실험해 정합니다. 임베딩은 조각을 뜻이 가까운 것끼리 찾을 수 있는 벡터로 바꾸는 일이고, 키워드 검색은 같은 단어가 들어 있는 조각을 찾으며, 두 방식의 결과를 합치는 하이브리드 검색도 있습니다. 어느 방식이 나은지는 직접 비교해 봐야 하고, Part Finder 공개 Beta처럼 벡터 저장소 없이 단어 빈도로 검색하는 구성도 있으며, 임베딩을 쓸 수 있는지는 실행 환경마다 확인합니다. 메타데이터는 출처·발행일·장비처럼 답변에서 구분해야 하는 조건부터 거꾸로 설계하고, 질문에서 이런 조건을 뽑아 필터로 쓰는 방식도 있지만, "승인 필요" 같은 값을 적어 두는 것만으로 승인이 강제되지는 않습니다. 답이 틀렸을 때는 검색이 틀린 것인지 찾은 근거로 잘못 답한 것인지부터 나누고, 검색 쪽이면 가져온 문서를 다시 순위 매기는 Reranking을, 답변 쪽이면 프롬프트 제약을 살핍니다. 여기 나온 용어는 오늘 실습 범위 밖입니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-50" class="scene clip" data-skill="compare" data-scene-id="A03" data-start="245" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 프레임워크 선택</h2>
+  <p class="thesis" data-editable="true">배우는 순서가 아니라 문제에 필요한 추상화 수준을 고릅니다.</p>
+  <p class="explain" data-editable="true">추상화 수준은 기능이 미리 묶인 정도입니다. 단순 호출 하나면 SDK로 충분하고, LangChain은 모델·검색기·도구를 같은 방식으로 잇는 연결 도구일 뿐 모델을 더 똑똑하게 만들지 않습니다. LangChain Agent와 Deep Agents는 LangGraph 위에서 동작합니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><div class="compare-kicker" data-editable="true">짧게 구성</div>
+        <div class="compare-heading" data-editable="true">LangChain Agent</div>
+        <ul class="compare-list">
+          <li data-editable="true">모델·도구 호출 루프</li>
+          <li data-editable="true">create_agent 한 번으로</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/network.svg" alt="그래프 아이콘"><div class="compare-kicker" data-editable="true">흐름 직접 설계</div>
+        <div class="compare-heading" data-editable="true">LangGraph</div>
+        <ul class="compare-list">
+          <li data-editable="true">단계·분기를 직접 정의</li>
+          <li data-editable="true">상태 저장·중단 후 재개</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/boxes.svg" alt="기능 묶음 아이콘"><div class="compare-kicker" data-editable="true">기능 묶음</div>
+        <div class="compare-heading" data-editable="true">Deep Agents</div>
+        <ul class="compare-list">
+          <li data-editable="true">계획·파일·위임 내장</li>
+          <li data-editable="true">여러 단계의 긴 작업용</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">공통 실행 기반 · LangGraph 런타임</div>
+      <span class="dg-caption" data-editable="true">개념 예시 · 기반 관계, 배우는 순서 아님</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Overview · LangGraph Overview · LangChain Concepts(Agent harnesses: Deep Agents)</p>
+  <aside class="speaker-note">LangChain, LangGraph, Deep Agents는 차례로 모두 배워야 하는 과정이 아니라, 문제에 필요한 추상화 수준에 따라 고르는 선택지입니다. 단순 호출 하나라면 SDK만으로 되고, 오전 실습처럼 모델 호출과 자료·조회 도구를 잇는 정도라면 LangChain으로 충분한데, 오전 실습 코드의 langchain이 바로 그 연결 역할이고 코드가 짧다고 성능이 좋아지는 것은 아닙니다. 화면 아래 띠처럼 LangChain의 create_agent와 Deep Agents는 모두 LangGraph 실행 기반 위에서 동작하므로, 단계와 분기를 직접 정하거나, 상태를 저장했다가 중단한 곳에서 이어가거나, 사람 확인 단계를 넣어야 할 때 LangGraph를 직접 씁니다. Deep Agents는 그 위에 계획, 파일 공간, 하위 작업 위임을 미리 묶어 둔 하네스로, 여러 단계로 이어지는 긴 작업에 맞춰져 있습니다. 예제 코드 길이가 다르다고 성능이 다른 것은 아니며, 같은 과제로 비교한 결과가 아니면 성능 비교로 읽지 않습니다. 여러 Agent를 감독자형이나 넘겨주기형으로 나누는 방식도 있는데, 이것 역시 Agent 하나로 충분한지 먼저 확인한 뒤 고릅니다. LangGraph와 Deep Agents는 뒤의 부록 장에서 하나씩 더 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-51" class="scene clip" data-skill="compare" data-scene-id="A04" data-start="250" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · Skill·MCP·Subagent·Hook</h2>
+  <p class="thesis" data-editable="true">넷은 상하위 단계가 아니라 서로 다른 역할입니다.</p>
+  <p class="explain" data-editable="true">Skill은 반복 절차를 파일로 적어 두고 필요할 때 불러 쓰는 것이며 모델을 학습시키는 기능이 아닙니다. 네 기능은 필요할 때만 골라 조합하고, 기본 도구로 충분하면 더하지 않습니다. CLAUDE.md 지침은 권한을 강제하지 않으므로 설치·권한은 사내 가이드의 승인된 설정을 따릅니다.</p>
+  <div class="compare-grid cols-4">
+    <div class="compare-col is-accent">
+      <img class="col-icon" src="assets/img/icons/list-checks.svg" alt="절차 파일 아이콘"><div class="compare-kicker" data-editable="true">절차 파일</div>
+      <div class="compare-heading" data-editable="true">Skill</div>
+      <ul class="compare-list">
+        <li data-editable="true">반복 절차를 SKILL.md에</li>
+        <li data-editable="true">이름·설명만 보다가 고르면 본문 읽기</li>
+      </ul>
+      <p class="compare-note" data-editable="true">예: 노트 정리 절차</p>
+    </div>
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/link.svg" alt="도구 연결 아이콘"><div class="compare-kicker" data-editable="true">외부 연결</div>
+      <div class="compare-heading" data-editable="true">MCP</div>
+      <ul class="compare-list">
+        <li data-editable="true">앱 N개·도구 M개를 한 규약으로</li>
+      </ul>
+      <div class="dg-row">
+        <span class="chip" data-editable="true">N×M</span>
+        <span class="dg-arrow" aria-hidden="true">→</span>
+        <span class="chip accent" data-editable="true">N+M</span>
+        <span class="dg-caption" data-editable="true">앱·도구 연결 수</span>
+      </div>
+      <p class="compare-note" data-editable="true">개념 예시</p>
+    </div>
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/users.svg" alt="하위 작업 아이콘"><div class="compare-kicker" data-editable="true">작업 분담</div>
+      <div class="compare-heading" data-editable="true">Subagent</div>
+      <ul class="compare-list">
+        <li data-editable="true">별도 맥락에서 하위 작업</li>
+        <li data-editable="true">결과를 주 대화로 반환</li>
+      </ul>
+      <p class="compare-note" data-editable="true">예: 예외 입력만 점검</p>
+    </div>
+    <div class="compare-col">
+      <img class="col-icon" src="assets/img/icons/workflow.svg" alt="시점 동작 아이콘"><div class="compare-kicker" data-editable="true">이벤트 처리</div>
+      <div class="compare-heading" data-editable="true">Hook</div>
+      <ul class="compare-list">
+        <li data-editable="true">정해진 시점에 자동 실행</li>
+        <li data-editable="true">명령 실행형·모델 판단형</li>
+      </ul>
+      <p class="compare-note" data-editable="true">예: 파일 수정 후 포맷</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 문서 — Skills · MCP · Subagents · Hooks</p>
+  <aside class="speaker-note">오후 지식 자산화 장면에서 Skill을 절차 파일이라고 한 줄로만 소개했는데, 여기서 Skill과 함께 자주 나오는 세 기능을 조금 더 풀어 보겠습니다. Skill은 반복하는 절차와 참고 자료를 SKILL.md에 적어 두고, 모델은 평소 이름과 설명만 보다가 작업에 맞는 것을 고를 때 본문을 읽는 방식이라 필요한 순간에만 맥락을 씁니다. MCP는 외부 시스템의 도구와 자료를 Claude Code에 전달하는 연결 규약인데, MCP 칸의 작은 그림처럼 AI 앱 N개와 도구 M개를 하나하나 이으면 N×M개의 연결이 필요하지만, 같은 규약을 따르면 앱과 도구가 각자 한 번씩만 맞추면 되어 N+M으로 줄어든다는 발상이며, 이 그림은 그 발상을 옮겨 그린 개념도입니다. MCP 서버가 내놓는 것은 도구, 자료, 프롬프트 세 가지이고, 승인된 문서나 DB를 읽는 식으로 쓰되 기존 파일·명령 도구로 충분하면 추가하지 않아도 됩니다. Subagent는 예외 입력 점검이나 설정 위치 조사처럼 독립적인 하위 작업을 별도 맥락에서 맡기고 결과만 돌려받는 방식인데, 여러 개를 쓰면 비용과 조정 작업도 늘어납니다. Hook은 파일 수정 후 포맷처럼 정해진 시점에 설정된 동작을 실행하며, 명령을 실행하는 유형과 모델 판단을 쓰는 유형이 따로 있습니다. 세 기능은 상하위 단계가 아니라 서로 다른 역할이라 필요하면 함께 조합하고, 실제 설치와 권한 설정은 사내 가이드의 승인된 방법을 따릅니다. CLAUDE.md에 적은 지침은 모델이 읽는 안내일 뿐 권한을 강제하지 않는다는 점도 기억해 두세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-52" class="scene clip" data-skill="steps" data-scene-id="A05" data-start="255" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 실행 오류 점검</h2>
+  <p class="thesis" data-editable="true">막히면 접속부터 파일 경로까지 한 층씩 좁힙니다.</p>
+  <p class="explain" data-editable="true">호환 API라도 모든 옵션이 똑같이 동작하지는 않습니다. 오류 원문을 남기고 한 번에 한 가지만 바꿔 다시 실행합니다. 주소·계정·키는 사내 실행 가이드에서 확인합니다.</p>
+  <ol class="steps row">
+    <li class="step">
+      <div class="step-num" data-editable="true">1</div><img class="step-icon" src="assets/img/icons/server.svg" alt="서버 아이콘">
+      <div class="step-body" data-editable="true">접속<span class="step-desc">서버 응답·인증 오류인지 먼저 구분</span><span class="dg-sub">예: 콘솔 인코딩 오류로 서버가 안 뜸</span></div>
+    </li>
+    <li class="step">
+      <div class="step-num" data-editable="true">2</div><img class="step-icon" src="assets/img/icons/boxes.svg" alt="패키지 아이콘">
+      <div class="step-body" data-editable="true">패키지<span class="step-desc">설치 판본을 <span class="nowrap">실습 가이드와</span> 비교</span><span class="dg-sub">예: 호환 서버용 임베딩 옵션 누락</span></div>
+    </li>
+    <li class="step">
+      <div class="step-num" data-editable="true">3</div><img class="step-icon" src="assets/img/icons/cpu.svg" alt="모델 아이콘">
+      <div class="step-body" data-editable="true">모델 기능<span class="step-desc">도구 호출·임베딩 지원 여부 확인</span><span class="dg-sub">예: 임베딩 모델 바꾸면 벡터 새로 생성</span></div>
+    </li>
+    <li class="step">
+      <div class="step-num" data-editable="true">4</div><img class="step-icon" src="assets/img/icons/folder.svg" alt="파일 경로 아이콘">
+      <div class="step-body" data-editable="true">파일 경로<span class="step-desc">코드가 실행되는 위치 기준으로 확인</span><span class="dg-sub">예: 실행 위치가 달라 파일 못 찾음</span></div>
+    </li>
+  </ol>
+  <p class="source" data-editable="true">출처: vLLM Online Serving 문서 · Claude Code 공식 문서 How Claude Code works</p>
+  <aside class="speaker-note">실습 중 막히면 오류가 어느 층에서 났는지부터 좁히는 것이 빠릅니다. 먼저 서버가 떠 있고 응답하는지, 인증 오류인지를 구분하는데, 한글 Windows에서는 로그를 파일로 넘길 때 콘솔 인코딩 오류로 서버가 아예 뜨지 않는 경우도 있습니다. 접속이 되면 설치된 패키지 판본이 실습 가이드와 같은지 보고, OpenAI 호환 서버에 임베딩을 요청할 때 라이브러리의 토큰 길이 검사 옵션을 꺼야 하는 경우처럼 호환 API라고 모든 옵션이 똑같이 동작하지는 않는다는 점을 기억하세요. 그다음 사용 중인 모델이 도구 호출이나 임베딩을 지원하는지 확인하고, 임베딩 모델을 바꿨다면 기존 벡터와 차원이 맞지 않을 수 있으니 문서 벡터를 새로 만들어야 합니다. 마지막으로 코드가 실행되는 위치를 기준으로 파일 경로가 맞는지 확인합니다. 오류 원문을 그대로 남기고 한 번에 한 가지만 바꿔 다시 실행해야 무엇이 원인이었는지 알 수 있습니다. 카드 아래 예시는 실제 문제 해결 사례를 일반화한 것이고, 주소·계정·키·설치 명령은 사내 실행 가이드에서 확인하며, 오후 Claude Code 연결은 오전 API와 별도 경로로 점검합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-53" class="scene clip" data-skill="title-bullets" data-scene-id="A06" data-start="260" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 현업 적용 전 점검</h2>
+  <p class="thesis" data-editable="true">화면이 뜨는 것과 업무에 쓸 준비는 다릅니다.</p>
+  <p class="explain" data-editable="true">오늘 만든 작은 도구를 업무에 쓰기 전에 다섯 가지를 확인합니다. 권한은 프롬프트 문장이 아니라 실행 환경에서 제한합니다. 없는 답을 만들지 않고 실패를 알리는지도 봅니다.</p>
+  <div class="stack">
+    <div class="dg-row icon-track" aria-hidden="true"><span class="track-cell"><img class="head-icon" src="assets/img/icons/lock.svg" alt="권한 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/table.svg" alt="데이터 정의 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/list-checks.svg" alt="정답 세트 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/workflow.svg" alt="호출 흐름 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/git-compare.svg" alt="변경 기록 아이콘"></span></div><div class="dg-row stretch">
+      <div class="dg-box" data-editable="true">권한 제한<span class="dg-sub">읽기 범위</span><span class="dg-sub">허용 테이블</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">데이터 정의<span class="dg-sub">날짜 기준·단위</span><span class="dg-sub">결측값 문서화</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">정답 세트 검증<span class="dg-sub">정답 아는 입력</span><span class="dg-sub">실패 상황</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">호출 흐름 기록<span class="dg-sub">응답 시간</span><span class="dg-sub">호출량도 함께</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">변경·피드백<span class="dg-sub">누가 무엇을</span><span class="dg-sub">바꿨는지</span></div>
+    </div>
+    <p class="dg-caption" data-editable="true">권장 순서 예시</p>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain SQL Agent 가이드 · Anthropic, Building effective agents</p>
+  <aside class="speaker-note">오늘 만든 작은 도구를 실제 업무에 쓰기 전에는 진행 단계 띠의 다섯 가지를 먼저 확인합니다. 권한은 프롬프트 문장이 아니라 실행 환경에서 읽기 범위와 허용 테이블로 제한해야 하고, 날짜 기준·단위·결측값 의미 같은 데이터 정의는 사람마다 다르면 코드가 맞아도 답이 달라지므로 누가 관리하는지까지 문서로 남깁니다. 정답을 아는 입력, 자료가 없는 질문, 도구가 실패하는 상황을 모은 작은 정답 세트로 각각 어떻게 동작하는지 확인합니다. 모델과 도구가 어떤 순서로 불렸는지, 응답 시간과 호출량이 얼마인지 기록해 두면 문제가 났을 때 어디서 막혔는지 찾을 수 있고, 이런 기록을 모아 보여 주는 관측 도구도 있습니다. 누가 무엇을 바꿨는지와 사용자 피드백을 받을 창구도 미리 정합니다. 이 순서는 여러 체크리스트를 합쳐 다시 정리한 권장안입니다. 화면이 뜨는 것과 업무에 쓸 준비가 된 것은 다르다는 점을 기억해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-54" class="scene clip" data-skill="steps" data-scene-id="A07" data-start="265" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · LangGraph 흐름 설계</h2>
+  <p class="thesis" data-editable="true">분기·중단·재개가 필요할 때 흐름을 그래프로 직접 그립니다.</p>
+  <p class="explain" data-editable="true">LangGraph는 상태(State)·노드(Node, 처리 단계)·연결(Edge)로 흐름을 정의합니다. create_agent의 도구 호출 루프도 내부는 그래프입니다. 순서가 고정된 작업이면 직접 그리지 않아도 됩니다.</p>
+  <div class="split-grid">
+    <div class="dg">
+      <div class="dg-zone">
+        <div class="dg-zone-label" data-editable="true">State · messages·category를 모든 노드가 공유</div><img class="zone-icon" src="assets/img/icons/database.svg" alt="상태 아이콘">
+        <div class="dg-row">
+          <span class="chip" data-editable="true">START</span>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">분류<span class="dg-sub">classify 노드</span></div>
+        </div>
+        <div class="dg-row is-branch">
+          <span class="dg-caption" data-editable="true">조건부 Edge: 질문 종류로 다음 노드 선택</span>
+          <span class="dg-arrow" aria-hidden="true">↓</span>
+        </div>
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">기사 검색</div>
+          <div class="dg-box" data-editable="true">SQL 조회</div>
+          <div class="dg-box" data-editable="true">바로 답변</div>
+        </div>
+      </div>
+      <p class="dg-caption" data-editable="true">모두 END로 · 개념 예시, 오전 앱 구조 아님</p>
+    </div>
+    <div class="stack">
+      <div class="code-card">
+        <div class="code-title" data-editable="true">StateGraph 빌드 · 교육용 축약(일부 줄 생략)</div><div class="code-logos"><img class="logo-inline" src="assets/img/icons/network.svg" alt="그래프 아이콘"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+        <pre class="code-body" data-editable="true">g = StateGraph(State)
+g.add_node("classify", classify)
+g.add_edge(START, "classify")
+<span class="hl">g.add_conditional_edges("classify", route)</span>
+app = g.compile(checkpointer=...)
+app.invoke({"messages": [...]}, config)</pre>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangGraph Overview</p>
+  <aside class="speaker-note">오전에 LangChain으로 모델과 검색을 연결했다면, LangGraph는 코드 안에 숨어 있던 흐름을 눈에 보이는 그래프로 밖으로 꺼내는 도구입니다. 화면 왼쪽 그림처럼 모든 노드가 같은 State를 읽고 일부를 갱신하며, 분류 노드 뒤의 조건부 Edge가 질문 종류에 따라 다음 노드를 고릅니다. 분기 예시는 오전에 본 기사 검색과 SQL 조회를 빌려 온 것일 뿐, 오전 앱이 이렇게 만들어졌다는 뜻은 아닙니다. create_agent가 만드는 도구 호출 루프도 안을 보면 모델 노드와 도구 노드가 조건부 Edge로 오가는 그래프입니다. 오른쪽 코드는 그래프를 만들고, 노드를 붙이고, Edge로 잇고, compile한 뒤 실행하는 순서를 교육용으로 줄인 것이고, 체크포인터를 붙이면 중단한 지점에서 이어갈 수 있습니다. 순차 연결, 라우팅, 병렬, 오케스트레이터-워커, 평가-개선 같은 워크플로 패턴도 모두 이 세 요소로 그릴 수 있고, 되돌아가는 루프에는 반드시 멈추는 조건을 둡니다. 순서가 고정된 작업이라면 함수 호출만으로도 충분하니, 분기·중단·재개가 정말 필요한지부터 확인하세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-55" class="scene clip" data-skill="steps" data-scene-id="A08" data-start="270" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · Agentic RAG</h2>
+  <p class="thesis" data-editable="true">검색 결과를 평가해 부족하면 질문을 고쳐 다시 찾습니다.</p>
+  <p class="explain" data-editable="true">앞의 RAG 구간에서 본 '검색이 틀렸나' 확인을 그래프에 넣은 구조입니다. 모델이 문서마다 관련성을 yes/no로 매기고, 그 결과로 경로가 갈립니다. 판정마다 호출이 늘어 재시도 횟수를 제한합니다.</p>
+  <div class="stack">
+    <div class="split-grid wide-left">
+      <div class="dg">
+        <div class="dg-row">
+          <div class="dg-box" data-editable="true">검색<span class="dg-sub">retrieve</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent" data-editable="true">관련성 평가<span class="dg-sub">문서별 yes/no</span></div>
+          <span class="dg-arrow has-label"><span aria-hidden="true">→</span><span class="dg-sub" data-editable="true">yes</span></span>
+          <div class="dg-box" data-editable="true">답변 생성<span class="dg-sub">generate</span></div>
+        </div>
+        <div class="dg-arrow"><span aria-hidden="true">↓</span> <span class="dg-caption" data-editable="true">no</span></div>
+        <div class="dg-row">
+          <div class="dg-box" data-editable="true">질문 재작성<span class="dg-sub">다시 검색으로 · 횟수 제한</span></div>
+          <span class="dg-caption" data-editable="true">개념 예시</span>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="code-card">
+          <div class="code-title" data-editable="true">관련성 판정 스키마 · 교육용 축약(일부 줄 생략)</div><div class="code-logos"><img class="logo-inline" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+          <pre class="code-body" data-editable="true">class GradeDocuments(BaseModel):
+    <span class="hl">score: Literal["yes", "no"]</span>
+grader = model.with_structured_output(
+    GradeDocuments)
+grade = grader.invoke(prompt).score</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangGraph Agentic RAG 문서 · Lewis et al. 2020</p>
+  <aside class="speaker-note">앞의 RAG 구간에서 답이 틀리면 검색이 틀렸는지, 가져온 자료를 잘못 설명했는지부터 나눠 보자고 했는데, Agentic RAG는 그 판단의 일부를 그래프 안에 넣은 구조입니다. 화면 왼쪽 그림처럼 검색한 뒤 모델이 문서마다 질문과 관련 있는지 yes나 no로 판정하고, 관련 문서가 있으면 답변을 만들고 없으면 질문을 고쳐 다시 검색합니다. 오른쪽 코드는 그 판정을 정해진 형식으로 받도록 yes와 no 두 값만 허용하는 스키마를 모델에 연결하는 부분을 교육용으로 줄인 것입니다. 이 그림에서 모델이 하는 일은 관련성 판정이고, 어느 길로 갈지는 그 결과를 받은 조건부 Edge가 정한다는 점도 봐 두세요. 같은 계열인 Corrective RAG는 근거가 부족하면 웹 검색으로 보완하고, Self-RAG는 답변이 근거에 맞는지까지 평가하며, Adaptive RAG는 질문에 따라 검색을 안 할지, 한 번 할지, 여러 번 할지를 먼저 고르는데, 사내망에서는 웹 검색 자체를 쓸 수 없을 수도 있습니다. 판정 한 번마다 모델 호출이 늘어 시간과 비용이 커지므로 재검색 횟수에 상한을 두고, 상한에 닿으면 억지로 답하지 않고 근거를 찾지 못했다고 알리게 합니다. 평가 단계를 넣었다고 환각이 사라지는 것은 아니니 근거 확인은 계속 필요합니다. 오늘 실습한 기본 RAG로 충분한지부터 확인하세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-56" class="scene clip" data-skill="split" data-scene-id="A09" data-start="275" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 하네스와 Deep Agents</h2>
+  <p class="thesis" data-editable="true">하네스는 모델에 도구·기억·맥락을 묶는 실행 틀입니다.</p>
+  <p class="explain" data-editable="true">Deep Agents는 LangGraph 위에 계획·파일·위임 등을 미리 묶은 하네스입니다. Claude Code도 구현은 다르지만 같은 역할의 실행 틀입니다. 짧은 도구 호출이면 create_agent로 충분합니다.</p>
+  <div class="split-grid wide-left">
+    <div class="dg">
+      <div class="dg-zone">
+        <div class="dg-zone-label" data-editable="true">하네스 · 모델을 둘러싼 실행 틀</div><img class="zone-icon" src="assets/img/icons/layers.svg" alt="실행 틀 아이콘">
+        <div class="dg-row stretch is-compact">
+          <div class="dg-box accent is-center" data-editable="true">모델</div>
+          <div class="dg-box" data-editable="true">Tools<span class="dg-sub">외부 기능</span></div>
+          <div class="dg-box" data-editable="true">Memory<span class="dg-sub">상태·저장소</span></div>
+          <div class="dg-box" data-editable="true">Context<span class="dg-sub">지침·규칙</span></div>
+        </div>
+      </div>
+      <div class="dg-zone">
+        <div class="dg-zone-label" data-editable="true">Deep Agents가 미리 묶은 것</div><img class="zone-icon" src="assets/img/icons/boxes.svg" alt="기능 묶음 아이콘">
+        <div class="chip-row">
+          <span class="chip" data-editable="true">작업 계획</span>
+          <span class="chip" data-editable="true">파일 도구</span>
+          <span class="chip" data-editable="true">긴 출력 보관</span>
+          <span class="chip" data-editable="true">하위 작업</span>
+        </div>
+      </div>
+      <p class="dg-caption" data-editable="true">개념 예시</p>
+    </div>
+    <div class="stack">
+      <div class="code-card">
+        <div class="code-title" data-editable="true">create_deep_agent 인자 · 교육용 축약(값 생략)</div><div class="code-logos"><img class="logo-inline" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+        <pre class="code-body" data-editable="true">agent = create_deep_agent(
+    model=..., tools=[...],
+    subagents=[...], skills=[...],
+    backend=...,
+    interrupt_on={...},
+)</pre>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Concepts(Agent harnesses: Deep Agents)</p>
+  <aside class="speaker-note">오후 실습에서 Claude Code가 파일을 읽고, 계획을 세우고, 명령을 실행하는 모습을 보셨는데, 이것은 모델 혼자 하는 일이 아니라 모델을 둘러싼 실행 틀이 해 주는 일이고, 이 틀을 하네스라고 부릅니다. 화면 왼쪽 그림처럼 하네스는 모델에 외부 기능을 부르는 Tools, 대화와 기록을 남기는 Memory, 지침과 규칙을 담는 Context를 묶습니다. Memory는 대화 중 상태를 저장하는 체크포인터와 대화를 넘어 남기는 저장소로 나뉘고, Context에는 모델 호출 앞뒤에서 로그를 남기거나 가드레일을 거는 미들웨어가 들어갑니다. Deep Agents는 LangGraph 위에 작업 계획 목록, 허용된 경로 안의 파일 도구, 긴 출력을 파일로 넘기는 오프로딩, 하위 작업 위임을 미리 묶어 둔 하네스이고, 오른쪽 코드는 그 설정의 인자 이름만 보여 주며 값은 생략했습니다. Claude Code도 하네스라고 했지만 LangGraph나 Deep Agents로 만든 것은 아니고, 모델을 둘러싼 실행 틀이라는 역할이 같다는 뜻입니다. 다음 장에서 볼 사내 배포 패키지 예시도 이런 구성으로 만든 참고 예시입니다. 다만 도구 몇 개를 짧게 호출하는 작업이라면 create_agent로 충분하고, 하네스 기능은 긴 작업, 파일 작업, 사람 승인 같은 요구가 생길 때 고르면 됩니다. 인자 이름은 설치 판본에 따라 달라질 수 있으니 공식 문서에서 확인하세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-57" class="scene clip" data-skill="steps" data-scene-id="A10" data-start="280" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 사람 승인(HITL)</h2>
+  <p class="thesis" data-editable="true">되돌리기 어려운 도구 실행 전에 멈추고 사람의 결정으로 재개합니다.</p>
+  <p class="explain" data-editable="true">interrupt()로 멈추고 Command(resume)로 사람의 결정을 받아 이어갑니다. 멈춘 상태를 저장할 체크포인터가 필요합니다. CLAUDE.md나 프롬프트의 '하지 마' 문장은 이것을 대신하지 못합니다.</p>
+  <div class="split-grid wide-right">
+    <div class="dg">
+      <div class="dg-row">
+        <div class="dg-box" data-editable="true">도구 호출<span class="dg-sub">모델이 요청</span></div>
+        <span class="dg-arrow" aria-hidden="true">→</span>
+        <div class="dg-box accent" data-editable="true">멈춤<span class="dg-sub">interrupt()</span></div>
+        <span class="dg-arrow" aria-hidden="true">→</span>
+        <div class="dg-box" data-editable="true">사람 결정<span class="dg-sub">resume로 재개</span></div>
+      </div>
+      <div class="dg-arrow is-end" aria-hidden="true">↓</div>
+      <div class="dg-row stretch">
+        <div class="dg-box" data-editable="true"><span class="status-dot ok" aria-hidden="true"></span>승인<span class="dg-sub">도구 실행</span></div>
+        <div class="dg-box" data-editable="true"><span class="status-dot warn" aria-hidden="true"></span>거부<span class="dg-sub">사유를 모델에</span></div>
+      </div>
+      <p class="dg-caption" data-editable="true">지정한 도구만 멈춤 · 결과는 다시 모델로 · 개념 예시</p>
+    </div>
+    <div class="stack">
+      <div class="split-image h-sm is-fit"><img src="assets/img/appendix/cowork-hitl-approval-card.png" alt="사내 배포 패키지 예시 화면의 승인 카드 부분: 셸 명령 실행 승인 요청과 승인·거부 버튼"></div>
+      <p class="dg-caption" data-editable="true">사내 배포 패키지 예시 화면의 승인 카드 · 실행할 명령과 승인·거부 버튼 · <span class="nowrap">수강생 실습 화면 아님</span></p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangGraph Human-in-the-loop 문서</p>
+  <aside class="speaker-note">삭제, 셸 실행, 외부 시스템 변경처럼 되돌리기 어려운 행동은 모델이 요청하더라도 사람이 한 번 보고 결정하게 하는 것이 안전합니다. 화면 왼쪽 그림처럼 모델이 도구 호출을 요청하면 interrupt()로 그래프를 멈추고, 사람이 승인하면 도구를 실행하고, 거부하면 그 사유를 모델에게 돌려줍니다. 사람의 결정은 Command(resume)로 전달해 멈춘 곳부터 이어가는데, 멈춘 상태를 저장해 둘 체크포인터가 있어야 하고, 저장된 상태는 나중에 조회해 어느 시점에서 멈췄는지 확인할 수도 있습니다. 앞 장 코드의 interrupt_on처럼 Deep Agents에서는 어떤 도구 앞에서 멈출지 설정으로 선언만 해도 같은 효과를 냅니다. 오른쪽 화면은 사내 배포 패키지 예시로, 셸 명령을 실행하기 전에 도구 이름과 명령을 보여 주고 승인과 거부를 받는 장면입니다. 수강생 실습 화면은 아니고, 승인 카드 부분만 잘라 보여 드립니다. 오후 실습에서 Claude Code가 파일 수정이나 명령 실행 전에 승인을 요청했다면 그것도 같은 발상의 장치이고, CLAUDE.md나 프롬프트에 "하지 마"라고 적는 문장은 이런 멈춤 장치를 대신하지 못합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

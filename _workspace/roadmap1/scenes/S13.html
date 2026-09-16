@@ -1,0 +1,30 @@
+<section id="s-15" class="scene clip" data-skill="title-bullets" data-scene-id="S13" data-start="70" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 2 · 기사 근거로 답하기</h2>
+  <p class="board-meta" data-editable="true">코드 위치: 검색 함수 · 검색 결과를 모델 호출에 잇는 부분 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>검색된 조각이 질문과 정말 관련 있는지, 답변 문장이 그 조각에 실제로 있는지를 따로 봅니다. 자료에 없는 질문에 '없다'고 답하는지 확인합니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">본문 확보</div><img class="tb-icon" src="assets/img/icons/file-text.svg" alt="본문 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">검색 결과 확인</div><img class="tb-icon" src="assets/img/icons/search.svg" alt="검색 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">답변·질문 변경</div><img class="tb-icon" src="assets/img/icons/message-square.svg" alt="질문 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">자료 없는 질문</div><img class="tb-icon" src="assets/img/icons/circle-help.svg" alt="물음 아이콘"></div>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">답변의 한 문장을 뒷받침하는 기사 문장을 찾습니다</div></div>
+    </div>
+    <div class="stack">
+      <div class="image-frame">
+        <div class="placeholder is-spec">
+          <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S13]</div>
+          <div class="placeholder-desc" data-editable="true">넣을 자료: 질문·검색 결과·답변 화면</div>
+          <div class="placeholder-desc" data-editable="true">조건: 주소·키·모델명 가리기 · 1600×900 이상</div>
+          <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 이 자리를 비워 둠</div>
+        </div>
+      </div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>기사 접속이 안 되면 준비된 저장 본문으로, 실행이 막히면 옆 사람 화면으로 같은 단계를 진행합니다</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">먼저 기사 본문을 확보하고, 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 확인합니다. 다음으로 질문을 넣고 어떤 문단이 검색됐는지 확인합니다. 이어서 그 근거를 붙여 답변을 만들고, 질문을 바꿔 검색 결과가 어떻게 달라지는지 봅니다. 마지막으로 기사에 없는 내용을 물어보고, 모델이 없다고 답하는지 확인합니다. 오른쪽 자리에는 질문, 검색 결과, 답변 세 영역이 한 화면에 보이는 실습 화면이 들어갈 예정이고, 코드에서는 검색 함수와 그 결과를 모델 호출에 잇는 부분 두 곳을 먼저 찾으면 됩니다. 앞의 RAG 구조 그림으로 보면 오늘은 질문할 때의 검색과 답변 구간을 직접 눈으로 확인하는 셈입니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로, 실행이 막히는 분은 옆 사람 화면으로 같은 단계를 진행하면 됩니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
