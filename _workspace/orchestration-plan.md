@@ -48,6 +48,25 @@
 
 - `_workspace/ppt_visual_plan.md`
 
+### 3-0. Instructional Design (선택, 실습이 있는 교육 덱)
+
+실습자료와 덱을 맞춰야 할 때 `llm-edu-designer`가 설계 문서를 먼저 만든다. 덱 HTML은 고치지 않는다.
+
+```text
+실습자료 요약본 + ROADMAP2 확정 사실 + 현재 덱 추출본
+  -> llm-edu-designer review (짜임새 검수)
+  -> llm-edu-designer storyboard (스토리라인)
+  -> llm-edu-designer conti (슬라이드별 내용과 콘티)
+  -> llm-professional + lecture_expert 교차 검수
+  -> (사용자 승인 후) 3-1 Slide-level Refinement
+```
+
+출력:
+
+- `topics/<topic-name>/docs/edu-review-v<N>-<날짜>.md`
+- `topics/<topic-name>/docs/edu-storyboard-v<N>-<날짜>.md`
+- `topics/<topic-name>/docs/edu-conti-v<N>-<날짜>.md`
+
 ### 3-1. Slide-level Refinement (선택)
 
 강의 자료처럼 장면별 정밀도가 필요할 때 차수(block) 단위로 반복한다.

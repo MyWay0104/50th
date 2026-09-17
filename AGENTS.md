@@ -133,6 +133,7 @@ PDF/PPTX로 파일화하기 전까지 사용자가 `overview.html`에서 수작�
 - `slide_ui_designer`: 장면별 배치·글자 크기·색 역할을 DESIGN.md 기준으로 지시한다. 애니메이션은 다루지 않는다. 산출물 `_workspace/slide_ui/<차수>.md`.
 - `lecture_expert`: 강사·교수설계 관점에서 차수 단위로 검토하고 수정 요청을 낸다. 빌드 전·후 2회. 산출물 `_workspace/lecture_review/<차수>-pre|post.md`.
 - `llm-professional`: LLM·Agent 교안(4일 프레임워크·5일 LLM·agent-handbook) 제작자 관점에서 "실습 단계마다 직전 개념이 짝으로 있는가"를 검토한다. 로드맵·콘티·문구 단계에서 쓴다. 산출물 `_workspace/roadmap1/review_llm_professional.md`(호출자가 경로 지정 가능).
+- `llm-edu-designer`: 교육 덱의 교육설계자. 실제 실습자료 요약본과 현재 덱을 대조해 짜임새를 검수(`review`)하고, 스토리라인(`storyboard`)과 슬라이드별 콘티(`conti`)를 쓴다. 설계 문서만 만들고 덱 HTML은 고치지 않는다. 확정 사실은 topic의 `ROADMAP2.md` 0절을 따른다. 산출물 `topics/<topic>/docs/edu-<mode>-v<N>-<날짜>.md`. `llm-professional`·`lecture_expert`는 이 산출물의 검토자로 쓴다.
 
 정의는 `.codex/agents/*.toml`(규약·검증용)과 `.claude/agents/*.md`(Claude Code 실행용) 양쪽에 둔다.
 

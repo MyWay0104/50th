@@ -18,6 +18,7 @@
   -> ppt_content_planner
   -> ppt_visual_designer
   -> (선택) slide_content_writer / slide_ui_designer -> lecture_expert 검토
+  -> (선택, 교육 덱) llm-edu-designer 설계: 실습자료 대조 검수 -> 스토리라인 -> 슬라이드별 콘티
   -> (선택, 교육 덱) llm-professional 검토: 실습 단계와 개념의 짝 점검
   -> hyperframes_ppt_builder
   -> ppt_overview_qa

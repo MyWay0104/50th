@@ -25,8 +25,8 @@ topics/<topic-name>/
 
 - `AGENTS.md`: 저장소 전체 작업 규칙과 허용 HyperFrames 타입
 - `shrimp-rules.md`: shrimp-task-manager가 AI Agent에 주입하는 작업 규칙. 디렉터리 맵, 파일 동기화 표, 판단 기준, 금지 행동을 명령형으로 정리. `AGENTS.md`와 충돌하면 `AGENTS.md`가 우선
-- `.codex/agents/*.toml`: 역할별 subagent 계약. 덱 단위 5개 + 슬라이드 단위 3개(`slide_content_writer`, `slide_ui_designer`, `lecture_expert`) + 내용 전문가 1개(`llm-professional`, 개념-실습 짝 검토)
-- `.claude/agents/*.md`: 위 슬라이드 단위 3개와 `llm-professional`의 Claude Code 실행용 정의 (새 파일은 세션을 다시 시작해야 Agent 도구에 나타난다)
+- `.codex/agents/*.toml`: 역할별 subagent 계약. 덱 단위 5개 + 슬라이드 단위 3개(`slide_content_writer`, `slide_ui_designer`, `lecture_expert`) + 내용 전문가 1개(`llm-professional`, 개념-실습 짝 검토) + 교육설계 1개(`llm-edu-designer`, 짜임새 검수·스토리라인·콘티)
+- `.claude/agents/*.md`: 위 슬라이드 단위 3개와 `llm-professional`·`llm-edu-designer`의 Claude Code 실행용 정의 (새 파일은 세션을 다시 시작해야 Agent 도구에 나타난다. 이미 등록된 정의를 고친 경우에는 호출 프롬프트에서 "디스크의 정의서를 먼저 읽으라"고 지시한다)
 - `.agents/skills/ppt-hyperframes-deck/SKILL.md`: 반복 제작 절차
 - `.codex/skills/hyperframes*`: 기존 `2_slide_master` 방식의 HyperFrames 스킬
 - `scripts/create_topic.py`: topic scaffold 생성
