@@ -64,6 +64,30 @@
       "where": "screen",
       "pattern": "127\\.0\\.0\\.1|localhost|llmops|gpt-4|skh_llm_guide|config\\.py|ingest\\.py|setup_db\\.py",
       "_이유": "사내 주소·모델명과 현업 가이드 파일명은 화면에 쓰지 않는다."
+    },
+    {
+      "name": "사내 고유명(화면) — ROADMAP2 보강",
+      "where": "screen",
+      "pattern": "(?i)llm-ops|skhynix\\.com|HCP-|hcp 팀|lake_catalog|tttm|bge-m3|\\bGLM\\b|4DFP\\d|Easy_Pack|lake_api|d0[0-2]_[A-Za-z]|s0\\d_[a-z_]+\\.py",
+      "_이유": "실습자료 요약본에 있는 사내 주소·모델 계열·테이블 경로·실제 장비 ID·폴더와 파일 이름은 화면에 옮기지 않는다. 역할 이름으로 쓴다(ROADMAP2 R2-7, 정의서 원칙 6)."
+    },
+    {
+      "name": "사내 고유명(노트) — ROADMAP2 보강",
+      "where": "note",
+      "pattern": "(?i)llm-ops|skhynix\\.com|HCP-|lake_catalog|tttm|bge-m3|4DFP\\d|Easy_Pack|lake_api|d0[0-2]_[A-Za-z]|s0\\d_[a-z_]+\\.py",
+      "_이유": "발표자 노트도 PDF에 실릴 수 있으므로 같은 규칙을 적용한다."
+    },
+    {
+      "name": "옛 표기(화면) — ROADMAP2 확정 사실과 충돌",
+      "where": "screen",
+      "pattern": "실습 가이드|해당 장(?![면비])|챗봇|통째로|인자 없|부를지 말지|실습 [1-5] ·|별개인 모델|별도 경로",
+      "_이유": "R2-2(통째 요약 폐기) · R2-3(인자 없는 도구 폐기, 결과물은 Agent) · R2-5(같은 열쇠) · R2-7(실습 번호와 코드 위치 표기)."
+    },
+    {
+      "name": "옛 표기(노트) — ROADMAP2 확정 사실과 충돌",
+      "where": "note",
+      "pattern": "실습 가이드|해당 장(?![면비])|챗봇|통째로|인자 없|부를지 말지|별개인 모델|별개이므로|별도 경로|긍정봇[^.]{0,40}기억|few-shot",
+      "_이유": "R2-2 · R2-3 · R2-4(긍정봇 기억·few-shot 복선 삭제) · R2-5 · R2-7."
     }
   ]
 }
