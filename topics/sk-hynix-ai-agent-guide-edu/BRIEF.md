@@ -61,6 +61,6 @@ npx hyperframes lint topics\sk-hynix-ai-agent-guide-edu
 
 ## 향후 개선사항
 
-- 실제 실습 HTML·Streamlit·Claude Code·Dokmo 화면 캡처로 플레이스홀더 10곳 교체.
+- 실제 실습 HTML·Streamlit·Claude Code·ddokmo 화면 캡처로 플레이스홀더 10곳 교체.
 - 사내 모델·권한·설치 경로가 확정되면 실습 안내 장면 문구 확정.
 - 사내 브랜드 디자인 문서가 생기면 `:root` 토큰만 교체.

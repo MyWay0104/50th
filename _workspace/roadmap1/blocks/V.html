@@ -1,0 +1,94 @@
+<section id="s-0" class="scene clip" data-skill="split" data-scene-id="V01" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">벡터 저장소는 왜 필요한가</h2>
+  <p class="thesis" data-editable="true">글자가 같은 것이 아니라 뜻이 가까운 것을 빨리 찾으려고 둡니다.</p>
+  <p class="explain" data-editable="true">키워드 검색은 같은 낱말이 있어야 찾지만, 뜻을 숫자 묶음(벡터)으로 바꿔 두면 표현이 달라도 가까운 조각을 찾을 수 있습니다. 조각이 수천·수만 개가 되면 하나하나 비교할 수 없어, 벡터를 저장하고 가까운 것을 빠르게 찾아 주는 전용 저장소를 둡니다. 오늘 실습은 기사 한 편이라 조각이 몇 개뿐이지만, 같은 구조를 씁니다.</p>
+  <div class="split-grid">
+    <div class="stack">
+      <span class="concept-badge" data-editable="true">개념 예시</span>
+      <div class="compare-grid cols-2">
+        <div class="compare-col">
+          <img class="col-icon" src="assets/img/icons/file-search.svg" alt="키워드 검색 아이콘"><div class="compare-kicker" data-editable="true">키워드 검색</div>
+          <div class="compare-heading" data-editable="true">같은 낱말이 있어야</div>
+          <ul class="compare-list">
+            <li data-editable="true">질문: "장비 고장"</li>
+            <li data-editable="true">조각: "설비 이상" → 못 찾음</li>
+          </ul>
+          <p class="compare-note" data-editable="true">표현이 다르면 놓침</p>
+        </div>
+        <div class="compare-col is-accent">
+          <img class="col-icon" src="assets/img/icons/search.svg" alt="뜻 검색 아이콘"><div class="compare-kicker" data-editable="true">벡터 검색</div>
+          <div class="compare-heading" data-editable="true">뜻이 가까우면</div>
+          <ul class="compare-list">
+            <li data-editable="true">질문: "장비 고장"</li>
+            <li data-editable="true">조각: "설비 이상" → 찾음</li>
+          </ul>
+          <p class="compare-note" data-editable="true">표현이 달라도 찾음</p>
+        </div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box"><img class="dg-icon" src="assets/img/icons/file-text.svg" alt="문서 조각 아이콘"><span data-editable="true">조각들</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box"><img class="dg-icon" src="assets/img/icons/layers.svg" alt="벡터 아이콘"><span data-editable="true">뜻을 숫자로</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent"><img class="dg-icon" src="assets/img/icons/database.svg" alt="저장소 아이콘"><span data-editable="true">벡터 저장소</span></div>
+        </div>
+        <div class="dg-row stretch">
+          <div class="dg-box muted"><img class="dg-icon" src="assets/img/icons/message-square.svg" alt="질문 아이콘"><span data-editable="true">질문</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box muted"><img class="dg-icon" src="assets/img/icons/search.svg" alt="검색 아이콘"><span data-editable="true">가까운 것 몇 개</span></div>
+        </div>
+      </div>
+      <p class="dg-caption is-left" data-editable="true">윗줄은 오늘 실습에서 손으로 하는 저장 · 아랫줄은 저장해 둔 조각을 나중에 쓰는 방식</p>
+      <p class="guide-ref" data-editable="true">코드 위치: 자료 준비(분할·임베딩·저장) 부분 — 실습 가이드 해당 장</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Vector stores 문서</p>
+  <aside class="speaker-note">일반 데이터베이스는 값이 같은 행을 찾고, 벡터 저장소는 뜻이 가까운 조각을 찾습니다. 화면 왼쪽처럼 "장비 고장"이라고 물었을 때 키워드 검색은 "설비 이상"이라고 적힌 조각을 놓치지만, 뜻을 숫자 묶음으로 바꿔 두면 표현이 달라도 가까운 조각으로 잡힙니다. 조각이 몇 개뿐이면 그냥 리스트에 두고 하나씩 비교해도 되지만, 수천·수만 개가 되면 하나하나 비교할 수 없어 벡터를 저장하고 가까운 것을 빠르게 찾아 주는 전용 저장소가 필요합니다. 오른쪽 그림의 윗줄, 조각을 숫자로 바꿔 저장하는 부분까지가 오늘 실습에서 손으로 하는 범위이고, 아랫줄처럼 질문과 가까운 조각을 꺼내 쓰는 방식은 다음 장에서 봅니다. 우리 부서 문서가 만 건이라면 키워드 검색과 뜻 검색 중 무엇이 먼저 막힐까요? 다음 장에서는 실습에 나오는 FAISS와 자주 듣는 두 가지 이름을 비교해 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="V02" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">FAISS · Chroma · Milvus</h2>
+  <p class="thesis" data-editable="true">셋 다 벡터를 저장하고 가까운 것을 찾지만, 어디서 얼마나 크게 돌리느냐가 다릅니다.</p>
+  <p class="explain" data-editable="true">FAISS는 Meta가 만든 검색 라이브러리로 내 프로그램 안(메모리)에서 바로 쓰고 파일로 저장할 수 있어 오늘 실습에 씁니다. Chroma는 설치가 간단한 오픈소스 벡터 DB로 로컬 프로젝트에 붙이기 쉽고, Milvus는 서버로 띄워 여러 사람·많은 자료를 다루는 규모용입니다. 우열이 아니라 규모와 운영 방식의 차이입니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/boxes.svg" alt="라이브러리 아이콘"><div class="compare-kicker" data-editable="true">라이브러리 · 오늘 실습</div>
+        <div class="compare-heading" data-editable="true">FAISS</div>
+        <ul class="compare-list">
+          <li data-editable="true">프로그램 안에서 바로 검색</li>
+          <li data-editable="true">인덱스를 파일로 저장·불러오기</li>
+        </ul>
+        <p class="compare-note" data-editable="true">서버 없음 · 개인 실습·소규모</p>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/database.svg" alt="가벼운 DB 아이콘"><div class="compare-kicker" data-editable="true">가벼운 DB</div>
+        <div class="compare-heading" data-editable="true">Chroma</div>
+        <ul class="compare-list">
+          <li data-editable="true">설치 간단, 로컬에 저장</li>
+          <li data-editable="true">출처 같은 메타데이터 함께 보관</li>
+        </ul>
+        <p class="compare-note" data-editable="true">작은 팀 프로젝트</p>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/server.svg" alt="서버형 DB 아이콘"><div class="compare-kicker" data-editable="true">서버형 DB</div>
+        <div class="compare-heading" data-editable="true">Milvus</div>
+        <ul class="compare-list">
+          <li data-editable="true">여러 사용자·대용량</li>
+          <li data-editable="true">분산·운영 기능</li>
+        </ul>
+        <p class="compare-note" data-editable="true">사내 공용 서비스 규모</p>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">공통: 벡터 저장 + 가까운 것 찾기 · 다른 점: 규모·운영</div>
+      <span class="dg-caption" data-editable="true">개념 예시 · 실습 코드의 저장소 이름은 실습 가이드 해당 장</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: FAISS 공식 문서(GitHub wiki) · Chroma 공식 문서 · Milvus 공식 문서</p>
+  <aside class="speaker-note">세 이름을 처음 들으면 서로 다른 기술처럼 보이지만, 벡터를 저장하고 가까운 것을 찾는다는 하는 일은 같습니다. FAISS는 데이터베이스라기보다 검색 라이브러리라서 따로 띄우는 서버가 없고, 오늘처럼 노트북 안에서 인덱스를 만들고 파일로 저장해 두기 좋습니다. Chroma는 DB 형태로 로컬에 파일을 두고, 출처 같은 메타데이터로 걸러 찾기가 편합니다. Milvus는 서버를 따로 띄워 여러 사용자와 많은 자료를 다루는 사내 공용 규모에 쓰는데, 이번 교육 범위 밖입니다. 실습 코드에서 FAISS를 다른 저장소로 바꿔도 앞 장의 구조, 나누기, 숫자로 바꾸기, 저장, 찾기는 그대로입니다. 셋 사이의 성능 비교는 같은 조건으로 잰 결과가 아니면 말하지 않겠습니다. 오늘 실습처럼 기사 한 편이면 셋 중 무엇이면 충분할까요?</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

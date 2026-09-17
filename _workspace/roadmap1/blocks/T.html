@@ -1,0 +1,135 @@
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="T01" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">단순 호출의 한계와 RAG</h2>
+  <p class="thesis" data-editable="true">말투와 다양성은 바꿀 수 있지만, 모델이 모르는 자료는 답하지 못하므로 다음은 자료를 붙이는 RAG입니다.</p>
+  <p class="explain" data-editable="true">실습 1에서 system 한 줄과 temperature만으로 답의 모양은 바뀌었지만, 최신 자료를 물었을 때는 그럴듯한 문장이 근거 없이 나왔습니다. 다음 실습은 모델이 모르는 기사 본문을 질문과 함께 전달해 그 빈자리를 채웁니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/message-square.svg" alt="대화 아이콘"><div class="compare-kicker" data-editable="true">① 지금 되는 것</div>
+        <div class="compare-heading" data-editable="true">실습 1 · 첫 호출</div>
+        <ul class="compare-list">
+          <li data-editable="true">system 한 줄로 말투·역할 바꾸기</li>
+          <li data-editable="true">temperature로 다양성 조절</li>
+          <li data-editable="true">규칙·예시로 답 모양 정하기</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/triangle-alert.svg" alt="주의 아이콘"><div class="compare-kicker" data-editable="true">② 아직 안 되는 것</div>
+        <div class="compare-heading" data-editable="true">모델만으로는 한계</div>
+        <ul class="compare-list">
+          <li data-editable="true">학습 이후의 최신 자료</li>
+          <li data-editable="true">사내 문서·우리 부서 자료</li>
+          <li data-editable="true">출처를 대며 답하기</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/file-search.svg" alt="문서 검색 아이콘"><div class="compare-kicker" data-editable="true">③ 그래서 다음</div>
+        <div class="compare-heading" data-editable="true">실습 2 · 기사 한 편으로 RAG</div>
+        <ul class="compare-list">
+          <li data-editable="true">기사 본문을 찾아 붙이기</li>
+          <li data-editable="true">답을 본문과 대조</li>
+          <li data-editable="true">없으면 없다고 하기</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">실습 1 첫 호출</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box accent" data-editable="true">실습 2 기사 한 편으로 RAG</div>
+      <span class="dg-caption" data-editable="true">모르는 자료는 찾아서 붙입니다</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020</p>
+  <aside class="speaker-note">실습 1 마지막 단계에서 최신 자료를 물었을 때, 모델이 자신 있게 그럴듯한 답을 내놓는 장면을 보셨을 겁니다. 왼쪽 열처럼 system 한 줄과 temperature, 규칙과 예시로 답의 말투와 모양은 바꿀 수 있었지만, 가운데 열의 학습 이후 자료와 사내 문서, 출처는 모델 안에 없으므로 그 답은 환각입니다. 이 빈자리를 채우는 방법이 오른쪽 열의 RAG로, 다음 실습에서는 기사 본문을 찾아 질문과 함께 전달하고 답 문장을 본문과 대조하며, 본문에 없으면 없다고 답하게 만듭니다. 여러분 업무에서 모델이 절대 알 수 없는 자료 하나를 떠올려 보세요. 그 자료가 바로 다음 실습에서 기사 본문 자리에 들어갈 것입니다. 다음 장에서는 외부 자료가 필요한 질문이 어떤 것인지 먼저 구분해 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="T02" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">RAG의 한계와 도구</h2>
+  <p class="thesis" data-editable="true">자료를 붙이면 근거 있는 답은 되지만, 정확한 숫자와 지금 상태는 못 내므로 다음은 코드가 실행하는 도구입니다.</p>
+  <p class="explain" data-editable="true">실습 2에서 기사 본문을 붙이자 답 문장을 본문과 대조할 수 있었고, 없는 내용은 없다고 답했습니다. 그러나 건수를 세거나 지금 장비 상태를 보는 일은 문서에 없으므로, 다음 실습은 조회 함수를 도구로 붙여 모델이 부르고 코드가 실행하게 합니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/file-text.svg" alt="근거 문서 아이콘"><div class="compare-kicker" data-editable="true">① 지금 되는 것</div>
+        <div class="compare-heading" data-editable="true">실습 2 · RAG</div>
+        <ul class="compare-list">
+          <li data-editable="true">기사 본문을 붙여 근거 있는 요약</li>
+          <li data-editable="true">답 문장을 본문과 대조</li>
+          <li data-editable="true">없으면 없다고 답하기</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/calculator.svg" alt="계산 아이콘"><div class="compare-kicker" data-editable="true">② 아직 안 되는 것</div>
+        <div class="compare-heading" data-editable="true">문서만으로는 한계</div>
+        <ul class="compare-list">
+          <li data-editable="true">정확한 건수·집계 (모델은 세지 않음)</li>
+          <li data-editable="true">지금 이 순간의 장비 상태</li>
+          <li data-editable="true">조회·실행 같은 행동</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/wrench.svg" alt="도구 아이콘"><div class="compare-kicker" data-editable="true">③ 그래서 다음</div>
+        <div class="compare-heading" data-editable="true">실습 3 · 조회 함수를 도구로</div>
+        <ul class="compare-list">
+          <li data-editable="true">정해진 쿼리로 테이블 조회</li>
+          <li data-editable="true">같은 함수를 @tool로</li>
+          <li data-editable="true">모델은 부를지만 정하고 코드가 실행</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">실습 2 RAG</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box accent" data-editable="true">실습 3 조회 함수를 도구로</div>
+      <span class="dg-caption" data-editable="true">도구가 붙어야 Agent로 갈 수 있습니다</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Tools 가이드</p>
+  <aside class="speaker-note">실습 2에서는 기사 본문을 붙이자 답 문장을 본문과 대조할 수 있었고, 본문에 없는 내용은 없다고 답하는 장면까지 보셨습니다. 그런데 가운데 열처럼 정확한 건수와 집계, 지금 이 순간의 장비 상태, 조회나 실행 같은 행동은 문서 어디에도 적혀 있지 않으므로 RAG로는 채울 수 없고, 모델은 숫자를 세지 않습니다. 이 빈자리를 채우는 것이 오른쪽 열의 도구로, 다음 실습에서는 정해진 쿼리로 테이블을 조회하는 함수를 그대로 도구로 붙여 모델은 부를지만 정하고 코드가 실행하게 합니다. RAG를 붙여도 도구가 없으면 모델은 읽고 말할 뿐 행동하지 못하므로 Agent가 되기 어렵습니다. '최근 일주일 점검 건수'를 기사 검색으로 답할 수 있을까요, 한 분만 말씀해 주세요. Agent가 정확히 무엇인지는 다음 구간의 스크립트·Workflow·Agent 장에서 정의하고, 바로 다음 장에서는 정확한 조회와 계산을 누가 맡는지부터 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="T03" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">도구의 한계와 화면</h2>
+  <p class="thesis" data-editable="true">도구까지 붙인 함수는 코드를 아는 사람만 쓰므로, 다음은 누구나 쓰는 화면입니다.</p>
+  <p class="explain" data-editable="true">실습 3에서 질문을 넣으면 모델이 조회 도구를 부르고 결과를 문장으로 설명하는 것까지 확인했습니다. 그러나 이 함수는 노트북을 여는 사람만 쓸 수 있으므로, 다음 실습은 입력 칸과 결과 화면을 붙여 코드를 모르는 동료도 쓰게 합니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/wrench.svg" alt="도구 아이콘"><div class="compare-kicker" data-editable="true">① 지금 되는 것</div>
+        <div class="compare-heading" data-editable="true">실습 3 · 도구</div>
+        <ul class="compare-list">
+          <li data-editable="true">질문하면 모델이 조회 도구를 부름</li>
+          <li data-editable="true">정답 아는 질문·도구 없는 질문 구분</li>
+          <li data-editable="true">결과를 문장으로 설명</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/users.svg" alt="동료 아이콘"><div class="compare-kicker" data-editable="true">② 아직 안 되는 것</div>
+        <div class="compare-heading" data-editable="true">코드만으로는 한계</div>
+        <ul class="compare-list">
+          <li data-editable="true">코드를 모르는 동료가 쓰기</li>
+          <li data-editable="true">입력 칸·결과 화면</li>
+          <li data-editable="true">결과 없음 같은 안내</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"><div class="compare-kicker" data-editable="true">③ 그래서 다음</div>
+        <div class="compare-heading" data-editable="true">실습 4 · Streamlit 챗봇</div>
+        <ul class="compare-list">
+          <li data-editable="true">Streamlit 화면에 연결</li>
+          <li data-editable="true">장비 ID 입력 → 위치·진행 공정</li>
+          <li data-editable="true">입력 → 함수 → 화면의 연결 짚기</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">실습 3 도구</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box accent" data-editable="true">실습 4 Streamlit 챗봇</div>
+      <span class="dg-caption" data-editable="true">오후에는 이 앱을 Claude Code가 읽습니다</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서</p>
+  <aside class="speaker-note">실습 3에서는 질문을 넣으면 모델이 조회 도구를 부르고, 정답을 아는 질문과 도구가 없는 질문을 구분하며, 결과를 문장으로 설명하는 것까지 확인하셨습니다. 그런데 이 함수는 노트북을 열고 코드를 실행할 줄 아는 사람만 쓸 수 있고, 입력 칸도 결과 화면도 결과가 없을 때의 안내도 없습니다. 이 빈자리를 채우는 것이 오른쪽 열의 화면으로, 다음 실습에서는 같은 조회 함수를 Streamlit 화면에 연결해 장비 ID를 넣으면 위치와 진행 공정이 나오게 하고, 입력에서 함수를 거쳐 화면으로 이어지는 연결을 함께 짚습니다. 여러분이 만든 조회 함수를 옆 팀에 주려면 무엇이 더 필요할까요, 한 분만 말씀해 주세요. 오후 구간에서는 바로 이 앱을 Claude Code가 읽고 고치므로, 오전에 만든 화면이 오후의 재료가 됩니다. 다음 장에서는 실습 4의 화면 구조를 먼저 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
