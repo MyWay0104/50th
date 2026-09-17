@@ -1,0 +1,16 @@
+/* P1 CSS 요청 (빌더 검증본 · 2026-09-18): LAB01~LAB03 안내판 압축. scene-styles 맨 끝에 붙이면 세 장면 모두 y 952 안에 들어온다(미리보기 실측: LAB01 952 · LAB02 886 · LAB03 856). 없으면 LAB01 +180px · LAB02 +96px · LAB03 +47px 넘친다. */
+.scene[data-scene-id="LAB01"] > .stack, .scene[data-scene-id="LAB02"] > .stack, .scene[data-scene-id="LAB03"] > .stack { margin-top: 20px; gap: 14px; }
+.scene[data-scene-id="LAB01"] .time-blocks.is-steps.row .time-block, .scene[data-scene-id="LAB02"] .time-blocks.is-steps.row .time-block, .scene[data-scene-id="LAB03"] .time-blocks.is-steps.row .time-block { padding: 12px; gap: 6px; }
+.scene[data-scene-id="LAB01"] .time-blocks.is-steps .min, .scene[data-scene-id="LAB02"] .time-blocks.is-steps .min, .scene[data-scene-id="LAB03"] .time-blocks.is-steps .min { width: 44px; height: 44px; font-size: 24px; }
+.scene[data-scene-id="LAB01"] .tb-icon, .scene[data-scene-id="LAB02"] .tb-icon, .scene[data-scene-id="LAB03"] .tb-icon { top: 16px; }
+.scene[data-scene-id="LAB01"] .chip-row { gap: 8px; }
+.scene[data-scene-id="LAB01"] .chip { padding: 6px 14px; font-size: 26px; }
+.scene[data-scene-id="LAB01"] .chip.accent { padding: 5px 13px; }
+.scene[data-scene-id="LAB01"] .practice-grid, .scene[data-scene-id="LAB02"] .practice-grid, .scene[data-scene-id="LAB03"] .practice-grid { margin-top: 0; gap: 40px; }
+.scene[data-scene-id="LAB01"] .practice-grid .stack, .scene[data-scene-id="LAB02"] .practice-grid .stack, .scene[data-scene-id="LAB03"] .practice-grid .stack { gap: 12px; }
+.scene[data-scene-id="LAB01"] .done-box, .scene[data-scene-id="LAB02"] .done-box, .scene[data-scene-id="LAB03"] .done-box { padding: 14px 28px; }
+.scene[data-scene-id="LAB01"] .done-text, .scene[data-scene-id="LAB02"] .done-text, .scene[data-scene-id="LAB03"] .done-text { margin-top: 4px; font-size: 28px; }
+.scene[data-scene-id="LAB01"] .fallback, .scene[data-scene-id="LAB02"] .fallback, .scene[data-scene-id="LAB03"] .fallback { margin-top: 0; padding: 12px 24px; font-size: 26px; }
+.scene[data-scene-id="LAB01"] .placeholder, .scene[data-scene-id="LAB02"] .placeholder, .scene[data-scene-id="LAB03"] .placeholder { min-height: 160px; padding: 20px 32px; gap: 6px; }
+.scene[data-scene-id="LAB01"] .placeholder-desc, .scene[data-scene-id="LAB02"] .placeholder-desc, .scene[data-scene-id="LAB03"] .placeholder-desc { font-size: 26px; }
+.scene[data-scene-id="LAB01"] .time-block .what { font-size: 26px; }

@@ -1,0 +1,22 @@
+<section id="s-46" class="scene clip" data-skill="split" data-scene-id="A01" data-start="225" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · Transformer와 Q·K·V</h2>
+  <p class="thesis" data-editable="true">Attention은 Q·K 비교로 정한 비율대로 V를 모읍니다.</p>
+  <p class="explain" data-editable="true">비율은 입력마다 새로 계산되는 값이며 학습된 매개변수와 다릅니다. 원 논문은 encoder–decoder 구조이고, 많은 생성 모델은 decoder 중심입니다.</p>
+  <div class="split-grid wide-left">
+    <ul class="bullets">
+      <li data-editable="true"><strong>Q·K·V</strong> 찾는 기준·이름표·내용<span class="sub">비유 · 한 토큰 표현에서 나온 세 벡터</span></li>
+      <li data-editable="true">그림 왼쪽: 헤드 하나의 계산<span class="sub">softmax(QK<sup>T</sup> / √d) · V</span></li>
+      <li data-editable="true">그림 오른쪽: 여러 헤드를 나란히<span class="sub">헤드 = Q·K·V 계산 한 벌 · 헤드마다 다른 변환</span></li>
+    </ul>
+    <div class="split-panel">
+      <div class="split-image h-sm pair">
+        <img src="assets/img/b1/attention-fig2a.png" alt="원 논문 Figure 2 왼쪽: Scaled Dot-Product Attention">
+        <img src="assets/img/b1/attention-fig2b.png" alt="원 논문 Figure 2 오른쪽: Multi-Head Attention">
+      </div>
+      <p class="dg-caption" data-editable="true">Vaswani et al. (2017), Figure 2 · arXiv:1706.03762</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Vaswani et al., Attention Is All You Need (2017) · arXiv:1706.03762</p>
+  <aside class="speaker-note">오전 응답 생성 장면에서 모델이 문맥을 보고 다음 토큰을 고른다고 했는데, 그 문맥을 반영하는 계산이 Attention이고 그 재료가 Q·K·V이며, 비유하면 Q는 찾는 기준, K는 비교될 이름표, V는 실제로 전달할 내용입니다. 화면 오른쪽 원 논문 그림 중 왼쪽이 헤드 하나의 계산으로, 아래에서부터 Q와 K를 곱해 비교하고 크기를 조정한 뒤 softmax로 반영 비율을 만들어 그 비율대로 V를 모읍니다. 중간의 Mask는 선택 단계인데, 생성 모델은 이것으로 아직 나오지 않은 뒤쪽 토큰을 가립니다. 오른쪽 그림은 서로 다른 변환을 가진 여러 헤드가 이 계산을 나란히 한 뒤 이어 붙이는 구조이고, 실제 모델은 이것을 여러 층에서 반복합니다. 이 비율은 입력마다 새로 계산되는 값이라 학습된 매개변수와 다르며, 그림은 구조도이지 가중치를 측정한 결과가 아닙니다. 원 논문은 번역을 위해 encoder와 decoder를 함께 썼고, 오늘날 많은 생성 모델은 앞쪽 토큰만 참고하도록 가린 decoder 중심 구조를 씁니다. 원 논문 이후 여러 공개 모델은 RMSNorm, SwiGLU, RoPE 같은 변형을 쓰지만, Q·K 비교로 비율을 정해 V를 모으는 원리는 같습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

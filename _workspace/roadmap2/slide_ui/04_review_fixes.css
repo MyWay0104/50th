@@ -1,0 +1,37 @@
+
+      /* ===== ROADMAP2 빌드 후 시각 검수 반영 (v0.6-visual-01-33.md · v0.6-visual-34-66.md) ===== */
+      /* [높음] E01: 점선 상자(아직 받지 않은 셋째 열쇠)가 배경과 구분되지 않음 → 회색 면 + 2px 점선 */
+      .dg-box.is-dashed.muted { background: var(--box-muted); }
+      .dg-box.is-dashed { border-width: 2px; }
+      .scene.night .dg-box.is-dashed.muted { background: var(--on-night-fill); }
+      /* [높음] LAB03 · LAB04 · M01: 카드마다 글 줄 수가 달라 번호 원 높이가 어긋남 → 글 칸 높이를 같게 */
+      .scene[data-scene-id="LAB03"] .time-block .what,
+      .scene[data-scene-id="M01"] .time-block .what { min-height: calc(2 * 1.35em); align-content: center; }
+      .scene[data-scene-id="LAB04"] .time-block .what { min-height: calc(3 * 1.35em); align-content: center; }
+      /* [높음] V02: 설명문 3줄 때문에 비교 카드가 눌려 글자가 아래 테두리에 붙음 */
+      .scene[data-scene-id="V02"] > .stack { margin-top: 32px; gap: 16px; }
+      .scene[data-scene-id="V02"] .compare-grid { flex-shrink: 0; }
+      .scene[data-scene-id="V02"] .compare-col { padding: 32px 40px; }
+      /* [중간 · 사용자 지시 1·2] "막히면" 상자의 점(dotted) 테두리가 다른 상자보다 흐림 → 같은 굵기의 파선으로(크기 불변) */
+      .fallback { border-style: dashed; }
+      /* [중간 · 사용자 지시 2] 코드 강조 글자가 3.42:1 로 흐림 → 짙은 주황(9.1:1), 연주황 면은 유지 */
+      .code-body .hl { color: var(--night); }
+      /* [중간] 열쇠 지도 축소판: 아직 받지 않은 열쇠 칩은 E01 과 같은 규칙(점선 · 낮춤) */
+      .chip.is-later { border-style: dashed; background: var(--box-muted); color: var(--ink-2); }
+      /* [중간] 핵심 문장 둘째 줄에 한 낱말만 남는 것 */
+      .scene[data-scene-id="T01"] .thesis, .scene[data-scene-id="T02"] .thesis, .scene[data-scene-id="T03"] .thesis { text-wrap: balance; }
+      /* [중간] LAB04 · LAB04b 단계 사이 화살표가 거의 안 보임 */
+      .scene[data-scene-id="LAB04"] .time-blocks.is-steps.row .time-block + .time-block::before,
+      .scene[data-scene-id="LAB04b"] .time-blocks.is-steps.row .time-block + .time-block::before { font-size: 24px; color: var(--ink-2); }
+      /* [중간] 글 앞 아이콘이 글자에 붙음 */
+      .dg-caption > .logo-inline, .board-meta > .logo-inline { margin-right: 8px; }
+      /* [중간] S28: 자리표시가 캡션 글처럼 카드 밑에 붙어 있음 → 다른 자리표시와 같은 점선 상자 모양 */
+      .scene[data-scene-id="S28"] .steps.row + .dg-caption { margin-top: 24px; padding: 12px 24px; border: 2px dashed var(--box-line); border-radius: var(--radius); }
+      /* [낮음] 배지 글자가 22px 로 덱에서 가장 작음 → 기준 24px */
+      .concept-badge { font-size: 24px; }
+      /* [낮음] 밝은 배경의 진행 띠 연결선이 타일 테두리보다 약함 */
+      .scene:not(.night) .axis-stop + .axis-stop::before { border-top-color: var(--ink-3); }
+      /* [낮음] N02: 칩 줄 아래 설명만 가운데 정렬 → 왼쪽 정렬로 통일 */
+      .scene[data-scene-id="N02"] .chip-row + .dg-caption { text-align: left; }
+      /* [낮음] LAB04b 자리표시 위아래 여백 대칭 */
+      .scene[data-scene-id="LAB04b"] .placeholder { padding-top: 14px; padding-bottom: 14px; }

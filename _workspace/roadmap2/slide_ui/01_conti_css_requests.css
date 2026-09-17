@@ -1,0 +1,24 @@
+
+      /* ===== ROADMAP2 추가 규칙: 콘티의 CSS 요청 중 채택분 (결정: _workspace/roadmap2/conti_coordinator_decisions.md 3절) ===== */
+      /* 구간 표지 제목: 두 덩어리(.nowrap)로 나뉘는 긴 제목이 띠(top 720px)와 겹치지 않게 한 단계 작게 */
+      .hero-title.is-section { font-size: 88px; line-height: 1.12; }
+      /* 아직 받지 않은 것(셋째 열쇠 등)을 나타내는 점선 상자. 색은 상자 테두리 토큰 그대로라 대비 3:1 유지 */
+      .dg-box.is-dashed { border-style: dashed; background: transparent; }
+      .scene.night .dg-box.is-dashed { border-style: dashed; }
+      /* 값의 범위를 보여 주는 가는 눈금선(S07 temperature 0~2) */
+      .scale-line { display: flex; align-items: center; gap: 16px; font-size: var(--fs-caption); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+      .scale-line::before { content: ""; order: 1; flex: 1; height: 2px; background: var(--box-line); }
+      .scale-line > :first-child { order: 0; }
+      .scale-line > :last-child { order: 2; }
+      /* 세 열 비교에서 가운데 열을 넓게(N03: LLM 호출 / Agent 루프 / 안전장치) */
+      .compare-grid.cols-3.is-mid-wide { grid-template-columns: 1fr 1.4fr 1fr; }
+      /* C03: 오른쪽 표가 열 폭보다 넓어 1800px 밖으로 86px 넘치던 것(패치 전부터 있던 문제. 테두리가 또렷해지며 드러남) */
+      .scene[data-scene-id="C03"] .data-table { font-size: var(--fs-small); }
+      .scene[data-scene-id="C03"] .data-table th, .scene[data-scene-id="C03"] .data-table td { padding-left: 14px; padding-right: 14px; }
+      /* 빌더 P4 요청 ①②: 본문 흐름 안의 진행 띠에 "준비" 표시가 있으면 위로 84px 튀어나오므로 자리를 만든다(G01 · G02) */
+      .scene:not(.title-scene) .axis-strip:has(> .axis-prep) { margin-top: 108px; }
+      .scene:not(.title-scene) .axis-strip { margin-bottom: 8px; }
+      /* 빌더 P4 요청 ③: 카드 머리말 안에 배지가 들어가도 줄 높이가 달라지지 않게 */
+      .scene[data-scene-id="S39"] .compare-kicker { min-height: 38px; display: flex; align-items: center; gap: 12px; }
+      /* 빌더 P4 요청 ⑤: 단계 블록의 작은 글씨(실습자료 하위 번호 등) */
+      .time-block .what .when { font-size: var(--fs-caption); font-weight: 400; color: var(--ink-3); }

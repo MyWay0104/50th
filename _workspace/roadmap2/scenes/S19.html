@@ -1,0 +1,33 @@
+<section id="s-21" class="scene clip" data-skill="title-bullets" data-scene-id="S19" data-start="100" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 3 · 조회 함수를 도구로</h2>
+  <p class="board-meta" data-editable="true">코드 위치: 사내 데이터 조회 라이브러리 호출부 · @tool 연결 부분 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>같은 함수가 도구가 되기 전과 후에 무엇이 달라지는지 봅니다. 도구가 필요 없는 질문에서 도구 호출 기록이 비는지 확인합니다. 이 도구는 정해진 쿼리라 인자가 없습니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">테이블 조회</div><img class="tb-icon" src="assets/img/icons/table.svg" alt="표 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">상태 조회 값</div><img class="tb-icon" src="assets/img/icons/database.svg" alt="조회 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">@tool 연결</div><img class="tb-icon" src="assets/img/icons/wrench.svg" alt="도구 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">세 가지 질문</div><img class="tb-icon" src="assets/img/icons/message-square.svg" alt="질문 아이콘"></div>
+      </div>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① 조회 함수</span>
+        <span class="chip" data-editable="true">② 숫자는 코드가</span>
+        <span class="chip accent" data-editable="true">③ tool_calls</span>
+        <span class="chip" data-editable="true">④ 부를지 말지</span>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">정답을 아는 질문과 도구 없이 답할 질문을 구분해 설명합니다</div></div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 조회 결과로 진행합니다</div>
+    </div>
+    <div class="stack">
+      <div class="panel-title" data-editable="true">실행 환경에서 막는 네 층</div>
+      <div class="dg">
+        <div class="dg-row stretch"><div class="dg-box" data-editable="true">읽기 전용</div><div class="dg-box" data-editable="true">허용 테이블</div></div>
+        <div class="dg-row stretch"><div class="dg-box" data-editable="true">쿼리 검사</div><div class="dg-box" data-editable="true">사람 승인</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Tools 가이드 · LangChain SQL 안전 지침(SQL Agent 가이드 내)</p>
+  <aside class="speaker-note">먼저 사내 데이터 조회 라이브러리로 정해진 쿼리를 보내 장비 테이블을 불러옵니다. 여기에는 AI가 없고, 쿼리는 코드에 고정돼 있어 Text-to-SQL도 아니며 인자도 없습니다. 이어서 상태 조회 값을 눈으로 확인합니다. 교육용 가상 예시로 어떤 장비가 어느 구역에서 어느 공정을 진행 중인지 같은 값이며, 실제 테이블과 컬럼 이름은 실습 가이드 해당 장을 기준으로 봅니다. 다음으로 같은 함수에 @tool을 붙여 모델에게 알려 주고 도구 호출 기록을 보는데, 함수 자체는 그대로이고 달라진 것은 모델이 이 함수를 부를지 말지 정할 수 있게 된 것뿐입니다. 마지막으로 정답을 아는 질문, 결과가 없어야 하는 질문, 도구가 필요 없는 인사 같은 질문 세 가지를 넣어 도구 호출 기록이 비는 경우를 확인합니다. 프롬프트에 "위험한 SQL은 실행하지 마"라고 적는 것만으로는 접근 제한이 되지 않아서 오른쪽 네 칸처럼 읽기 전용 계정, 허용 테이블, 쿼리 검사, 사람 승인 같은 층을 실행 환경에 두며, 사람 승인은 부록에서 따로 다룹니다. 접속이 안 되는 분은 준비된 조회 결과로, 도구 호출이 안 되는 분은 옆 사람 화면으로 진행합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

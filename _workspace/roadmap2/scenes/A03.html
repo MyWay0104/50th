@@ -1,0 +1,40 @@
+<section id="s-48" class="scene clip" data-skill="compare" data-scene-id="A03" data-start="235" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 프레임워크 선택</h2>
+  <p class="thesis" data-editable="true">배우는 순서가 아니라 문제에 필요한 추상화 수준을 고릅니다.</p>
+  <p class="explain" data-editable="true">추상화 수준은 기능이 미리 묶인 정도입니다. 단순 호출 하나면 SDK로 충분하고, LangChain은 모델·검색기·도구를 같은 방식으로 잇는 연결 도구일 뿐 모델을 더 똑똑하게 만들지 않습니다. LangChain Agent와 Deep Agents는 LangGraph 위에서 동작합니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/logos/langchain.svg" alt="LangChain 로고"><div class="compare-kicker" data-editable="true">짧게 구성</div>
+        <div class="compare-heading" data-editable="true">LangChain Agent</div>
+        <ul class="compare-list">
+          <li data-editable="true">모델·도구 호출 루프</li>
+          <li data-editable="true">create_agent 한 번으로</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/network.svg" alt="그래프 아이콘"><div class="compare-kicker" data-editable="true">흐름 직접 설계</div>
+        <div class="compare-heading" data-editable="true">LangGraph</div>
+        <ul class="compare-list">
+          <li data-editable="true">단계·분기를 직접 정의</li>
+          <li data-editable="true">상태 저장·중단 후 재개</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/boxes.svg" alt="기능 묶음 아이콘"><div class="compare-kicker" data-editable="true">기능 묶음</div>
+        <div class="compare-heading" data-editable="true">Deep Agents</div>
+        <ul class="compare-list">
+          <li data-editable="true">계획·파일·위임 내장</li>
+          <li data-editable="true">여러 단계의 긴 작업용</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">공통 실행 기반 · LangGraph 런타임</div>
+      <span class="dg-caption" data-editable="true">개념 예시 · 기반 관계, 배우는 순서 아님</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Overview · LangGraph Overview · LangChain Concepts(Agent harnesses: Deep Agents)</p>
+  <aside class="speaker-note">LangChain, LangGraph, Deep Agents는 차례로 모두 배워야 하는 과정이 아니라, 문제에 필요한 추상화 수준에 따라 고르는 선택지입니다. 단순 호출 하나라면 SDK만으로 되고, 오전 실습처럼 모델 호출과 자료·조회 도구를 잇는 정도라면 LangChain으로 충분한데, 오전 실습 코드의 langchain이 바로 그 연결 역할이고 코드가 짧다고 성능이 좋아지는 것은 아닙니다. 화면 아래 띠처럼 LangChain의 create_agent와 Deep Agents는 모두 LangGraph 실행 기반 위에서 동작하므로, 단계와 분기를 직접 정하거나, 상태를 저장했다가 중단한 곳에서 이어가거나, 사람 확인 단계를 넣어야 할 때 LangGraph를 직접 씁니다. Deep Agents는 그 위에 계획, 파일 공간, 하위 작업 위임을 미리 묶어 둔 하네스로, 여러 단계로 이어지는 긴 작업에 맞춰져 있습니다. 예제 코드 길이가 다르다고 성능이 다른 것은 아니며, 같은 과제로 비교한 결과가 아니면 성능 비교로 읽지 않습니다. 여러 Agent를 감독자형이나 넘겨주기형으로 나누는 방식도 있는데, 이것 역시 Agent 하나로 충분한지 먼저 확인한 뒤 고릅니다. LangGraph와 Deep Agents는 뒤의 부록 장에서 하나씩 더 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

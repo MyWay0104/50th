@@ -14,3 +14,11 @@ __pycache__/
 *.log
 _workspace/codex_harness_reference/
 .playwright-mcp/
+
+# 사내 전용 자료 — 이 저장소는 공개이므로 올리지 않는다 (2026-09-18 사용자 결정)
+# 교안 PDF: "무단 복제·배포·전송 금지" 문구가 있는 사내 교육 자료
+topics/*/docs/*.pdf
+# 실습자료 요약본: 사내 주소·모델명·테이블 경로·장비 ID가 원문 그대로 들어 있다
+topics/*/docs/ai-agent-guide-실습자료-강의흐름요약.md
+# 사용자가 만든 에이전트 정의서 원본 백업(사내 폴더명·도메인 언급)
+_workspace/roadmap2/*.original-*.md

@@ -1,0 +1,35 @@
+<section id="s-15" class="scene clip" data-skill="steps" data-scene-id="R01" data-start="70" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">나누고, 숫자로 바꾸고, 가까운 것 찾기</h2>
+  <p class="thesis" data-editable="true">긴 자료는 조각으로 나누고, 조각을 뜻이 담긴 숫자로 바꿔 두면 가까운 조각을 찾을 수 있습니다.</p>
+  <p class="explain" data-editable="true">한 번에 넣을 수 있는 길이에 한도가 있고, 자료가 크면 질문과 관계없는 부분까지 섞이므로 나눕니다. 나눈 조각을 숫자 묶음으로 바꿔 두면, 질문과 뜻이 가까운 조각만 골라 모델에 넘길 수 있습니다.</p>
+  <div class="stack">
+    <ol class="steps row is-compact">
+      <li class="step">
+        <div class="panel-title" data-editable="true">① 나누기 · 청킹</div><img class="step-icon" src="assets/img/icons/split.svg" alt="나누기 아이콘">
+        <div class="step-body" data-editable="true">긴 자료를 조각으로<span class="step-desc">조각 크기 · 겹침</span></div>
+      </li>
+      <li class="step is-accent">
+        <div class="panel-title" data-editable="true">② 숫자로 바꾸기 · 임베딩</div><img class="step-icon" src="assets/img/icons/calculator.svg" alt="숫자 변환 아이콘">
+        <div class="step-body" data-editable="true">가까운 뜻은 가까운 숫자로<span class="step-desc">조각마다 숫자 묶음</span></div>
+      </li>
+      <li class="step">
+        <div class="panel-title" data-editable="true">③ 가까운 것 찾기 · 벡터 검색</div><img class="step-icon" src="assets/img/icons/search.svg" alt="검색 아이콘">
+        <div class="step-body" data-editable="true">질문과 가까운 조각만<span class="step-desc">저장소에서 몇 개</span></div>
+      </li>
+    </ol>
+    <div class="chip-row">
+      <span class="concept-badge" data-editable="true">개념 예시</span>
+      <span class="chip accent" data-editable="true">반도체 공정</span>
+      <span class="dg-arrow" aria-hidden="true">↔</span>
+      <span class="chip accent" data-editable="true">웨이퍼 제조</span>
+      <span class="dg-caption" data-editable="true">숫자가 가까움</span>
+      <span class="dg-arrow" aria-hidden="true">↔</span>
+      <span class="chip" data-editable="true">맛있는 김치</span>
+      <span class="dg-caption" data-editable="true">숫자가 멂</span>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">조각 수는 조각 크기에 따라 달라집니다 · 거리 계산 방식은 실습 가이드 해당 장</p>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드(Text splitters · Embeddings)</p>
+  <aside class="speaker-note">RAG 기본 구조 장면에서 기사가 100편이면 다 못 넣는다고 했는데, 그러면 무엇을 해야 할까요? 첫째, 긴 자료를 조각으로 나눕니다. 컨텍스트 윈도우 한도 때문이기도 하고, 조각이 작아야 질문과 관계있는 부분만 정확히 찾을 수 있기 때문이며, 실습 코드의 chunk_size가 조각 크기이고 조각끼리 조금 겹치게 하는 값이 overlap입니다. 둘째는 벡터 저장소 장면에서 본 '뜻을 숫자로 바꾸기', 곧 임베딩입니다. 아래 예시처럼 반도체 공정과 웨이퍼 제조는 숫자가 가깝고 맛있는 김치는 멀리 있는데, 가깝다는 것은 두 숫자 묶음 사이 거리나 코사인 값으로 계산합니다. 셋째, 질문도 같은 방식으로 숫자로 바꿔 저장소에서 가까운 조각 몇 개만 꺼내는 것이 벡터 검색이고, 실습에서 쓰는 저장소는 앞 장에서 본 FAISS입니다. 오늘 실습은 ②까지, 곧 나누고 임베딩해 저장하는 데까지 손으로 하고, ③은 저장해 둔 조각을 나중에 어떻게 쓰는지로만 봅니다. LangChain은 이 세 단계를 부품처럼 이어 주는 도구 상자이며 자세한 비교는 부록에 있습니다. 조각을 두 배 크게 하면 조각 수는 어떻게 될까요? 실습에서 직접 바꿔 세어 봅니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

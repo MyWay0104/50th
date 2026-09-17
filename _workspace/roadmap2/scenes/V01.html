@@ -1,0 +1,52 @@
+<section id="s-13" class="scene clip" data-skill="split" data-scene-id="V01" data-start="60" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">벡터 저장소가 필요한 이유</h2>
+  <p class="thesis" data-editable="true">글자가 같은 것이 아니라 뜻이 가까운 것을 빨리 찾으려고 둡니다.</p>
+  <p class="explain" data-editable="true">키워드 검색은 같은 낱말이 있어야 찾지만, 뜻을 숫자 묶음(벡터)으로 바꿔 두면 표현이 달라도 가까운 조각을 찾을 가능성이 커집니다. 조각이 수천·수만 개가 되면 하나하나 비교할 수 없어, 벡터를 저장하고 가까운 것을 빠르게 찾아 주는 전용 저장소를 둡니다. 오늘 실습은 기사 한 편이라 조각이 몇 개뿐이지만, 같은 구조를 씁니다.</p>
+  <div class="split-grid">
+    <div class="stack">
+      <span class="concept-badge" data-editable="true">개념 예시</span>
+      <div class="compare-grid cols-2">
+        <div class="compare-col">
+          <img class="col-icon" src="assets/img/icons/file-search.svg" alt="키워드 검색 아이콘"><div class="compare-kicker" data-editable="true">키워드 검색</div>
+          <div class="compare-heading" data-editable="true">같은 낱말만 찾음</div>
+          <ul class="compare-list">
+            <li data-editable="true">질문: "장비 고장"</li>
+            <li data-editable="true">조각: "설비 이상"</li>
+            <li data-editable="true">결과: 못 찾음</li>
+          </ul>
+        </div>
+        <div class="compare-col is-accent">
+          <img class="col-icon" src="assets/img/icons/search.svg" alt="뜻 검색 아이콘"><div class="compare-kicker" data-editable="true">뜻으로 찾기</div>
+          <div class="compare-heading" data-editable="true">뜻이 가까우면 찾음</div>
+          <ul class="compare-list">
+            <li data-editable="true">질문: "장비 고장"</li>
+            <li data-editable="true">조각: "설비 이상"</li>
+            <li data-editable="true">결과: 찾음</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box"><img class="dg-icon" src="assets/img/icons/file-text.svg" alt="문서 조각 아이콘"><span data-editable="true">조각들</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box"><img class="dg-icon" src="assets/img/icons/layers.svg" alt="벡터 아이콘"><span data-editable="true">뜻을 숫자로</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent"><img class="dg-icon" src="assets/img/icons/database.svg" alt="저장소 아이콘"><span data-editable="true">벡터 저장소</span></div>
+        </div>
+        <div class="dg-row stretch">
+          <div class="dg-box muted"><img class="dg-icon" src="assets/img/icons/message-square.svg" alt="질문 아이콘"><span data-editable="true">질문</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box muted"><img class="dg-icon" src="assets/img/icons/search.svg" alt="검색 아이콘"><span data-editable="true">가까운 것 몇 개</span></div>
+        </div>
+      </div>
+      <p class="dg-caption is-left" data-editable="true">윗줄 · 오늘 실습에서 손으로 하는 저장</p>
+      <p class="dg-caption is-left" data-editable="true">아랫줄 · 저장해 둔 조각을 나중에 쓰는 방식</p>
+      <p class="guide-ref" data-editable="true">코드 위치: 자료 준비(분할·임베딩·저장) 부분 — 실습 가이드 해당 장</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Vector stores 문서</p>
+  <aside class="speaker-note">화면 왼쪽처럼 "장비 고장"이라고 물었을 때 키워드 검색은 "설비 이상"이라고 적힌 조각을 놓치지만, 뜻을 숫자 묶음으로 바꿔 두면 표현이 달라도 가까운 조각으로 잡힙니다. 조각이 몇 개뿐이면 그냥 리스트에 두고 하나씩 비교해도 되지만, 수천·수만 개가 되면 하나하나 비교할 수 없어 벡터를 저장하고 가까운 것을 빠르게 찾아 주는 전용 저장소가 필요합니다. 오른쪽 그림은 앞 장 여섯 상자 중 숫자로 바꾸기·저장·검색만 다시 그린 것입니다. 윗줄, 조각을 숫자로 바꿔 저장하는 부분까지가 오늘 실습에서 손으로 하는 범위이고, 아랫줄처럼 질문과 가까운 조각을 꺼내 쓰는 방식은 잠시 뒤 세 단계 장면에서 봅니다. 키워드 검색이 나쁘다는 뜻은 아닙니다. 장비 ID처럼 글자가 정확히 맞아야 하는 조회는 키워드나 다음 구간의 SQL이 더 맞습니다. 우리 부서 문서가 만 건이 되면, 조각을 리스트에 두고 하나씩 비교하는 방식은 어디서 막힐까요? 그래서 전용 저장소를 둡니다. 다음 장에서는 실습에 나오는 FAISS와 자주 듣는 두 가지 이름을 비교해 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

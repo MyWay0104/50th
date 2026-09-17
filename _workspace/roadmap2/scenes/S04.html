@@ -1,0 +1,26 @@
+<section id="s-6" class="scene clip" data-skill="steps" data-scene-id="S04" data-start="25" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">LLM의 응답 생성</h2>
+              <p class="thesis" data-editable="true">LLM은 사실을 조회하지 않고 다음 토큰의 확률 분포를 계산합니다.</p>
+              <p class="explain" data-editable="true">보통의 호출은 학습된 모델로 계산만 하므로, 질문을 더 보낸다고 모델이 재학습되지 않습니다. 한 번에 넣을 수 있는 입력·출력 길이의 한도를 컨텍스트 윈도우라고 합니다. 다음 실습에서 바꿀 temperature 값은 3단계의 선택에 영향을 줍니다.</p>
+              <div class="stack">
+                <ol class="steps row">
+                  <li class="step">
+                    <div class="step-num" data-editable="true">1</div><img class="step-icon" src="assets/img/icons/split.svg" alt="나누기 아이콘">
+                    <div class="step-body" data-editable="true">토큰으로 나누기<span class="step-desc">회의 | 내용을 | 세 | 줄로</span></div>
+                  </li>
+                  <li class="step">
+                    <div class="step-num" data-editable="true">2</div><img class="step-icon" src="assets/img/icons/calculator.svg" alt="계산 아이콘">
+                    <div class="step-body" data-editable="true">다음 토큰 분포 계산<span class="step-desc">후보: 요약 · 정리 · …</span></div>
+                  </li>
+                  <li class="step is-accent">
+                    <div class="step-num" data-editable="true">3</div><img class="step-icon" src="assets/img/icons/repeat.svg" alt="반복 아이콘">
+                    <div class="step-body" data-editable="true">선택하고 반복<span class="step-desc">'요약'을 골라 뒤에 붙임</span></div>
+                  </li>
+                </ol>
+                <div class="chip-row"><span class="chip" data-editable="true">고른 토큰을 입력 끝에 붙여 2단계로 돌아가기 — 답이 끝나거나 길이 한도에 닿을 때까지 반복</span></div>
+                <p class="dg-caption is-left" data-editable="true">개념 예시 · 실제 토큰 분할은 모델마다 다름 · 확률 수치 없음 · 길이 한도 = 컨텍스트 윈도우</p>
+              </div>
+              <p class="source" data-editable="true">출처: Vaswani et al. 2017 · Ouyang et al. 2022 (지시 수행 학습)</p>
+              <aside class="speaker-note">용어를 먼저 정리하면, AI 안에 데이터로 패턴을 학습하는 머신러닝이 있고 그 안에 신경망을 쓰는 딥러닝이 있으며, 오늘 다루는 LLM은 딥러닝 기반의 언어 모델입니다. 대체 관계가 아니라 포함 관계이고, 오늘은 그중 LLM이 답을 만드는 방식만 가져갑니다. LLM은 입력을 토큰이라는 단위로 나누고, 지금까지의 문맥으로 다음 토큰 후보들의 가능성을 계산해 하나를 고르는 과정을 반복합니다. 화면의 세 카드 아래 줄처럼, 고른 토큰을 입력 끝에 붙여 다시 2단계로 돌아가는 방식을 자기회귀 생성이라고 합니다. 토큰은 단어 하나와 항상 같지 않고, 나누는 방식은 모델마다 다릅니다. 학습 단계에서는 모델 매개변수를 바꾸지만, 오늘 우리가 하는 호출은 이미 학습된 모델로 결과를 계산할 뿐입니다. 토큰 수는 비용과 속도를 재는 단위이면서, 한 번에 넣을 수 있는 입력과 출력 길이의 한도인 컨텍스트 윈도우를 재는 단위이기도 합니다. 이 한도는 다음 RAG 구간에서 자료를 나누는 첫 이유로 다시 나옵니다. 그러면 재학습이 아닌데도 같은 질문의 답이 달라진다면, 세 단계 중 어디에서 갈리는지 한 분만 답해 주세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

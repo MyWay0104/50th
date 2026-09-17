@@ -1,0 +1,38 @@
+<section id="s-35" class="scene clip" data-skill="split" data-scene-id="C03" data-start="170" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">방향 ② · 스크립트와 작은 앱 만들기</h2>
+  <p class="thesis" data-editable="true">완료 조건에 '없으면 없다고 답한다'를 넣어야 쓸 수 있는 도구가 됩니다.</p>
+  <p class="explain" data-editable="true">엑셀 비교 스크립트든 부품 검색 도구든 요청문의 완료 조건이 결과의 모양을 정합니다. 오른쪽은 강사가 만든 부품 검색 도구의 공개 Beta 설계에서 넣은 완료 조건입니다.</p>
+  <div class="split-grid wide-left">
+    <div class="stack">
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/git-compare.svg" alt="비교 아이콘"><div class="panel-title" data-editable="true">예 · 엑셀 비교 스크립트</div></div>
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">파일 A · 파일 B<span class="dg-sub">두 엑셀 파일</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent" data-editable="true">스크립트<span class="dg-sub">행 단위 비교 · 코드</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">다른 행 목록<span class="dg-sub">행 번호와 함께</span></div>
+        </div>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">요청문에 넣은 완료 조건</div><div class="done-text" data-editable="true">같은 파일이면 '차이 없음', 다른 행은 번호와 함께 표시합니다</div></div>
+    </div>
+    <div class="stack">
+      <div class="dg-row"><img class="logo-inline" src="assets/img/logos/github.svg" alt="GitHub 로고"><span class="concept-badge" data-editable="true">공개 Beta 개념 예시</span></div>
+      <div class="panel-title" data-editable="true">요청: 제조사 A의 로봇 블레이드</div>
+      <table class="data-table">
+        <thead>
+          <tr><th data-editable="true">Part Number</th><th data-editable="true">종류</th><th data-editable="true">제조사</th><th data-editable="true">판정</th></tr>
+        </thead>
+        <tbody>
+          <tr class="is-dim"><td data-editable="true">PN-A-2001</td><td data-editable="true">O-ring</td><td data-editable="true">A</td><td><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">종류 불일치</span></td></tr>
+          <tr class="is-dim"><td data-editable="true">PN-B-1001</td><td data-editable="true">로봇 블레이드</td><td data-editable="true">B</td><td><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">제조사 불일치</span></td></tr>
+          <tr><td colspan="4"><strong data-editable="true">결과: 조건에 맞는 후보 없음</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="dg-caption is-left" data-editable="true">완료 조건: 후보 번호만 · 조건 모두 일치 · 없으면 '없음' · 가상 데이터</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices</p>
+  <aside class="speaker-note">방금 시연한 것이 두 번째 방향, 원래 목적인 coding agent이고, 왼쪽처럼 엑셀 두 파일을 비교해 다른 행을 뽑는 스크립트 같은 작은 프로그램을 만드는 것입니다. 여기서 핵심은 코드를 잘 짜 달라는 말이 아니라 완료 조건이어서, 같은 파일이면 '차이 없음'이라고 답해야 한다는 조건이 없으면 스크립트가 빈 화면을 내놓아도 그것이 끝난 것인지 알 수 없습니다. 오른쪽은 제가 만든 부품 번호 검색 도구의 공개 Beta 설계를 단순화한 가상 표인데, 자랑이 아니라 완료 조건의 예로 보시면 됩니다. 요청문에 검색 후보에 있는 Part Number만 쓰고, 종류와 제조사 조건이 다 맞을 때만 답하며, 맞는 후보가 없으면 '없음'이라고 답하라는 조건을 넣었고, 그 검증은 모델이 아니라 코드가 맡습니다. 제조사 A의 로봇 블레이드를 찾는데 같은 제조사의 O-ring만 있다면 그럴듯한 답 대신 "조건에 맞는 후보 없음"이 업무에 쓸 수 있는 답입니다. 개인 기록으로 한 가지 덧붙이면, 개발 후반에 작은 수정 하나가 여러 곳에 번져 고치기 어려웠던 경험이 있어서 지금은 바꿀 범위를 먼저 정하고 요청합니다. 이 표는 공개 설계를 단순화한 것이고, 현재 사내 운영 버전과 같다는 뜻은 아닙니다. 여러분이라면 엑셀 비교 스크립트의 완료 조건에 '차이 없음' 말고 무엇을 하나 더 넣겠습니까? 한 분만 답해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

@@ -1,0 +1,27 @@
+<section id="s-36" class="scene clip" data-skill="compare" data-scene-id="S30" data-start="175" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">프로젝트 지침과 작업 기록</h2>
+  <p class="thesis" data-editable="true">긴 대화는 영구 기억이 아닙니다 — 다음 작업에 필요한 사실은 파일에 남깁니다.</p>
+  <p class="explain" data-editable="true">CLAUDE.md는 모델이 읽는 지침일 뿐 권한을 막는 보안 장치가 아닙니다. 오전 긍정봇에서 봤듯이 모델은 이번에 보낸 목록만 보므로, 새 대화를 열거나 긴 대화가 요약된 뒤에도 필요한 사실이 남도록 합니다.</p>
+  <div class="stack">
+    <div class="compare-grid">
+      <div class="code-card">
+        <div class="code-title" data-editable="true">CLAUDE.md · 프로젝트 지침 예시</div><div class="code-logos"><img class="logo-inline" src="assets/img/logos/claude.svg" alt="Claude 로고"></div>
+<pre class="code-body" data-editable="true">## 저장소 성격
+## 실행 명령
+## 주의점
+- 숫자는 코드로 계산</pre>
+      </div>
+      <div class="code-card">
+        <div class="code-title" data-editable="true">작업 기록 · 예시 양식</div><div class="code-logos"><img class="logo-inline" src="assets/img/icons/notebook-pen.svg" alt="기록 아이콘"></div>
+<pre class="code-body" data-editable="true">결정: 무엇을 하기로 했나
+이유: 왜 그렇게 정했나
+검증: 무엇으로 확인했나
+다음: 남은 일과 다음 행동</pre>
+      </div>
+    </div>
+    <div class="callout" data-editable="true"><strong>오전에 본 컨텍스트 윈도우</strong> 현재 대화 + 읽은 파일 + 도구 출력 · 한도가 있고 길면 요약됩니다</div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Memory · Context window</p>
+  <aside class="speaker-note">새 대화를 시작할 때마다 프로젝트 구조와 실행 방법을 다시 설명하는 대신, 왼쪽 카드처럼 CLAUDE.md에 저장소 성격, 실행 명령, 주의점 같은 반복해서 필요한 안내를 적어 두면 Claude Code가 작업을 시작할 때 읽습니다. 다만 CLAUDE.md는 모델이 읽는 지침일 뿐 권한을 막는 보안 장치가 아니므로, 접근을 제한해야 하는 일은 권한 설정과 실행 환경에서 막아야 합니다. 오른쪽 작업 기록에는 결정, 이유, 검증, 다음 행동 네 줄을 적어 둡니다. 아래 띠는 오전에 본 컨텍스트 윈도우인데, 대화에는 주고받은 말뿐 아니라 읽은 파일과 도구 출력도 쌓이고, 한도가 있어 길어지면 요약되면서 세부가 빠질 수 있어서 긴 대화가 곧 영구 기억은 아닙니다. 오전 긍정봇이 두 번째 말을 기억하지 못했던 것과 같은 원리, 곧 모델은 이번에 보낸 목록만 본다는 원리 때문에, 새 대화에서는 목록이 비어 있고 긴 대화는 요약되어 세부가 빠질 수 있으므로 다음 작업에 필요한 사실은 파일에 남겨야 합니다. 개인 전역 설정을 통째로 복사하기보다 이 프로젝트에 필요한 몇 줄만 적는 것이 좋습니다. 지금 작업을 내일 이어서 한다면 네 줄 중 꼭 남겨야 할 내용 두 가지는 무엇일까요?</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

@@ -1,0 +1,31 @@
+<section id="s-28" class="scene clip" data-skill="compare" data-scene-id="S22" data-start="135" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">Coding Agent의 작동 방식</h2>
+  <p class="thesis" data-editable="true">모델에 도구를 붙인 점은 같고, 대상이 프로젝트로 넓어지며 관찰·판단·행동을 반복합니다.</p>
+  <p class="explain" data-editable="true">Claude Code는 모델에 파일·명령 도구를 붙여 관찰→판단→행동을 반복하는 Coding Agent입니다. 오후에는 이 흐름으로 오전에 만든 장비 조회 챗봇을 읽고, 시연과 선택 과제의 대상으로 씁니다. 다른 도구보다 항상 낫다는 뜻은 아닙니다.</p>
+  <div class="compare-grid">
+    <div class="compare-col stack">
+      <img class="col-icon" src="assets/img/icons/monitor.svg" alt="앱 아이콘"><div class="compare-heading" data-editable="true">오전에 만든 장비 조회 챗봇</div>
+      <ul class="compare-list">
+        <li data-editable="true">대상: 장비 ID 질문</li>
+        <li data-editable="true">도구: 우리가 붙인 조회 도구</li>
+        <li data-editable="true">결과: 위치·진행 공정 답변</li>
+      </ul>
+    </div>
+    <div class="compare-col stack is-accent">
+      <div class="compare-heading"><img class="logo-inline" src="assets/img/logos/claude.svg" alt="Claude 로고"><span data-editable="true">Claude Code</span> <span class="concept-badge" data-editable="true">개념 예시</span></div>
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">관찰<span class="dg-sub">파일·결과</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">판단<span class="dg-sub">모델이 선택</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">행동<span class="dg-sub">도구 실행</span></div>
+        </div>
+        <p class="dg-caption is-left" data-editable="true">대상: 프로젝트 폴더 · 결과를 보고 다시 반복</p>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code How Claude Code works · Building effective agents · Kaggle Agents 백서</p>
+  <aside class="speaker-note">오전에 만든 장비 조회 챗봇이 오후 시연과 선택 과제의 대상이고, 이번 시간의 목표는 Claude Code 실행 환경을 확인하고 오전 폴더를 읽게 하는 것입니다. 오전엔 우리가 모델에 조회 도구를 붙였고, 오후엔 이미 도구가 붙은 Claude Code에게 일을 맡깁니다. 오전 실습 3에서 본 도구 호출→결과→답변 한 바퀴가 여기서는 파일 읽기·명령 실행으로 바뀌고, 도구가 더 필요 없을 때까지 여러 바퀴 도는 것뿐입니다. Claude Code는 모델 자체가 아니라, 모델에 파일 읽기·수정·명령 실행 도구와 실행 환경을 붙여 프로젝트 자체를 다루는 프로그램입니다. 오른쪽 열의 그림처럼 파일과 실행 결과를 관찰하고, 모델이 다음 행동을 판단하고, 도구로 행동한 뒤 그 결과를 다시 관찰하는 반복이 핵심이며, 도구를 더 부를 일이 없으면 멈추는 것도 오전 루프와 같습니다. 이 흐름을 한 번에 이어갈 수 있어서 이번 실습에 쓰는 것이고, 다른 도구보다 항상 낫다는 뜻은 아닙니다. 오전 조회 도구와 지금 볼 파일 수정 도구의 공통점을 한 가지만 말해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

@@ -1,0 +1,46 @@
+
+      /* ===== ROADMAP2 장면 ID 별칭: 안내판 ID 가 바뀌어도 기존 장면 전용 규칙이 걸리게 복제 ===== */
+      [data-scene-id="LAB08"] .time-blocks.is-steps .min, [data-scene-id="S42"] .time-blocks.is-steps .min, [data-scene-id="S43"] .time-blocks.is-steps .min { display: none; }
+      .scene[data-scene-id="LAB01"] .time-band { gap: 28px; }
+      .scene[data-scene-id="LAB02"] .time-band { gap: 28px; }
+      .scene[data-scene-id="LAB03"] .time-band { gap: 28px; }
+      .scene[data-scene-id="LAB01"] .time-band > .time-block { flex: 1 1 0; min-width: 0; }
+      .scene[data-scene-id="LAB02"] .time-band > .time-block { flex: 1 1 0; min-width: 0; }
+      .scene[data-scene-id="LAB03"] .time-band > .time-block { flex: 1 1 0; min-width: 0; }
+      .scene[data-scene-id="LAB04b"] .practice-grid > .stack > .dg { flex: 1; justify-content: center; }
+      .scene[data-scene-id="LAB04"] > .practice-grid, .scene[data-scene-id="S19"] > .practice-grid, .scene[data-scene-id="S20"] > .practice-grid, .scene[data-scene-id="S26"] > .practice-grid { margin-top: 28px; gap: 48px; }
+      .scene[data-scene-id="S13"] > .practice-grid, .scene[data-scene-id="LAB04b"] > .practice-grid, .scene[data-scene-id="S20"] > .practice-grid, .scene[data-scene-id="S26"] > .practice-grid { margin-top: 28px; gap: 48px; }
+      .scene[data-scene-id="S13"] > .practice-grid, .scene[data-scene-id="S19"] > .practice-grid, .scene[data-scene-id="LAB05"] > .practice-grid, .scene[data-scene-id="S26"] > .practice-grid { margin-top: 28px; gap: 48px; }
+      .scene[data-scene-id="S13"] > .practice-grid, .scene[data-scene-id="S19"] > .practice-grid, .scene[data-scene-id="S20"] > .practice-grid, .scene[data-scene-id="LAB06"] > .practice-grid { margin-top: 28px; gap: 48px; }
+      .scene[data-scene-id="S13"] > .practice-grid, .scene[data-scene-id="S19"] > .practice-grid, .scene[data-scene-id="S20"] > .practice-grid, .scene[data-scene-id="LAB07"] > .practice-grid { margin-top: 28px; gap: 48px; }
+      .scene[data-scene-id="LAB04"] .practice-grid .stack, .scene[data-scene-id="S19"] .practice-grid .stack, .scene[data-scene-id="S20"] .practice-grid .stack, .scene[data-scene-id="S26"] .practice-grid .stack { gap: 16px; }
+      .scene[data-scene-id="S13"] .practice-grid .stack, .scene[data-scene-id="LAB04b"] .practice-grid .stack, .scene[data-scene-id="S20"] .practice-grid .stack, .scene[data-scene-id="S26"] .practice-grid .stack { gap: 16px; }
+      .scene[data-scene-id="S13"] .practice-grid .stack, .scene[data-scene-id="S19"] .practice-grid .stack, .scene[data-scene-id="LAB05"] .practice-grid .stack, .scene[data-scene-id="S26"] .practice-grid .stack { gap: 16px; }
+      .scene[data-scene-id="S13"] .practice-grid .stack, .scene[data-scene-id="S19"] .practice-grid .stack, .scene[data-scene-id="S20"] .practice-grid .stack, .scene[data-scene-id="LAB06"] .practice-grid .stack { gap: 16px; }
+      .scene[data-scene-id="S13"] .practice-grid .stack, .scene[data-scene-id="S19"] .practice-grid .stack, .scene[data-scene-id="S20"] .practice-grid .stack, .scene[data-scene-id="LAB07"] .practice-grid .stack { gap: 16px; }
+      .scene[data-scene-id="LAB04"] .done-box, .scene[data-scene-id="S19"] .done-box, .scene[data-scene-id="S20"] .done-box, .scene[data-scene-id="S26"] .done-box { padding: 18px 32px; }
+      .scene[data-scene-id="S13"] .done-box, .scene[data-scene-id="LAB04b"] .done-box, .scene[data-scene-id="S20"] .done-box, .scene[data-scene-id="S26"] .done-box { padding: 18px 32px; }
+      .scene[data-scene-id="S13"] .done-box, .scene[data-scene-id="S19"] .done-box, .scene[data-scene-id="LAB05"] .done-box, .scene[data-scene-id="S26"] .done-box { padding: 18px 32px; }
+      .scene[data-scene-id="S13"] .done-box, .scene[data-scene-id="S19"] .done-box, .scene[data-scene-id="S20"] .done-box, .scene[data-scene-id="LAB06"] .done-box { padding: 18px 32px; }
+      .scene[data-scene-id="S13"] .done-box, .scene[data-scene-id="S19"] .done-box, .scene[data-scene-id="S20"] .done-box, .scene[data-scene-id="LAB07"] .done-box { padding: 18px 32px; }
+      .scene[data-scene-id="LAB04"] .fallback, .scene[data-scene-id="S19"] .fallback, .scene[data-scene-id="S20"] .fallback, .scene[data-scene-id="S26"] .fallback { margin-top: 0; padding: 14px 24px; }
+      .scene[data-scene-id="S13"] .fallback, .scene[data-scene-id="LAB04b"] .fallback, .scene[data-scene-id="S20"] .fallback, .scene[data-scene-id="S26"] .fallback { margin-top: 0; padding: 14px 24px; }
+      .scene[data-scene-id="S13"] .fallback, .scene[data-scene-id="S19"] .fallback, .scene[data-scene-id="LAB05"] .fallback, .scene[data-scene-id="S26"] .fallback { margin-top: 0; padding: 14px 24px; }
+      .scene[data-scene-id="S13"] .fallback, .scene[data-scene-id="S19"] .fallback, .scene[data-scene-id="S20"] .fallback, .scene[data-scene-id="LAB06"] .fallback { margin-top: 0; padding: 14px 24px; }
+      .scene[data-scene-id="S13"] .fallback, .scene[data-scene-id="S19"] .fallback, .scene[data-scene-id="S20"] .fallback, .scene[data-scene-id="LAB07"] .fallback { margin-top: 0; padding: 14px 24px; }
+      .scene[data-scene-id="LAB04"] .placeholder, .scene[data-scene-id="S19"] .placeholder, .scene[data-scene-id="S20"] .placeholder, .scene[data-scene-id="S26"] .placeholder { min-height: 200px; }
+      .scene[data-scene-id="S13"] .placeholder, .scene[data-scene-id="LAB04b"] .placeholder, .scene[data-scene-id="S20"] .placeholder, .scene[data-scene-id="S26"] .placeholder { min-height: 200px; }
+      .scene[data-scene-id="S13"] .placeholder, .scene[data-scene-id="S19"] .placeholder, .scene[data-scene-id="LAB05"] .placeholder, .scene[data-scene-id="S26"] .placeholder { min-height: 200px; }
+      .scene[data-scene-id="S13"] .placeholder, .scene[data-scene-id="S19"] .placeholder, .scene[data-scene-id="S20"] .placeholder, .scene[data-scene-id="LAB06"] .placeholder { min-height: 200px; }
+      .scene[data-scene-id="S13"] .placeholder, .scene[data-scene-id="S19"] .placeholder, .scene[data-scene-id="S20"] .placeholder, .scene[data-scene-id="LAB07"] .placeholder { min-height: 200px; }
+      .scene[data-scene-id="LAB04"] .practice-grid .chip-row { gap: 8px; }
+      .scene[data-scene-id="LAB04b"] .practice-grid > .stack > .dg { flex: 0 0 auto; justify-content: flex-start; }
+      .scene[data-scene-id="LAB06"] .practice-grid .chip-row { align-items: center; gap: 8px; }
+      .scene[data-scene-id="LAB07"] .practice-grid .chip-row { align-items: center; gap: 8px; }
+      .scene[data-scene-id="LAB04b"] .practice-grid > .stack > .dg { flex: 1; justify-content: flex-start; gap: 20px; }
+      .scene[data-scene-id="LAB04b"] .practice-grid > .stack > .dg > .dg-row.stretch { flex: 1; }
+      .scene[data-scene-id="LAB04b"] .practice-grid > .stack > .dg .dg-box { height: 100%; max-height: 190px; }
+      .scene[data-scene-id="LAB06"] .fallback > p { margin: 0; }
+      .scene[data-scene-id="LAB07"] .fallback > p { margin: 0; }
+      .scene[data-scene-id="LAB06"] .fallback > .chip-row { margin-top: 10px; }
+      .scene[data-scene-id="LAB07"] .fallback > .chip-row { margin-top: 10px; }

@@ -1,0 +1,26 @@
+<section id="s-33" class="scene clip" data-skill="compare" data-scene-id="S25" data-start="160" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">작업 요청과 완료 조건</h2>
+  <p class="thesis" data-editable="true">입력 예와 기대 결과가 곧 완료 조건입니다.</p>
+  <p class="explain" data-editable="true">여섯 칸을 채우면 작업 방향과 확인 방법이 함께 정해집니다.</p>
+  <div class="stack">
+    <div class="dg-row">
+      <div class="dg-box muted"><img class="inline-icon" src="assets/img/icons/message-square.svg" alt="요청 아이콘"><span class="status-dot warn" aria-hidden="true"></span><span data-editable="true">"챗봇 개선해줘" — 무엇을·어디까지·언제 끝인지 없음</span></div>
+    </div>
+    <div class="dg is-form">
+      <div class="dg-row stretch">
+        <div class="dg-box" data-editable="true">목표<span class="dg-sub">없는 장비 ID일 때 안내 표시</span></div>
+        <div class="dg-box" data-editable="true">입력<span class="dg-sub">없는 장비 ID로 질문</span></div>
+        <div class="dg-box" data-editable="true">출력<span class="dg-sub">"해당 장비 없음" 안내 문구</span></div>
+      </div>
+      <div class="dg-row stretch">
+        <div class="dg-box" data-editable="true">범위<span class="dg-sub">화면·처리만 수정, 데이터 그대로</span></div>
+        <div class="dg-box" data-editable="true">제약<span class="dg-sub">새 패키지 설치 없이</span></div>
+        <div class="dg-box accent" data-editable="true">완료 조건<span class="dg-sub">없는 ID → 안내, 기존 질문 그대로</span></div>
+      </div>
+      <p class="dg-caption is-left"><span class="status-dot ok" aria-hidden="true"></span><span data-editable="true">오전 장비 조회 챗봇에 결과 없음 안내 붙이기 · 완료 조건이 있는 요청문 6칸 · 개념 예시</span></p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices</p>
+  <aside class="speaker-note">"챗봇 개선해줘"라고만 하면 Claude Code는 무엇을 어디까지 바꿀지 스스로 추측해야 하고, 우리도 결과를 받았을 때 끝난 것인지 판단할 기준이 없습니다. 아래 여섯 칸처럼 목표, 입력과 출력, 바꿀 범위, 지켜야 할 제약에 더해 어떤 입력에서 어떤 결과가 나오면 끝인지를 적으면 작업 방향과 확인 방법이 함께 정해지고, 공식 모범사례도 확인할 수 있는 기준을 요청에 함께 주라고 권합니다. 예시는 오전에 만든 장비 조회 챗봇에 없는 장비 ID 안내를 붙이는 요청문입니다. 특히 주황 칸의 완료 조건처럼 기존 질문의 결과가 그대로여야 한다는 조건을 넣어 두면, 새 기능을 붙이다 원래 기능을 망가뜨렸는지 확인할 수 있습니다. 오류 없이 실행되는 것, 결과가 정확한 것, 사용자의 목적에 맞는 것은 각각 따로 확인할 대상입니다. 이제 오전 챗봇에 붙이고 싶은 기능 하나의 완료 조건을 "어떤 입력에서 무엇이 나오면 끝"이라는 한 문장으로 적어 보세요. 이 문장이 자유 실습이나 선택 과제의 입력이 되니, 두 분 정도 읽어 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

@@ -32,6 +32,9 @@
 - [x] `sk-hynix-ai-agent-guide-edu` v0.4 57장 개정 (2026-09-16, 브랜치 `feat/sk-hynix-deck-v0.4`): 막 태그·한 줄 요지·설명 문단·장면별 시각 요소, G00·A07–A10 추가, 차수 묶음마다 강사 사전·사후 검토 반영. 사용자 overview 검토·export 대기. 진행 기록: `_workspace/v0.4_progress.md`
 - [x] `sk-hynix-ai-agent-guide-edu` v0.5 재구성 (2026-09-17 밤): 사내 실습 흐름에 맞춰 50장으로 재편, `ROADMAP1.md` 기준. 신규 서브에이전트 `llm-professional`과 `lecture_expert`로 빌드 전·후 검토. QA 게이트 통과. 사용자 overview 검토·export 대기. 기록: `_workspace/roadmap1/`
 - [x] `sk-hynix-ai-agent-guide-edu` final-touch (2026-09-17, 브랜치 `final-touch` → main): 사용자 수정 12건(주황 테마, 구간 표시·쪽번호·시간 정보 삭제, 존댓말, 제목 간결화, 공식 출처만, 로고·아이콘). 기록: `_workspace/final_touch.md`
+- [x] 교육설계 서브에이전트 `llm-edu-designer` 등록 (2026-09-18): 사용자가 만든 정의서를 저장소 현실(v0.5 55장, 원본 html·실습 코드 부재, 하우스 룰)에 맞게 보정, `.codex/agents/llm-edu-designer.toml` 계약 추가. 원본 백업 `_workspace/roadmap2/`
+- [x] `sk-hynix-ai-agent-guide-edu` v0.6 실습자료 정합 (2026-09-18 새벽, `topics/sk-hynix-ai-agent-guide-edu/ROADMAP2.md`): 실제 실습자료 요약본(Part 4·실습 9개)에 맞춰 55장 → 66장(본문 49 + 구간 표지 7 + 부록 10). 확정 사실 R2-1~R2-21 → `llm-edu-designer`의 검수·스토리라인·콘티(`docs/edu-*.md`) → `llm-professional`·`lecture_expert` 교차 검수 → shrimp 작업 T1~T8(UI 사양·콘티 확정·CSS 패치·빌더 4명·조립·빌드 후 검수·반영). 전역 UI 패치(상자 테두리 대비 3:1·가운데 정렬·썸네일 모서리), 비유 축과 구간 표지, 실습 번호 일치. QA 게이트 통과. 사용자 overview 검토·export 대기. 의사결정 이력과 사내 코드 확인 요청서: `docs/handoff-inhouse-claude-lab-check.md`, 강사 진행표: `docs/instructor-runsheet.md`, 기록: `_workspace/roadmap2/`
+- [ ] v0.6 후속: 사내 Claude 코드 확인 답안 반영(R2-11 장비 메모리, 검색 개수·점수 방향, 환경 파일 읽기 차단 등) · 캡처 자리표시 교체 · A10 승인 카드 그림 재캡처 · 사용자 overview patch 반영 · export
 
 ## 코드
 

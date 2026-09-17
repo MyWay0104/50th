@@ -1,0 +1,37 @@
+/* P3 CSS 요청 (빌더 검증본 · 2026-09-18): LAB05~LAB07 안내판 압축 · N03 · S17 카드 압축. scene-styles 맨 끝에 붙인다. 글자는 24px 아래로 내리지 않았다. */
+/* --- LAB05 · LAB06 · LAB07 공통 압축 --- */
+.scene[data-scene-id="LAB05"] > .practice-grid, .scene[data-scene-id="LAB06"] > .practice-grid, .scene[data-scene-id="LAB07"] > .practice-grid { margin-top: 20px; gap: 40px; }
+.scene[data-scene-id="LAB05"] .practice-grid .stack, .scene[data-scene-id="LAB06"] .practice-grid .stack, .scene[data-scene-id="LAB07"] .practice-grid .stack { gap: 12px; }
+.scene[data-scene-id="LAB05"] .chip-row, .scene[data-scene-id="LAB06"] .chip-row, .scene[data-scene-id="LAB07"] .chip-row { gap: 8px; }
+.scene[data-scene-id="LAB05"] .chip, .scene[data-scene-id="LAB06"] .chip, .scene[data-scene-id="LAB07"] .chip { padding: 6px 14px; font-size: 26px; }
+.scene[data-scene-id="LAB05"] .chip.accent, .scene[data-scene-id="LAB06"] .chip.accent, .scene[data-scene-id="LAB07"] .chip.accent { padding: 5px 13px; }
+.scene[data-scene-id="LAB05"] .done-row, .scene[data-scene-id="LAB06"] .done-row, .scene[data-scene-id="LAB07"] .done-row { margin-top: 16px; gap: 20px; }
+.scene[data-scene-id="LAB05"] .done-box, .scene[data-scene-id="LAB06"] .done-box, .scene[data-scene-id="LAB07"] .done-box { padding: 14px 28px; }
+.scene[data-scene-id="LAB05"] .done-text, .scene[data-scene-id="LAB06"] .done-text, .scene[data-scene-id="LAB07"] .done-text { margin-top: 4px; font-size: 28px; }
+.scene[data-scene-id="LAB05"] .fallback, .scene[data-scene-id="LAB06"] .fallback, .scene[data-scene-id="LAB07"] .fallback { padding: 12px 24px; font-size: 26px; }
+.scene[data-scene-id="LAB05"] .placeholder, .scene[data-scene-id="LAB06"] .placeholder, .scene[data-scene-id="LAB07"] .placeholder { min-height: 160px; padding: 20px 32px; gap: 6px; }
+.scene[data-scene-id="LAB05"] .placeholder-desc, .scene[data-scene-id="LAB06"] .placeholder-desc, .scene[data-scene-id="LAB07"] .placeholder-desc { font-size: 26px; }
+/* 소단계 목록: 줄 간격 축소, LAB05 · LAB07 은 글자 fs-small(28px). LAB06 은 자리가 남아 32px 그대로 */
+.scene[data-scene-id="LAB05"] .compare-list, .scene[data-scene-id="LAB06"] .compare-list, .scene[data-scene-id="LAB07"] .compare-list { gap: 10px; }
+.scene[data-scene-id="LAB05"] .compare-list li, .scene[data-scene-id="LAB07"] .compare-list li { font-size: var(--fs-small); }
+/* LAB05: 완료 조건 상자가 auto 칸을 다 차지해 "막히면"이 좁아지는 것을 막는다 */
+.scene[data-scene-id="LAB05"] .done-row.is-full > .done-box { max-width: 640px; }
+.scene[data-scene-id="LAB05"] > .explain + .chip-row { margin-top: 20px; }
+/* --- N03: 세 열 카드 압축 --- */
+.scene[data-scene-id="N03"] > .stack { margin-top: 32px; gap: 16px; }
+.scene[data-scene-id="N03"] .compare-col { padding: 24px 32px; }
+.scene[data-scene-id="N03"] .col-icon { top: 20px; right: 28px; }
+.scene[data-scene-id="N03"] .compare-col > .stack { gap: 12px; }
+.scene[data-scene-id="N03"] .compare-heading { padding-bottom: 12px; font-size: 36px; }
+.scene[data-scene-id="N03"] .compare-list { gap: 8px; }
+.scene[data-scene-id="N03"] .compare-list li { padding-left: 26px; font-size: 26px; line-height: 1.35; }
+.scene[data-scene-id="N03"] .compare-note { padding-top: 0; }
+/* --- S17: 카드 압축 + 열 아래 "오전에 만든 것" 칩 줄 --- */
+.scene[data-scene-id="S17"] > .stack { margin-top: 32px; gap: 16px; }
+.scene[data-scene-id="S17"] .compare-col { padding: 28px 32px; }
+.scene[data-scene-id="S17"] .col-icon { top: 24px; right: 28px; }
+.scene[data-scene-id="S17"] .compare-col > .stack { gap: 14px; }
+.scene[data-scene-id="S17"] .compare-heading { padding-bottom: 12px; }
+.scene[data-scene-id="S17"] .compare-note + .chip-row { margin-top: 0; gap: 8px; align-items: center; }
+.scene[data-scene-id="S17"] .chip { padding: 6px 12px; font-size: 24px; }
+.scene[data-scene-id="S17"] .chip.accent { padding: 5px 11px; }

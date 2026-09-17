@@ -1,0 +1,37 @@
+/* P2 CSS 요청 (빌더 검증본 · 2026-09-18): LAB04 · LAB04b 안내판 압축 + S15 · S16 여백 축소. scene-styles 맨 끝에 붙인다. 글자 크기는 24px 아래로 내리지 않았다. */
+/* --- LAB04 · LAB04b 공통: 실습 안내판 압축 (P1 과 같은 방식) --- */
+.scene[data-scene-id="LAB04"] > .explain, .scene[data-scene-id="LAB04b"] > .explain { font-size: 28px; }
+.scene[data-scene-id="LAB04"] > .practice-grid, .scene[data-scene-id="LAB04b"] > .practice-grid { margin-top: 16px; gap: 40px; }
+.scene[data-scene-id="LAB04"] .practice-grid .stack, .scene[data-scene-id="LAB04b"] .practice-grid .stack { gap: 12px; }
+.scene[data-scene-id="LAB04"] .time-band, .scene[data-scene-id="LAB04b"] .time-band { column-gap: 20px; }
+.scene[data-scene-id="LAB04"] .time-band > .time-block { flex: 1 1 0; min-width: 0; }
+.scene[data-scene-id="LAB04b"] .time-band > .time-block { flex: 1 1 auto; }
+.scene[data-scene-id="LAB04"] .time-band > .time-block, .scene[data-scene-id="LAB04b"] .time-band > .time-block { justify-content: flex-start; }
+.scene[data-scene-id="LAB04"] .time-blocks.is-steps.row .time-block + .time-block::before, .scene[data-scene-id="LAB04b"] .time-blocks.is-steps.row .time-block + .time-block::before { left: -20px; font-size: 20px; }
+.scene[data-scene-id="LAB04"] .time-blocks.is-steps.row .time-block, .scene[data-scene-id="LAB04b"] .time-blocks.is-steps.row .time-block { padding: 12px 8px; gap: 6px; }
+.scene[data-scene-id="LAB04"] .time-blocks.is-steps .min, .scene[data-scene-id="LAB04b"] .time-blocks.is-steps .min { width: 44px; height: 44px; font-size: 24px; }
+.scene[data-scene-id="LAB04"] .time-block .what, .scene[data-scene-id="LAB04b"] .time-block .what { font-size: 24px; }
+.scene[data-scene-id="LAB04"] .tb-icon, .scene[data-scene-id="LAB04b"] .tb-icon { top: 18px; right: 10px; width: 28px; height: 28px; }
+.scene[data-scene-id="LAB04"] .practice-grid .chip-row, .scene[data-scene-id="LAB04b"] .practice-grid .chip-row { align-items: center; gap: 8px; }
+.scene[data-scene-id="LAB04"] .chip, .scene[data-scene-id="LAB04b"] .chip { padding: 5px 12px; font-size: 24px; }
+.scene[data-scene-id="LAB04"] .chip.accent, .scene[data-scene-id="LAB04b"] .chip.accent { padding: 4px 11px; }
+.scene[data-scene-id="LAB04"] .row-icon, .scene[data-scene-id="LAB04b"] .row-icon { width: 28px; height: 28px; }
+.scene[data-scene-id="LAB04"] .done-box, .scene[data-scene-id="LAB04b"] .done-box { padding: 12px 28px; }
+.scene[data-scene-id="LAB04"] .done-text, .scene[data-scene-id="LAB04b"] .done-text { margin-top: 4px; font-size: 28px; }
+.scene[data-scene-id="LAB04"] .fallback, .scene[data-scene-id="LAB04b"] .fallback { margin-top: 0; padding: 10px 24px; font-size: 24px; }
+.scene[data-scene-id="LAB04"] .placeholder, .scene[data-scene-id="LAB04b"] .placeholder { min-height: 150px; padding: 16px 28px; gap: 4px; }
+.scene[data-scene-id="LAB04"] .placeholder-desc, .scene[data-scene-id="LAB04b"] .placeholder-desc { font-size: 24px; }
+.scene[data-scene-id="LAB04"] .code-title, .scene[data-scene-id="LAB04b"] .code-title { padding: 10px 24px; }
+.scene[data-scene-id="LAB04"] .code-body, .scene[data-scene-id="LAB04b"] .code-body { padding: 14px 24px; font-size: 24px; }
+.scene[data-scene-id="LAB04"] .practice-grid .dg-sub, .scene[data-scene-id="LAB04b"] .practice-grid .dg-sub { margin-top: 0; }
+.scene[data-scene-id="LAB04b"] .placeholder { min-height: 140px; padding: 10px 28px; }
+.scene[data-scene-id="LAB04b"] .code-title { padding: 8px 24px; }
+/* --- S15: 두 열과 띠의 안쪽 여백 축소 --- */
+.scene[data-scene-id="S15"] > .stack { gap: 16px; }
+.scene[data-scene-id="S15"] .compare-col { padding: 24px 36px; }
+.scene[data-scene-id="S15"] .compare-list { margin-top: 18px; gap: 14px; }
+.scene[data-scene-id="S15"] .dg-row .dg-box { padding: 14px 20px; }
+/* --- S16: 카드와 코드 카드의 안쪽 여백 축소 --- */
+.scene[data-scene-id="S16"] > .stack { gap: 16px; }
+.scene[data-scene-id="S16"] .steps.row.is-compact .step { padding: 20px 32px; }
+.scene[data-scene-id="S16"] .code-body { padding: 18px 28px; }

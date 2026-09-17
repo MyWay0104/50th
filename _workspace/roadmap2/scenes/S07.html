@@ -1,0 +1,34 @@
+<section id="s-7" class="scene clip" data-skill="compare" data-scene-id="S07" data-start="30" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">Temperature와 출력 변화</h2>
+              <p class="thesis" data-editable="true">temperature는 다양성을 조절할 뿐, 정확성 스위치가 아닙니다.</p>
+              <p class="explain" data-editable="true">2단계에서 계산한 분포를 3단계에서 고를 때 얼마나 뾰족하게 볼지 정합니다. 바뀌는 것은 선택의 폭뿐입니다.</p>
+              <div class="stack">
+                <div class="compare-grid cols-3">
+                  <div class="compare-col">
+                    <img class="col-icon" src="assets/img/icons/thermometer.svg" alt="온도 아이콘"><div class="compare-kicker" data-editable="true">temperature 낮게</div>
+                    <div class="compare-heading" data-editable="true">상위 후보에 몰림</div>
+                    <div class="dist" aria-hidden="true"><span class="dist-bar lv-5"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-1"></span><span class="dist-bar lv-1"></span><span class="dist-bar lv-1"></span></div>
+                    <ul class="compare-list"><li data-editable="true">결과가 비슷해지기 쉬움</li></ul>
+                  </div>
+                  <div class="compare-col">
+                    <img class="col-icon" src="assets/img/icons/thermometer.svg" alt="온도 아이콘"><div class="compare-kicker" data-editable="true">temperature 높게</div>
+                    <div class="compare-heading" data-editable="true">여러 후보로 퍼짐</div>
+                    <div class="dist" aria-hidden="true"><span class="dist-bar lv-4"></span><span class="dist-bar lv-3"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-2"></span><span class="dist-bar lv-2"></span></div>
+                    <ul class="compare-list"><li data-editable="true">표현이 자주 달라짐</li></ul>
+                  </div>
+                  <div class="compare-col is-accent"><img class="col-icon" src="assets/img/icons/clipboard-check.svg" alt="확인 아이콘">
+                    <div class="compare-kicker" data-editable="true">두 값 공통</div>
+                    <div class="compare-heading" data-editable="true">별도 확인</div>
+                    <ul class="compare-list">
+                      <li data-editable="true">새 정보를 더하지 않음</li>
+                      <li data-editable="true">낮아도 틀릴 수 있음</li>
+                      <li data-editable="true">완전 동일도 보장 안 됨</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="dg-caption is-left" data-editable="true">같은 후보 5개의 분포 모양 · 개념 예시 · 수치 없음</p>
+              </div>
+              <p class="source" data-editable="true">출처: vLLM Reproducibility 문서 · LangChain Models 문서</p>
+              <aside class="speaker-note">temperature는 다음 토큰을 고를 때 선택의 다양성에 영향을 주는 값입니다. 화면의 막대처럼 같은 후보라도 값을 낮추면 확률이 높은 후보 쪽으로 몰리고, 높이면 여러 후보로 퍼져서 표현이 호출마다 달라지기 쉽습니다. 하지만 어느 쪽이든 모델이 모르는 정보를 더하거나 사실을 검증해 주지는 않습니다. 낮은 값에서도 틀릴 수 있고, 서버 환경에 따라 모든 실행이 완전히 같다는 보장도 없습니다. 같은 선택 단계에서 후보 범위를 좁히는 Top-K·Top-P 같은 값도 있지만, 오늘 실습에서는 temperature 하나만 바꿔 봅니다. 같은 질문을 여러 번 보내면 어떤 차이가 날지 먼저 예측해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

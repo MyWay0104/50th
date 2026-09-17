@@ -1,0 +1,34 @@
+<section id="s-39" class="scene clip" data-skill="title-bullets" data-scene-id="M01" data-start="190" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">선택 과제 · 오전 챗봇에 결과 없음 안내 붙이기</h2>
+  <p class="board-meta" data-editable="true">자유 주제가 정해지지 않은 분을 위한 과제 · 강제 아님 · 코드 위치: 화면·처리 부분 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>파일 수정·명령 실행 승인 요청이 뜨면 무엇을 하려는지 읽고 나서 승인합니다. 검증은 실행 전에 결과를 예측한 뒤 다른 입력으로 한 번 더 확인합니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">탐색</div><img class="tb-icon" src="assets/img/icons/search.svg" alt="탐색 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">계획</div><img class="tb-icon" src="assets/img/icons/notebook-pen.svg" alt="계획 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">구현</div><img class="tb-icon" src="assets/img/icons/code.svg" alt="구현 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">검증 · 다른 입력</div><img class="tb-icon" src="assets/img/icons/clipboard-check.svg" alt="검증 아이콘"></div>
+      </div>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① 읽기</span>
+        <span class="chip" data-editable="true">② 완료 조건</span>
+        <span class="chip" data-editable="true">③ 범위 안에서</span>
+        <span class="chip accent" data-editable="true">④ 예측 먼저</span>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">기존 질문은 그대로, 없는 장비 ID에는 안내가 나옵니다</div></div>
+    </div>
+    <div class="stack">
+      <div class="code-card">
+        <div class="code-title" data-editable="true">승인 요청 · 개념 예시(실제 화면과 다름)</div><div class="code-logos"><img class="logo-inline" src="assets/img/icons/hand.svg" alt="승인 아이콘"></div>
+<pre class="code-body" data-editable="true">수정 요청 · 대상: 화면·처리 부분
+허용할까요?  예 / 아니오</pre>
+      </div>
+      <div class="callout" data-editable="true"><strong>판단 기준</strong> 완료했다는 말이 아니라 바뀐 줄과 실행 결과로 판단합니다</div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>짝 화면으로 같은 단계를 진행하고, 앱의 모델 호출이 막히면 준비된 결과로 확인합니다</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · Permissions</p>
+  <aside class="speaker-note">이 과제는 자유 주제가 아직 정해지지 않은 분을 위한 선택 과제로 강제가 아니며, 앞에서 적은 완료 조건 한 문장이 이 과제와 같으면 그대로 요청문으로 쓰고, 다른 기능을 적었다면 화면의 완료 조건을 씁니다. 먼저 Claude Code에게 오전 챗봇의 구조와 수정할 위치를 설명하게 하는데, 첫 번째 칩처럼 실습 5에서 한 읽기와 같은 단계입니다. 다음으로 바꿀 곳과 완료 조건을 담은 계획을 받아 우리가 읽고 확인하고, 이어서 계획한 범위만 구현하게 하며, 전체 앱을 다시 짜거나 기능을 여러 개 붙이는 것은 범위에 넣지 않습니다. 마지막 검증에서는 실행 전에 결과를 먼저 예측해 말하고 나서, 없는 장비 ID와 오전에 정상 동작하던 질문을 둘 다 실행하며, 옆 사람이 골라 준 다른 입력으로 한 번 더 확인합니다. 오른쪽 승인 요청 카드는 요청 화면의 모양을 일반화한 개념 예시로, Claude Code가 이런 식으로 파일 수정이나 명령 실행 승인을 요청하면 무엇을 하려는지 읽고 나서 승인하고, 모르겠으면 아니오를 고른 뒤 손을 들어 주세요. 부록의 HITL, 곧 사람이 작업 흐름 중간에서 승인하는 방식을 직접 겪는 장면이고, 공식 문서 Permissions도 이런 승인 범위를 설정으로 정하는 방법을 설명합니다. 완료했다는 말이 아니라 바뀐 줄과 실행 결과로 판단하고, 확인하지 못한 입력은 미확인으로 적어 두면 됩니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

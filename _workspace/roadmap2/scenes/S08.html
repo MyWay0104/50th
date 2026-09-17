@@ -1,0 +1,31 @@
+<section id="s-9" class="scene clip" data-skill="title-bullets" data-scene-id="S08" data-start="40" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">실습 1 · 첫 호출과 프롬프트</h2>
+              <p class="board-meta" data-editable="true">코드 위치: 모델 연결 설정 · 모델 호출부 · 긍정봇 — 실습 가이드 해당 장</p>
+              <p class="explain" data-editable="true"><strong>관찰할 것</strong>같은 질문에서 system 한 줄과 temperature가 각각 무엇을 바꾸는지, 긍정봇이 규칙 없이 → system만 → 예시 추가로 어떻게 달라지는지 봅니다. 두 번째 말에 앞 대화를 기억하는지, 최신 자료 답에 근거가 있는지도 표시합니다.</p>
+              <div class="stack">
+                <div class="time-blocks is-steps row time-band">
+                  <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">환경·첫 호출</div><img class="tb-icon" src="assets/img/icons/play.svg" alt="실행 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">system 바꾸기</div><img class="tb-icon" src="assets/img/icons/list-checks.svg" alt="규칙 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">temperature 3회</div><img class="tb-icon" src="assets/img/icons/thermometer.svg" alt="온도 아이콘"></div>
+                  <div class="time-block is-accent"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">럭키비키 긍정봇</div><img class="tb-icon" src="assets/img/icons/bot.svg" alt="봇 아이콘"></div>
+                  <div class="time-block"><div class="min" data-editable="true">5</div><div class="what" data-editable="true">최신 자료 질문</div><img class="tb-icon" src="assets/img/icons/globe.svg" alt="최신 자료 아이콘"></div>
+                </div>
+                <div class="chip-row"><span class="chip" data-editable="true">① 환경 · 세 층</span><span class="chip" data-editable="true">② 역할 · system</span><span class="chip" data-editable="true">③ temperature</span><span class="chip accent" data-editable="true">④ 역할 · 예시</span><span class="chip" data-editable="true">⑤ 환각</span></div>
+                <div class="practice-grid">
+                  <div class="stack">
+                    <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">바꾼 것 하나와 달라진 것 하나를 한 문장으로 설명합니다</div></div>
+                    <div class="fallback" data-editable="true"><strong>막히면</strong>접속이 안 되면 준비된 출력으로 진행합니다</div>
+                  </div>
+                  <div class="stack">
+                    <div class="placeholder is-spec">
+                      <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S08]</div>
+                      <div class="placeholder-desc" data-editable="true">넣을 자료: 긍정봇 3단 비교 캡처</div>
+                      <div class="placeholder-desc" data-editable="true">조건: 세 답을 한 화면에 · 주소·키 가리기</div>
+                      <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 안내로 진행</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <aside class="speaker-note">먼저 설치와 환경변수를 확인하고 준비된 첫 호출을 실행해, 첫 응답의 content와 토큰 사용량이 함께 오는지 봅니다. 이것이 앞에서 본 세 층이 이어졌다는 확인입니다. 이어서 질문은 그대로 두고 system 한 줄만 바꿔 답의 말투와 형식, 때로는 내용까지 어떻게 달라지는지 보고, 다음으로 temperature 두 값에서 같은 질문을 각각 세 번 이상 보내 표현의 흔들림을 비교합니다. 차이가 없었다는 것도 관찰 결과로 적어 두세요. 네 번째로 럭키비키 긍정봇을 규칙 없이, system 한 줄만, 예시 추가의 세 단계로 만들어 답이 어떻게 바뀌는지 비교하고, 완성된 봇에 두 번째 말을 걸어 앞 대화를 기억하지 못하는 것을 확인합니다. 앞 장의 assistant 메시지를 다시 넣지 않았기 때문이고, 다시 넣는 것이 첫 번째 해법이며 대화를 넘어 남기는 방법은 오후에 봅니다. 마지막으로 학습 이후에 나왔을 수 있는 최신 자료를 물어보고, 그럴듯하지만 근거 없는 답이 나오는지 표시합니다. 화면 다섯째 칩에 적힌 대로 이것을 환각이라고 부르고, 무엇이 환각인지는 외부 자료가 필요한 질문 장에서 정리하겠습니다. 접속이 안 되는 분은 준비된 출력으로 같은 비교를 계속하되 직접 실행한 결과와 구분해 두세요. 완료 조건은 바꾼 것 하나와 달라진 것 하나를 한 문장으로 말하는 것이고, 최신 자료 질문에서 본 한계는 다음 장에서 정리하고, 그다음 구간에서 외부 근거로 채워 보겠습니다.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

@@ -1,0 +1,41 @@
+<section id="s-52" class="scene clip" data-skill="steps" data-scene-id="A07" data-start="255" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · LangGraph 흐름 설계</h2>
+  <p class="thesis" data-editable="true">분기·중단·재개가 필요할 때 흐름을 그래프로 직접 그립니다.</p>
+  <p class="explain" data-editable="true">LangGraph는 상태(State)·노드(Node, 처리 단계)·연결(Edge)로 흐름을 정의합니다. create_agent의 도구 호출 루프도 내부는 그래프입니다. 순서가 고정된 작업이면 직접 그리지 않아도 됩니다.</p>
+  <div class="split-grid">
+    <div class="dg">
+      <div class="dg-zone">
+        <div class="dg-zone-label" data-editable="true">State · messages · category를 모든 노드가 공유</div><img class="zone-icon" src="assets/img/icons/database.svg" alt="상태 아이콘">
+        <div class="dg-row">
+          <span class="chip" data-editable="true">START</span>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">분류<span class="dg-sub">classify 노드</span></div>
+        </div>
+        <div class="dg-row is-branch">
+          <span class="dg-caption" data-editable="true">조건부 Edge: 질문 종류로 다음 노드 선택</span>
+          <span class="dg-arrow" aria-hidden="true">↓</span>
+        </div>
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">기사 검색</div>
+          <div class="dg-box" data-editable="true">SQL 조회</div>
+          <div class="dg-box" data-editable="true">바로 답변</div>
+        </div>
+      </div>
+      <p class="dg-caption" data-editable="true">모두 END로 · 개념 예시, 오전 앱 구조 아님</p>
+    </div>
+    <div class="stack">
+      <div class="code-card">
+        <div class="code-title" data-editable="true">StateGraph 빌드 · 교육용 축약(일부 줄 생략)</div><div class="code-logos"><img class="logo-inline" src="assets/img/icons/network.svg" alt="그래프 아이콘"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+        <pre class="code-body" data-editable="true">g = StateGraph(State)
+g.add_node("classify", classify)
+g.add_edge(START, "classify")
+<span class="hl">g.add_conditional_edges("classify", route)</span>
+app = g.compile(checkpointer=...)
+app.invoke({"messages": [...]}, config)</pre>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangGraph Overview</p>
+  <aside class="speaker-note">오전에 LangChain으로 모델과 검색을 연결했다면, LangGraph는 코드 안에 숨어 있던 흐름을 눈에 보이는 그래프로 밖으로 꺼내는 도구입니다. 화면 왼쪽 그림처럼 모든 노드가 같은 State를 읽고 일부를 갱신하며, 분류 노드 뒤의 조건부 Edge가 질문 종류에 따라 다음 노드를 고릅니다. 분기 예시는 오전에 본 기사 검색과 SQL 조회를 빌려 온 것일 뿐, 오전 앱이 이렇게 만들어졌다는 뜻은 아닙니다. create_agent가 만드는 도구 호출 루프도 안을 보면 모델 노드와 도구 노드가 조건부 Edge로 오가는 그래프입니다. 오른쪽 코드는 그래프를 만들고, 노드를 붙이고, Edge로 잇고, compile한 뒤 실행하는 순서를 교육용으로 줄인 것이고, 체크포인터를 붙이면 중단한 지점에서 이어갈 수 있습니다. 순차 연결, 라우팅, 병렬, 오케스트레이터-워커, 평가-개선 같은 워크플로 패턴도 모두 이 세 요소로 그릴 수 있고, 되돌아가는 루프에는 반드시 멈추는 조건을 둡니다. 순서가 고정된 작업이라면 함수 호출만으로도 충분하니, 분기·중단·재개가 정말 필요한지부터 확인하세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

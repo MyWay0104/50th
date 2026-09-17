@@ -1,0 +1,34 @@
+<section id="s-16" class="scene clip" data-skill="title-bullets" data-scene-id="S13" data-start="75" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 2 · 기사 한 편으로 RAG 만들기</h2>
+  <p class="board-meta" data-editable="true">코드 위치: 본문 수집 부분 · 나누기와 저장 부분 · 본문을 붙여 요약하는 호출부 — 실습 가이드 해당 장</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>조각이 몇 개 나오는지(두 개 안팎)와 chunk_size를 바꾸면 몇 개가 되는지 셉니다. 요약의 한 문장이 본문 어디에 있는지, 기사에 없는 것을 물으면 없다고 하는지 확인합니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <div class="time-blocks is-steps row">
+        <div class="time-block"><div class="min" data-editable="true">1</div><div class="what" data-editable="true">본문 확보</div><img class="tb-icon" src="assets/img/icons/file-text.svg" alt="본문 아이콘"></div>
+        <div class="time-block is-accent"><div class="min" data-editable="true">2</div><div class="what" data-editable="true">나누고 저장</div><img class="tb-icon" src="assets/img/icons/split.svg" alt="나누기 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">3</div><div class="what" data-editable="true">붙여 요약</div><img class="tb-icon" src="assets/img/icons/message-square.svg" alt="요약 아이콘"></div>
+        <div class="time-block"><div class="min" data-editable="true">4</div><div class="what" data-editable="true">없는 것 묻기</div><img class="tb-icon" src="assets/img/icons/circle-help.svg" alt="물음 아이콘"></div>
+      </div>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① 찾아 읽기</span>
+        <span class="chip accent" data-editable="true">② 나누기 · 임베딩</span>
+        <span class="chip" data-editable="true">③ 근거 대조</span>
+        <span class="chip" data-editable="true">④ 없으면 없음</span>
+      </div>
+      <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">요약의 한 문장을 뒷받침하는 본문 문장을 찾습니다</div></div>
+      <div class="fallback" data-editable="true"><strong>막히면</strong>기사 접속이 안 되면 준비된 저장 본문으로 진행합니다</div>
+    </div>
+    <div class="stack">
+      <div class="placeholder is-spec">
+        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S13]</div>
+        <div class="placeholder-desc" data-editable="true">넣을 자료: 조각 수 출력 · 요약 결과와 본문을 나란히 둔 화면</div>
+        <div class="placeholder-desc" data-editable="true">조건: 주소·키·모델명 가리기 · 1600×900 이상</div>
+        <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 안내로 진행</div>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">먼저 기사 페이지에서 본문을 가져와 제목과 본문 길이, 대표 문단이 실제로 들어왔는지 눈으로 확인합니다. 여기까지는 AI 없이 찾아서 읽기만 한 것입니다. 이어서 본문을 나누고 저장소에 넣은 뒤 조각이 몇 개 나왔는지 세고, chunk_size를 바꿔 다시 세어 봅니다. 조각이 두 개면 통째로 넣어도 되는데 왜 나누냐고 물으실 텐데, 기사가 많아지면 컨텍스트 윈도우에 다 못 넣기 때문이고, 오늘은 그 방법을 작은 크기로 미리 손에 익히는 것입니다. 다음으로 본문을 질문에 붙여 요약하게 하는데, 이것은 외부 문서 기반 요약이고 질문에 맞는 조각을 골라 넘길 때 비로소 RAG라 부릅니다. 요약의 한 문장을 고르고 그 문장이 본문 어디에 있는지 찾아 대조하고, 마지막으로 기사에 없는 것을 물어 없다고 답하는지 확인합니다. 없다고 답하지 않고 아는 척 답하면, 프롬프트에 '본문에 없으면 없다고 답한다'는 제약이 있는지 먼저 봅니다. 다음 장의 답변 쪽 점검이 바로 이것입니다. 기사 접속이 안 되는 분은 준비된 저장 본문으로 같은 단계를 진행합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

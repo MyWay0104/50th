@@ -1,0 +1,48 @@
+<section id="s-47" class="scene clip" data-skill="compare" data-scene-id="A02" data-start="230" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · RAG 품질 다듬기</h2>
+  <p class="thesis" data-editable="true">RAG 품질은 재학습이 아니라 분할·검색·메타데이터로 다듬습니다.</p>
+  <p class="explain" data-editable="true">메타데이터는 답변에서 구분할 조건부터 설계합니다. 답이 틀리면 검색이 틀렸는지, 찾은 근거로 잘못 답했는지부터 나눕니다. 검색 쪽은 재정렬(Reranking), 답변 쪽은 프롬프트 제약을 봅니다.</p>
+  <div class="stack">
+    <div class="dg-row is-compact">
+      <div class="dg-box" data-editable="true">분할</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">임베딩</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">벡터 저장소</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">검색</div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">답변</div>
+      <span class="dg-caption" data-editable="true">개념 예시</span>
+    </div>
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/split.svg" alt="분할 아이콘"><div class="compare-kicker" data-editable="true">미리 준비</div>
+        <div class="compare-heading" data-editable="true">분할·임베딩</div>
+        <ul class="compare-list">
+          <li data-editable="true">찾기 좋은 단위로 분할</li>
+          <li data-editable="true">크기·겹침은 실험해 결정</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/search.svg" alt="검색 아이콘"><div class="compare-kicker" data-editable="true">질문할 때</div>
+        <div class="compare-heading" data-editable="true">벡터·키워드 검색</div>
+        <ul class="compare-list">
+          <li data-editable="true">벡터: 뜻이 가까운 조각</li>
+          <li data-editable="true">둘을 합친 하이브리드도</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/table.svg" alt="메타데이터 아이콘"><div class="compare-kicker" data-editable="true">먼저 설계</div>
+        <div class="compare-heading" data-editable="true">메타데이터</div>
+        <ul class="compare-list">
+          <li data-editable="true">출처·발행일·문서 버전</li>
+          <li data-editable="true">질문에서 필터를 뽑기도</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">화면 위쪽 띠는 앞의 RAG 구간에서 본 흐름을 줄인 것으로, 분할·임베딩·저장은 미리 해 두고 검색·답변은 질문할 때 하며, 어느 단계도 모델을 다시 학습시키지 않습니다. 분할은 흔히 청킹이라고도 부르는데, 긴 문서를 찾기 좋은 단위로 나누는 일이고, 조각 크기와 겹치는 폭에는 정답이 없으니 내 문서와 질문으로 실험해 정합니다. 임베딩은 조각을 뜻이 가까운 것끼리 찾을 수 있는 벡터로 바꾸는 일이고, 키워드 검색은 같은 단어가 들어 있는 조각을 찾으며, 두 방식의 결과를 합치는 하이브리드 검색도 있습니다. 어느 방식이 나은지는 직접 비교해 봐야 하고, Part Finder 공개 Beta처럼 벡터 저장소 없이 단어 빈도로 검색하는 구성도 있으며, 임베딩을 쓸 수 있는지는 실행 환경마다 확인합니다. 메타데이터는 출처·발행일·장비처럼 답변에서 구분해야 하는 조건부터 거꾸로 설계하고, 질문에서 이런 조건을 뽑아 필터로 쓰는 방식도 있지만, "승인 필요" 같은 값을 적어 두는 것만으로 승인이 강제되지는 않습니다. 답이 틀렸을 때는 검색이 틀린 것인지 찾은 근거로 잘못 답한 것인지부터 나누고, 검색 쪽이면 가져온 문서를 다시 순위 매기는 Reranking을, 답변 쪽이면 프롬프트 제약을 살핍니다. 여기 나온 용어는 오늘 실습 범위 밖입니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

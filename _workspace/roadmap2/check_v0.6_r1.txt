@@ -1,0 +1,82 @@
+◆  Checking sk-hynix-ai-agent-guide-edu
+[WARN] [Compiler] System font "Pretendard" is large (11.9 MB total across 8 variant(s)) — embedding anyway. Consider font subsetting for production.
+[INFO] [Compiler] Embedded system font "Pretendard" — 8 variant(s), 12202 KB total
+[INFO] [Compiler] Fetched 77 font face(s) for "Inter" from Google Fonts (cached to C:\Users\swl01\.cache\hyperframes\fonts\inter)
+[INFO] [Compiler] Injected deterministic @font-face rules for 2 requested font families
+[WARN] [Compiler] No deterministic font mapping for: Malgun Gothic
+  Mapped fonts: andale mono → jetbrains-mono, archivo black → archivo-black, arial black → montserrat, arial → inter, avenir next → inter, avenir → inter, bebas neue → league-gothic, book antiqua → eb-garamond, calibri → inter, cambria → eb-garamond, candara → inter, consolas → jetbrains-mono, corbel → inter, courier new → jetbrains-mono, courier → jetbrains-mono, dejavu sans mono → jetbrains-mono, dejavu sans → inter, dejavu serif → eb-garamond, din alternate → montserrat, eb garamond → eb-garamond, futura → montserrat, garamond → eb-garamond, geneva → inter, georgia → eb-garamond, helvetica bold → inter, helvetica neue → inter, helvetica → inter, ibm plex mono → ibm-plex-mono, inter, jetbrains mono → jetbrains-mono, lato, league gothic → league-gothic, liberation mono → jetbrains-mono, liberation sans → inter, liberation serif → eb-garamond, lucida console → jetbrains-mono, lucida grande → inter, lucida sans typewriter → jetbrains-mono, lucida sans unicode → inter, lucida sans → inter, menlo → jetbrains-mono, monaco → jetbrains-mono, montserrat, noto sans japanese → noto-sans-jp, noto sans jp → noto-sans-jp, noto sans → inter, nunito, open sans → open-sans, optima → inter, oswald, outfit, palatino linotype → eb-garamond, palatino → eb-garamond, playfair display → playfair-display, poppins, roboto, segoe ui → roboto, sf mono → jetbrains-mono, sf pro display → inter, sf pro rounded → inter, sf pro text → inter, sf pro → inter, source code pro → source-code-pro, space mono → space-mono, tahoma → inter, times new roman → eb-garamond, times → eb-garamond, trebuchet ms → inter, verdana → inter
+  To fix, pick one:
+    1. Use a mapped font name instead (see list above)
+    2. Add a @font-face block in your HTML with a local or hosted font file
+    3. Install the font locally on the render machine (Docker: add to Dockerfile)
+    4. Add an alias to FONT_ALIAS_MAP in packages/core/src/fonts/aliases.ts (for contributors)
+  Docs: https://hyperframes.heygen.com/docs/fonts
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA)" renderer="ANGLE (NVIDIA, NVIDIA GeForce RTX 2080 (0x00001E87) Direct3D11 vs_5_0 ps_5_0, D3D11)")
+
+Lint
+  ⚠ duplicate_media_discovery_risk: Detected 8 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 4 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 5 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 3 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 2 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 17 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 23 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 16 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 22 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 15 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 10 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 9 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 7 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ duplicate_media_discovery_risk: Detected 6 matching img entries with the same source/start/duration.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Avoid duplicated media nodes that can be discovered twice during compilation.
+  ⚠ composition_file_too_large: This HTML composition file has 2282 lines. Smaller sub-compositions are easier to read, iterate on, and diff.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently.
+  ⚠ timeline_track_too_dense: Track 0 has 66 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.
+    C:\Users\swl01\workspace\00_sk_hynix_only\50th\topics\sk-hynix-ai-agent-guide-edu\index.html [data-composition-id] t=0s
+    Fix: Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate.
+  0 error(s), 16 warning(s), 0 info(s)
+
+Runtime
+  ◇ 0 errors, 0 warnings
+
+Layout
+  ◇ 0 issues across 66 sample(s)
+
+Motion
+  ◇ 0 errors, 0 warnings
+
+Contrast
+  ◇ 93/93 text checks pass WCAG AA
+
+Snapshots
+  ◇ disabled
+
+◇  Check passed

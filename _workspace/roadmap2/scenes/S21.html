@@ -1,0 +1,35 @@
+<section id="s-26" class="scene clip" data-skill="split" data-scene-id="S21" data-start="125" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">오전 실습의 전체 구조</h2>
+  <p class="thesis" data-editable="true">오전에 모델 둘레에 붙인 것들이 곧 하네스이고, 오후엔 이 앱을 Agent에게 맡깁니다.</p>
+  <p class="explain" data-editable="true">화면·모델과 도구·데이터 세 층을 오늘 손으로 이었습니다. 결과 없음 안내 하나를 더하려 해도 세 층을 다시 손으로 만져야 합니다. 그래서 오후에는 도구가 이미 붙은 Agent에게 이 구조를 읽히고, 바꿀 범위를 정하게 합니다.</p>
+  <div class="split-grid wide-left">
+    <div class="split-panel">
+      <span class="concept-badge" data-editable="true">개념 예시</span><span class="corner-logos"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"></span>
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box accent" data-editable="true">화면<span class="dg-sub">Streamlit</span></div>
+          <div class="dg-arrow" aria-hidden="true">⇄</div>
+          <div class="dg-box" data-editable="true">모델·도구<span class="dg-sub">LLM·조회 함수</span></div>
+          <div class="dg-arrow" aria-hidden="true">⇄</div>
+          <div class="dg-box" data-editable="true">데이터<span class="dg-sub">기사·장비 테이블</span></div>
+        </div>
+      </div>
+      <div class="chip-row">
+        <span class="concept-badge" data-editable="true">하네스</span>
+        <span class="dg-arrow" aria-hidden="true">=</span>
+        <span class="chip accent" data-editable="true">Tools · 조회 도구</span>
+        <span class="chip accent" data-editable="true">+ Memory · 대화 이력</span>
+        <span class="chip accent" data-editable="true">+ Context · 지침·자료</span>
+      </div>
+    </div>
+    <div class="dg">
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/layers.svg" alt="세 층 아이콘"><div class="dg-box muted" data-editable="true">오전 · 내가 도구를 붙인 앱</div></div>
+      <span class="dg-arrow" aria-hidden="true">↓</span>
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/bot.svg" alt="에이전트 아이콘"><div class="dg-box" data-editable="true">오후 · 도구가 이미 붙은 Agent에게</div></div>
+    </div>
+  </div>
+  <p class="dg-caption is-left" data-editable="true">주황 테두리: 오후 시연과 선택 과제의 대상(예: 결과 없음 안내)</p>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Anthropic, Building effective agents</p>
+  <aside class="speaker-note">오전에는 화면, 모델과 도구, 근거 데이터를 하나씩 손으로 연결했습니다. 모델에 도구, 대화 이력, 지침과 근거 자료를 묶어 주는 이 틀을 하네스라고 부르며, 그중 대화 이력은 오전 긍정봇에선 비워 둔 자리이고, 오후에는 Claude Code 쪽에서 이 자리를 작업 기록 파일로 채우고 지침은 CLAUDE.md에 따로 두는 방식을 봅니다. 왼쪽 칩처럼 Tools, Memory, Context 세 요소로 이름을 붙여 두면 오후에 같은 이름이 다시 나옵니다. 오전엔 내가 도구를 하나 붙이는 데 구간 하나가 걸렸습니다. 결과 없음 안내처럼 작은 기능을 더할 때마다 세 층을 다시 손으로 만지기는 어려우므로, 오후엔 도구가 이미 붙은 Agent인 Claude Code에게 이 앱을 읽히고 고치게 맡깁니다. 한 분만 답해 주세요, 이 그림에서 SQL을 실제로 실행하는 것은 모델인가요, 프로그램인가요? 도구 호출 순서에서 본 '모델은 요청하고 프로그램이 실행한다'는 원리는 오후에도 그대로이고, 주황 테두리 자리는 오후 시연과 선택 과제에서 결과 없음 안내 같은 작은 기능이 들어갈 곳입니다. 오후 Claude Code가 쓰는 모델 연결은 오전 실습 API와 별개이므로 오후 첫 실습에서 따로 확인합니다. 다음 장은 점심 안내입니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

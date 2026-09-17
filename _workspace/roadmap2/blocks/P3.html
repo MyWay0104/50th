@@ -1,0 +1,475 @@
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="T03" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">손발에서 조종으로</h2>
+  <p class="thesis" data-editable="true">Tool은 두뇌의 손발입니다. 다음은 두뇌가 그 손발을 조종합니다.</p>
+  <p class="explain" data-editable="true">실습 04b에서 손으로 돌려 본 반복이 Agent 루프의 가장 작은 모양이고, 실습 05에서 거기에 이름을 붙이고 실제 데이터를 읽는 손발 · 멈춤 장치 · 화면을 더합니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/hand.svg" alt="손발 아이콘"><div class="compare-kicker" data-editable="true">① 지금 되는 것</div>
+        <div class="compare-heading" data-editable="true">실습 04b · Tool</div>
+        <ul class="compare-list">
+          <li data-editable="true">도구를 여러 번 불러 계산</li>
+          <li data-editable="true">요청은 모델, 실행은 코드</li>
+          <li data-editable="true">사내 데이터는 코드로 직접 조회</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/triangle-alert.svg" alt="주의 아이콘"><div class="compare-kicker" data-editable="true">② 아직 안 되는 것</div>
+        <div class="compare-heading" data-editable="true">조종은 아직</div>
+        <ul class="compare-list">
+          <li data-editable="true">실제 데이터를 읽는 손발</li>
+          <li data-editable="true">분명한 멈춤 조건</li>
+          <li data-editable="true">누구나 쓰는 화면</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"><div class="compare-kicker" data-editable="true">③ 그래서 다음</div>
+        <div class="compare-heading" data-editable="true">실습 05 · 장비 조회 Agent</div>
+        <ul class="compare-list">
+          <li data-editable="true">모델이 장비 ID를 뽑아 조회 요청</li>
+          <li data-editable="true">결과를 보고 다시 판단</li>
+          <li data-editable="true">멈춤 장치와 화면 더하기</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chip-row">
+      <img class="row-icon" src="assets/img/icons/hand.svg" alt="손발 아이콘">
+      <span class="chip" data-editable="true">손발 · 실습 04b</span>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <img class="row-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘">
+      <span class="chip accent" data-editable="true">조종 · 실습 05</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Anthropic, Building effective agents · LangChain Tools 문서</p>
+  <aside class="speaker-note">방금 Tool 실습에서 계산 하나에 도구가 여러 번 불렸던 호출 기록을 떠올려 보세요. 모델이 요청하고, 코드가 실행하고, 그 결과를 메시지 목록에 붙여 다시 보내는 일을 호출 요청이 없어질 때까지 되풀이했습니다. 여기서 '손으로'는 반복문을 우리가 직접 코드로 짜서 돌렸다는 뜻입니다. 누가 대신 돌려 준 것이 아니라 실습 코드에 직접 적혀 있던 그 반복이 Agent 루프의 가장 작은 모양입니다. Tool은 두뇌의 손발입니다. 다만 사내 데이터는 우리가 코드로 직접 조회했지 모델이 조회를 요청하지는 않았고, 언제 멈추는지를 분명히 정해 두는 일과 코드를 모르는 동료도 쓸 수 있는 화면은 아직 다루지 않았습니다. 이어지는 Agent 실습에서는 이 반복에 이름을 붙이고, 실제 데이터를 읽는 손발과 멈춤 장치, 화면을 더합니다. 방금 계산에서 다음에 어느 도구를 부를지 정한 것은 코드였을까요, 모델이었을까요? 여기까지가 손발이었습니다. 다음 장부터는 새 정거장, 조종입니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip title-scene night" data-skill="title" data-scene-id="D05" data-start="0" data-duration="5" data-track-index="0">
+  <div class="hero-kicker" data-editable="true">Part 2 · LangChain 실습</div>
+  <h1 class="hero-title is-section" data-editable="true"><span class="nowrap">조종 —</span> <span class="nowrap">두뇌가 손발을 조종합니다, Agent</span></h1>
+  <p class="hero-sub" data-editable="true">실습 05</p>
+  <ol class="axis-strip" aria-label="오늘의 여섯 정거장">
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/brain.svg" alt="두뇌 아이콘"></span><span class="axis-label" data-editable="true">두뇌</span></li>
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/book-open.svg" alt="책 아이콘"></span><span class="axis-label" data-editable="true">책</span></li>
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/hand.svg" alt="손발 아이콘"></span><span class="axis-label" data-editable="true">손발</span></li>
+    <li class="axis-stop is-current"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"></span><span class="axis-label" data-editable="true">조종</span></li>
+    <li class="axis-stop is-todo"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘"></span><span class="axis-label" data-editable="true">내 PC의 에이전트</span></li>
+    <li class="axis-stop is-todo"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/rocket.svg" alt="적용 아이콘"></span><span class="axis-label" data-editable="true">적용</span></li>
+  </ol>
+  <aside class="speaker-note">여기서부터는 두뇌가 손발을 조종하는 Agent입니다. 넘기기 전에 하나만 예상해 보세요. Agent가 되풀이할 수 있는 횟수에 상한을 두는데, 그 상한을 5에서 50으로 올리면 답이 더 좋아질까요? 마음속으로 정하셨으면, 한 번의 LLM 호출과 Agent가 무엇이 다른지부터 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="N03" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">LLM 호출과 Agent의 차이</h2>
+  <p class="thesis" data-editable="true">한 번 묻고 답하면 LLM 호출이고, 결과를 보고 다시 판단하기를 되풀이하면 Agent입니다.</p>
+  <p class="explain" data-editable="true">Agent는 두뇌가 손발을 조종하는 것입니다. Tool 실습에서 손으로 돌려 본 반복에 붙인 이름이 Agent 루프이고, 호출 요청이 없으면 끝납니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3 is-mid-wide">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/brain.svg" alt="두뇌 아이콘"><div class="compare-kicker" data-editable="true">한 번 묻고 답하기</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">LLM 호출</div>
+          <div class="dg-box" data-editable="true">질문 → 답</div>
+          <p class="compare-note" data-editable="true">결과를 보고 다시 판단하지 않습니다</p>
+        </div>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"><div class="compare-kicker" data-editable="true">결과를 보고 다시 판단</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Agent 루프</div>
+          <div class="dg-row stretch is-compact">
+            <div class="dg-box" data-editable="true">판단</div>
+            <span class="dg-arrow" aria-hidden="true">→</span>
+            <div class="dg-box" data-editable="true">행동</div>
+            <span class="dg-arrow" aria-hidden="true">→</span>
+            <div class="dg-box" data-editable="true">관찰</div>
+          </div>
+          <ul class="compare-list">
+            <li data-editable="true">판단 · 모델이 다음 행동을 고름</li>
+            <li data-editable="true">행동 · 모델이 요청, 코드가 실행</li>
+            <li data-editable="true">관찰 · 결과를 붙여 다시 봄</li>
+          </ul>
+          <p class="compare-note" data-editable="true">↺ 다시 판단으로 · 호출 요청이 없으면 끝납니다</p>
+        </div>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/shield-check.svg" alt="안전장치 아이콘"><div class="compare-kicker" data-editable="true">맡기는 만큼 함께 두는 것</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">안전장치</div>
+          <ul class="compare-list">
+            <li data-editable="true">반복 상한 = 멈춤 장치 · 웹 화면판은 5회</li>
+            <li data-editable="true">입력 이스케이프 · 넣는 값이 조회문을 바꾸지 못하게 코드가 처리</li>
+          </ul>
+          <p class="compare-note" data-editable="true">지침이 아니라 코드와 권한으로 막습니다</p>
+        </div>
+      </div>
+    </div>
+    <div class="chip-row">
+      <img class="row-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘">
+      <p class="dg-caption is-left" data-editable="true">반복 상한은 답을 잘하게 하는 값이 아니라 멈추게 하는 값입니다 · 개념 예시</p>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Yao et al., 2022, ReAct: Synergizing Reasoning and Acting in Language Models · Anthropic, Building effective agents · LangChain SQL 안전 지침(SQL Agent 가이드 내)</p>
+  <aside class="speaker-note">Agent는 두뇌가 손발을 조종하는 것입니다. 왼쪽 열처럼 한 번 묻고 한 번 답하면 LLM 호출입니다. 가운데 열처럼 도구 결과를 보고 다음에 무엇을 할지 다시 판단하기를 되풀이하면 Agent입니다. 판단은 모델이 다음 행동을 고르는 것이고, 행동은 모델이 요청하고 코드가 실행하는 도구 호출이며, 관찰은 그 결과를 메시지 목록에 붙여 다시 보는 것입니다. ReAct 논문은 판단을 '생각'이라고 부릅니다. 판단은 기록에 따로 찍히지 않을 수 있는데, 어느 도구를 어떤 값으로 부르자는 호출 요청이 판단의 결과입니다. 호출 요청이 없으면 끝납니다. 다만 끝나지 않고 계속 돌 수도 있습니다. 그래서 맡기는 만큼 멈춤 장치를 함께 둡니다. 코드에는 max_iterations라는 이름으로 적혀 있고, 이어지는 실습의 웹 화면판에는 5회로 걸려 있습니다. 표지에서 드린 질문의 답이 여기 있습니다. 상한을 올려도 답은 좋아지지 않습니다. 멈추게 하는 값이기 때문입니다. 프롬프트에 위험한 조회는 하지 말라고 적는 것은 지침일 뿐 막는 장치가 아닙니다. 그래서 도구에 넣는 값은 조회문을 바꾸지 못하게 코드가 처리합니다. 조회만 허용하는 권한은 오늘 실습 코드 이야기가 아니라 업무에 옮길 때의 일반 원칙이고, 사람이 승인하는 방법과 함께 부록에 두었습니다. 이 Agent를 동료도 쓸 수 있게 화면에 올립니다. 먼저 그 화면의 구조를 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="split" data-scene-id="S29" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">웹앱의 화면·처리·데이터</h2>
+  <p class="thesis" data-editable="true">Streamlit 앱도 화면·처리·데이터로 나눠 읽습니다.</p>
+  <p class="explain" data-editable="true">입력을 받고, 데이터를 조회해 처리한 뒤 화면에 다시 보여 주는 전체 흐름을 흔히 풀스택이라 부릅니다. 화면·서버 기술을 다 배우기 전에, 바꿀 곳이 화면·처리·데이터 세 부분 가운데 어디인지부터 알아봅니다.</p>
+  <div class="split-grid wide-left">
+    <div class="code-card has-logos"><div class="code-logos"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"><img class="logo-inline" src="assets/img/logos/python.svg" alt="Python 로고"></div>
+      <div class="code-title" data-editable="true">개념 예시 · 함수 이름은 가상 · 실제 실습 코드와 다를 수 있음</div>
+<pre class="code-body" data-editable="true">q = st.text_input("질문")  <span class="cm"># 화면: 입력</span>
+if q:
+    ans = ask_agent(q)    <span class="cm"># 처리: Agent에게 질문을 넘김</span>
+                          <span class="cm"># 데이터: Agent가 도구로 조회</span>
+    st.write(ans)         <span class="cm"># 화면: 결과</span></pre>
+    </div>
+    <div class="placeholder is-spec">
+      <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S29]</div>
+      <div class="placeholder-desc" data-editable="true">넣을 자료: 장비 조회 Agent 웹 화면판 — 입력 칸·결과 영역을 왼쪽 코드 줄과 짝지어 표시</div>
+      <div class="placeholder-desc" data-editable="true">조건: 1600×900 이상 · 실행일 표기 · <span class="nowrap">모델명·주소·키·실제 장비 ID 가리기</span></div>
+      <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 코드 예시로 설명</div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Streamlit API 문서(st.text_input, st.write)</p>
+  <aside class="speaker-note">캐릭터 봇 실습에서 실행만 해 본 그 도구가 Streamlit이고, 이번에는 그 구조를 봅니다. 화면에서 입력을 받고, 데이터를 조회하고, 규칙과 모델 호출로 처리해 다시 화면에 보여 주는 전체 흐름을 다루는 것을 흔히 풀스택이라고 부릅니다. Streamlit에서는 이 흐름을 Python 코드 몇 줄로 이을 수 있어서, 왼쪽 예시처럼 입력 칸, Agent에게 질문 넘기기, 결과 표시가 차례로 나오고, 줄 끝 주석이 각 줄의 역할입니다. 데이터 조회는 처리 줄 안에서 Agent가 도구로 합니다. 오른쪽은 이어지는 실습에서 실행할 장비 조회 Agent의 화면인데, 입력 칸과 결과 영역이 왼쪽 코드의 어느 줄에 해당하는지 짝지어 보면 됩니다. Streamlit 공식 문서 설명처럼 Python 서버가 코드를 실행하고 브라우저는 화면을 보여 주는 구조라서, 이 앱은 화면과 처리 사이에 별도 백엔드 서버를 두지 않았고, 모델에는 채팅용 키로, 사내 데이터에는 데이터 조회용 토큰으로 각각 요청합니다. React나 별도 백엔드를 처음부터 모두 배우기보다, 지금 바꿀 부분이 화면인지, 처리인지, 데이터인지 알아보는 것부터 시작하면 AI가 만든 코드도 더 잘 판단할 수 있습니다. 다음 실습에서 실행할 앱은 화면, 처리, 데이터 중 어디를 바꾸면 무엇이 달라질지 생각하며 보세요. 먼저 바꿔 보고 싶은 부분이 화면이면 1, 처리면 2, 데이터면 3을 손가락으로 표시해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title-image" data-scene-id="LAB05" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 05 · 장비 조회 Agent</h2>
+  <p class="board-meta" data-editable="true"><img class="logo-inline" src="assets/img/icons/joystick.svg" alt="조종 아이콘">코드 위치: 실습자료 · 실습 05</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>문장에서 장비 ID를 뽑은 것은 누구이고 조회한 것은 누구인지 봅니다. 몇 바퀴 만에 멈췄는지 세고, 웹 화면판 코드에서 반복 상한이 적힌 줄을 찾습니다. 조회 도구 안에서 장비 ID를 조회문에 넣기 전에 처리하는 줄도 찾습니다.</p>
+  <div class="chip-row">
+    <span class="chip" data-editable="true">① Agent 루프</span>
+    <span class="chip" data-editable="true">② 호출 기록</span>
+    <span class="chip accent" data-editable="true">③ 반복 상한 · 입력 이스케이프</span>
+    <span class="chip" data-editable="true">④ 화면 · 처리 · 데이터</span>
+  </div>
+  <div class="practice-grid">
+    <div class="stack">
+      <ul class="compare-list is-numbered">
+        <li data-editable="true">1 · 콘솔판에서 문장으로 묻기</li>
+        <li data-editable="true">2 · 바퀴마다 무엇을 불렀는지 보기</li>
+        <li data-editable="true">3 · 웹 화면판에서 같은 질문 · 안전장치 두 줄 찾기</li>
+        <li data-editable="true">4 · 연결 짚기</li>
+      </ul>
+      <p class="dg-caption is-left" data-editable="true">질문 예 · EQ-01 자리에는 실습자료에 적힌 장비 ID를 넣습니다: "EQ-01은 어떤 공정을 진행하나요?" · "EQ-01은 어느 팹에 있나요?"</p>
+    </div>
+    <div class="stack">
+      <div class="placeholder is-spec">
+        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB05]</div>
+        <div class="placeholder-desc" data-editable="true">넣을 자료: 장비 조회 Agent 화면, 세 영역에 번호</div>
+        <div class="placeholder-desc" data-editable="true">조건: 주소·키·모델명·실제 장비 ID 가리기 · 1600×900 이상</div>
+        <div class="placeholder-desc" data-editable="true">대체: 왼쪽 소단계와 개념 칩</div>
+      </div>
+    </div>
+  </div>
+  <div class="done-row is-full">
+    <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">질문 하나가 답이 되기까지 누가 무엇을 했는지 순서대로 말합니다.</div></div>
+    <div class="fallback" data-editable="true"><strong>막히면</strong>401은 열쇠 문제입니다. 어느 문에서 났는지 보고 그 열쇠를 확인합니다. 사내 데이터 조회에서 났다면 셋째 열쇠를 다시 받습니다. 혼자 막히면 짝 화면으로, 계속 막히면 강사 화면을 보며 함께 진행합니다.</div>
+  </div>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · LangChain Tools 문서</p>
+  <aside class="speaker-note">시작하기 전에 환경 파일의 셋째 열쇠 칸이 채워져 있는지 먼저 보고, 비었으면 지금 받습니다. 먼저 콘솔판을 실행해 장비에 대해 문장으로 물어봅니다. 화면의 EQ-01은 자리만 보여 주는 가상 값이고, 실습에서는 실습자료의 장비 ID를 넣습니다. 문장에서 장비 ID를 뽑아 조회 도구를 부르자고 요청한 것은 모델이고, 조회를 실행한 것은 코드입니다. 바퀴마다 무엇을 불렀는지 호출 기록을 보면서 몇 바퀴 만에 멈췄는지 세어 보세요. 이어서 웹 화면판을 실행해 같은 질문을 넣고, 코드에서 안전장치 두 줄을 찾습니다. 하나는 반복 상한이 적힌 줄이고, 다른 하나는 조회 도구 안에서 장비 ID를 조회문에 넣기 전에 처리하는 줄입니다. 마지막으로 앞 장에서 본 화면 · 처리 · 데이터 세 부분이 이 앱의 어디인지 짚어 봅니다. 401이 보이면 Tool 실습 때와 같습니다. 401은 열쇠 문제이니, 코드가 아니라 어느 문에서 났는지부터 보세요. 사내 데이터 조회에서 났다면 셋째 열쇠를 다시 받습니다. 웹 화면은 터미널에서 Ctrl과 C를 함께 눌러 멈춘 뒤 다음으로 갑니다. 끝나면 짝에게 순서대로 말해 보세요. 오전에 만든 RAG 실습과 Agent 실습은 스크립트, Workflow, Agent 가운데 각각 어디일까요? 답을 마음속으로 정하셨으면 다음 장에서 맞춰 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="S17" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">스크립트·Workflow·Agent</h2>
+  <p class="thesis" data-editable="true">문제에 필요한 만큼의 자율성만 줍니다.</p>
+  <p class="explain" data-editable="true">Workflow는 코드가 순서를 정해 모델과 도구를 부르고, Agent는 모델이 다음 행동을 고릅니다. 오전의 RAG 실습은 순서를 코드가 정했으니 Workflow, Agent 실습은 다음 행동을 모델이 정했으니 Agent입니다. Agent는 호출이 늘어 시간과 사용량이 커지기 쉽습니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/terminal.svg" alt="스크립트 아이콘"><div class="compare-kicker" data-editable="true">규칙이 명확</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">스크립트</div>
+          <div class="dg-box" data-editable="true">규칙 → 결과</div>
+          <p class="compare-note" data-editable="true">모델 없이 코드가 끝까지</p>
+        </div>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/workflow.svg" alt="워크플로 아이콘"><div class="compare-kicker" data-editable="true">순서가 고정</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Workflow</div>
+          <div class="dg-box" data-editable="true">검색 → LLM → 답변</div>
+          <p class="compare-note" data-editable="true">순서는 코드가 정함 · 결과를 예측하기 쉬움</p>
+          <div class="chip-row">
+            <span class="concept-badge" data-editable="true">오전에 만든 것</span>
+            <span class="chip" data-editable="true">실습 04 · RAG</span>
+          </div>
+        </div>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"><div class="compare-kicker" data-editable="true">상황에 따라</div>
+        <div class="stack">
+          <div class="compare-heading" data-editable="true">Agent</div>
+          <div class="dg-box" data-editable="true">LLM ⇄ 도구 반복</div>
+          <p class="compare-note" data-editable="true">다음 행동은 모델이 정함 · 호출이 늘기 쉬움</p>
+          <div class="chip-row">
+            <span class="concept-badge" data-editable="true">오전에 만든 것</span>
+            <span class="chip accent" data-editable="true">실습 05 · 장비 조회 Agent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">세 방식은 우열이 아니라 필요한 자율성의 차이입니다 · 흐름을 그래프로 그리는 방법(LangGraph)은 부록에 있습니다</p>
+  </div>
+  <p class="source" data-editable="true">출처: Anthropic, Building effective agents</p>
+  <aside class="speaker-note">방금 Agent가 몇 바퀴 만에 멈췄나요? 코드에서 찾은 두 줄, 곧 반복 상한이 적힌 줄과 장비 ID를 처리하는 줄은 각각 무엇을 막는 장치였나요? 이제 오전에 만든 것 두 개를 이 세 열에 놓아 봅시다. RAG 실습은 찾고, 붙이고, 답하는 순서를 코드가 정했으니 Workflow이고, Agent 실습은 결과를 보고 다음 행동을 모델이 정했으니 Agent입니다. Agent는 두뇌가 손발을 조종하는 것이라 편리하지만, 호출이 늘어 시간과 사용량이 커지고 같은 질문에도 경로가 달라질 수 있습니다. 그래서 오른쪽으로 갈수록 좋은 것이 아니라 문제에 맞는 수준을 고르는 것이고, 순서가 정해진 일이라면 Workflow가 더 싸고 예측하기 쉽습니다. 흐름을 그래프로 직접 그리는 방법은 부록의 LangGraph 장면에 두었습니다. 여러분 업무 가운데 순서가 늘 같아서 Workflow로 충분한 일을 하나만 골라 옆 사람에게 한 문장으로 말해 보세요. 오전에 붙인 것들을 한 장에 모아 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="split" data-scene-id="S21" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">오전에 조립한 것</h2>
+  <p class="thesis" data-editable="true">오전에 두뇌에 책과 손발을 붙이고 조종까지 맡겼습니다.</p>
+  <p class="explain" data-editable="true">오후에는 이 묶음이 이미 조립된 내 PC의 에이전트를 씁니다.</p>
+  <div class="split-grid wide-left">
+    <div class="split-panel">
+      <span class="concept-badge" data-editable="true">개념 예시</span><span class="corner-logos"><img class="logo-inline" src="assets/img/logos/streamlit.svg" alt="Streamlit 로고"></span>
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box accent" data-editable="true">화면<span class="dg-sub">Streamlit</span></div>
+          <div class="dg-arrow" aria-hidden="true">⇄</div>
+          <div class="dg-box" data-editable="true">처리<span class="dg-sub">모델과 도구 · 반복</span></div>
+          <div class="dg-arrow" aria-hidden="true">⇄</div>
+          <div class="dg-box" data-editable="true">데이터<span class="dg-sub">기사 조각 · 사내 데이터</span></div>
+        </div>
+        <div class="dg-row stretch is-compact">
+          <div class="dg-box"><img class="inline-icon" src="assets/img/icons/brain.svg" alt="두뇌 아이콘"><span data-editable="true">두뇌 · LLM</span></div>
+          <div class="dg-box"><img class="inline-icon" src="assets/img/icons/book-open.svg" alt="책 아이콘"><span data-editable="true">책 · RAG</span></div>
+        </div>
+        <div class="dg-row stretch is-compact">
+          <div class="dg-box"><img class="inline-icon" src="assets/img/icons/hand.svg" alt="손발 아이콘"><span data-editable="true">손발 · Tool</span></div>
+          <div class="dg-box"><img class="inline-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"><span data-editable="true">조종 · Agent</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="dg">
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/layers.svg" alt="조립 아이콘"><div class="dg-box muted" data-editable="true">오전 · 내가 조립</div></div>
+      <span class="dg-arrow" aria-hidden="true">↓</span>
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘"><div class="dg-box" data-editable="true">오후 · 이미 조립된 것<span class="dg-sub">내 PC의 에이전트 · Claude Code</span></div></div>
+      <div class="chip-row">
+        <span class="concept-badge" data-editable="true">하네스</span>
+        <span class="dg-arrow" aria-hidden="true">=</span>
+        <span class="chip accent" data-editable="true">Tools · 손발</span>
+        <span class="chip accent" data-editable="true">+ Context · 책과 지침</span>
+        <span class="chip" data-editable="true">+ Memory · 오후에 채울 자리</span>
+      </div>
+    </div>
+  </div>
+  <p class="dg-caption is-left" data-editable="true">개념 예시</p>
+  <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Anthropic, Building effective agents · Claude Code 공식 문서 How Claude Code works</p>
+  <aside class="speaker-note">오전에 한 일을 한 장에 모으면 이렇습니다. LLM이라는 두뇌에서 시작해, RAG로 책을 찾아보며 답하게 했고, Tool이라는 손발을 달았고, 마지막에는 두뇌가 그 손발을 조종하는 Agent까지 만들었습니다. 모델 둘레에 도구, 자료와 지침, 기억을 묶어 주는 틀을 하네스라고 부르고, 더 깊은 내용은 부록에 두었습니다. 기억은 오전에 다루지 않았고 오후에 파일로 채웁니다. 오전에는 이 묶음을 우리가 하나씩 조립했지만, 오후에 쓸 Claude Code는 이 묶음이 이미 조립된 내 PC의 에이전트이고, 오전과 같은 사내 LLM 게이트웨이에 오전에 받은 채팅용 키로 접속합니다. 주황 테두리의 화면 자리는 오후 시연과 선택 과제에서 결과 없음 안내 같은 작은 기능이 들어갈 곳입니다. 한 분만 답해 주세요, 이 그림에서 사내 데이터를 실제로 조회하는 것은 모델인가요, 프로그램인가요? 다음 장은 점심 안내입니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title" data-scene-id="G03" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">점심시간</h2>
+  <p class="thesis" data-editable="true">오후는 Claude Code 연결과 첫 실행부터 시작합니다.</p>
+  <div class="stack">
+    <div class="stats cols-2">
+      <div class="stat accent"><div class="num" data-editable="true">11:40</div><div class="label" data-editable="true">점심 시작</div></div>
+      <div class="stat"><div class="num" data-editable="true">13:20</div><div class="label" data-editable="true">오후 재개 · Claude Code 연결과 첫 실행</div></div>
+    </div>
+    <div class="dg-row stretch">
+      <div class="dg-box"><img class="dg-icon" src="assets/img/icons/terminal.svg" alt="터미널 아이콘"><span data-editable="true">사전 설치한 Claude Code</span></div>
+      <div class="dg-box"><img class="dg-icon" src="assets/img/icons/folder.svg" alt="폴더 아이콘"><span data-editable="true">오전 실습 폴더</span></div>
+      <div class="dg-box"><img class="dg-icon" src="assets/img/icons/notebook-pen.svg" alt="메모 아이콘"><span data-editable="true">아침에 적은 반복 업무 하나</span></div>
+    </div>
+    <div class="chip-row">
+      <span class="concept-badge" data-editable="true">준비물</span>
+      <span class="chip" data-editable="true">Claude Code</span>
+      <span class="chip" data-editable="true">채팅용 키</span>
+      <span class="chip" data-editable="true">오전 실습 폴더</span>
+      <span class="chip" data-editable="true">반복 업무 하나</span>
+    </div>
+  </div>
+  <aside class="speaker-note">점심시간입니다. 오후는 사전 과제로 설치한 Claude Code를 오전에 받은 채팅용 키로 연결해 처음 실행하는 것부터 시작하니, 돌아오실 때 오전 실습 폴더를 열어 두시고 아침에 적어 둔 반복 업무 하나를 떠올려 와 주세요. 그 업무가 오후 자유 실습의 주제가 됩니다. 맛있게 드시고 오후에 뵙겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip title-scene night" data-skill="title" data-scene-id="D06" data-start="0" data-duration="5" data-track-index="0">
+  <div class="hero-kicker" data-editable="true">Part 3 · Claude Code 설치 / Part 4 · Claude Code 활용</div>
+  <h1 class="hero-title is-section" data-editable="true"><span class="nowrap">내 PC의 에이전트 —</span> <span class="nowrap">Claude Code</span></h1>
+  <p class="hero-sub" data-editable="true">실습 06 · 실습 07</p>
+  <ol class="axis-strip" aria-label="오늘의 여섯 정거장">
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/brain.svg" alt="두뇌 아이콘"></span><span class="axis-label" data-editable="true">두뇌</span></li>
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/book-open.svg" alt="책 아이콘"></span><span class="axis-label" data-editable="true">책</span></li>
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/hand.svg" alt="손발 아이콘"></span><span class="axis-label" data-editable="true">손발</span></li>
+    <li class="axis-stop is-done"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"></span><span class="axis-label" data-editable="true">조종</span></li>
+    <li class="axis-stop is-current"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘"></span><span class="axis-label" data-editable="true">내 PC의 에이전트</span></li>
+    <li class="axis-stop is-todo"><span class="axis-tile"><img class="axis-icon" src="assets/img/icons/rocket.svg" alt="적용 아이콘"></span><span class="axis-label" data-editable="true">적용</span></li>
+  </ol>
+  <aside class="speaker-note">오전에는 두뇌에 책과 손발을 붙이고 조종까지 우리 손으로 조립했습니다. 여기서부터는 그 묶음이 이미 조립된 내 PC의 에이전트, Claude Code를 씁니다. 먼저 오전에 만든 것과 Claude Code가 무엇이 같고 무엇이 다른지 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="compare" data-scene-id="S22" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">Coding Agent의 작동 방식</h2>
+  <p class="thesis" data-editable="true">오전에는 우리가 두뇌에 손발을 달았고, Claude Code는 손발이 이미 달린 내 PC의 에이전트입니다.</p>
+  <p class="explain" data-editable="true">Claude Code는 모델에 파일·명령 도구를 붙여 판단→행동→관찰을 반복하는 Coding Agent입니다. 웹 채팅은 주로 대화로 답하고, Claude Code는 내 PC의 파일과 명령을 도구로 씁니다. 오후에는 이 흐름으로 오전에 만든 장비 조회 Agent를 읽고, 시연과 선택 과제의 대상으로 씁니다. 다른 도구보다 항상 낫다는 뜻은 아닙니다.</p>
+  <div class="compare-grid">
+    <div class="compare-col stack">
+      <img class="col-icon" src="assets/img/icons/joystick.svg" alt="조종 아이콘"><div class="compare-heading" data-editable="true">오전에 만든 장비 조회 Agent</div>
+      <ul class="compare-list">
+        <li data-editable="true">대상: 장비에 대한 질문</li>
+        <li data-editable="true">손발: 우리가 단 조회 도구</li>
+        <li data-editable="true">결과: 위치·진행 공정 답변</li>
+      </ul>
+    </div>
+    <div class="compare-col stack is-accent">
+      <div class="compare-heading"><img class="logo-inline" src="assets/img/logos/claude.svg" alt="Claude 로고"><img class="logo-inline" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘"><span data-editable="true">Claude Code</span> <span class="concept-badge" data-editable="true">개념 예시</span></div>
+      <div class="dg">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">판단<span class="dg-sub">모델이 선택</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">행동<span class="dg-sub">도구 실행</span></div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">관찰<span class="dg-sub">파일·결과</span></div>
+        </div>
+        <p class="dg-caption is-left" data-editable="true">손발: 이미 달린 파일·명령 도구</p>
+        <p class="dg-caption is-left" data-editable="true">대상: 프로젝트 폴더 · ↺ 다시 판단으로 · 호출 요청이 없으면 끝납니다</p>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code How Claude Code works · Building effective agents</p>
+  <aside class="speaker-note">오전에 만든 장비 조회 Agent가 오후 시연과 선택 과제의 대상이고, 이번 구간의 목표는 Claude Code를 연결해 처음 실행하고 오전 실습 폴더를 읽게 하는 것입니다. 오전에는 우리가 두뇌에 손발을 달았고, 오후에는 손발이 이미 달린 내 PC의 에이전트, Claude Code에게 일을 맡깁니다. 웹 채팅은 주로 대화로 답하고, Claude Code는 내 PC의 파일과 명령을 도구로 씁니다. 자동완성이 아니라 스스로 읽고 실행하는 Agent입니다. 오전 Agent 실습에서 본 반복이 여기서는 파일 읽기와 명령 실행으로 바뀐 것뿐입니다. Claude Code는 모델 자체가 아니라, 모델에 파일 읽기·수정·명령 실행 도구와 실행 환경을 붙여 프로젝트 자체를 다루는 프로그램입니다. 오른쪽 열의 그림처럼 모델이 다음 행동을 판단하고, 도구로 행동하고, 파일과 실행 결과를 관찰한 뒤 다시 판단하는 반복이 핵심입니다. 호출 요청이 없으면 끝나는 것도 오전의 Agent 루프와 같습니다. 이 흐름을 한 번에 이어갈 수 있어서 이번 실습에 쓰는 것이고, 다른 도구보다 항상 낫다는 뜻은 아닙니다. 오전 조회 도구와 지금 볼 파일 수정 도구의 공통점을 한 가지만 말해 주세요. 그렇다면 Claude Code가 접속하는 문은 오전과 같을까요, 다를까요? 다음 장에서 확인합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="split" data-scene-id="S23" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">같은 문, 같은 열쇠</h2>
+  <p class="thesis" data-editable="true">Claude Code도 오전과 같은 사내 LLM 게이트웨이에, 오전에 받은 채팅용 키로 접속합니다.</p>
+  <p class="explain" data-editable="true">설정 파일(settings.json)에 적는 주소와 채팅용 키는 오전 환경 파일의 재등장입니다.</p>
+  <div class="split-grid wide-left">
+    <div class="dg">
+      <div class="dg-row stretch is-compact">
+        <div class="dg-box muted"><img class="inline-icon" src="assets/img/logos/python.svg" alt="Python 로고"><span data-editable="true">내 PC</span></div>
+        <div class="dg-box muted"><img class="inline-icon" src="assets/img/icons/key.svg" alt="열쇠 아이콘"><span data-editable="true">환경 파일</span></div>
+        <div class="dg-box muted is-wide"><img class="inline-icon" src="assets/img/icons/server.svg" alt="서버 아이콘"><span data-editable="true">사내 LLM 게이트웨이</span></div>
+      </div>
+      <div class="dg-row is-centered">
+        <span class="concept-badge" data-editable="true">오전 · 실습 01</span>
+        <img class="row-icon" src="assets/img/icons/key.svg" alt="열쇠 아이콘">
+        <span class="chip" data-editable="true">첫째 · 채팅용 키</span>
+        <span class="chip accent" data-editable="true">같은 문 · 같은 열쇠</span>
+        <span class="concept-badge" data-editable="true">오후 · 실습 06</span>
+      </div>
+      <div class="dg-row even">
+        <div class="dg-zone">
+          <div class="dg-zone-label" data-editable="true">내 PC</div><img class="zone-icon" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘">
+          <div class="dg-box" data-editable="true">Claude Code<span class="dg-sub">파일·명령 실행</span></div>
+        </div>
+        <div class="stack">
+          <span class="dg-arrow" aria-hidden="true">⇄</span>
+          <span class="dg-sub" data-editable="true">요청 · 읽은 내용</span>
+        </div>
+        <div class="dg-box accent" data-editable="true">설정 파일<span class="dg-sub">주소 · 채팅용 키</span></div>
+        <span class="dg-arrow" aria-hidden="true">⇄</span>
+        <div class="dg-box"><img class="dg-icon" src="assets/img/icons/server.svg" alt="서버 아이콘"><span data-editable="true">사내 LLM 게이트웨이</span><span class="dg-sub" data-editable="true">뒤에서 추론 서버가 모델을 실행</span></div>
+      </div>
+      <p class="dg-caption" data-editable="true">개념 예시 · 주소와 키 대신 역할 이름으로 표시</p>
+    </div>
+    <div class="stack">
+      <ul class="bullets">
+        <li data-editable="true">파일과 명령은 내 PC에서 실행됩니다</li>
+        <li data-editable="true"><strong>읽은 파일 내용은 모델 쪽으로 전송됩니다 → 열쇠가 든 파일은 읽히지 않습니다</strong></li>
+        <li data-editable="true">할 수 있는 일은 도구와 권한 범위 안입니다</li>
+      </ul>
+      <div class="dg-row"><img class="row-icon" src="assets/img/icons/lock.svg" alt="권한 아이콘">
+        <div class="dg-box muted" data-editable="true">다른 앱 화면 조작 · 사내 시스템은 별도 도구와 권한</div>
+      </div>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Connect Claude Code to an LLM gateway · How Claude Code works · Data usage</p>
+  <aside class="speaker-note">아침에 그린 세 층을 기억하시지요. 코드는 내 PC에서 돌고, 환경 파일에 적은 주소와 채팅용 키가 사내 LLM 게이트웨이로 이어 주던 그림입니다. 오후도 같은 그림입니다. 내 PC에서 도는 것이 실습 코드에서 Claude Code로, 환경 파일이 설정 파일로 바뀌었을 뿐, 문도 열쇠도 오전 그대로입니다. 다른 점은 이 에이전트가 내 PC에서 파일을 읽고 명령을 실행한다는 것이고, 그래서 Claude Code는 내 PC의 에이전트입니다. 설정 전에는 바깥 주소로 가려 하고, 설정하면 오전과 같은 사내 문으로 갑니다. 다만 파일과 명령이 내 PC에서 실행돼도, 요청과 읽은 파일 내용은 모델 쪽으로 전송됩니다. 로컬에서 실행한다는 것만으로 자료가 내 PC에만 머문다고 볼 수 없으니 보낼 자료의 범위를 먼저 확인합니다. 환경 파일과 설정 파일처럼 열쇠가 든 파일은 읽히지 않습니다. 아래 회색 상자처럼 다른 앱 화면을 조작하거나 사내 시스템에 접근하는 일은 별도 도구와 권한이 있어야 합니다. 파일 읽기, Python 실행, 다른 프로그램 화면 클릭 가운데 지금 환경에서 바로 될 것 같은 것을 예상해 보시고, 맞는지는 이어지는 실습 07에서 직접 확인합니다. 이제 그 설정 파일을 직접 열어 보고 Claude Code를 처음 실행합니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title-bullets" data-scene-id="LAB06" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 06 · 연결과 첫 실행</h2>
+  <p class="board-meta" data-editable="true"><img class="logo-inline" src="assets/img/logos/claude.svg" alt="Claude 로고"> <img class="logo-inline" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘"> 코드 위치: 실습자료 · 실습 06</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>설정 파일의 열쇠가 오전 환경 파일에 적은 채팅용 키와 같은 열쇠인지 봅니다. 주소는 같은 사내 LLM 게이트웨이를 가리키며, 글자는 서로 다를 수 있습니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <ul class="compare-list is-numbered">
+        <li data-editable="true">1 · 설정 파일에 주소와 채팅용 키가 들어 있는지 확인하고, 없으면 넣기</li>
+        <li data-editable="true">2 · 첫 실행</li>
+        <li data-editable="true">3 · 연결 상태 확인</li>
+      </ul>
+      <div class="chip-row">
+        <span class="chip accent" data-editable="true">① 세 층의 재등장 · 같은 열쇠</span>
+        <span class="chip" data-editable="true">② 내 PC의 에이전트</span>
+        <span class="chip" data-editable="true">③ 어느 문으로 가는지</span>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="chip-row">
+        <img class="row-icon" src="assets/img/icons/key.svg" alt="열쇠 아이콘">
+        <span class="chip accent" data-editable="true">첫째 · 채팅용 키</span>
+        <span class="chip" data-editable="true">둘째 · 임베딩용 키</span>
+        <span class="chip" data-editable="true">셋째 · 데이터 조회용 토큰</span>
+      </div>
+      <div class="placeholder is-spec">
+        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB06]</div>
+        <div class="placeholder-desc" data-editable="true">넣을 자료: 연결 상태 화면</div>
+        <div class="placeholder-desc" data-editable="true">조건: 주소 · 키 · 모델명 · 계정 가리기</div>
+        <div class="placeholder-desc" data-editable="true">대체: 세 층 축소판(설정 파일 강조)</div>
+      </div>
+      <p class="dg-caption is-left" data-editable="true">막힌 단계에 손을 들어 알려 주세요</p>
+      <div class="chip-row">
+        <img class="row-icon" src="assets/img/icons/users.svg" alt="손들기 아이콘">
+        <span class="chip" data-editable="true">연결 설정</span>
+        <span class="chip" data-editable="true">첫 실행</span>
+        <span class="chip" data-editable="true">연결 상태</span>
+      </div>
+    </div>
+  </div>
+  <div class="done-row is-full">
+    <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">Claude Code가 첫 인사에 답합니다.</div></div>
+    <div class="fallback" data-editable="true"><strong>막히면</strong>연결 오류가 보이면 설정 전이라 바깥 주소로 가려는 것입니다. 설정 파일의 주소와 열쇠를 확인합니다. 일일 한도가 있습니다. 남은 한도는 사내 모델 운영 페이지에서 확인합니다. 우회 접속은 하지 않습니다.</div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Connect Claude Code to an LLM gateway · Quickstart</p>
+  <aside class="speaker-note">Claude Code는 내 PC의 에이전트입니다. 프로그램 설치는 사전 과제로 마치셨으니 오늘은 연결과 첫 실행만 합니다. 먼저 설정 파일, 곧 settings.json을 열어 주소와 채팅용 키가 들어 있는지 확인하고, 없으면 오전 환경 파일에 적었던 그 채팅용 키를 넣습니다. 확인할 것은 열쇠입니다. 오전과 같은 열쇠이고, 주소는 같은 사내 LLM 게이트웨이를 가리키지만 글자는 다를 수 있습니다. 열쇠 값은 내 화면에서만 확인하고, 화면을 함께 볼 때는 열지 않습니다. 이어서 Claude Code를 실행해 인사를 건네고, 답이 오면 연결 상태를 확인합니다. 공식 문서 기준으로는 /status를 입력하면 지금 어느 주소로, 어떤 인증으로 가고 있는지 볼 수 있습니다. 첫 실행에서 연결 오류가 보여도 정상입니다. 설정 전이라 바깥 주소로 가려는 것이고, 설정 파일을 확인하면 풀립니다. 이 열쇠에는 일일 한도가 있고, 남은 한도는 사내 모델 운영 페이지에서 확인합니다. 설치가 안 된 분은 짝을 정해 같은 화면으로 진행하시고, 인터넷에서 찾은 다른 접속 방식으로 우회하지는 않습니다. 첫 인사에 답이 왔으면, 이제 오전 실습 폴더를 읽혀 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
+<section id="s-0" class="scene clip" data-skill="title-bullets" data-scene-id="LAB07" data-start="0" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">실습 07 · 기본 활용</h2>
+  <p class="board-meta" data-editable="true"><img class="logo-inline" src="assets/img/logos/claude.svg" alt="Claude 로고"> <img class="logo-inline" src="assets/img/icons/laptop.svg" alt="내 PC의 에이전트 아이콘"> 코드 위치: 실습자료 · 실습 07</p>
+  <p class="explain" data-editable="true"><strong>관찰할 것</strong>오전의 호출 기록을 읽던 것처럼, Claude Code가 어느 파일을 읽고 어떤 명령을 실행하려 하는지 봅니다. 승인 요청은 명령 실행과 파일 수정에서 뜹니다. 무엇을 하려는지 읽고 나서 승인합니다. 환경 파일에는 열쇠가 들어 있으므로 읽히지 않습니다. 화면을 함께 볼 때도 열지 않습니다.</p>
+  <div class="practice-grid">
+    <div class="stack">
+      <ul class="compare-list is-numbered">
+        <li data-editable="true">1 · 오전 실습 폴더에서 실행</li>
+        <li data-editable="true">2 · "이 폴더의 파일들을 요약해 주세요. 환경 파일은 열지 마세요."</li>
+        <li data-editable="true">3 · "이 프로젝트 구조를 설명해 주세요"</li>
+        <li data-editable="true">4 · "Tool 실습의 계산 도구 파일에서 버그를 찾아 주세요"(예)</li>
+        <li data-editable="true">5 · "CLAUDE.md가 무엇인지 공식 문서를 참고해서 알려 주세요"</li>
+      </ul>
+      <div class="chip-row">
+        <span class="chip" data-editable="true">① Agent 루프</span>
+        <span class="chip" data-editable="true">② 도구 호출 읽기</span>
+        <span class="chip" data-editable="true">③ 다음 행동은 모델이 고름</span>
+        <span class="chip accent" data-editable="true">④ 설명은 정답이 아님 · 대조</span>
+        <span class="chip" data-editable="true">⑤ 공식 문서 우선</span>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="placeholder is-spec">
+        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB07]</div>
+        <div class="placeholder-desc" data-editable="true">넣을 자료: 오전 실습 폴더 구조를 설명한 Claude Code 화면</div>
+        <div class="placeholder-desc" data-editable="true">조건: 모델명 · 계정 · 주소 · 키 가리기 · 실행일 표기 · 환경 파일의 내용이 찍힌 화면은 쓰지 않습니다</div>
+        <div class="placeholder-desc" data-editable="true">대체: 요청 세 가지 카드(요약 · 구조 · 버그)</div>
+      </div>
+      <p class="dg-caption is-left" data-editable="true">막힌 단계에 손을 들어 알려 주세요</p>
+      <div class="chip-row">
+        <img class="row-icon" src="assets/img/icons/users.svg" alt="손들기 아이콘">
+        <span class="chip" data-editable="true">폴더 열기</span>
+        <span class="chip" data-editable="true">파일 읽기</span>
+        <span class="chip" data-editable="true">실행 방법</span>
+      </div>
+    </div>
+  </div>
+  <div class="done-row is-full">
+    <div class="done-box"><div class="done-label" data-editable="true">완료 조건</div><div class="done-text" data-editable="true">Claude Code의 설명과 지적을 실제 파일과 대조합니다.</div></div>
+    <div class="fallback" data-editable="true"><strong>막히면</strong>짝 화면이나 강사 화면으로 진행합니다. 우회 접속은 하지 않습니다.</div>
+  </div>
+  <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices · Quickstart · Common workflows · Memory · MCP</p>
+  <aside class="speaker-note">먼저 오전 실습 폴더에서 Claude Code를 실행하고, 화면의 요청 세 가지를 차례로 넣어 봅니다. 오전에 호출 기록을 읽던 것처럼, 그때마다 Claude Code가 어느 파일을 읽고 어떤 명령을 실행하려 하는지 지켜보세요. 버그 찾기는 파일 이름을 몰라도 'Tool 실습의 나누기 도구가 있는 파일'처럼 말로 가리키면 Claude Code가 찾아갑니다. 0으로 나누기를 짚을 수도 있고 다른 것을 짚을 수도 있는데, 무엇을 짚든 실제 코드를 열어 대조합니다. Claude Code의 설명이 곧 정답은 아니므로 판단은 우리가 합니다. 여유가 있으면 마지막 요청으로 공식 문서를 참고하게 해 보시고, 설정 방법처럼 자주 바뀌는 내용은 검색보다 공식 문서가 먼저라는 점을 기억해 두세요. 환경 파일에는 열쇠가 들어 있으므로 읽히지 않습니다. 화면을 함께 볼 때도 열지 않습니다. 파일 읽기는 승인 없이 일어날 수 있어서, 읽히고 싶지 않은 파일은 요청문에서 미리 뺍니다. 승인 요청은 명령 실행과 파일 수정에서 뜹니다. 오전에 본 '요청은 모델, 실행은 프로그램' 사이에 사람이 끼어드는 자리이니, 무엇을 하려는지 읽고 나서 승인하시고, 모르겠으면 아니오를 고른 뒤 손을 들어 주세요. 이번 실습은 읽기와 설명까지이고, 파일 수정은 선택 과제와 자유 실습에서 계획을 세운 뒤에 합니다. 읽히는 것까지 해 봤습니다. 이어서 같은 도구를 어떤 방향으로 쓸 수 있는지 세 가지를 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

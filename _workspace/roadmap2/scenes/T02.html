@@ -1,0 +1,45 @@
+<section id="s-18" class="scene clip" data-skill="compare" data-scene-id="T02" data-start="85" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">RAG의 한계와 도구</h2>
+  <p class="thesis" data-editable="true">근거 있는 답은 되지만 정확한 숫자와 지금 상태는 못 내므로, 다음은 코드가 실행하는 도구입니다.</p>
+  <p class="explain" data-editable="true">실습 2에서 본문을 붙이자 답을 본문과 대조할 수 있었고, 없는 내용은 없다고 답하게 만들었습니다. 그러나 건수를 세거나 지금 장비 상태를 보는 일은 문서에 없으므로, 다음 실습은 조회 함수를 도구로 붙여 모델이 부르고 코드가 실행합니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/file-text.svg" alt="근거 문서 아이콘"><div class="compare-kicker" data-editable="true">① 지금 되는 것</div>
+        <div class="compare-heading" data-editable="true">실습 2 · RAG</div>
+        <ul class="compare-list">
+          <li data-editable="true">본문을 붙여 근거 있는 요약</li>
+          <li data-editable="true">답 문장을 본문과 대조</li>
+          <li data-editable="true">없으면 없다고 답하기</li>
+        </ul>
+      </div>
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/calculator.svg" alt="계산 아이콘"><div class="compare-kicker" data-editable="true">② 아직 안 되는 것</div>
+        <div class="compare-heading" data-editable="true">문서만으로는 한계</div>
+        <ul class="compare-list">
+          <li data-editable="true">정확한 건수·집계</li>
+          <li data-editable="true">지금 이 순간의 장비 상태</li>
+          <li data-editable="true">조회·실행 같은 행동</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/wrench.svg" alt="도구 아이콘"><div class="compare-kicker" data-editable="true">③ 그래서 다음</div>
+        <div class="compare-heading" data-editable="true">실습 3 · 조회 도구</div>
+        <ul class="compare-list">
+          <li data-editable="true">정해진 조회문으로 테이블 읽기</li>
+          <li data-editable="true">같은 함수를 도구로 등록</li>
+          <li data-editable="true">부를지는 모델, 실행은 코드</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chip-row">
+      <span class="chip" data-editable="true">실습 2 · RAG</span>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <span class="chip accent" data-editable="true">실습 3 · 조회 함수를 도구로</span>
+      <span class="dg-sub" data-editable="true">도구가 붙어야 Agent로 갈 수 있습니다</span>
+    </div>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain Tools 가이드</p>
+  <aside class="speaker-note">실습 2에서 본문에 없는 내용을 물었을 때 없다고 답하게 만든 것을 떠올려 보세요. 그런데 가운데 열처럼 정확한 건수와 집계, 지금 이 순간의 장비 상태, 조회나 실행 같은 행동은 문서 어디에도 적혀 있지 않으므로 RAG로는 채울 수 없고, 모델이 스스로 센 숫자는 믿을 수 없습니다. 그래서 다음 실습에서는 문서 대신 코드를 붙입니다. 정해진 조회문으로 테이블을 읽는 함수를 그대로 도구로 등록해, 부를지는 모델이 정하고 실행은 코드가 하게 합니다. 오늘 실습 3의 조회는 건수 집계가 아니라 장비별 현재 위치·진행 공정을 그대로 읽는 것이고, 건수 집계는 같은 원리의 개념 예시입니다. RAG를 붙여도 도구가 없으면 모델은 읽고 말할 뿐 행동하지 못하므로, 아래 띠처럼 도구가 붙어야 Agent 쪽으로 갈 수 있습니다. 기사를 한 편이 아니라 백 편 붙이면 건수를 정확히 셀 수 있을까요? 예측을 손으로 표시해 주세요, 된다 1, 안 된다 2. Agent가 정확히 무엇인지는 다음 구간의 스크립트·Workflow·Agent 장에서 정의하고, 바로 다음 장에서는 정확한 조회와 계산을 누가 맡는지부터 보겠습니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

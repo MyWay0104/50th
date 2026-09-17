@@ -1,0 +1,30 @@
+<section id="s-8" class="scene clip" data-skill="split" data-scene-id="L01" data-start="35" data-duration="5" data-track-index="0">
+              <h2 class="scene-title" data-editable="true">메시지 역할과 프롬프트</h2>
+              <p class="thesis" data-editable="true">system이 규칙을 정하고, user가 묻고, assistant가 답합니다.</p>
+              <p class="explain" data-editable="true">모델에 보내는 것은 문장 하나가 아니라 역할이 붙은 메시지 목록입니다. 모델은 목록에 있는 것만 보므로, 앞의 답을 다시 넣지 않으면 이전 대화를 모릅니다.</p>
+              <div class="split-grid">
+                <div class="stack">
+                  <div class="dg-row stretch is-roles">
+                    <div class="dg-box accent"><img class="dg-icon" src="assets/img/icons/list-checks.svg" alt="규칙 아이콘"><span data-editable="true">system</span><span class="dg-sub" data-editable="true">규칙·말투·역할</span><span class="dg-sub" data-editable="true">한 줄이 답 전체를 바꿈</span></div>
+                    <div class="dg-box"><img class="dg-icon" src="assets/img/icons/user.svg" alt="사용자 아이콘"><span data-editable="true">user</span><span class="dg-sub" data-editable="true">이번 질문</span><span class="dg-sub" data-editable="true">매번 새로 보냄</span></div>
+                    <div class="dg-box"><img class="dg-icon" src="assets/img/icons/bot.svg" alt="모델 아이콘"><span data-editable="true">assistant</span><span class="dg-sub" data-editable="true">모델의 답</span><span class="dg-sub" data-editable="true">다음 요청에 다시 넣어야 기억</span></div>
+                  </div>
+                  <div class="callout" data-editable="true">예시 몇 개를 함께 넣으면 <strong>답의 모양이 예시를 따릅니다</strong></div>
+                </div>
+                <div class="stack">
+                  <div class="code-card">
+                    <div class="code-title" data-editable="true">역할이 붙은 메시지 목록 · 개념 예시</div>
+                    <pre class="code-body" data-editable="true">messages = [
+  (<span class="hl">"system"</span>, "정중하게 답합니다"),   <span class="cm"># 규칙</span>
+  (<span class="hl">"user"</span>, "첫 질문"),
+  (<span class="hl">"assistant"</span>, "첫 답"),  <span class="cm"># 앞 답을 다시 넣음</span>
+  (<span class="hl">"user"</span>, "두 번째 질문"),
+]</pre>
+                  </div>
+                  <p class="guide-ref" data-editable="true">코드 위치: 프롬프트 구성부 · 긍정봇 — 실습 가이드 해당 장</p>
+                </div>
+              </div>
+              <p class="source" data-editable="true">출처: LangChain Messages 문서 · OpenAI Chat Completions 가이드</p>
+              <aside class="speaker-note">모델에 보내는 것은 문장 하나가 아니라 역할이 붙은 메시지 목록이고, 역할은 세 가지만 기억하시면 됩니다. system은 규칙과 말투와 역할을 정하는 자리라 한 줄만 바꿔도 답 전체의 성격이 바뀌고, user는 이번 질문이며, assistant는 모델이 낸 답입니다. 오른쪽 코드처럼 앞의 답을 assistant 메시지로 다시 넣어야 모델이 이전 대화를 참고할 수 있고, 넣지 않으면 매번 처음 만난 것처럼 답합니다. 이 성질은 이어지는 실습의 긍정봇에서 직접 확인합니다. 아래 상자의 한 줄처럼 원하는 답의 예시를 몇 개 같이 넣으면 답의 형식과 말투가 그 예시를 따라오는데, 이 방식을 few-shot 프롬프팅이라고 부릅니다. 예측 질문 하나 드리겠습니다. system 한 줄을 바꾸면 답의 무엇이 달라질까요? 내용이 달라질지, 말투와 형식이 달라질지 예측해 두시고 실습에서 확인해 보세요.</aside>
+              <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+            </section>

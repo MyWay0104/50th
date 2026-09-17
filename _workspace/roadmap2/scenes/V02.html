@@ -1,0 +1,40 @@
+<section id="s-14" class="scene clip" data-skill="compare" data-scene-id="V02" data-start="65" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">FAISS · Chroma · Milvus</h2>
+  <p class="thesis" data-editable="true">셋 다 벡터를 저장하고 가까운 것을 찾지만, 어디서 얼마나 크게 돌리느냐가 다릅니다.</p>
+  <p class="explain" data-editable="true">FAISS는 검색 라이브러리로 내 프로그램 안에서 바로 쓰고 파일로 저장할 수 있어 오늘 실습에 씁니다. Chroma는 설치가 간단한 벡터 DB로 내 PC 프로젝트에 붙이기 쉽고, Milvus는 서버로 띄워 여러 사람·많은 자료를 다루는 규모용입니다. 우열이 아니라 규모와 운영 방식의 차이입니다.</p>
+  <div class="stack">
+    <div class="compare-grid cols-3">
+      <div class="compare-col is-accent">
+        <img class="col-icon" src="assets/img/icons/boxes.svg" alt="라이브러리 아이콘"><div class="compare-kicker" data-editable="true">라이브러리 · 서버 없음 · 오늘 실습</div>
+        <div class="compare-heading" data-editable="true">FAISS</div>
+        <ul class="compare-list">
+          <li data-editable="true">프로그램 안에서 바로 검색</li>
+          <li data-editable="true">결과(인덱스)를 파일로 저장</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/database.svg" alt="가벼운 DB 아이콘"><div class="compare-kicker" data-editable="true">가벼운 DB · 작은 팀</div>
+        <div class="compare-heading" data-editable="true">Chroma</div>
+        <ul class="compare-list">
+          <li data-editable="true">설치 간단, 로컬에 저장</li>
+          <li data-editable="true">출처 정보로 걸러 찾기</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <img class="col-icon" src="assets/img/icons/server.svg" alt="서버형 DB 아이콘"><div class="compare-kicker" data-editable="true">서버형 DB · 사내 공용 규모</div>
+        <div class="compare-heading" data-editable="true">Milvus</div>
+        <ul class="compare-list">
+          <li data-editable="true">여러 사용자·대용량</li>
+          <li data-editable="true">분산·운영 기능</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-row is-compact is-band">
+      <div class="dg-box muted" data-editable="true">공통: 벡터 저장 + 가까운 것 찾기 · 다른 점: 규모·운영</div>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">개념 예시 · 실습 코드의 저장소 이름은 실습 가이드 해당 장</p>
+  </div>
+  <p class="source" data-editable="true">출처: FAISS 공식 문서(GitHub wiki) · Chroma 공식 문서 · Milvus 공식 문서</p>
+  <aside class="speaker-note">세 이름은 하는 일이 같고 규모와 운영 방식이 다릅니다. 오늘 실습은 서버 없이 내 PC 안에서 인덱스를 만드는 FAISS이고, 파일로 저장해 두었다가 다시 불러올 수도 있습니다. Chroma는 작은 팀 프로젝트, Milvus는 사내 공용 규모이고 오늘 범위 밖입니다. 저장소를 바꿔도 RAG 기본 구조 장면의 흐름, 나누기, 숫자로 바꾸기, 저장, 찾기는 그대로입니다. 성능 비교는 같은 조건으로 잰 결과가 아니면 말하지 않겠습니다. 오늘 실습처럼 기사 한 편이면 셋 중 무엇이면 충분할까요? 다음 장에서 나누기·숫자로 바꾸기·찾기 세 단계를 봅니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

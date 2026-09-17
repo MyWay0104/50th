@@ -1,0 +1,43 @@
+<section id="s-12" class="scene clip" data-skill="steps" data-scene-id="S10" data-start="55" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">RAG의 기본 구조</h2>
+  <p class="thesis" data-editable="true">미리 준비하는 인덱싱과 질문할 때의 검색·답변, 두 시점이 있습니다.</p>
+  <p class="explain" data-editable="true">RAG는 질문에 맞는 자료 조각을 찾아 질문과 함께 모델에 넘기는 방식입니다. 인덱싱은 문서를 나누고 숫자로 바꿔 저장해 두는 과정이고, 검색 방법은 여러 가지가 있습니다. 모델을 학습시키지 않으므로 자료를 기억하지 않습니다.</p>
+  <div class="stack">
+    <div class="dg-row stretch">
+      <div class="dg-zone is-grow">
+        <div class="dg-zone-label" data-editable="true">미리 준비 · 인덱싱</div><img class="zone-icon" src="assets/img/icons/database.svg" alt="저장소 아이콘">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">분할</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">숫자로 바꾸기</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">저장</div>
+        </div>
+      </div>
+      <span class="dg-arrow is-zone-gap" aria-hidden="true">→</span>
+      <div class="dg-zone is-grow">
+        <div class="dg-zone-label" data-editable="true">질문할 때</div><img class="zone-icon" src="assets/img/icons/search.svg" alt="검색 아이콘">
+        <div class="dg-row stretch">
+          <div class="dg-box" data-editable="true">질문</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box accent" data-editable="true">검색</div>
+          <span class="dg-arrow" aria-hidden="true">→</span>
+          <div class="dg-box" data-editable="true">답변</div>
+        </div>
+      </div>
+    </div>
+    <div class="chip-row">
+      <span class="concept-badge" data-editable="true">개념 예시</span><img class="row-icon" src="assets/img/icons/file-text.svg" alt="문서 아이콘">
+      <span class="chip" data-editable="true">조각 1</span>
+      <span class="chip" data-editable="true">겹침</span>
+      <span class="chip" data-editable="true">조각 2</span>
+      <span class="chip" data-editable="true">겹침</span>
+      <span class="chip" data-editable="true">조각 3</span>
+    </div>
+    <p class="dg-caption is-left" data-editable="true">위 흐름은 일반 구조 · 분할 크기·겹침: 작으면 문맥 손실, 크면 잡음</p>
+    <p class="guide-ref" data-editable="true">코드 위치: 자료 준비(수집·분할) 부분 · 검색 부분 — 실습 가이드 해당 장</p>
+  </div>
+  <p class="source" data-editable="true">출처: Lewis et al. 2020 · LangChain Retrieval 가이드</p>
+  <aside class="speaker-note">RAG는 검색한 자료를 이번 답변을 만들 때 사용하는 방식입니다. 화면 왼쪽 구역은 질문이 오기 전에 미리 해 두는 인덱싱이고, 오른쪽 구역은 질문이 올 때마다 도는 검색과 답변입니다. 더 잘게 나누면 로드·분할·임베딩·저장과 질문·검색·증강·생성으로 볼 수 있는데, 오늘은 여섯 상자로 줄였습니다. 아래 조각 띠처럼 자료를 나눌 때 조각이 너무 작으면 문맥이 끊기고 너무 크면 관계없는 내용이 섞이므로, 조각끼리 조금 겹치게 나누기도 합니다. 이번 실습은 기사 한 편이라 본문을 통째로 모델에 넣어 요약하지만, 기사가 100편이면 앞에서 본 컨텍스트 윈도우에 다 넣을 수 없으므로 나누고 찾아야 합니다. 그래서 다음 두 장에서 벡터 저장소가 왜 필요한지와 실습에 나오는 FAISS를 보고, 이어서 나누기·숫자로 바꾸기·가까운 것 찾기 세 단계를 본 뒤 실습에 들어갑니다. 임베딩과 벡터 저장소는 검색 방법 중 하나이고 키워드 검색 같은 다른 방법도 있어 항상 필수는 아니며, RAG는 모델 가중치를 바꾸는 학습이 아니므로 다음 질문에서 그 자료를 모델이 기억하는 것도 아닙니다.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>

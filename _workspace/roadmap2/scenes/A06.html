@@ -1,0 +1,22 @@
+<section id="s-51" class="scene clip" data-skill="title-bullets" data-scene-id="A06" data-start="250" data-duration="5" data-track-index="0">
+  <h2 class="scene-title" data-editable="true">부록 · 현업 적용 전 점검</h2>
+  <p class="thesis" data-editable="true">화면이 뜨는 것과 업무에 쓸 준비는 다릅니다.</p>
+  <p class="explain" data-editable="true">오늘 만든 작은 도구를 업무에 쓰기 전에 다섯 가지를 확인합니다. 권한은 프롬프트 문장이 아니라 실행 환경에서 제한합니다. 없는 답을 만들지 않고 실패를 알리는지도 봅니다.</p>
+  <div class="stack">
+    <div class="dg-row icon-track" aria-hidden="true"><span class="track-cell"><img class="head-icon" src="assets/img/icons/lock.svg" alt="권한 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/table.svg" alt="데이터 정의 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/list-checks.svg" alt="정답 세트 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/workflow.svg" alt="호출 흐름 아이콘"></span><span class="dg-arrow is-ghost">→</span><span class="track-cell"><img class="head-icon" src="assets/img/icons/git-compare.svg" alt="변경 기록 아이콘"></span></div><div class="dg-row stretch">
+      <div class="dg-box" data-editable="true">권한 제한<span class="dg-sub">읽기 범위</span><span class="dg-sub">허용 테이블</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">데이터 정의<span class="dg-sub">날짜 기준·단위</span><span class="dg-sub">결측값 문서화</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">정답 세트 검증<span class="dg-sub">정답 아는 입력</span><span class="dg-sub">실패 상황</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">호출 흐름 기록<span class="dg-sub">응답 시간</span><span class="dg-sub">호출량도 함께</span></div>
+      <span class="dg-arrow" aria-hidden="true">→</span>
+      <div class="dg-box" data-editable="true">변경·피드백<span class="dg-sub">누가 무엇을</span><span class="dg-sub">바꿨는지</span></div>
+    </div>
+    <p class="dg-caption" data-editable="true">권장 순서 예시</p>
+  </div>
+  <p class="source" data-editable="true">출처: LangChain SQL 안전 지침(SQL Agent 가이드 내) · Anthropic, Building effective agents</p>
+  <aside class="speaker-note">오늘 만든 작은 도구를 실제 업무에 쓰기 전에는 진행 단계 띠의 다섯 가지를 먼저 확인합니다. 권한은 프롬프트 문장이 아니라 실행 환경에서 읽기 범위와 허용 테이블로 제한해야 하고, 날짜 기준·단위·결측값 의미 같은 데이터 정의는 사람마다 다르면 코드가 맞아도 답이 달라지므로 누가 관리하는지까지 문서로 남깁니다. 정답을 아는 입력, 자료가 없는 질문, 도구가 실패하는 상황을 모은 작은 정답 세트로 각각 어떻게 동작하는지 확인합니다. 모델과 도구가 어떤 순서로 불렸는지, 응답 시간과 호출량이 얼마인지 기록해 두면 문제가 났을 때 어디서 막혔는지 찾을 수 있고, 이런 기록을 모아 보여 주는 관측 도구도 있습니다. 누가 무엇을 바꿨는지와 사용자 피드백을 받을 창구도 미리 정합니다. 이 순서는 여러 체크리스트를 합쳐 다시 정리한 권장안입니다. 화면이 뜨는 것과 업무에 쓸 준비가 된 것은 다르다는 점을 기억해 주세요.</aside>
+  <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
+</section>
