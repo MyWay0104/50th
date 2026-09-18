@@ -1,0 +1,54 @@
+
+      /* ===== v0.7 배치 보정 (2026-09-18) — 측정 근거: _workspace/roadmap3/measure_v07.json =====
+         66장 기계 측정 결과: 가로넘침 0 · 세로넘침 0 · 장면밖 0 · 좌우 차 40px 초과 0.
+         고칠 것은 (가) 컴포넌트가 붙은 곳 2곳, (나) 글자 24px 미만 5곳 뿐이다.
+         원칙: 세로 높이를 늘리는 규칙을 쓰지 않는다.
+               T01 처럼 .source 의 margin-top:auto 가 0 으로 풀린 장면은 세로 여유가 0px 이라
+               간격을 더하면 그대로 넘침이 된다. 그래서 아래 규칙은 모두 "높이 증감 0" 이다.
+         측정표 읽기 주의: 표의 "하 48" 은 모든 장면에서 .deck-footer(position:absolute; bottom:48px) 이고
+               "상 100" 은 .scene-title(padding 80 + margin 20) 이다. 두 값은 본문의 세로 여유를 뜻하지 않는다. */
+
+      /* --- (가) 컴포넌트 간격 (측정 "붙음" 2곳) --- */
+
+      /* G01: .scene-title 과 .chip-row 사이 0px → 24px.
+         G01 은 흐름의 끝이 .stack 이라 남은 세로 여유를 잴 수 없다. 높이를 늘리지 않으려고
+         바로 아래 .dg.is-sep 의 24px 을 이 자리로 옮긴다(장면 전체 높이 증감 0). */
+      .scene[data-scene-id="G01"] > .chip-row { margin-top: 24px; }
+      /* 24px 을 내준 자리: .panel-title 과 진행 띠 사이에는 .stack gap 24px + 띠 margin-top 108px 이 남는다.
+         띠 위로 84px 튀어나오는 "준비" 표시를 빼고도 48px 여유 → 붙지 않는다. */
+      .scene[data-scene-id="G01"] .stack > .dg.is-sep { margin-top: 0; }
+
+      /* T01: .chip-row 와 .source 사이 0px.
+         .source 는 공통 규칙에 padding-top:24px 이 있어 화면에서 보이는 간격은 이미 24px 이고(덱 전체 기준값),
+         이 장면은 .source 의 margin-top:auto 가 0 으로 풀렸다 = 세로 여유 0px 이다.
+         그래서 간격을 더하지 않고, 같은 24px 을 상자 안쪽(padding)에서 상자 사이(margin)로 옮겨
+         측정이 읽는 간격과 화면에 보이는 간격을 같게만 만든다. 높이·글자·모양 변화 0. */
+      .scene[data-scene-id="T01"] > .stack { margin-bottom: 24px; }
+      .scene[data-scene-id="T01"] > .source { padding-top: 0; }
+
+      /* --- (나) 24px 미만 글자 (측정 "24px미만" 5곳) --- */
+
+      /* .dg-zone-label 22px (S23 · A07 · A09 ×2)
+         출처 확인: v0.6 백업(_workspace/roadmap3/backup_v0.6/index.html 905·909줄)에 같은 값이 있다
+                    → v0.7 치환이 만든 값이 아니다.
+                    01~05 의 장면 전용 축소도 아니다(그 규칙들은 이 클래스를 건드리지 않고 24px 아래로 내리지도 않는다).
+                    index.html 기본 컴포넌트 정의값이며, 00_global_css_patch.md B-2 가
+                    "DESIGN.md 최소 24px 아래 — 다음 정리 때 24px 권장" 으로 남겨 둔 항목이다.
+                    같은 지적을 받은 쌍둥이 .concept-badge 는 04_review_fixes.css 에서 이미 24px 로 올렸다.
+         넘침 검토: 이 라벨은 position:absolute 라 흐름 높이 기여가 0 → 세로 증분 0.
+                    세로 겹침: top 14px + 24px 한 줄(약 33px) = 47px < 구역 padding-top 56px → 안쪽 내용과 겹치지 않는다.
+                    가로: 가장 긴 A07 라벨(30자)이 24px·700·자간 1px 에서 약 565px.
+                    쓸 수 있는 폭은 구역 864px(split-grid 1fr) − 왼쪽 24 − 오른쪽 아이콘 자리 52 − 여유 8 = 780px
+                    → 한 줄 유지, 여유 약 215px. S23("내 PC" 약 85px) · A09(약 340px)는 더 여유롭다. */
+      .scene[data-scene-id="S23"] .dg-zone-label,
+      .scene[data-scene-id="A07"] .dg-zone-label,
+      .scene[data-scene-id="A09"] .dg-zone-label { font-size: 24px; }
+
+      /* A01: 전치 기호 <sup> 23.3px — 브라우저 기본값 font-size:smaller(0.833 × 부모 28px)이며 덱 규칙이 아니다.
+         24px 로 고정해도 부모 28px 대비 0.86배 + vertical-align:super 라 위첨자로 읽힌다.
+         폭 +0.7px · 줄 상자 높이 +0.5px 수준이고, A01 은 .source 앞에 여유가 남아 있어(붙음 목록에 없음) 넘침이 없다. */
+      .scene[data-scene-id="A01"] .bullets li .sub sup { font-size: 24px; }
+
+      /* --- 나머지 61장: 측정상 조치 불필요 ---
+         좌우 여백 65장이 120/120 대칭, S44 만 120/156(차 36px < 기준 40px, 인용 장면의 글줄 길이 때문이라 배치 문제 아님).
+         넘침·겹침·장면밖 0. 판정 근거는 _workspace/roadmap3/ui_v07_spec.md 3절에 적었다. */

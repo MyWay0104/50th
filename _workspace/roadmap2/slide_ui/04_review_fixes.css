@@ -1,6 +1,6 @@
 
       /* ===== ROADMAP2 빌드 후 시각 검수 반영 (v0.6-visual-01-33.md · v0.6-visual-34-66.md) ===== */
-      /* [높음] E01: 점선 상자(아직 받지 않은 셋째 열쇠)가 배경과 구분되지 않음 → 회색 면 + 2px 점선 */
+      /* [높음] E01: 점선 상자(아직 받지 않은 데이터 조회용 토큰)가 배경과 구분되지 않음 → 회색 면 + 2px 점선 */
       .dg-box.is-dashed.muted { background: var(--box-muted); }
       .dg-box.is-dashed { border-width: 2px; }
       .scene.night .dg-box.is-dashed.muted { background: var(--on-night-fill); }
@@ -16,7 +16,7 @@
       .fallback { border-style: dashed; }
       /* [중간 · 사용자 지시 2] 코드 강조 글자가 3.42:1 로 흐림 → 짙은 주황(9.1:1), 연주황 면은 유지 */
       .code-body .hl { color: var(--night); }
-      /* [중간] 열쇠 지도 축소판: 아직 받지 않은 열쇠 칩은 E01 과 같은 규칙(점선 · 낮춤) */
+      /* [중간] 인증 키 지도 축소판: 아직 받지 않은 키 칩은 E01 과 같은 규칙(점선 · 낮춤) */
       .chip.is-later { border-style: dashed; background: var(--box-muted); color: var(--ink-2); }
       /* [중간] 핵심 문장 둘째 줄에 한 낱말만 남는 것 */
       .scene[data-scene-id="T01"] .thesis, .scene[data-scene-id="T02"] .thesis, .scene[data-scene-id="T03"] .thesis { text-wrap: balance; }

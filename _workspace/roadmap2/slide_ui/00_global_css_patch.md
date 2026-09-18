@@ -1,5 +1,7 @@
 # 00 · 전역 CSS 패치 사양 (ROADMAP2, 2026-09-18)
 
+> **v0.7에서 낱말이 바뀌었다 (2026-09-18, `ROADMAP3.md`).** 아래 설명·예시 마크업에 나오는 `두뇌 · 책 · 손발 · 조종 · 내 PC의 에이전트 · 정거장 · 열쇠`는 **v0.6 당시의 기록**이다. 지금 덱은 `LLM · RAG · Tool · Agent · Coding Agent · 단계 · 인증 키`를 쓴다. **CSS 규칙(F절)과 좌표·대비 계산은 그대로 유효**하므로 이 문서는 고치지 않고 남겨 둔다. 진행 띠 아이콘 순서도 그대로다(그림 파일은 바뀌지 않았고 대체 글자만 바뀌었다).
+
 - 대상: `topics/sk-hynix-ai-agent-guide-edu/index.html` 의 `<style id="scene-styles">`
 - 적용 방법: 이 문서 **F절의 CSS 블록을 `scene-styles` 맨 끝에 그대로 붙인다.** 기존 규칙은 지우지 않는다(뒤에 와서 덮어쓰는 방식). 장면 마크업은 고치지 않아도 A·C·D가 적용된다. E(구간 표지 진행 띠)만 새 마크업이 필요하다.
 - 붙인 뒤: `python scripts\sync_overview.py topics\sk-hynix-ai-agent-guide-edu` 로 overview 재생성 → QA 게이트(G절).
@@ -254,7 +256,7 @@
         --box-line: #8a857f;                               /* 상자 테두리: 캔버스 3.36 · 흰색 3.66 · 전환 틴트 3.29 */
         --box-muted: #eeece9;                              /* 낮춤 상자 면: 테두리 대비 3.10, 위 글자 ink-3 5.53 */
         --on-night-line-strong: rgba(255, 255, 255, 0.5);  /* 반전 배경 위 테두리 3.50 */
-        --on-night-fill: rgba(255, 255, 255, 0.24);        /* 반전 배경 위 낮춤 면 · 지나온 정거장 채움 */
+        --on-night-fill: rgba(255, 255, 255, 0.24);        /* 반전 배경 위 낮춤 면 · 지나온 단계 채움 */
         --axis-tile: 96px;
       }
 
@@ -334,7 +336,7 @@
       .axis-tile { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: var(--axis-tile); height: var(--axis-tile); border: 1px solid var(--box-line); border-radius: var(--radius); background: var(--surface); }
       .axis-icon { width: 48px; height: 48px; object-fit: contain; }
       .axis-label { font-size: var(--fs-small); font-weight: 500; line-height: 1.35; color: var(--ink-2); }
-      /* 정거장 사이 연결선: 앞 타일 오른쪽 12px 부터 이 타일 왼쪽 12px 앞까지 */
+      /* 단계 사이 연결선: 앞 타일 오른쪽 12px 부터 이 타일 왼쪽 12px 앞까지 */
       .axis-stop + .axis-stop::before {
         content: ""; position: absolute;
         top: calc(var(--axis-tile) / 2 - 1px);
@@ -349,7 +351,7 @@
       .axis-stop.is-current .axis-label { padding-bottom: 4px; border-bottom: 4px solid var(--accent); font-weight: 700; color: var(--ink); }
       .axis-stop.is-todo .axis-icon { opacity: 0.6; }
       .axis-stop.is-todo .axis-label { font-weight: 400; color: var(--ink-3); }
-      /* D01 "준비" 표시: 띠 왼쪽 끝 위. 격자 칸을 차지하지 않아 여섯 정거장 좌표가 모든 표지에서 같다 */
+      /* D01 "준비" 표시: 띠 왼쪽 끝 위. 격자 칸을 차지하지 않아 여섯 단계 좌표가 모든 표지에서 같다 */
       .axis-prep { position: absolute; left: 0; bottom: calc(100% + 24px); display: inline-flex; align-items: center; gap: 12px; padding: 10px 24px; border: 1px solid var(--box-line); border-radius: 999px; background: var(--surface); font-size: var(--fs-small); font-weight: 700; line-height: 1.35; color: var(--ink); }
       .axis-prep.is-current { border: 2px solid var(--accent); color: var(--accent); }
       .axis-prep .axis-icon { width: 32px; height: 32px; }

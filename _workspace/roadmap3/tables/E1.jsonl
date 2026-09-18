@@ -1,0 +1,11 @@
+{"sid": "G01", "replace": [{"where": "screen", "old": "단계 아래 번호는 실습자료의 실습 번호와 같습니다 · Agent까지가 점심 전, Coding Agent부터가 점심 뒤입니다", "new": "단계 아래 번호는 실습자료의 실습 번호와 같습니다 · 낱말은 지금 몰라도 됩니다, 단계마다 하나씩 풉니다"}]}
+{"sid": "S04", "replace": [{"where": "note", "old": "토큰은 단어 하나와 항상 같지 않고, 나누는 방식은 모델마다 다릅니다.", "new": "토큰은 단어 하나와 같지 않고, 앞에서 본 조회용 토큰과는 다른 말입니다."}], "title": "LLM의 다음 토큰 예측"}
+{"sid": "T02", "replace": [{"where": "screen", "old": "그래서 다음은 Tool입니다.", "new": "그래서 다음은 도구(Tool)입니다."}]}
+{"sid": "S16", "title": "도구 호출 순서"}
+{"sid": "S23", "title": "같은 게이트웨이, 같은 채팅용 키"}
+{"sid": "S29", "replace": [{"where": "note", "old": "다음 실습에서 실행할 앱은 화면, 처리, 데이터 중 어디를 바꾸면 무엇이 달라질지 생각하며 보세요.", "new": "이제 이 앱을 콘솔과 웹 화면으로 실행해 Agent가 도는 모습을 봅니다."}]}
+{"sid": "S30", "title": "CLAUDE.md와 작업 기록"}
+{"sid": "LAB07", "title": "실습 07 · 읽히고 설명 받기"}
+{"sid": "N01", "replace": [{"where": "screen", "old": "템플릿을 모델에 잇는 체인 · 개념 예시", "new": "LangChain으로 잇는 체인 · 개념 예시"}]}
+{"sid": "A01", "replace": [{"where": "screen", "old": "비유 · 한 토큰 표현에서 나온 세 벡터", "new": "한 토큰 표현에서 나온 세 벡터"}]}
+{"sid": "G02", "replace": [{"where": "note", "old": "모델 · API · RAG · Tool · Agent가 하는 일", "new": "LLM · RAG · Tool · Agent · Coding Agent가 하는 일"}]}

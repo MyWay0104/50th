@@ -2,7 +2,7 @@
       /* ===== ROADMAP2 추가 규칙: 콘티의 CSS 요청 중 채택분 (결정: _workspace/roadmap2/conti_coordinator_decisions.md 3절) ===== */
       /* 구간 표지 제목: 두 덩어리(.nowrap)로 나뉘는 긴 제목이 띠(top 720px)와 겹치지 않게 한 단계 작게 */
       .hero-title.is-section { font-size: 88px; line-height: 1.12; }
-      /* 아직 받지 않은 것(셋째 열쇠 등)을 나타내는 점선 상자. 색은 상자 테두리 토큰 그대로라 대비 3:1 유지 */
+      /* 아직 받지 않은 것(데이터 조회용 토큰 등)을 나타내는 점선 상자. 색은 상자 테두리 토큰 그대로라 대비 3:1 유지 */
       .dg-box.is-dashed { border-style: dashed; background: transparent; }
       .scene.night .dg-box.is-dashed { border-style: dashed; }
       /* 값의 범위를 보여 주는 가는 눈금선(S07 temperature 0~2) */

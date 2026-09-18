@@ -1314,7 +1314,7 @@
       .scene[data-scene-id^="T0"] > .scene-title { border-left: 12px solid var(--accent); padding-left: 28px; }
       /* V01·V02: 회색 캡션 가독성 */
       .scene[data-scene-id="V01"] .dg-caption, .scene[data-scene-id="V02"] .dg-caption, .scene[data-scene-id="V02"] .compare-note { font-size: 26px; }
-      /* S26: 막히면 상자 안 손들기 칩 줄을 촘촘히 */
+      /* S26: 막히면 상자 안 단계 칩 줄을 촘촘히 */
       .scene[data-scene-id="S26"] .fallback > p { margin: 0; }
       .scene[data-scene-id="S26"] .fallback > .chip-row { margin-top: 10px; }
       /* S16: 설명문이 길어져도 코드 카드가 줄어들지 않음 */

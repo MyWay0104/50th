@@ -17,7 +17,7 @@
       .scene[data-scene-id="LAB01"] .placeholder-desc, .scene[data-scene-id="LAB02"] .placeholder-desc, .scene[data-scene-id="LAB03"] .placeholder-desc { font-size: 26px; }
       .scene[data-scene-id="LAB01"] .time-block .what { font-size: 26px; }
 
-      /* P2: LAB04 · LAB04b 안내판 압축(개념 칩 · 열쇠 지도 칩 복원용), S15 · S16 여백 축소 */
+      /* P2: LAB04 · LAB04b 안내판 압축(개념 칩 · 인증 키 지도 칩 복원용), S15 · S16 여백 축소 */
       /* P2 CSS 요청 (빌더 검증본 · 2026-09-18): LAB04 · LAB04b 안내판 압축 + S15 · S16 여백 축소. scene-styles 맨 끝에 붙인다. 글자 크기는 24px 아래로 내리지 않았다. */
       /* --- LAB04 · LAB04b 공통: 실습 안내판 압축 (P1 과 같은 방식) --- */
       .scene[data-scene-id="LAB04"] > .explain, .scene[data-scene-id="LAB04b"] > .explain { font-size: 28px; }
@@ -56,7 +56,7 @@
       .scene[data-scene-id="S16"] .steps.row.is-compact .step { padding: 20px 32px; }
       .scene[data-scene-id="S16"] .code-body { padding: 18px 28px; }
 
-      /* P3: N03 · S17 · LAB05 · LAB06 · LAB07 압축(개념 칩 · 열쇠 지도 칩 · 안전장치 풀이 복원용) */
+      /* P3: N03 · S17 · LAB05 · LAB06 · LAB07 압축(개념 칩 · 인증 키 지도 칩 · 안전장치 풀이 복원용) */
       /* P3 CSS 요청 (빌더 검증본 · 2026-09-18): LAB05~LAB07 안내판 압축 · N03 · S17 카드 압축. scene-styles 맨 끝에 붙인다. 글자는 24px 아래로 내리지 않았다. */
       /* --- LAB05 · LAB06 · LAB07 공통 압축 --- */
       .scene[data-scene-id="LAB05"] > .practice-grid, .scene[data-scene-id="LAB06"] > .practice-grid, .scene[data-scene-id="LAB07"] > .practice-grid { margin-top: 20px; gap: 40px; }

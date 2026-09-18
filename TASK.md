@@ -55,9 +55,20 @@ python scripts\validate_topic.py topics\test-topic
 npx hyperframes lint topics\test-topic
 ```
 
+## 테스트 방법 — 덱 대규모 수정 (2026-09-18 v0.7에서 자리잡은 절차)
+
+낱말·표기를 덱 전체에서 바꿀 때는 아래 순서를 쓴다. `sk-hynix-ai-agent-guide-edu` v0.7(비유 → 전문용어 359곳)에서 검증했다.
+
+1. **치환 표**(JSONL)를 장면 단위로 쓰고, 적용 전에 `_workspace/roadmap3/check_tables.py` 방식으로 "원문이 그 장면에 정확히 한 번 나오는지"를 센다. `apply_table.py --dry`보다 먼저 돌리면 어디가 어긋났는지까지 나온다.
+2. 표로 못 덮는 자리(아이콘 `alt`·띠 라벨·`aria-label`·CSS 주석)는 **일괄 치환 스크립트**로 따로 처리한다. 반드시 표를 적용한 **뒤에** 돌린다(먼저 돌리면 표의 원문이 어긋난다). 그림 파일 개수를 치환 전후로 비교해 다르면 저장을 거부하는 안전장치를 넣는다.
+3. **QA 게이트 5단계** 뒤에 **Playwright 실측**을 더한다(`browser_evaluate`로 66장의 넘침·장면밖·형제 간격·작은 글자·좌우 여백을 한 번에). `hyperframes check`는 기본 9장만 보므로 `--samples <장수>`를 준다.
+4. **눈 검수를 반드시 넣는다.** 기계 지표가 전부 0이어도 세로 무게 중심·고아 줄바꿈·빈 칸은 남는다. 스냅샷을 `NN_장면ID.png`로 뽑아 UI 서브에이전트가 한 장씩 보게 한다.
+5. **글자 총량과 핵심 흐름 개수**를 이전 판과 대조한다. 총량이 줄고 핵심 흐름 개수가 같으면, "지우면 안 되는 것"을 건드리지 않았다는 근거가 된다.
+
 ## 향후 개선사항
 
 - 실제 topic별 QA report 자동 작성
-- screenshot 기반 overview 시각 검증
+- ~~screenshot 기반 overview 시각 검증~~ → v0.7에서 Playwright 실측 + 눈 검수 2갈래로 자리잡음. 스크립트화는 남음
+- 치환 표 사전 검사(`check_tables.py`)를 `scripts/deck/`로 옮겨 상시 도구화
 - PDF/PPTX export 자동화 스크립트 추가
 - export 전 체크리스트 자동화

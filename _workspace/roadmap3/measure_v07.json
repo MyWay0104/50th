@@ -1,0 +1,1241 @@
+{
+  "totals": {
+    "scenes": 66,
+    "overflowX": 0,
+    "overflowY": 0,
+    "outside": 0,
+    "tight": 2,
+    "small": 5
+  },
+  "scenes": [
+    {
+      "n": 1,
+      "id": "S01",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 344,
+        "B": 344,
+        "vdiff": 0
+      }
+    },
+    {
+      "n": 2,
+      "id": "G01",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [
+        {
+          "a": "scene-title",
+          "b": "chip-row",
+          "gap": 0
+        }
+      ],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 3,
+      "id": "S02",
+      "skill": "title-tags",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 4,
+      "id": "G00",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 5,
+      "id": "D01",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 6,
+      "id": "E01",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 7,
+      "id": "LAB01",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 8,
+      "id": "D02",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 9,
+      "id": "S04",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 10,
+      "id": "N01",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 11,
+      "id": "LAB02",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 12,
+      "id": "S07",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 13,
+      "id": "L01",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 14,
+      "id": "LAB03",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 15,
+      "id": "T01",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [
+        {
+          "a": "chip-row",
+          "b": "source",
+          "gap": 0
+        }
+      ],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 16,
+      "id": "D03",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 17,
+      "id": "S10",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 18,
+      "id": "V01",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 19,
+      "id": "V02",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 20,
+      "id": "R01",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 21,
+      "id": "LAB04",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 22,
+      "id": "S14",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 23,
+      "id": "T02",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 24,
+      "id": "D04",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 25,
+      "id": "S15",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 26,
+      "id": "S16",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 27,
+      "id": "LAB04b",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 28,
+      "id": "N02",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 29,
+      "id": "T03",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 30,
+      "id": "D05",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 31,
+      "id": "N03",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 32,
+      "id": "S29",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 33,
+      "id": "LAB05",
+      "skill": "title-image",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 34,
+      "id": "S17",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 35,
+      "id": "S21",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 36,
+      "id": "G03",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 37,
+      "id": "D06",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 38,
+      "id": "S22",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 39,
+      "id": "S23",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [
+        {
+          "el": "div.dg-zone-label",
+          "fs": 22,
+          "txt": "내 PC"
+        }
+      ],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 40,
+      "id": "LAB06",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 41,
+      "id": "LAB07",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 42,
+      "id": "C01",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 43,
+      "id": "C02",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 44,
+      "id": "S25",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 45,
+      "id": "S28",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 46,
+      "id": "C03",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 47,
+      "id": "S30",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 48,
+      "id": "C04",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 49,
+      "id": "D07",
+      "skill": "title",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 253,
+        "B": 48,
+        "vdiff": 205
+      }
+    },
+    {
+      "n": 50,
+      "id": "S39",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 51,
+      "id": "M01",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 52,
+      "id": "S40",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 53,
+      "id": "LAB08",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 54,
+      "id": "S43",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 55,
+      "id": "S44",
+      "skill": "quote",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 156,
+        "diff": -36,
+        "T": 132,
+        "B": 48,
+        "vdiff": 84
+      }
+    },
+    {
+      "n": 56,
+      "id": "G02",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 57,
+      "id": "A01",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [
+        {
+          "el": "sup",
+          "fs": 23.3,
+          "txt": "T"
+        }
+      ],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 58,
+      "id": "A02",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 59,
+      "id": "A03",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 60,
+      "id": "A04",
+      "skill": "compare",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 61,
+      "id": "A05",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 62,
+      "id": "A06",
+      "skill": "title-bullets",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 63,
+      "id": "A07",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [
+        {
+          "el": "div.dg-zone-label",
+          "fs": 22,
+          "txt": "State · messages · category를 모든 "
+        }
+      ],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 64,
+      "id": "A08",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 65,
+      "id": "A09",
+      "skill": "split",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [
+        {
+          "el": "div.dg-zone-label",
+          "fs": 22,
+          "txt": "하네스 · 모델을 둘러싼 실행 틀"
+        },
+        {
+          "el": "div.dg-zone-label",
+          "fs": 22,
+          "txt": "Deep Agents가 미리 묶은 것"
+        }
+      ],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    },
+    {
+      "n": 66,
+      "id": "A10",
+      "skill": "steps",
+      "overflowX": [],
+      "overflowY": [],
+      "outside": [],
+      "tight": [],
+      "small": [],
+      "bias": {
+        "L": 120,
+        "R": 120,
+        "diff": 0,
+        "T": 100,
+        "B": 48,
+        "vdiff": 52
+      }
+    }
+  ]
+}

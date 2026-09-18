@@ -1,6 +1,6 @@
 
       /* ===== v0.6 검수 반영 2차(fix pass) — 문구·마크업 수정에 딸린 장면 전용 규칙 ===== */
-      /* [중간 · 시각A 5] LAB01: 개념 칩 묶음과 열쇠 축소판(열쇠 아이콘 + 칩 3개)을 한 묶음으로 읽지 않게 간격을 둠 */
+      /* [중간 · 시각A 5] LAB01: 개념 칩 묶음과 인증 키 축소판(인증 키 아이콘 + 칩 3개)을 한 묶음으로 읽지 않게 간격을 둠 */
       .scene[data-scene-id="LAB01"] .chip-row > .row-icon { margin-left: 24px; }
       /* [중간 · 시각B 3] S21: "데이터" 상자 보조 글(기사 · 사내 데이터)이 글꼴 차이로 두 줄이 되지 않게 안쪽 폭 확보(현재 여유 약 2px) */
       .scene[data-scene-id="S21"] .split-panel .dg-row.stretch > .dg-box { padding-left: 16px; padding-right: 16px; }

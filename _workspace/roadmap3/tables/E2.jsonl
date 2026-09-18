@@ -1,0 +1,10 @@
+{"sid": "D01", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 01</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 01 · 인증 키로 모델에 연결</p>"}]}
+{"sid": "D02", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 02 · 실습 03</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 02 · 03 · 모델에 첫 질문 보내기</p>"}]}
+{"sid": "D03", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 04</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 04 · 검색한 자료를 근거로 답하기</p>"}]}
+{"sid": "D04", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 04b</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 04b · 계산과 조회를 코드에 맡기기</p>"}]}
+{"sid": "D05", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 05</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 05 · 결과를 보고 다시 판단하기</p>"}]}
+{"sid": "D06", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 06 · 실습 07</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 06 · 07 · 도구가 붙은 에이전트 쓰기</p>"}]}
+{"sid": "D07", "replace": [{"where": "screen", "old": "<p class=\"hero-sub\" data-editable=\"true\">실습 08</p>", "new": "<p class=\"hero-sub\" data-editable=\"true\">실습 08 · 내 업무에 쓸 도구 만들기</p>"}]}
+{"sid": "R01", "title": "청킹 · 임베딩 · 벡터 검색"}
+{"sid": "T03", "replace": [{"where": "screen", "old": "실습 04b에서 반복문으로 직접 돌린 도구 호출 반복이 Agent 루프의", "new": "실습 04b에서 반복문으로 도구 호출을 직접 돌려 본 것이 Agent 루프의"}, {"where": "note", "old": "화면의 '반복문으로 직접 돌린'은", "new": "화면의 '도구 호출을 직접 돌려 본'은"}]}
+{"sid": "LAB04b", "replace": [{"where": "note", "old": "이 반복을 '반복문으로 직접 돌린 도구 호출 반복'이라고 부르겠습니다.", "new": "이 반복을 '반복문으로 도구 호출을 직접 돌려 본 것'이라고 부르겠습니다."}]}

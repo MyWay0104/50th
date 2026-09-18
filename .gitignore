@@ -22,3 +22,15 @@ topics/*/docs/*.pdf
 topics/*/docs/ai-agent-guide-실습자료-강의흐름요약.md
 # 사용자가 만든 에이전트 정의서 원본 백업(사내 폴더명·도메인 언급)
 _workspace/roadmap2/*.original-*.md
+
+# 완성 발표자료 — 사내 교육 자료이고 index.html 에서 언제든 다시 만들 수 있다 (2026-09-18)
+topics/*/exports/*.pdf
+topics/*/exports/*.pptx
+# 검수용 스냅샷·백업 — 재생성 가능한 중간 산출물 (합계 40MB)
+_workspace/roadmap3/shots/
+_workspace/roadmap3/review_v0.7/
+_workspace/roadmap3/w4shots/
+_workspace/roadmap3/backup_v0.6/
+_workspace/roadmap3/backup_v0.7/
+# 조사 중 만든 임시 파일
+_workspace/roadmap3/_*
