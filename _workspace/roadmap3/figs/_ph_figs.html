@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>자리표시 대체 도식</title>
+<style>
+  @font-face { font-family: "Paperlogy"; font-weight: 400; src: url("assets/vendor/fonts/Paperlogy-4Regular.woff2") format("woff2"); }
+  @font-face { font-family: "Paperlogy"; font-weight: 500; src: url("assets/vendor/fonts/Paperlogy-5Medium.woff2") format("woff2"); }
+  @font-face { font-family: "Paperlogy"; font-weight: 600; src: url("assets/vendor/fonts/Paperlogy-6SemiBold.woff2") format("woff2"); }
+  @font-face { font-family: "Paperlogy"; font-weight: 700; src: url("assets/vendor/fonts/Paperlogy-7Bold.woff2") format("woff2"); }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("assets/vendor/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+
+  /* 덱의 :root 토큰 */
+  :root {
+    --surface: #ffffff; --hairline: #e6e6e6; --box-line: #8a857f;
+    --ink: rgba(0,0,0,.95); --ink-2: #31302e; --ink-3: #615d59;
+    --accent: #dd5b00; --accent-soft: rgba(221,91,0,.08);
+    --radius: 12px;
+    --font: "Paperlogy","Pretendard","Malgun Gothic",sans-serif;
+    --mono: "JetBrains Mono","Paperlogy",monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#dcd9d5; font-family:var(--font); padding:24px; display:flex; flex-direction:column; gap:24px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--box-line);      /* 상자 테두리 대비 3:1 규칙 */
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .row { display:flex; align-items:stretch; gap:10px; }
+  .box {
+    flex:1; min-width:0;
+    border:1px solid var(--hairline); border-radius:var(--radius); background:var(--surface);
+    padding:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center;
+  }
+  .box.accent { border-color:var(--accent); background:var(--accent-soft); }
+  .box.dashed { border-style:dashed; border-color:var(--box-line); background:#faf9f8; }
+  .box img { width:26px; height:26px; margin-bottom:2px; }
+  .name { font-size:30px; font-weight:700; color:var(--ink); line-height:1.15; letter-spacing:-.2px; }
+  .name.sm { font-size:27px; }
+  .sub { font-size:24px; font-weight:400; color:var(--ink-3); line-height:1.3; white-space:nowrap; }
+  .muted .name, .muted .sub { color:var(--ink-3); }
+  .link { align-self:center; font-size:30px; font-weight:600; color:var(--accent); flex:0 0 22px; text-align:center; }
+  .caption { font-size:24px; color:var(--ink-3); text-align:center; line-height:1.2; }
+  .caption b { color:var(--accent); font-weight:600; }
+  .caption.left { text-align:left; }
+
+  /* 가로 한 줄 짜리 도식 (키 → 대상) */
+  .pair { display:flex; align-items:center; gap:10px; }
+  .pair .k { flex:0 0 300px; }
+  .pair .t { flex:1; }
+  .pairs { display:flex; flex-direction:column; gap:8px; }
+  .pnote { font-size:22px; color:var(--ink-3); line-height:1.2; padding-left:4px; }
+
+  /* 세로 층 도식 */
+  .layers { display:flex; flex-direction:column; gap:8px; }
+  .layer {
+    display:flex; align-items:center; gap:12px;
+    border:1px solid var(--hairline); border-radius:var(--radius); background:var(--surface);
+    padding:8px 14px;
+  }
+  .layer.accent { border-color:var(--accent); background:var(--accent-soft); }
+  .layer img { width:26px; height:26px; flex:0 0 26px; }
+  .layer .txt { display:flex; flex-direction:column; gap:1px; min-width:0; }
+  .layer .name { font-size:27px; text-align:left; }
+  .layer .sub { font-size:23px; text-align:left; }
+
+  /* 번호 체크 카드 */
+  .checks { display:flex; flex-direction:column; gap:6px; }
+  .check { display:flex; align-items:center; gap:12px; border:1px solid var(--hairline); border-radius:var(--radius); padding:4px 14px; background:var(--surface); }
+  .check.accent { border-color:var(--accent); background:var(--accent-soft); }
+  .num {
+    flex:0 0 34px; height:34px; border-radius:50%; background:var(--accent); color:#fff;
+    font-size:22px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+  .check .ct { font-size:26px; color:var(--ink); line-height:1.25; font-weight:500; }
+  .check .cw { font-size:23px; color:var(--ink-3); line-height:1.2; }
+  .check .col { display:flex; flex-direction:column; gap:1px; min-width:0; }
+
+  /* 요청문 카드 */
+  .asks { display:flex; flex-direction:column; gap:8px; }
+  .ask { display:flex; align-items:center; gap:12px; border:1px solid var(--hairline); border-radius:var(--radius); padding:9px 14px; background:var(--surface); }
+  .ask img { width:24px; height:24px; flex:0 0 24px; }
+  .ask .tag { flex:0 0 96px; font-size:24px; font-weight:700; color:var(--accent); }
+  .ask .q { font-size:24px; color:var(--ink-2); line-height:1.25; min-width:0; }
+
+  /* ===== 도식 컬러톤 (2026-09-19 사용자 선택) =====
+     .t1 따뜻한 종이 — 사람이 정리한 개념·절차
+     .t2 차가운 회청 — 기계가 낸 결과·화면
+     바깥 테두리는 슬라이드 배경(#f6f5f4) 대비 3:1 (하우스 룰) */
+  .t1 { background:#efe6d6; border-color:#9c8b70; }
+  .t1 .box, .t1 .layer, .t1 .check, .t1 .ask { background:#fffcf4; border-color:#d5c7ae; }
+  .t1 .box.accent, .t1 .layer.accent, .t1 .check.accent { background:#fdf0e6; border-color:#dd5b00; }
+  .t1 .box.dashed { background:#f7f2e8; border-color:#b3a288; }
+  .t1 th { background:#e8dcc6; border-color:#d5c7ae; }
+  .t1 td { border-color:#d5c7ae; }
+  .t1 .badge { background:#e8dcc6; border-color:#d5c7ae; }
+  .t1 .screen { background:#fffcf4; border-color:#9c8b70; }
+  .t1 .screen .bar { background:#e8dcc6; border-color:#d5c7ae; }
+
+  .t2 { background:#e6ecf3; border-color:#7d8fa1; }
+  .t2 .box, .t2 .layer, .t2 .check, .t2 .ask { background:#f9fbfd; border-color:#c5d0dc; }
+  .t2 .box.accent, .t2 .layer.accent, .t2 .check.accent { background:#fdf0e8; border-color:#dd5b00; }
+  .t2 .box.dashed { background:#eef2f7; border-color:#a9b7c6; }
+  .t2 th { background:#dbe4ee; border-color:#c5d0dc; }
+  .t2 td { border-color:#c5d0dc; }
+  .t2 .badge { background:#dbe4ee; border-color:#c5d0dc; }
+  .t2 .screen { background:#fff; border-color:#7d8fa1; }
+  .t2 .screen .bar { background:#dbe4ee; border-color:#c5d0dc; }
+  .t2 .field { border-color:#7d8fa1; }
+  .t2 .result { border-color:#a9b7c6; }
+</style>
+</head>
+<body>
+
+<!-- ① LAB01 · 키별 접근 대상 축소판 (781×264) -->
+<div class="card t1" id="lab01" style="width:781px; height:264px; gap:8px;">
+  <div class="pairs">
+    <div>
+      <div class="pair">
+        <div class="box accent k" style="flex-direction:row; gap:8px; padding:8px 12px;">
+          <img src="assets/img/icons/key.svg" alt="인증 키 아이콘"><span class="name sm">채팅용 키</span>
+        </div>
+        <span class="link">→</span>
+        <div class="box t" style="flex-direction:row; gap:8px; padding:8px 12px;">
+          <img src="assets/img/icons/door-open.svg" alt="접근 대상 아이콘"><span class="name sm">채팅 모델</span>
+        </div>
+      </div>
+      <p class="pnote">오늘 받습니다 · 오후에도 같은 키를 씁니다</p>
+    </div>
+    <div>
+      <div class="pair">
+        <div class="box k" style="flex-direction:row; gap:8px; padding:8px 12px;">
+          <img src="assets/img/icons/key.svg" alt="인증 키 아이콘"><span class="name sm">임베딩용 키</span>
+        </div>
+        <span class="link">→</span>
+        <div class="box t" style="flex-direction:row; gap:8px; padding:8px 12px;">
+          <img src="assets/img/icons/door-open.svg" alt="접근 대상 아이콘"><span class="name sm">임베딩 모델</span>
+        </div>
+      </div>
+      <p class="pnote">오늘 받습니다 · RAG 실습에서 씁니다</p>
+    </div>
+    <div>
+      <div class="pair">
+        <div class="box dashed muted k" style="flex-direction:row; gap:8px; padding:8px 12px;">
+          <img src="assets/img/icons/key.svg" alt="인증 키 아이콘"><span class="name sm">데이터 조회용 토큰</span>
+        </div>
+        <span class="link" style="color:var(--ink-3);">→</span>
+        <div class="box dashed muted t" style="flex-direction:row; gap:8px; padding:8px 12px;">
+          <img src="assets/img/icons/door-open.svg" alt="접근 대상 아이콘"><span class="name sm">사내 데이터</span>
+        </div>
+      </div>
+      <p class="pnote">Tool 실습에서 받습니다 · 오늘은 받지 않습니다</p>
+    </div>
+  </div>
+</div>
+
+<!-- ② LAB03 · 관찰 세 가지 체크 카드 (781×263) -->
+<div class="card t1" id="lab03" style="width:781px; height:263px; gap:6px;">
+  <p class="caption left" style="font-weight:600; color:var(--ink);">관찰할 것 세 가지</p>
+  <div class="checks">
+    <div class="check accent">
+      <span class="num">1</span>
+      <div class="col"><span class="ct">temperature에 따라 답이 얼마나 달라지는지</span><span class="cw">같은 입력을 여러 번</span></div>
+    </div>
+    <div class="check">
+      <span class="num">2</span>
+      <div class="col"><span class="ct">봇의 성격이 어디서 정해지는지</span><span class="cw">system 프롬프트의 첫 줄</span></div>
+    </div>
+    <div class="check">
+      <span class="num">3</span>
+      <div class="col"><span class="ct">답의 순서와 마무리가 어디서 정해지는지</span><span class="cw">system 프롬프트의 답의 틀</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ LAB06 · 세 층 축소판 (설정 파일 강조) (781×238) -->
+<div class="card t1" id="lab06" style="width:781px; min-height:238px; gap:8px;">
+  <div class="layers">
+    <div class="layer">
+      <img src="assets/img/icons/laptop.svg" alt="Coding Agent 아이콘">
+      <div class="txt"><span class="name">내 PC · Claude Code</span><span class="sub">요청을 보냄</span></div>
+    </div>
+    <div class="layer accent">
+      <img src="assets/img/icons/key.svg" alt="인증 키 아이콘">
+      <div class="txt"><span class="name">설정 파일(settings.json)</span><span class="sub">주소와 채팅용 키를 적는 곳</span></div>
+    </div>
+    <div class="layer">
+      <img src="assets/img/icons/server.svg" alt="서버 아이콘">
+      <div class="txt"><span class="name">사내 LLM 게이트웨이</span><span class="sub">오전과 같은 주소 · 같은 키</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ LAB07 · 요청 세 가지 카드 (781×254) -->
+<div class="card t1" id="lab07" style="width:781px; height:254px; gap:10px;">
+  <p class="caption left" style="font-weight:600; color:var(--ink);">읽히고 설명 받을 요청 세 가지</p>
+  <div class="asks">
+    <div class="ask">
+      <img src="assets/img/icons/file-text.svg" alt="요약 아이콘">
+      <span class="tag">요약</span>
+      <span class="q">"이 폴더의 파일들을 요약해 주세요"</span>
+    </div>
+    <div class="ask">
+      <img src="assets/img/icons/network.svg" alt="구조 아이콘">
+      <span class="tag">구조</span>
+      <span class="q">"이 프로젝트 구조를 설명해 주세요"</span>
+    </div>
+    <div class="ask">
+      <img src="assets/img/icons/wrench.svg" alt="버그 아이콘">
+      <span class="tag">버그</span>
+      <span class="q">"계산 도구 파일에서 버그를 찾아 주세요"</span>
+    </div>
+  </div>
+  <p class="caption">요청문에 <b>"환경 파일은 열지 마세요"</b> 를 함께 넣습니다</p>
+</div>
+
+</body>
+</html>

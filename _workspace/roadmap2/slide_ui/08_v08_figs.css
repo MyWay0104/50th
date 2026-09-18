@@ -1,0 +1,10 @@
+      /* ===== 자리표시 → 도식 이미지 (v0.8, 2026-09-19) =====
+         사내 캡처를 확보할 수 없어 같은 내용을 도식으로 그려 넣었다.
+         이미지는 각 자리표시를 실측해 그 폭에 맞춰 만들었으므로 width:100% 로 딱 맞는다.
+         원래 캡처 조건은 _workspace/roadmap3/placeholder-specs.md 에 남겼다. */
+      .fig-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+      }

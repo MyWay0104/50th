@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>자리표시 대체 도식 2차</title>
+<style>
+  @font-face { font-family: "Paperlogy"; font-weight: 400; src: url("assets/vendor/fonts/Paperlogy-4Regular.woff2") format("woff2"); }
+  @font-face { font-family: "Paperlogy"; font-weight: 500; src: url("assets/vendor/fonts/Paperlogy-5Medium.woff2") format("woff2"); }
+  @font-face { font-family: "Paperlogy"; font-weight: 600; src: url("assets/vendor/fonts/Paperlogy-6SemiBold.woff2") format("woff2"); }
+  @font-face { font-family: "Paperlogy"; font-weight: 700; src: url("assets/vendor/fonts/Paperlogy-7Bold.woff2") format("woff2"); }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("assets/vendor/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+
+  :root {
+    --surface:#fff; --hairline:#e6e6e6; --box-line:#8a857f;
+    --ink:rgba(0,0,0,.95); --ink-2:#31302e; --ink-3:#615d59;
+    --accent:#dd5b00; --accent-soft:rgba(221,91,0,.08); --night:#793400;
+    --radius:12px;
+    --font:"Paperlogy","Pretendard","Malgun Gothic",sans-serif;
+    --mono:"JetBrains Mono",monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#dcd9d5; font-family:var(--font); padding:24px; display:flex; flex-direction:column; gap:24px; }
+
+  .card {
+    background:var(--surface); border:1px solid var(--box-line); border-radius:var(--radius);
+    padding:12px 18px; display:flex; flex-direction:column; justify-content:center; position:relative;
+  }
+  /* 실제 캡처가 아니라는 표시 — 덱의 concept-badge 와 같은 뜻 */
+  .badge {
+    align-self:flex-end; flex:0 0 auto;
+    font-size:20px; color:var(--ink-3); background:#f6f5f4;
+    border:1px solid var(--hairline); border-radius:999px; padding:1px 10px;
+  }
+  .htitle { font-size:25px; font-weight:700; color:var(--ink); line-height:1.15; }
+  .hsub { font-size:22px; color:var(--ink-3); line-height:1.2; }
+
+  .box { border:1px solid var(--hairline); border-radius:var(--radius); background:var(--surface); padding:9px 13px; }
+  .box.accent { border-color:var(--accent); background:var(--accent-soft); }
+  .nm { font-size:25px; font-weight:700; color:var(--ink); line-height:1.2; }
+  .sb { font-size:22px; color:var(--ink-3); line-height:1.25; }
+  .arrow { color:var(--accent); font-size:26px; font-weight:600; align-self:center; }
+
+  /* 표 */
+  table { width:100%; border-collapse:collapse; }
+  th,td { border:1px solid var(--hairline); padding:3px 10px; text-align:left; font-size:22px; color:var(--ink-2); line-height:1.2; }
+  th { background:#f6f5f4; font-weight:600; color:var(--ink); font-size:21px; }
+  td.mono { font-family:var(--mono); font-size:20px; }
+  td.num { text-align:right; }
+  tr.hit td { background:var(--accent-soft); }
+
+  /* 화면 모형 (실제 캡처가 아님을 알 수 있게 선화로만) */
+  .screen { border:1px solid var(--box-line); border-radius:8px; background:#fbfaf9; overflow:hidden; }
+  .screen .bar { background:#efedea; border-bottom:1px solid var(--hairline); padding:4px 10px; font-size:19px; color:var(--ink-3); }
+  .screen .body { padding:10px 12px; display:flex; flex-direction:column; gap:7px; }
+  .field { border:1px solid var(--box-line); border-radius:6px; background:#fff; padding:6px 10px; font-size:22px; color:var(--ink-2); }
+  .result { border:1px dashed var(--box-line); border-radius:6px; background:#fff; padding:7px 10px; font-size:21px; color:var(--ink-2); line-height:1.3; }
+  .tagno {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%; background:var(--accent); color:#fff;
+    font-size:18px; font-weight:700; flex:0 0 26px;
+  }
+  .lane { display:flex; align-items:center; gap:8px; }
+
+  /* ===== 도식 컬러톤 (2026-09-19 사용자 선택) =====
+     .t1 따뜻한 종이 — 사람이 정리한 개념·절차
+     .t2 차가운 회청 — 기계가 낸 결과·화면
+     바깥 테두리는 슬라이드 배경(#f6f5f4) 대비 3:1 (하우스 룰) */
+  .t1 { background:#efe6d6; border-color:#9c8b70; }
+  .t1 .box, .t1 .layer, .t1 .check, .t1 .ask { background:#fffcf4; border-color:#d5c7ae; }
+  .t1 .box.accent, .t1 .layer.accent, .t1 .check.accent { background:#fdf0e6; border-color:#dd5b00; }
+  .t1 .box.dashed { background:#f7f2e8; border-color:#b3a288; }
+  .t1 th { background:#e8dcc6; border-color:#d5c7ae; }
+  .t1 td { border-color:#d5c7ae; }
+  .t1 .badge { background:#e8dcc6; border-color:#d5c7ae; }
+  .t1 .screen { background:#fffcf4; border-color:#9c8b70; }
+  .t1 .screen .bar { background:#e8dcc6; border-color:#d5c7ae; }
+
+  .t2 { background:#e6ecf3; border-color:#7d8fa1; }
+  .t2 .box, .t2 .layer, .t2 .check, .t2 .ask { background:#f9fbfd; border-color:#c5d0dc; }
+  .t2 .box.accent, .t2 .layer.accent, .t2 .check.accent { background:#fdf0e8; border-color:#dd5b00; }
+  .t2 .box.dashed { background:#eef2f7; border-color:#a9b7c6; }
+  .t2 th { background:#dbe4ee; border-color:#c5d0dc; }
+  .t2 td { border-color:#c5d0dc; }
+  .t2 .badge { background:#dbe4ee; border-color:#c5d0dc; }
+  .t2 .screen { background:#fff; border-color:#7d8fa1; }
+  .t2 .screen .bar { background:#dbe4ee; border-color:#c5d0dc; }
+  .t2 .field { border-color:#7d8fa1; }
+  .t2 .result { border-color:#a9b7c6; }
+</style>
+</head>
+<body>
+
+<!-- ① S02 · 만들며 배운 것 세 가지 (703×547) -->
+<div class="card t1" id="s02" style="width:703px; min-height:547px; gap:12px;">
+  <span class="badge">개념 예시</span>
+  <p class="htitle">만들며 배운 것</p>
+  <div style="display:flex; flex-direction:column; gap:11px;">
+    <div class="box accent" style="display:flex; flex-direction:column; gap:5px;">
+      <span class="nm">① 구조</span>
+      <span class="sb">기능을 늘리기 전에 화면 · 처리 · 데이터를 나눠 두면,<br>고칠 곳을 한 군데에서 찾습니다</span>
+      <span class="sb" style="color:var(--accent);">오늘 오전 Tool 구간 · 오후 방향 ①에서 다시 봅니다</span>
+    </div>
+    <div class="box" style="display:flex; flex-direction:column; gap:5px;">
+      <span class="nm">② 데이터 검증</span>
+      <span class="sb">모델이 그럴듯하게 답해도 값이 맞는지는 따로 봅니다.<br>원본에서 한두 개를 골라 대조하는 습관</span>
+      <span class="sb" style="color:var(--accent);">자유 실습의 검증 단계에서 다시 봅니다</span>
+    </div>
+    <div class="box" style="display:flex; flex-direction:column; gap:5px;">
+      <span class="nm">③ 사용자 동선</span>
+      <span class="sb">쓰는 사람이 무엇을 먼저 보고 무엇을 누르는지가<br>기능 개수보다 먼저입니다</span>
+      <span class="sb" style="color:var(--accent);">오후 지식 자산화 구간에서 다시 봅니다</span>
+    </div>
+  </div>
+  <p class="hsub" style="text-align:center;">세 가지 모두 <b style="color:var(--accent);">코드를 배우기 전에</b> 부딪힌 것들입니다</p>
+</div>
+
+<!-- ② LAB04 · 찾은 조각과 답변 (698×260) -->
+<div class="card t2" id="lab04" style="width:698px; min-height:260px; gap:8px;">
+  <span class="badge">개념 예시</span>
+  <table>
+    <tr><th style="width:62px;">순위</th><th>찾아온 조각</th><th style="width:96px;">점수</th></tr>
+    <tr class="hit"><td class="num">1</td><td>조각 ② — 질문과 가장 가까운 문장이 든 부분</td><td class="num mono">0.82</td></tr>
+    <tr><td class="num">2</td><td>조각 ① — 같은 주제이지만 다른 내용</td><td class="num mono">0.61</td></tr>
+    <tr><td class="num">3</td><td>조각 ③ — 관련이 먼 부분</td><td class="num mono">0.44</td></tr>
+  </table>
+  <div class="box" style="padding:7px 12px;">
+    <span class="sb"><b style="color:var(--accent);">답변</b> — 조각 ②에 있는 내용으로만 답합니다. 조각에 없으면 "확인하기 어렵습니다"</span>
+  </div>
+  <p class="hsub">점수가 큰 것이 맨 위 · 숫자는 자리를 보여 주는 가상 값입니다</p>
+</div>
+
+<!-- ③ LAB04b · 호출 기록 (781×170) -->
+<div class="card t2" id="lab04b" style="width:781px; min-height:170px; gap:4px;">
+  <span class="badge">개념 예시</span>
+  <table>
+    <tr><th style="width:76px;">바퀴</th><th style="width:210px;">도구 이름</th><th>넣은 값</th><th style="width:110px;">결과</th></tr>
+    <tr><td class="num">1</td><td class="mono">add_numbers</td><td class="mono">13, 29</td><td class="num mono">42</td></tr>
+    <tr><td class="num">2</td><td class="mono">multiply_numbers</td><td class="mono">42, 10</td><td class="num mono">420</td></tr>
+    <tr class="hit"><td class="num">3</td><td class="mono">divide_numbers</td><td class="mono">420, 5</td><td class="num mono">84</td></tr>
+  </table>
+</div>
+
+<!-- ④ S29 · 화면과 코드 줄 대응 (703×344) -->
+<div class="card t2" id="s29" style="width:703px; min-height:344px; gap:8px;">
+  <span class="badge">개념 예시 · 실제 화면과 다름</span>
+  <p class="htitle" style="font-size:23px;">웹 화면판</p>
+  <div class="screen">
+    <div class="bar">장비 조회 Agent</div>
+    <div class="body">
+      <div class="lane"><span class="tagno">1</span><div class="field" style="flex:1;">EQ-01은 어떤 공정을 진행하나요?</div></div>
+      <div class="lane"><span class="tagno" style="background:#bdb8b2;">2</span><div class="result" style="flex:1;">조회한 결과를 문장으로 정리해 보여 줍니다</div></div>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:5px;">
+    <div class="lane"><span class="tagno">1</span><span class="sb"><b>화면</b> — 코드의 <span style="font-family:var(--mono);">st.text_input</span> 줄이 만든 입력 칸</span></div>
+    <div class="lane"><span class="tagno" style="background:#bdb8b2;">2</span><span class="sb"><b>화면</b> — <span style="font-family:var(--mono);">st.write</span> 줄이 만든 결과 영역</span></div>
+    <div class="lane"><span class="tagno" style="background:var(--night);">3</span><span class="sb"><b>처리·데이터</b> — <span style="font-family:var(--mono);">ask_agent</span> 줄에서 일어나 화면에는 안 보입니다</span></div>
+  </div>
+</div>
+
+<!-- ⑤ LAB05 · 화면·처리·데이터 세 영역 (781×300) -->
+<div class="card t2" id="lab05" style="width:781px; min-height:300px; gap:8px;">
+  <span class="badge">개념 예시 · 실제 화면과 다름</span>
+  <div style="display:flex; gap:12px; align-items:stretch;">
+    <div class="screen" style="flex:1;">
+      <div class="bar">장비 조회 Agent</div>
+      <div class="body">
+        <div class="lane"><span class="tagno">1</span><div class="field" style="flex:1; font-size:21px;">EQ-01은 어느 팹에 있나요?</div></div>
+        <div class="lane"><span class="tagno">1</span><div class="result" style="flex:1; font-size:20px;">EQ-01은 ○○ 팹에서 운영 중입니다</div></div>
+      </div>
+    </div>
+    <div style="flex:0 0 300px; display:flex; flex-direction:column; gap:6px;">
+      <div class="box accent" style="padding:6px 11px;"><span class="nm" style="font-size:22px;">① 화면</span><br><span class="sb" style="font-size:20px;">입력 칸과 결과 영역</span></div>
+      <div class="box" style="padding:6px 11px;"><span class="nm" style="font-size:22px;">② 처리</span><br><span class="sb" style="font-size:20px;">Agent가 몇 바퀴 돌지 정합니다</span></div>
+      <div class="box" style="padding:6px 11px;"><span class="nm" style="font-size:22px;">③ 데이터</span><br><span class="sb" style="font-size:20px;">조회 도구가 실제 값을 가져옵니다</span></div>
+    </div>
+  </div>
+  <p class="hsub" style="text-align:center;">장비 ID를 <b style="color:var(--accent);">뽑자고 요청한 것은 모델</b>, <b style="color:var(--accent);">조회를 실행한 것은 코드</b>입니다</p>
+</div>
+
+<!-- ⑥ C02 · CSV 집계 흐름 (703×389) -->
+<div class="card t2" id="c02" style="width:703px; min-height:389px; gap:8px;">
+  <span class="badge">개념 예시 · 가상 CSV</span>
+  <div class="box" style="padding:7px 12px;">
+    <span class="sb"><b style="color:var(--accent);">질문</b> &nbsp;"이 파일에서 장비별 건수를 세 주세요"</span>
+  </div>
+  <div class="lane" style="justify-content:center;"><span class="arrow">↓</span></div>
+  <div class="box" style="padding:7px 12px; background:#f6f5f4;">
+    <span class="sb" style="font-family:var(--mono); font-size:20px;">df.groupby("equipment").size()  <span style="color:var(--ink-3);"># 코드가 셉니다</span></span>
+  </div>
+  <div class="lane" style="justify-content:center;"><span class="arrow">↓</span></div>
+  <table>
+    <tr><th>장비</th><th style="width:120px;">건수</th></tr>
+    <tr><td class="mono">EQ-01</td><td class="num mono">128</td></tr>
+    <tr><td class="mono">EQ-02</td><td class="num mono">96</td></tr>
+    <tr><td class="mono">EQ-03</td><td class="num mono">41</td></tr>
+  </table>
+  <p class="hsub" style="text-align:center;">표가 나오면 <b style="color:var(--accent);">원본에서 한두 값을 골라 대조</b>합니다 · 숫자는 가상 값</p>
+</div>
+
+<!-- ⑦ C04 · 노트 한 장의 모양 (703×258) -->
+<div class="card t2" id="c04" style="width:703px; min-height:258px; gap:7px;">
+  <span class="badge">개념 예시</span>
+  <div class="screen">
+    <div class="bar">Notes/ 벡터 검색.md</div>
+    <div class="body" style="gap:5px;">
+      <div class="result" style="border-style:solid; border-color:var(--hairline);">
+        <span class="sb" style="color:var(--ink-3);">원문 —</span> <span class="sb">가까운 뜻을 숫자로 찾는 방식이다 (출처: 공식 문서)</span>
+      </div>
+      <div class="result" style="border-color:var(--accent); background:var(--accent-soft);">
+        <span class="sb" style="color:var(--accent); font-weight:600;">내 의견 —</span> <span class="sb">우리 업무 문서는 표가 많아 조각 크기를 더 크게 잡아야 할 듯</span>
+      </div>
+      <div class="result" style="border-style:solid; border-color:var(--hairline);">
+        <span class="sb" style="color:var(--ink-3);">다음 —</span> <span class="sb">조각 크기를 두 값으로 비교해 보고 결과를 여기 적는다</span>
+      </div>
+    </div>
+  </div>
+  <p class="hsub" style="text-align:center;">한 장 안에서도 <b style="color:var(--accent);">원문과 내 판단을 나눠</b> 둡니다</p>
+</div>
+
+</body>
+</html>

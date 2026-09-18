@@ -2291,6 +2291,17 @@
    ※ 보고서의 `.dg-row.stretch { gap: 40px }` 는 채택하지 않았다. 지금 칸 사이 67px 중 화살표가 자리를 쓰고 있어
       40px 로 바꾸면 화살표 칸이 100px 로 커지고 상자 폭이 283 → 256px 로 줄어 "허용 테이블" 같은 두 줄 글이 접힌다. */
 .scene[data-scene-id="A06"] .dg-row.stretch > .dg-box { padding: 48px 20px; }
+
+      /* ===== 자리표시 → 도식 이미지 (v0.8, 2026-09-19) =====
+         사내 캡처를 확보할 수 없어 같은 내용을 도식으로 그려 넣었다.
+         이미지는 각 자리표시를 실측해 그 폭에 맞춰 만들었으므로 width:100% 로 딱 맞는다.
+         원래 캡처 조건은 _workspace/roadmap3/placeholder-specs.md 에 남겼다. */
+      .fig-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+      }
       /* <<< ROADMAP2-PATCH END <<< */
     
 
@@ -2420,12 +2431,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="placeholder is-spec">
-                  <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S02]</div>
-                  <div class="placeholder-desc" data-editable="true">넣을 자료: 프로젝트 1개의 공개 화면</div>
-                  <div class="placeholder-desc" data-editable="true">조건: 계정·사내 정보 가리기</div>
-                  <div class="placeholder-desc" data-editable="true">대체: 확보 전엔 카드 설명으로 진행</div>
-                </div>
+                <img class="fig-img" src="assets/img/appendix/fig-s02.png" alt="만들며 배운 것 세 가지 — 구조, 데이터 검증, 사용자 동선">
               </div>
               <aside class="speaker-note">저는 NAND Implant기술에서 공정 업무를 하면서 Part Finder와 개인 웹앱 ddokmo를 만들고, 그 과정을 기술 블로그에 기록해 왔습니다. 만들면서 가장 크게 배운 것은 구조, 데이터 검증, 사용자 동선이 코드만큼 중요하다는 점입니다. 화면의 세 카드는 오늘 사례로 다시 나옵니다. Part Finder는 오전 Tool 구간에서 짧게, 오후 coding agent 예시에서 한 장으로, ddokmo는 자유 실습의 검증 단계에서, 개인 지식 노트인 Vault는 오후 지식 자산화 구간에서 봅니다. Part Finder는 공개한 Beta 버전의 설계를 기준으로 설명하고, 사내 운영 버전과 같다고 말하지는 않겠습니다. 잠깐 각자 줄이고 싶은 반복 업무 하나를 메모에 한 줄 적어 두세요. 오늘 마지막 자유 실습의 재료가 됩니다. 다음 장에서 오늘 공부하는 방법을 짧게 보겠습니다.</aside>
               <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
@@ -2539,12 +2545,7 @@
         <div class="fallback" data-editable="true"><strong>막히면</strong>연결이 안 된다는 글이면 주소와 사내망, 인증 글이면 키 칸, 파일을 못 찾는다는 글이면 실행 위치(실습 폴더의 맨 위)를 봅니다.</div>
       </div>
       <div class="stack">
-        <div class="placeholder is-spec">
-          <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB01]</div>
-          <div class="placeholder-desc" data-editable="true">넣을 자료: 검증 실행 성공 화면</div>
-          <div class="placeholder-desc" data-editable="true">조건: 키 · 주소 · 모델명 가리기</div>
-          <div class="placeholder-desc" data-editable="true">대체: 키별 접근 대상 도식 축소판</div>
-        </div>
+        <img class="fig-img" src="assets/img/appendix/fig-lab01.png" alt="인증 키 세 가지와 각각의 접근 대상 — 채팅용 키는 채팅 모델, 임베딩용 키는 임베딩 모델, 데이터 조회용 토큰은 사내 데이터">
       </div>
     </div>
   </div>
@@ -2652,13 +2653,7 @@ print(chain.invoke({"topic": "고양이"}).content)</pre>
         <div class="fallback" data-editable="true"><strong>막히면</strong>고친 뒤 오류가 나면 되돌리기로 원래대로 돌린 다음 다시 실행합니다. 실행이 안 되면 실습 폴더의 맨 위인지 봅니다. 접속이 안 되면 준비된 출력으로 진행합니다.</div>
       </div>
       <div class="stack">
-        <div class="dg-row is-compact"><div class="dg-box" data-editable="true">템플릿</div><span class="dg-arrow" aria-hidden="true">→</span><div class="dg-box" data-editable="true">모델</div><span class="dg-arrow" aria-hidden="true">→</span><div class="dg-box" data-editable="true">응답</div></div>
-        <div class="placeholder is-spec">
-          <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB02]</div>
-          <div class="placeholder-desc" data-editable="true">넣을 자료: 첫 호출 출력과 체인 실행 출력</div>
-          <div class="placeholder-desc" data-editable="true">조건: 키 · 주소 · 모델명 가리기</div>
-          <div class="placeholder-desc" data-editable="true">대체: 체인 미니 도식(템플릿 → 모델 → 응답)</div>
-        </div>
+        <img class="fig-img" src="assets/img/appendix/fig-lab02.png" alt="체인 도식 — 템플릿에서 모델로, 모델에서 응답으로">
       </div>
     </div>
   </div>
@@ -2752,12 +2747,7 @@ print(chain.invoke({"topic": "고양이"}).content)</pre>
         <div class="fallback" data-editable="true"><strong>막히면</strong>고친 뒤 오류가 나면 되돌리기로 원래대로 돌린 다음 다시 실행합니다. 접속이 안 되면 준비된 출력으로 같은 비교를 합니다. 웹 화면이 안 뜨면 앞 단계까지로 마칩니다.</div>
       </div>
       <div class="stack">
-        <div class="placeholder is-spec">
-          <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB03]</div>
-          <div class="placeholder-desc" data-editable="true">넣을 자료: temperature 두 값에서 같은 입력의 답 비교</div>
-          <div class="placeholder-desc" data-editable="true">조건: 주소 · 키 가리기</div>
-          <div class="placeholder-desc" data-editable="true">대체: 관찰 세 가지 체크 카드</div>
-        </div>
+        <img class="fig-img" src="assets/img/appendix/fig-lab03.png" alt="관찰할 것 세 가지 — temperature에 따른 차이, 봇의 성격, 답의 틀">
       </div>
     </div>
   </div>
@@ -3026,12 +3016,7 @@ print(chain.invoke({"topic": "고양이"}).content)</pre>
       <div class="fallback" data-editable="true"><strong>막히면</strong>고친 뒤 오류가 나면 되돌린 다음 다시 실행합니다. 기사 접속이 안 되면 준비된 저장 본문으로 진행합니다. 임베딩에서 인증 오류가 나면 임베딩용 키를 봅니다.</div>
     </div>
     <div class="stack">
-      <div class="placeholder is-spec">
-        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB04]</div>
-        <div class="placeholder-desc" data-editable="true">넣을 자료: 찾은 조각과 점수 출력, 답변을 나란히 둔 화면</div>
-        <div class="placeholder-desc" data-editable="true">조건: 주소 · 키 · 모델명 가리기 · 1600×900 이상</div>
-        <div class="placeholder-desc" data-editable="true">대체: 아래 "⑤의 근거 프롬프트 · 개념 예시" 세 줄 카드</div>
-      </div>
+      <img class="fig-img" src="assets/img/appendix/fig-lab04.png" alt="찾아온 조각을 점수 순으로 둔 표와 근거로 답하는 방식">
       <div class="dg">
         <div class="code-card">
           <div class="code-title" data-editable="true">⑤의 근거 프롬프트 · 개념 예시</div>
@@ -3250,12 +3235,7 @@ def divide_numbers(a: float, b: float) -&gt; float:  <span class="cm"># ⓑ 넣�
       <div class="fallback" data-editable="true"><strong>막히면</strong>401은 인증 키 문제입니다. 어느 요청에서 났는지 보고 그 키를 확인합니다. 사내 데이터 조회에서 났다면 조회용 토큰을 다시 받아 환경 파일을 고칩니다. 접속이 안 되면 준비된 조회 결과로 진행합니다.</div>
     </div>
     <div class="stack">
-      <div class="placeholder is-spec">
-        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB04b]</div>
-        <div class="placeholder-desc" data-editable="true">넣을 자료: 여러 단계 계산의 호출 기록 화면</div>
-        <div class="placeholder-desc" data-editable="true">조건: 주소 · 키 가리기 · 1600×900 이상</div>
-        <div class="placeholder-desc" data-editable="true">대체: 아래 "메시지 목록이 자라는 모습" 카드</div>
-      </div>
+      <img class="fig-img" src="assets/img/appendix/fig-lab04b.png" alt="도구 호출 기록 — 바퀴마다 도구 이름, 넣은 값, 결과">
       <div class="dg">
         <div class="code-card">
           <div class="code-title" data-editable="true">메시지 목록이 자라는 모습 · 개념 예시</div>
@@ -3449,12 +3429,7 @@ if q:
                           <span class="cm"># 데이터: Agent가 도구로 조회</span>
     st.write(ans)         <span class="cm"># 화면: 결과</span></pre>
     </div>
-    <div class="placeholder is-spec">
-      <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-S29]</div>
-      <div class="placeholder-desc" data-editable="true">넣을 자료: 장비 조회 Agent 웹 화면판 — 입력 칸·결과 영역을 왼쪽 코드 줄과 짝지어 표시</div>
-      <div class="placeholder-desc" data-editable="true">조건: 1600×900 이상 · 실행일 표기 · <span class="nowrap">모델명·주소·키·실제 장비 ID 가리기</span></div>
-      <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 왼쪽 코드 예시로 설명</div>
-    </div>
+    <img class="fig-img" src="assets/img/appendix/fig-s29.png" alt="웹 화면판의 입력 칸과 결과 영역이 코드의 어느 줄에 해당하는지 보여 주는 그림">
   </div>
   <p class="source" data-editable="true">출처: Streamlit Architecture 문서 · Streamlit API 문서(st.text_input, st.write)</p>
   <aside class="speaker-note">캐릭터 봇 실습에서 실행만 해 본 그 도구가 Streamlit이고, 이번에는 그 구조를 봅니다. 화면에서 입력을 받고, 데이터를 조회하고, 규칙과 모델 호출로 처리해 다시 화면에 보여 주는 전체 흐름을 다루는 것을 흔히 풀스택이라고 부릅니다. Streamlit에서는 이 흐름을 Python 코드 몇 줄로 이을 수 있어서, 왼쪽 예시처럼 입력 칸, Agent에게 질문 넘기기, 결과 표시가 차례로 나오고, 줄 끝 주석이 각 줄의 역할입니다. 데이터 조회는 처리 줄 안에서 Agent가 도구로 합니다. 오른쪽은 이어지는 실습에서 실행할 장비 조회 Agent의 화면인데, 입력 칸과 결과 영역이 왼쪽 코드의 어느 줄에 해당하는지 짝지어 보면 됩니다. Streamlit 공식 문서 설명처럼 Python 서버가 코드를 실행하고 브라우저는 화면을 보여 주는 구조라서, 이 앱은 화면과 처리 사이에 별도 백엔드 서버를 두지 않았고, 모델에는 채팅용 키로, 사내 데이터에는 데이터 조회용 토큰으로 각각 요청합니다. React나 별도 백엔드를 처음부터 모두 배우기보다, 지금 바꿀 부분이 화면인지, 처리인지, 데이터인지 알아보는 것부터 시작하면 AI가 만든 코드도 더 잘 판단할 수 있습니다. 이제 이 앱을 콘솔과 웹 화면으로 실행해 Agent가 도는 모습을 봅니다. 먼저 바꿔 보고 싶은 부분이 화면인지, 처리인지, 데이터인지 정해 보세요.</aside>
@@ -3482,12 +3457,7 @@ if q:
       <p class="dg-caption is-left" data-editable="true">질문 예: "EQ-01은 어떤 공정을 진행하나요?" · "EQ-01은 어느 팹에 있나요?"</p>
     </div>
     <div class="stack">
-      <div class="placeholder is-spec">
-        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB05]</div>
-        <div class="placeholder-desc" data-editable="true">넣을 자료: 장비 조회 Agent 화면, 세 영역에 번호</div>
-        <div class="placeholder-desc" data-editable="true">조건: 주소·키·모델명·실제 장비 ID 가리기 · 1600×900 이상</div>
-        <div class="placeholder-desc" data-editable="true">대체: 왼쪽 소단계와 개념 칩</div>
-      </div>
+      <img class="fig-img" src="assets/img/appendix/fig-lab05.png" alt="장비 조회 Agent 화면을 화면·처리·데이터 세 영역으로 나눈 그림">
     </div>
   </div>
   <div class="done-row is-full">
@@ -3735,12 +3705,7 @@ if q:
         <span class="chip" data-editable="true">임베딩용 키</span>
         <span class="chip" data-editable="true">데이터 조회용 토큰</span>
       </div>
-      <div class="placeholder is-spec">
-        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB06]</div>
-        <div class="placeholder-desc" data-editable="true">넣을 자료: 연결 상태 화면</div>
-        <div class="placeholder-desc" data-editable="true">조건: 주소 · 키 · 모델명 · 계정 가리기</div>
-        <div class="placeholder-desc" data-editable="true">대체: 세 층 축소판(설정 파일 강조)</div>
-      </div>
+      <img class="fig-img" src="assets/img/appendix/fig-lab06.png" alt="내 PC, 설정 파일, 사내 LLM 게이트웨이 세 층">
       <p class="dg-caption is-left" data-editable="true">막힌 단계를 적어 둡니다</p>
       <div class="chip-row">
         <img class="row-icon" src="assets/img/icons/notebook-pen.svg" alt="기록 아이콘">
@@ -3781,12 +3746,7 @@ if q:
       </div>
     </div>
     <div class="stack">
-      <div class="placeholder is-spec">
-        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-LAB07]</div>
-        <div class="placeholder-desc" data-editable="true">넣을 자료: 오전 실습 폴더 구조를 설명한 Claude Code 화면</div>
-        <div class="placeholder-desc" data-editable="true">조건: 모델명 · 계정 · 주소 · 키 가리기 · 실행일 표기 · 환경 파일의 내용이 찍힌 화면은 쓰지 않습니다</div>
-        <div class="placeholder-desc" data-editable="true">대체: 요청 세 가지 카드(요약 · 구조 · 버그)</div>
-      </div>
+      <img class="fig-img" src="assets/img/appendix/fig-lab07.png" alt="읽히고 설명 받을 요청 세 가지 — 요약, 구조, 버그">
       <p class="dg-caption is-left" data-editable="true">막힌 단계를 적어 둡니다</p>
       <div class="chip-row">
         <img class="row-icon" src="assets/img/icons/notebook-pen.svg" alt="기록 아이콘">
@@ -3864,12 +3824,7 @@ if q:
         <p class="dg-caption is-left" data-editable="true">오전 원칙 재사용 · 숫자와 ID는 코드가, 해석과 설명은 모델이</p>
       </div>
     </div>
-    <div class="placeholder is-spec">
-      <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-C02]</div>
-      <div class="placeholder-desc" data-editable="true">넣을 자료: CSV 집계 시연 화면(질문·실행·결과 표)</div>
-      <div class="placeholder-desc" data-editable="true">조건: 가상 CSV 사용 · 모델명·경로·계정 가리기</div>
-      <div class="placeholder-desc" data-editable="true">대체: 확보 전에는 강사 시연 화면으로 대신</div>
-    </div>
+    <img class="fig-img" src="assets/img/appendix/fig-c02.png" alt="질문에서 코드 실행을 거쳐 결과 표가 나오는 흐름">
   </div>
   <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices</p>
   <aside class="speaker-note">첫 번째 방향은 코드를 짜 달라고 하지 않고 "이 파일에서 장비별 건수를 세 주세요"처럼 결과를 요청하는 방식입니다. 왼쪽 그림처럼 Claude Code는 그 요청을 받아 스스로 Python 스크립트를 쓰고 실행해서 표나 그래프를 만들고, 마지막에 모델이 그 결과를 설명합니다. 여기서 숫자를 세는 것은 코드이고 모델은 요청을 이해하고 결과를 풀이하는 역할만 맡는데, 오전 계산 도구에서 계산은 코드가 했던 것과 같은 원칙입니다. 시연을 보기 전에 하나만 예측해 보세요. 결과 표의 숫자가 맞는지 우리는 무엇으로 확인할 수 있을까요? 오른쪽 시연 화면, 또는 제 화면으로 가상 CSV 집계의 같은 흐름을 보여 드리겠습니다. 결과 표가 나오면 그대로 믿지 말고 원본 파일에서 한두 값을 골라 한 번 대조하는데, 이것이 이 방향의 검증 습관입니다. 시연을 보면서 어느 대목이 코드가 한 일이고 어느 대목이 모델이 한 일인지 나눠 보고, 시연이 끝나면 코드가 한 일 하나와 모델이 한 일 하나를 짚어 보세요.</aside>
@@ -3925,7 +3880,6 @@ if q:
       <div class="step-body" data-editable="true">검증<span class="step-desc">새 기능·기존 기능</span><span class="step-desc">산출물: 실행 결과</span></div>
     </li>
   </ol>
-  <p class="dg-caption is-left" data-editable="true">[IMG-PLACEHOLDER · P-S28] 넣을 자료: 방향 ② 시연(오전에 만든 장비 조회 Agent에 결과 없음 안내) 네 단계 화면 · 조건: 모델명·경로·계정 가리기 · 대체: 확보 전에는 강사 실시간 시연</p>
 <p class="source" data-editable="true">출처: Claude Code 공식 문서 Best practices</p>
   <aside class="speaker-note">방향 ②의 시연 대상은 앞 장 요청문 그대로, 오전에 만든 장비 조회 Agent에 결과 없음 안내를 붙이는 것입니다. 이 시연을 네 단계로 끊어서 보여 드리겠습니다. 네 카드 순서대로, 먼저 Claude Code에게 현재 구조와 지금의 정상 동작을 설명하게 하고, 바꿀 곳과 완료 조건을 계획으로 받아 우리가 읽어 본 뒤, 계획한 범위만 수정하게 하고, 새 기능과 기존 기능을 둘 다 실행해 확인합니다. 각 카드의 산출물 줄은 그 단계가 끝났을 때 손에 남는 것, 곧 구조 설명·계획 문서·바뀐 줄·실행 결과이고, 검증에서 문제가 보이면 탐색으로 되돌아갑니다. 공식 모범사례도 여러 파일을 바꾸거나 방법이 불확실할 때 계획을 먼저 세우라고 권하며, 한두 줄짜리 작은 수정까지 긴 계획을 세울 필요는 없습니다. "마지막 정상 지점과 첫 실패 지점을 증거로 말하기"도 같은 습관이어서, 단계마다 산출물이 남아 있어야 어디까지 정상이었는지 말할 수 있습니다. 시연 중간에 화면을 멈출 테니 지금 어느 단계인지 네 카드에서 짚어 보세요. 계획이 나왔을 때도 한 번 멈출 테니, 그 계획에서 범위 밖인 줄이 있는지 찾아보세요. 고치기 전에 정상 동작을 먼저 확인해 두어야 하는 이유는 무엇일까요?</aside>
   <div class="deck-footer" data-editable="true">AI Agent Guide · SK hynix 사내 교육</div>
@@ -4018,12 +3972,7 @@ if q:
       <p class="dg-caption" data-editable="true">폴더 이름은 예시 · 구조를 단순화</p>
     </div>
     <div class="stack">
-      <div class="placeholder is-spec">
-        <div class="placeholder-id" data-editable="true">[IMG-PLACEHOLDER · P-C04]</div>
-        <div class="placeholder-desc" data-editable="true">넣을 자료: 공개 가능한 Obsidian 노트 한 장</div>
-        <div class="placeholder-desc" data-editable="true">조건: 개인·사내 정보 가림 · 1600×900 이상</div>
-        <div class="placeholder-desc" data-editable="true">대체: 확보 전엔 왼쪽 그림으로 진행</div>
-      </div>
+      <img class="fig-img" src="assets/img/appendix/fig-c04.png" alt="노트 한 장 안에서 원문과 내 의견과 다음 할 일을 나눠 적은 모습">
       <div class="chip-row">
         <span class="chip" data-editable="true">Obsidian 파일 = Memory</span>
         <span class="chip" data-editable="true">CLAUDE.md = Context</span>
